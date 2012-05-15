@@ -1,0 +1,57 @@
+Tasks
+----------------------------
+
+Testing.
+
+New features
+----------------------------
+
+Knowed Bugs
+----------------------------
+
+New Features for next versions.
+----------------------------
+
+- Better installer.
+- Delete multiple elements in admin list.
+- Dependencies for modules. 
+- Function to sql update for models, similar to insert.sql.
+- Add multiple columns blocks with name, no numbers. Now is 0=left, 1=right, 2=barr. Create multiple columns from database.
+- For raw sql querys in update_table use functions in mysql.php/postgresql.php, etc, that return querys for databases.
+- Add signature to emails in config_data
+- Create support for upgrades to new versions.
+- Tool for clean i18n. 
+- Tool for translations via web.
+- Helpers for create "where" in querys.
+- Multiple databases without problems. Don't need db by default.
+- Cache system in database.
+- Config index page in pages module.
+- Connect with mysql when make the first connection.
+- Navigator type django in top menu.
+- In check language status, set lang to search.
+- Make CharFields i18n, creating a array and serialize and count its length
+- Make a function for reading directories with a callback.
+- Put media in other server, add other variable called $media_url
+- Deprecating yes_entities.
+- A little system for process post automatically.
+
+Brainstorming ideas.
+----------------------------
+
+- Function for element lists.
+- Optimize related fields, creating components in the foreignkeyfield?
+	You create the foreignkeyfield, use methods for create related_fields for models and add components to model?, now, new components fields created on fly. Well, its don't use many cpu why is simple aliasing with & and a new component is not created.
+-A function for generate different switch for admin?.
+-Engine for create very simple urls, a frontend for make_fancy_url
+
+Possibles bugs.
+----------------------------
+
+- Fix bug in password function that don't show all characters for password. Fix?, need checking.
+- Fix bug in translations not completed. Problem is found when you change the default language and you filled last default language. 
+
+FAQ.
+
+---------------------------
+
+Why phango don't have products by default?
