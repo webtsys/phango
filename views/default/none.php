@@ -4,7 +4,7 @@ function NoneView($title, $content, $block_title, $block_content, $block_urls,
 $block_type, $block_id, $config_data, $headers='')
 {
 
-global $base_url, $base_path, $arr_i18n, $language, $lang, $user_data, $arr_cache_jscript, $model;
+global $base_url, $base_path, $arr_i18n, $language, $lang, $user_data, $arr_cache_jscript, $arr_check_table;
 
 settype($_COOKIE['webtsys_shop'], 'string');
 
@@ -54,7 +54,8 @@ $token=$_COOKIE['webtsys_shop'];
 	?>
 </div>
 <?php
-if(isset($model['shop']))
+
+if(isset($arr_check_table['product']))
 {
 
 load_lang('shop');
@@ -75,6 +76,8 @@ load_lang('shop');
 
 	if(!isset($arr_currency))
 	{
+
+		$arr_currency=array();
 
 		$query=webtsys_query('select idcurrency, symbol from currency');
 
