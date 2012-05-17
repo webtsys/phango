@@ -9,6 +9,8 @@ New features
 Knowed Bugs
 ----------------------------
 
+- Session don't work.
+
 New Features for next versions.
 ----------------------------
 
@@ -44,14 +46,3 @@ Brainstorming ideas.
 -A function for generate different switch for admin?.
 -Engine for create very simple urls, a frontend for make_fancy_url
 
-Possibles bugs.
-----------------------------
-
-- Fix bug in password function that don't show all characters for password. Fix?, need checking.
-- Fix bug in translations not completed. Problem is found when you change the default language and you filled last default language. 
-
-FAQ.
-
----------------------------
-
-Why phango don't have products by default?

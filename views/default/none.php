@@ -4,9 +4,7 @@ function NoneView($title, $content, $block_title, $block_content, $block_urls,
 $block_type, $block_id, $config_data, $headers='')
 {
 
-global $base_url, $base_path, $arr_i18n, $language, $lang, $user_data, $arr_cache_jscript;
-
-load_lang('shop');
+global $base_url, $base_path, $arr_i18n, $language, $lang, $user_data, $arr_cache_jscript, $model;
 
 settype($_COOKIE['webtsys_shop'], 'string');
 
@@ -55,31 +53,16 @@ $token=$_COOKIE['webtsys_shop'];
 	}
 	?>
 </div>
-<div id="cart">
-<a href="<?php echo make_fancy_url($base_url, 'shop', 'cart', $lang['shop']['cart'], array()); ?>"><?php echo $lang['shop']['cart']; ?></a> <span id="cart_content"></span>
-</div>
-</div>
-<div id="languages">
 <?php
-
-$arr_selected=array();
-
-
-
-foreach($arr_i18n as $lang_item)
+if(isset($model['shop']))
 {
-	//set
 
-	$arr_selected[slugify($lang_item)]='no_choose_flag';
-	$arr_selected[slugify($language)]='choose_flag';
-
-	?>
-	<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/common/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>
-	<?php
-
-}
+load_lang('shop');
 
 ?>
+
+<div id="cart">
+<a href="<?php echo make_fancy_url($base_url, 'shop', 'cart', $lang['shop']['cart'], array()); ?>"><?php echo $lang['shop']['cart']; ?></a> <span id="cart_content"></span>
 </div>
 <div id="change_currency">
 	<form method="get" action="<?php echo make_fancy_url($base_url, 'shop', 'changecurrency', 'change_currency', array()); ?>">
@@ -117,6 +100,10 @@ foreach($arr_i18n as $lang_item)
 	?>
 	<input type="submit" value="<?php echo $lang['common']['send']; ?>" />
 	</form>
+</div>
+<?php
+}
+?>
 </div>
 <div id="menu_barr">
 <?php
