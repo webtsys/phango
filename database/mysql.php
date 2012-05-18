@@ -1,5 +1,12 @@
 <?php
 
+if(!function_exists('mysql_query'))
+{
+
+	show_error('Error: database don\'t supported by php', 'Error: Mysql database don\'t supported by php', $output_external='');
+
+}
+
 if(DEBUG==1)
 {
 

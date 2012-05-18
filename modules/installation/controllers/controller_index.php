@@ -24,12 +24,10 @@ function Index()
 		$arr_forms=array();
 
 		$arr_forms['private_nick']=new ModelForm('user', 'private_nick', 'TextForm', $lang['user']['private_nick'], new CharField(255), $required=1, $parameters='');
-		/*$arr_forms['password']=new ModelForm('user', 'password', 'PasswordForm', $lang['common']['password'], new CharField(255), $required=1, $parameters='');
-		$arr_forms['repeat_password']=new ModelForm('user', 'repeat_password', 'PasswordForm', $lang['user']['repeat_password'], new CharField(255), $required=1, $parameters='');*/
+		
 		$arr_forms['email']=new ModelForm('user', 'email', 'TextForm', $lang['common']['email'], new EmailField(255), $required=1, $parameters='');
 
 		echo load_view(array($arr_forms, $arr_fields=array(), make_fancy_url($base_url, 'installation', 'index', 'install_phango', array('op' => 1) )), 'common/forms/updatemodelform'); 
-
 
 		break;
 
@@ -38,6 +36,13 @@ function Index()
 		echo '<h3>'.$lang['installation']['installing_modules'].'</h3>';
 
 		$arr_modules=array('modules', 'config', 'bans', 'blocks', 'pages', 'templates', 'jscript');
+
+		if(file_exists($base_path.'/modules/shop/'))
+		{
+
+			$arr_modules[]='shop';
+
+		}
 
 		update_models_from_module($arr_modules);
 
