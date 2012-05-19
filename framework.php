@@ -17,7 +17,7 @@ if(!@include("config.php"))
 
 }
 
-session_name(COOKIE_NAME);
+session_name(COOKIE_NAME.'_session');
 
 session_set_cookie_params(0, $cookie_path);
 

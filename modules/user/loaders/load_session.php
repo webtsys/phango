@@ -34,15 +34,22 @@ $query=webtsys_query("delete from anonymous where last_connection<".$delete_time
 
 $user_data=array('IdUser'=>0, 'privileges_user'=>0, 'format_date'=>$config_data['date_format'], 'format_time' => $config_data['time_format'], 'ampm'=>$config_data['ampm'], 'nick' =>$config_data['name_guest'], 'private_nick' =>$config_data['name_guest'], 'website' =>'', 'email'=>'', 'before_last_connection'=>0, 'last_connection' => TODAY, 'language' => $language);
 
-settype($_SESSION['webtsys_id'], 'string');
+$webtsys_id='';
 
-$webtsys_id=sha1($_SESSION['webtsys_id']);
+settype($_COOKIE[COOKIE_NAME], 'string');
+
+if($_COOKIE[COOKIE_NAME]!='')
+{
+
+	$webtsys_id=sha1($_COOKIE[COOKIE_NAME]);
+
+}
 
 $num_user=$model['user']->select_count('where key_connection="'.$webtsys_id.'" and activated_user=1', 'IdUser');
 
 if($num_user>0)
 {	
-	$query=$model['user']->select('where key_connection="'.$webtsys_id.'" and activated_user=1');
+	$query=$model['user']->select('WHERE key_connection="'.$webtsys_id.'" and activated_user=1');
 
 	$user_data=webtsys_fetch_array($query);
 	
@@ -64,7 +71,7 @@ else
 {
 	
 	
-	$query=$model['anonymous']->select('where key_connection="'.$webtsys_id.'"', array('IdAnonymous', 'write_message', 'key_csrf', 'language'));
+	$query=$model['anonymous']->select('WHERE key_connection="'.$webtsys_id.'"', array('IdAnonymous', 'write_message', 'key_csrf', 'language'));
 	
 	list($num_user, $user_data['write_message'], $csrf_token, $language_anom)=webtsys_fetch_row($query);
 	
@@ -77,7 +84,9 @@ else
 
 		$id=sha1(uniqid(rand(), true));
 
-		$_SESSION['webtsys_id']=$id;
+		//$_SESSION['webtsys_id']=$id;
+
+		setcookie(COOKIE_NAME, $id, 0, $cookie_path);
 
 		$csrf_token=$prefix_key.'_'.sha1(uniqid(rand(), true));
 	

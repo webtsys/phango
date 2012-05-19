@@ -53,6 +53,28 @@ $token=$_COOKIE['webtsys_shop'];
 	}
 	?>
 </div>
+<div id="languages">
+<?php
+
+$arr_selected=array();
+
+
+
+foreach($arr_i18n as $lang_item)
+{
+	//set
+
+	$arr_selected[slugify($lang_item)]='no_choose_flag';
+	$arr_selected[slugify($language)]='choose_flag';
+
+	?>
+	<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/common/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>
+	<?php
+
+}
+
+?>
+</div>
 <?php
 
 if(isset($arr_check_table['product']))

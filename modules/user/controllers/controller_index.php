@@ -577,8 +577,8 @@ function Index()
 
 				$model['user']->update(array('key_connection' => ''), 'where IdUser='.$user_data['IdUser']);
 
-				$_SESSION['webtsys_id']='';
-				setcookie ( "webtsys_id", FALSE, 0, $cookie_path);
+				//$_SESSION['webtsys_id']='';
+				setcookie ( COOKIE_NAME, FALSE, 0, $cookie_path);
 				die( redirect_webtsys( "index.php", $lang['user']['redirect'], $lang['user']['exit_login'], $lang['user']['no_redir'] , $arr_block) );
 
 			break;
