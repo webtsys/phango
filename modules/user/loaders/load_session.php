@@ -34,9 +34,11 @@ $query=webtsys_query("delete from anonymous where last_connection<".$delete_time
 
 $user_data=array('IdUser'=>0, 'privileges_user'=>0, 'format_date'=>$config_data['date_format'], 'format_time' => $config_data['time_format'], 'ampm'=>$config_data['ampm'], 'nick' =>$config_data['name_guest'], 'private_nick' =>$config_data['name_guest'], 'website' =>'', 'email'=>'', 'before_last_connection'=>0, 'last_connection' => TODAY, 'language' => $language);
 
-$webtsys_id='';
+$webtsys_id=session_id();//sha1(uniqid(mt_rand(), true));
 
 settype($_COOKIE[COOKIE_NAME], 'string');
+
+$_COOKIE[COOKIE_NAME]=trim($_COOKIE[COOKIE_NAME]);
 
 if($_COOKIE[COOKIE_NAME]!='')
 {
@@ -82,13 +84,13 @@ else
 	
 		$last_time=TODAY;
 
-		$id=sha1(uniqid(rand(), true));
+		$id=sha1(uniqid(mt_rand(), true));
 
 		//$_SESSION['webtsys_id']=$id;
 
 		setcookie(COOKIE_NAME, $id, 0, $cookie_path);
 
-		$csrf_token=$prefix_key.'_'.sha1(uniqid(rand(), true));
+		$csrf_token=$prefix_key.'_'.sha1(uniqid(mt_rand(), true));
 	
 		$query=$model['anonymous']->insert(array('key_connection' => sha1($id), 'ip'=> $ip, 'last_connection' => TODAY, 'write_message' => 0 , 'visited_page' => $_SERVER['REQUEST_URI'], 'key_csrf' => $csrf_token, 'language' => $language ) );
 		
