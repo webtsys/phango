@@ -71,6 +71,8 @@ $activated_controllers=array('welcome', 'installation');
 
 $config_data['dir_theme']='default';
 
+//A key for use in different encryption methods..., change for other, a trick is make a sha1sum with a random file.
+
 $prefix_key='bc24ffaf6dd55be07423bf37bdc24d65d5f7b275';
 
 ?>
