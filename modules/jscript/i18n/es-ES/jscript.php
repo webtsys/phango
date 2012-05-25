@@ -6,6 +6,6 @@ $lang['jscript']['image_no_uploaded_successfully']='Imagen no subida correctamen
 
 $lang['jscript']['search_images']='Buscar imágenes';
 
-$lang['jscript']['add_image_to_form']='Añadir imagen al formulario;
+$lang['jscript']['add_image_to_form']='Añadir imagen al formulario';
 
 ?>
