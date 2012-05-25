@@ -1886,6 +1886,13 @@ class ImageField {
 		return $value;
 
 	}
+	
+	function show_image_url($value)
+	{
+
+		return $this->url_path.'/'.$value;
+
+	}
 
 	function get_parameters_default()
 	{
