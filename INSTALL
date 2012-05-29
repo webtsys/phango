@@ -1,8 +1,77 @@
 Install Instructions for Web-T-syS CMS ( A.k.a Phango )
 ------------------------------------------------------------
 
-Install Web-T-syS CMS is very simple. 
+Web-T-syS CMS is a lightweight cms for little and mediums services with nice features.
+
+Requeriments
+-----------------------
+
+You need a simple LAMP server, with php >=5.2.x and MySQL >=5.x. 
+
+Installing Web-T-syS CMS
+--------------------------
 
 Web-T-syS CMS is based in a web framework called phango. This framework need a bit of work for use it.
+
+First, download the phango file, in tar.gz or zip format. Uncompress it.
+
+When you uncompress the file you view the next directory tree:
+
+├── application
+├── classes
+├── database
+├── i18n
+├── libraries
+├── modules
+└── views
+
+Application directory have a file called index.php. This file is the one to load the user via browser. The reason for make this is have a bit of more security,
+
+Well, knowing this, you can install phango on your server in three differente ways.
+
+Way recommended
+-------------------
+
+If you have access to your server, change the document root for your virtual server to application. If you use apache and your directory home is in /home/website with domain www.example.com, you can use this:
+
+DocumentRoot "/home/website/application"
+
+You can access to phango install in this url:
+
+http://www.example.com
+
+Alternative way with mod_rewrite
+--------------------------------
+
+You simply can upload the source code on your default document root and use mod_rewrite in his different versions on different server. In Apache you can use this configuration in your virtualhosts o .htaccess if your server provides this:
+
+RewriteEngine on
+RewriteRule   ^/$  /home/website/application/  [R]
+
+You can access to your phango installing in this url if your domain is www.example.com:
+
+http://www.example.com
+
+Alternative way with aliases
+-----------------------------
+
+Apache and other servers can use a alias for point the application directory to a path in the webpage url. For example, if you use this configuration in your apache server in the domain www.example.com:
+
+Alias /phango /home/website/application/application
+
+You can access to your phango installation in this url:
+
+http://www.example.com/phango
+
+
+Alternative way (Usable and recommended if you cannot use other methods)
+-------------------
+
+You simply can upload the source code on your default document root and use application in your url but you must delete padmin.php and check_language.php.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Configure Web-T-syS CMS.
+
 
 
