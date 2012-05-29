@@ -13,16 +13,17 @@ define('PAGE', '1');
 
 //Db config variables
 
-//Host database
+//Host database. You have to write the domain name for the mysql server, normally localhost.
 $host_db = 'localhost';
 
-//Database name
+//Database name. The database that phango use.
 $db = 'phango';
 
 //Username for database
 $login_db = 'root';
 //Password for database
 $pass_db = '';
+
 //Connection type, normally you don't need to change this
 $con_persistente='webtsys_connect';
 //Type database server, for now, mysql or derivated
@@ -36,10 +37,10 @@ $cookie_path = '/';
 //The name of session...
 define('COOKIE_NAME', 'webtsys_id');
 
-//base url, without last slash
+//base url, without last slash, this is 
 $base_url = 'http://www.example.com';
 
-//base path, the REAL PATH in the server
+//base path, the REAL PATH in the server. 
 $base_path='/var/www/htdocs/phango/';
 
 //DEBUG, if you active DEBUG, phango send messages with error to stdout
@@ -47,27 +48,27 @@ define('DEBUG', '1');
 
 #Language variables
 
-//Language, define display language, you can create many new languages using check_language.php
+//Language, define display language, you can create many new languages using check_language.php, for the code, use the l10n standard.
 $language = 'en-US';
-//Avaliables languages
+//Avaliables languages, you can add a new language appending a new language in the array.
 $arr_i18n=array('es-ES','en-US');
 
-//You don't need to touch this variables
+//Touch this variables only if you know that you make.
 $arr_i18n_ckeditor=array('es-ES' => 'es.js','en-US' => 'en.js');
 $arr_i18n_tinycme=array('es-ES' => 'es.js','en-ES' => 'en.js');
 
-//Timezone, define timezone, you can choose timezones from 
+//Timezone, define timezone, you can choose timezones from this list: http://php.net/manual/es/timezones.php
 define('MY_TIMEZONE', 'America/New_York');
 
-//App index
+//App index.Here you
 
 $app_index='welcome';
 
-$page_404='';
+//In this array you can append the modules that you want execute. Please, don't delete jscript from the list, if you don't know what are you doing.
 
-$activated_controllers=array('welcome', 'installation');
+$activated_controllers=array('welcome', 'installation', 'jscript');
 
-//Theme by default, neccesary if you don't use utilities for phango...
+//Theme by default, neccesary if you don't use utilities for phango, Please, don't delete this variabl, if you don't know what are you doing.
 
 $config_data['dir_theme']='default';
 

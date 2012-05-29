@@ -1,7 +1,7 @@
 Install Instructions for Web-T-syS CMS ( A.k.a Phango )
 ------------------------------------------------------------
 
-Web-T-syS CMS is a lightweight cms for little and mediums services with nice features.
+Web-T-syS CMS is a lightweight cms for little and mediums services with nice features. Can be used by all, but your need a bit of knowledge about LAMP systems.
 
 Requeriments
 -----------------------
@@ -15,7 +15,7 @@ Web-T-syS CMS is based in a web framework called phango. This framework need a b
 
 First, download the phango file, in tar.gz or zip format. Uncompress it.
 
-When you uncompress the file you view the next directory tree:
+When you uncompress the file you will view the next directory tree:
 
 ├── application
 ├── classes
@@ -72,6 +72,20 @@ You simply can upload the source code on your default document root and use appl
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Configure Web-T-syS CMS.
+---------------------------------------
+
+Well, now you need now configure a little text file called config.php. Copy config_sample.php how config.php, open your favourite text editor or notepad and follow the instructions in config.php file.
+
+Installing the database for use Web-T-syS CMS.
+-----------------------------------------------------
+
+If you install the CMS with the url http://www.example.com, please, use this url for access to the install gui.
+
+http://www.example.com/index.php/installation
+
+You only have to fill your email and your admin password and . If you use phango shop, module shop is installed automatically.
+
+When installation will finish, you can delete installation module from $activated_controllers in config.php
 
 
 
