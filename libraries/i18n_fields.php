@@ -40,8 +40,10 @@ class I18nField {
 			return '';
 
 		}
+		
+		$ser_value=addslashes(serialize($value));
 
-		return serialize($value);
+		return $ser_value;
 
 	}
 
