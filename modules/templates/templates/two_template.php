@@ -1,6 +1,6 @@
 <?php
 
-function make_template($model, $idmodel)
+function make_template_two_template($model, $idmodel)
 {
 
 	global $base_path, $config_data;
@@ -37,5 +37,7 @@ function make_template($model, $idmodel)
 	}
 
 }
+
+$name_func_template='make_template_two_template';
 
 ?>

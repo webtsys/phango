@@ -4,6 +4,8 @@ function Index()
 {
 
 	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id;
+	
+	$name_func_template='';
 
 	$cont_index='';
 
@@ -34,7 +36,7 @@ function Index()
 
 		include($base_path.'modules/templates/templates/'.$template);
 
-		make_template($model['template_content'], $_GET['IdTemplate']);
+		$name_func_template($model['template_content'], $_GET['IdTemplate']);
 
 	}
 

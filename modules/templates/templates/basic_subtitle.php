@@ -1,6 +1,7 @@
 <?php
 
-function make_template($model, $idmodel)
+
+function make_template_subtitle($model, $idmodel)
 {
 
 	global $base_path;
@@ -24,6 +25,8 @@ function make_template($model, $idmodel)
 	}
 
 }
+
+$name_func_template='make_template_subtitle';
 
 function content_subtitle($title, $subtitle, $content)
 {
