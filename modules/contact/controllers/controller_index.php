@@ -21,9 +21,9 @@ function Index()
 
 	settype($_GET['IdContact'], 'integer');
 
-	$query=$model['contact']->select('where IdContact='.$_GET['IdContact'], array('IdContact', 'name', 'email'));
+	$query=$model['contact']->select('where IdContact='.$_GET['IdContact'], array('IdContact', 'name', 'email', 'description'));
 
-	list($idcontact, $name_page, $emailto)=webtsys_fetch_row($query);
+	list($idcontact, $name_page, $emailto, $description)=webtsys_fetch_row($query);
 
 	settype($idcontact, 'integer');
 
@@ -35,6 +35,7 @@ function Index()
 		$arr_fields=array('TextField' => 'TextForm', 'TextHTMLField' => 'TextAreaBBPostForm');
 
 		$name_page=$model['contact']->components['name']->show_formatted($name_page);
+		$description=$model['contact']->components['description']->show_formatted($description);
 
 		$url_send_mail=make_fancy_url($base_url, 'contact', 'index', $name_page, array('op' => 1, 'IdContact' => $idcontact) );
 
@@ -67,7 +68,10 @@ function Index()
 
 				ob_start();
 
-				echo load_view(array($form_contact, array(), $url_send_mail, ''), 'common/forms/updatemodelform');
+				//echo load_view(array($form_contact, array(), $url_send_mail, ''), 'common/forms/updatemodelform');
+				//ContactView($description_contact, $form_contact, $url_send_mail)
+				
+				echo load_view(array($description, $form_contact, $url_send_mail), 'contact/contact');
 
 				$form_result=ob_get_contents();
 

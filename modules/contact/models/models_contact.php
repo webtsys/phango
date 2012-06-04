@@ -6,6 +6,7 @@ $model['contact']=new Webmodel('contact');
 
 $model['contact']->components['name']=new I18nField(new TextField());
 $model['contact']->components['name']->required=1;
+$model['contact']->components['description']=new I18nField(new TextHTMLField());
 $model['contact']->components['email']=new EmailField();
 $model['contact']->components['email']->required=1;
 

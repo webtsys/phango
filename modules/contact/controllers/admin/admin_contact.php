@@ -7,7 +7,7 @@ function ContactAdmin()
 
 	$header='<script language="Javascript" src="'.make_fancy_url($base_url, 'jscript', 'load_jscript', 'script', array('input_script' => 'jquery.min.js')).'"></script>';
 
-	load_libraries(array('generate_admin_ng', 'forms/textbbpost'));
+	load_libraries(array('generate_admin_ng', 'forms/textareabb'));
 	load_model('contact');
 
 	settype($_GET['op'], 'integer');
@@ -26,9 +26,12 @@ function ContactAdmin()
 
 		$model['contact']->forms['name']->label=$lang['common']['name'];
 		$model['contact']->forms['email']->label=$lang['common']['email'];
+		$model['contact']->forms['description']->label=$lang['common']['description'];
+		
+		$model['contact']->forms['description']->parameters=array('description', '', '', 'TextAreaBBForm');
 
 		$arr_fields=array('name');
-		$arr_fields_edit=array('name', 'email');
+		$arr_fields_edit=array('name', 'email', 'description');
 
 		generate_admin_model_ng('contact', $arr_fields, $arr_fields_edit, $url_options_default, $options_func='ContactOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
