@@ -76,7 +76,7 @@ function TemplatesAdmin()
 			
 			$model['template_content']->forms['text']->parameters=array('text', '', '', 'TextAreaBBForm');
 
-			generate_admin_model_ng('template_content', $arr_fields, $arr_fields_edit, $url_options, $options_func='TemplateOptionsListModel', $where_sql='where idtemplate='.$_GET['IdTemplate'], $arr_fields_form=array(), $type_list='Basic');
+			generate_admin_model_ng('template_content', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='where idtemplate='.$_GET['IdTemplate'], $arr_fields_form=array(), $type_list='Basic');
 
 			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '2', 'IdTemplate' => $_GET['IdTemplate']) ).'">'.$lang['templates']['go_to_order_template_content'].'</a></p>';
 
