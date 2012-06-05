@@ -117,6 +117,7 @@ function Index()
 
 						$form_contact[$key_form]->form='TextPlainForm';
 						$form_contact[$key_form]->required=0;
+						$form_contact[$key_form]->std_error='';
 
 					}
 
