@@ -16,17 +16,35 @@ function Upload_image()
 	
 		settype($_FILES['name'], 'string');
 		
+		$update='insert';
+		$update_text=$lang['jscript']['image_uploaded_successfully'];
+		$no_update_text=$lang['jscript']['image_no_uploaded_successfully'];
 		
-		if( $model['jscript_image']->insert(array(  'image' =>  'upload')) )
+		$query=$model['jscript_image']->select('where image="'.form_text($_FILES['name']).'"', array('IdJscript_image'));
+		
+		list($idimage)=webtsys_fetch_row($query);
+		
+		settype($idimage, 'integer');
+		
+		if($idimage>0)
+		{
+		
+			$update='update';
+			$update_text=$lang['jscript']['image_updated_successfully'];
+			$no_update_text=$lang['jscript']['image_no_updated_successfully'];
+		
+		}
+		
+		if( $model['jscript_image']->$update( array(  'image' =>  'upload') , 'where IdJscript_image='.$idimage ) )
 		{
 			
-			echo '<p>'.$lang['jscript']['image_uploaded_successfully'].'</p>';
+			echo '<p>'.$update_text.'</p>';
 			
 		}
 		else
 		{
 		
-			echo '<p>'.$lang['jscript']['image_no_uploaded_successfully'].'</p>';
+			echo '<p>'.$no_update_text.'</p>';
 		
 		}
 	
