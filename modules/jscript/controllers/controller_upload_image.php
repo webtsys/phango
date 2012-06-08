@@ -13,14 +13,14 @@ function Upload_image()
 	
 	if(check_admin($user_data['IdUser']))
 	{
-	
-		settype($_FILES['name'], 'string');
+		
+		settype($_FILES['upload']['name'], 'string');
 		
 		$update='insert';
 		$update_text=$lang['jscript']['image_uploaded_successfully'];
 		$no_update_text=$lang['jscript']['image_no_uploaded_successfully'];
 		
-		$query=$model['jscript_image']->select('where image="'.form_text($_FILES['name']).'"', array('IdJscript_image'));
+		$query=$model['jscript_image']->select('where image="'.form_text(basename($_FILES['upload']['name'])).'"', array('IdJscript_image'));
 		
 		list($idimage)=webtsys_fetch_row($query);
 		

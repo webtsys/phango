@@ -16,7 +16,7 @@ function redirect_webtsys($direction,$l_text,$text,$ifno, $arr_block)
 	$cont_index=ob_get_contents();
 
 	ob_end_clean();
-
+	
 	echo load_view(array($config_data['portal_name'].' / '.$l_text, $cont_index, $block_title, $block_content, $block_urls, $block_type, $block_id, $config_data, $redirect), $arr_block);
 
 	die();

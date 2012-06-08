@@ -3,7 +3,7 @@
 function Browser_image()
 {
 
-	global $model, $base_path, $base_url, $config_data, $user_data, $lang;
+	global $model, $base_path, $base_url, $config_data, $user_data, $lang, $arr_block;
 	
 	load_lang('jscript');
 	
@@ -11,10 +11,18 @@ function Browser_image()
 	
 	load_libraries(array('check_admin', 'send_email', 'generate_admin_ng'));
 	
+	$original_theme=$config_data['dir_theme'];
+
+	$config_data['dir_theme']=$original_theme.'/admin';
+
+	$arr_block='admin_none';
+	
 	if(check_admin($user_data['IdUser']))
 	{
 		
 		ob_start();
+		
+		$arr_block='admin_none';
 		
 		//Obtain headers..
 		//http://localhost/phangodev/index.php/jscript/show/browser_image/browser_image/?CKEditor=text[es-ES]&CKEditorFuncNum=2&langCode=es
@@ -43,7 +51,7 @@ function Browser_image()
 		
 		$arr_fields=array('image');
 		
-		$url_options='';
+		$url_options=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array());
 		
 		ListModel('jscript_image', $arr_fields, $url_options, $options_func='ImageOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 		
@@ -53,7 +61,7 @@ function Browser_image()
 		
 		$title=$lang['jscript']['search_images'];
 		
-		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin/admin_none');
+		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin_none');
 		
 	}
 
