@@ -20,7 +20,11 @@ function Upload_image()
 		$update_text=$lang['jscript']['image_uploaded_successfully'];
 		$no_update_text=$lang['jscript']['image_no_uploaded_successfully'];
 		
-		$query=$model['jscript_image']->select('where image="'.form_text(basename($_FILES['upload']['name'])).'"', array('IdJscript_image'));
+		$name_image=str_replace('.gif', '.jpg', $_FILES['upload']['name']);
+
+		$name_image=str_replace('.png', '.jpg', $_FILES['upload']['name']);
+		
+		$query=$model['jscript_image']->select('where image="'.form_text(basename($name_image)).'"', array('IdJscript_image'));
 		
 		list($idimage)=webtsys_fetch_row($query);
 		

@@ -1766,19 +1766,32 @@ class ImageField {
 				
 				if($arr_image[2]==1 || $arr_image[2]==2 || $arr_image[2]==3)
 				{
+				
+					$image_func_create='imagejpeg';
 
 					switch($arr_image[2])
 					{
 
 						case 1:
 
-							$_FILES[$file]['name']=str_replace('.gif', '.jpg', $_FILES[$file]['name']);
+							//$_FILES[$file]['name']=str_replace('.gif', '.jpg', $_FILES[$file]['name']);
+							$image_func_create='imagegif';
 
 						break;
 
 						case 3:
 
-							$_FILES[$file]['name']=str_replace('.png', '.jpg', $_FILES[$file]['name']);
+							//$_FILES[$file]['name']=str_replace('.png', '.jpg', $_FILES[$file]['name']);
+							$image_func_create='imagepng';
+							//Make conversion to png scale
+							$this->quality_jpeg=floor($this->quality_jpeg/10);
+							
+							if($this->quality_jpeg>9)
+							{
+							
+								$this->quality_jpeg=9;
+							
+							}
 
 						break;
 
@@ -1794,7 +1807,12 @@ class ImageField {
 
 						$img = $func_final($this->path.'/'.$_FILES[$file]['name']);
 
-						imagejpeg ( $img, $this->path.'/'.$_FILES[$file]['name'], $this->quality_jpeg );
+						//imagejpeg ( $img, $this->path.'/'.$_FILES[$file]['name'], $this->quality_jpeg );
+						
+						/*$mini_photo=$_FILES[$file]['name'];
+				
+						$mini_photo=str_replace('.gif', '.jpg', $mini_photo);
+						$mini_photo=str_replace('.png', '.jpg', $mini_photo);*/
 
 						//Make thumb if specific...
 						if($this->thumb==1)
@@ -1812,7 +1830,9 @@ class ImageField {
 								
 								imagecopyresampled ($thumb, $img, 0, 0, 0, 0, $width, $height, $arr_image[0], $arr_image[1]);
 								
-								imagejpeg ( $thumb, $this->path.'/'.$name_width.'_'.$_FILES[$file]['name'], $this->quality_jpeg );
+								$image_func_create ( $thumb, $this->path.'/'.$name_width.'_'.$_FILES[$file]['name'], $this->quality_jpeg );
+								
+								//imagepng ( resource $image [, string $filename [, int $quality [, int $filters ]]] )
 
 							}
 
