@@ -17,6 +17,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	?>
 	<?php //echo set_csrf_key(); ?>
 	<input type="submit" value="<?php echo $lang['common']['send']; ?>" />
+	<p class="error"><?php echo $lang['common']['with_*_field_required']; ?></p>
 	</form>
 	<?php
 

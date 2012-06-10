@@ -24,7 +24,7 @@ $model['contact_field']->components['type']->required=1;
 $model['contact_field']->components['order']=new IntegerField();
 $model['contact_field']->components['required']=new BooleanField();
 
-$arr_module_insert['contact']=array('name' => 'contact', 'admin' => 1, 'admin_script' => array('contact', 'contact'), 'load_module' => '', 'order_module' => 7, 'required' => 0);
+$arr_module_insert['contact']=array('name' => 'contact', 'admin' => 1, 'admin_script' => array('contact', 'contact'), 'load_module' => '', 'order_module' => 7, 'app_index' => 1, 'required' => 0);
 
 $arr_module_remove['contact']=array('contact', 'contact_field');
 

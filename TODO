@@ -6,6 +6,8 @@ Testing.
 New features
 ----------------------------
 
+- Modules loading automatically in $activated_controllers.
+- Add to form generators a text where warn about *.
 
 Knowed Bugs
 ----------------------------

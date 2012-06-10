@@ -188,6 +188,8 @@ $lang['common']['second']='Segundo';
 
 $lang['common']['logout']='Desconectarse';
 
+$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+
 $lang['common']['login']='Identificarse';
 
 $lang['common']['change_language']='Cambiar lenguaje';

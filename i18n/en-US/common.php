@@ -188,6 +188,8 @@ $lang['common']['second']='Second';
 
 $lang['common']['logout']='Logout';
 
+$lang['common']['with_*_field_required']='with_*_field_required';
+
 $lang['common']['login']='Login';
 
 $lang['common']['change_language']='Change language';
