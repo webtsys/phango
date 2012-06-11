@@ -9,6 +9,8 @@ $lang['contact']['type']='Tipo de campo';
 
 $lang['contact']['order_fields']='Ordenar campos';
 
+$lang['contact']['go_back_index_contact']='Volver a página principal de formularios';
+
 $lang['contact']['preview_contact']='Vista previa de formulario';
 
 ?>

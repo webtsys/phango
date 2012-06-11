@@ -8,6 +8,8 @@ $lang['contact']['type']='Field type';
 
 $lang['contact']['order_fields']='Order fields';
 
+$lang['contact']['go_back_index_contact']='go_back_index_contact';
+
 $lang['contact']['preview_contact']='Form preview';
 
 ?>

@@ -61,7 +61,7 @@ function ContactAdmin()
 
 		echo '<p><a href="'.$url_options_order.'">'.$lang['contact']['order_fields'].'</a>';
 
-		echo '<p><a href="'.$url_options_default.'">'.$lang['common']['go_back'].'</a>';
+		echo '<p><a href="'.$url_options_default.'">'.$lang['contact']['go_back_index_contact'].'</a>';
 
 		break;
 
