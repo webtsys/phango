@@ -7,7 +7,7 @@ function ConfigAdmin()
 
 	load_lang('config');
 
-	load_libraries(array('generate_admin_ng', 'timestamp_zone'));
+	load_libraries(array('generate_admin_ng', 'timestamp_zone', 'forms/textareabb'));
 
 	$yes_entities=0;
 
@@ -187,7 +187,7 @@ function ConfigAdmin()
 
 	//Fields strips for now 'ssl_feature', 'cookie_secure', 'censoring', 'surveys'
 
-	$arr_fields=array('dir_theme', 'portal_name', 'portal_email', 'x_avatar', 'y_avatar', 'date_format', 'time_format', 'timezone', 'ampm', 'accept_bbcode_signature', 'name_guest', 'meta_author', 'metatags', 'meta_description', 'meta_copyright', 'foot', 'active_users', 'wait_message', 'index_page', 'user_extra', 'create_user', 'textbb_type', 'captcha_type', 'cond_register');
+	$arr_fields=array('dir_theme', 'portal_name', 'portal_email', 'x_avatar', 'y_avatar', 'date_format', 'time_format', 'timezone', 'ampm', 'accept_bbcode_signature', 'name_guest', 'meta_author', 'metatags', 'meta_description', 'foot', 'meta_copyright', 'active_users', 'wait_message', 'index_page', 'user_extra', 'create_user', 'textbb_type', 'captcha_type', 'cond_register');
 
 	/*foreach($model['config_webtsys']->forms as $idfield => $field)
 	{

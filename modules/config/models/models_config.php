@@ -60,10 +60,10 @@ $model['config_webtsys']->components['meta_description']->form='TextAreaForm';
 $model['config_webtsys']->components['meta_author']=new CharField(255);
 
 $model['config_webtsys']->components['meta_copyright']=new CharField(255);
-$model['config_webtsys']->components['meta_copyright']->form='TextAreaForm';
+$model['config_webtsys']->components['meta_copyright']->form='TextForm';
 
-$model['config_webtsys']->components['foot']=new TextField(255);
-$model['config_webtsys']->components['foot']->form='TextAreaForm';
+$model['config_webtsys']->components['foot']=new TextHTMLField();
+$model['config_webtsys']->components['foot']->form='TextAreaBBForm';
 
 $model['config_webtsys']->components['active_users']=new IntegerField(2);
 $model['config_webtsys']->components['active_users']->form='SelectForm';
