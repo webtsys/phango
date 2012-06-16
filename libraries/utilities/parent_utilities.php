@@ -1,17 +1,21 @@
 <?php
 
-function recursive_list($arr_cat, $arr_list_father, $idfather, $url_cat, $arr_perm=array())
+function recursive_list($model_name, $arr_cat, $arr_list_father, $idfather, $url_cat, $arr_perm=array())
 {
 
-	global $base_url, $lang;
+	global $base_url, $lang, $model;
 
+	$idfield=$model[$model_name]->idmodel;
+	
 	$arr_hidden[0]='';
 	$arr_hidden[1]='';
 	
-	$first_url[$idfather]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['common']['home'].'</a><ul>';
+	settype($_GET[$idfield], 'integer');
+	
+	$first_url[$_GET[$idfield]]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['common']['home'].'</a><ul>';
 	$first_url[0]='<ul><li><strong>'.$lang['common']['home'].'</strong></li><ul>';
 	
-	echo $first_url[$idfather];
+	echo $first_url[$_GET[$idfield]];
 	
 	settype($arr_list_father[$idfather], 'array');
 	
@@ -20,7 +24,7 @@ function recursive_list($arr_cat, $arr_list_father, $idfather, $url_cat, $arr_pe
 		
 		settype($arr_perm[$idcat], 'integer');
 		
-		$url_blog=add_extra_fancy_url($url_cat, array('IdBlog' => $idcat) );
+		$url_blog=add_extra_fancy_url($url_cat, array($idfield => $idcat) );
 		
 		$arr_hidden[$arr_perm[$idcat]]='<span class="error">'.$arr_cat[$idcat].'</span>';
 		$arr_hidden[0]='<a href="'.$url_blog.'">'.$arr_cat[$idcat].'</a>';

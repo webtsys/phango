@@ -124,14 +124,14 @@ function Moderate()
 
 			//Arbol de categorías
 			
-			$first_url[$_GET['IdBlog']]='<ul><li><a href="'.make_fancy_url($base_url, 'blog', 'moderate', 'blogs', array()).'">'.$lang['blog']['principal_category'].'</a><ul>';
+			/*$first_url[$_GET['IdBlog']]='<ul><li><a href="'.make_fancy_url($base_url, 'blog', 'moderate', 'blogs', array()).'">'.$lang['blog']['principal_category'].'</a><ul>';
 			$first_url[0]='<ul><li><strong>'.$lang['blog']['principal_category'].'</strong></li><ul>';
 			
-			echo $first_url[$_GET['IdBlog']];
+			echo $first_url[$_GET['IdBlog']];*/
 
-			recursive_list($arr_cat, $arr_list_father, 0, make_fancy_url($base_url, 'blog', 'moderate', 'edit_blogs', array() ), $arr_perm);
+			recursive_list('blog', $arr_cat, $arr_list_father, 0, make_fancy_url($base_url, 'blog', 'moderate', 'edit_blogs', array() ), $arr_perm);
 
-			echo '</ul></li></ul>';
+			//echo '</ul></li></ul>';
 
 			if($_GET['IdBlog']==0)
 			{

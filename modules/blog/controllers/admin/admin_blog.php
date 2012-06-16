@@ -62,7 +62,7 @@ function BlogAdmin()
 
 				$arr_blog=obtain_blogs_from_category();
 
-				recursive_list($arr_cat, $arr_list_father, 0, make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule']) ));
+				recursive_list('blog', $arr_cat, $arr_list_father, 0, make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule']) ));
 
 			}
 
