@@ -46,6 +46,8 @@ $lang['common']['order']='Order';
 
 $lang['common']['no_exists_elements_to_order']='There are no items to order';
 
+$lang['common']['home']='home';
+
 $lang['common']['pages']='Pages';
 
 $lang['common']['name']='Name';
@@ -191,6 +193,8 @@ $lang['common']['logout']='Logout';
 $lang['common']['with_*_field_required']='with_*_field_required';
 
 $lang['common']['login']='Login';
+
+$lang['common']['nothing_to_show']='nothing_to_show';
 
 $lang['common']['change_language']='Change language';
 

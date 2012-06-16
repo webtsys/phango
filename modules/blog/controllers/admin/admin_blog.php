@@ -52,10 +52,10 @@ function BlogAdmin()
 
 			//Arbol de categorías
 			
-			$first_url[$_GET['IdBlog']]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['principal_category'].'</a><ul>';
-			$first_url[0]='<ul><li><strong>'.$lang['blog']['principal_category'].'</strong></li><ul>';
+			/*$first_url[$_GET['IdBlog']]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['principal_category'].'</a><ul>';
+			$first_url[0]='<ul><li><strong>'.$lang['blog']['principal_category'].'</strong></li><ul>';*/
 			
-			echo $first_url[$_GET['IdBlog']];
+			//echo $first_url[$_GET['IdBlog']];
 
 			if(count($arr_cat)>0)
 			{
@@ -66,7 +66,7 @@ function BlogAdmin()
 
 			}
 
-			echo '</ul></ul>';
+			//echo '</ul></ul>';
 
 			if(count($arr_cat)>0)
 			{

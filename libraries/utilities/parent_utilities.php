@@ -8,6 +8,13 @@ function recursive_list($arr_cat, $arr_list_father, $idfather, $url_cat, $arr_pe
 	$arr_hidden[0]='';
 	$arr_hidden[1]='';
 	
+	$first_url[$idfather]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['common']['home'].'</a><ul>';
+	$first_url[0]='<ul><li><strong>'.$lang['common']['home'].'</strong></li><ul>';
+	
+	echo $first_url[$idfather];
+	
+	settype($arr_list_father[$idfather], 'array');
+	
 	foreach($arr_list_father[$idfather] as $idcat)
 	{
 		
@@ -37,6 +44,8 @@ function recursive_list($arr_cat, $arr_list_father, $idfather, $url_cat, $arr_pe
 		echo '</ul>';
 
 	}
+	
+	echo '</ul></ul>';
 
 }
 
@@ -58,6 +67,31 @@ function recursive_select($arr_father, $arr_cat, $arr_list_father, $idfather, $s
 	}
 	
 	return $arr_father;
+
+}
+
+function obtain_parent_list($model_name, $title_field, $parent_field)
+{
+
+	global $model;
+
+	$arr_list_father=array();
+	$arr_cat=array();
+	$sql_father='order by '.$parent_field.' ASC';
+	
+	$query=$model[$model_name]->select($sql_father, array($model[$model_name]->idmodel, $title_field, $parent_field));
+
+	while(list($idcat, $title, $idfather)=webtsys_fetch_row($query))
+	{
+
+		settype($arr_list_father[$idfather], 'array');
+	
+		$arr_list_father[$idfather][]=$idcat;
+		$arr_cat[$idcat]=$title;
+
+	}
+	
+	return array($arr_list_father, $arr_cat);
 
 }
 
