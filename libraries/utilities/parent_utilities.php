@@ -12,10 +12,18 @@ function recursive_list($model_name, $arr_cat, $arr_list_father, $idfather, $url
 	
 	settype($_GET[$idfield], 'integer');
 	
-	$first_url[$_GET[$idfield]]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['common']['home'].'</a><ul>';
-	$first_url[0]='<ul><li><strong>'.$lang['common']['home'].'</strong></li><ul>';
+	$end_ul='';
 	
-	echo $first_url[$_GET[$idfield]];
+	if($idfather==0)
+	{
+	
+		$first_url[$_GET[$idfield]]='<ul><li><a href="'.$url_cat.'">'.$lang['common']['home'].'</a><ul>';
+		$first_url[0]='<ul><li><strong>'.$lang['common']['home'].'</strong></li><ul>';
+		
+		echo $first_url[$_GET[$idfield]];
+		
+		$end_ul= '</ul></ul>';
+	}
 	
 	settype($arr_list_father[$idfather], 'array');
 	
@@ -32,7 +40,7 @@ function recursive_list($model_name, $arr_cat, $arr_list_father, $idfather, $url
 		
 		$arr_url[$idcat]=$arr_hidden[$arr_perm[$idcat]];
 
-		$arr_url[$_GET['IdBlog']]=$arr_cat[$idcat];
+		$arr_url[$_GET[$idfield]]=$arr_cat[$idcat];
 		
 		echo '<li id="cat_blog'.$idcat.'"><b>'.$arr_url[$idcat].'</b>'."\n";
 
@@ -43,13 +51,13 @@ function recursive_list($model_name, $arr_cat, $arr_list_father, $idfather, $url
 			if(isset($arr_list_father[$idcat]))
 			{
 				
-				recursive_list($arr_cat, $arr_list_father, $idcat, $url_cat, $arr_perm);
+				recursive_list($model_name, $arr_cat, $arr_list_father, $idcat, $url_cat, $arr_perm);
 			}
 		echo '</ul>';
 
 	}
 	
-	echo '</ul></ul>';
+	echo $end_ul;
 
 }
 
@@ -87,14 +95,13 @@ function obtain_parent_list($model_name, $title_field, $parent_field)
 
 	while(list($idcat, $title, $idfather)=webtsys_fetch_row($query))
 	{
-
 		settype($arr_list_father[$idfather], 'array');
 	
 		$arr_list_father[$idfather][]=$idcat;
 		$arr_cat[$idcat]=$title;
 
 	}
-	
+
 	return array($arr_list_father, $arr_cat);
 
 }
