@@ -17,7 +17,6 @@ $token=$_COOKIE['webtsys_shop'];
 	<head>
 	<title><?php echo $config_data['portal_name'].' - '.$title; ?></title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<?php echo $headers; ?>
 	<?php 
 		$arr_cache_jscript[]='jquery.min.js';
 		echo load_jscript_view(); 
@@ -26,6 +25,7 @@ $token=$_COOKIE['webtsys_shop'];
 	<script language="Javascript">
 		obtain_data_cart();
 	</script>
+	<?php echo $headers; ?>
 	<meta name="keywords" content="<?php echo $config_data['metatags']; ?>" />
 	<link href="<?php echo $base_url; ?>/media/default/style.css" rel="stylesheet" type="text/css" />
 	

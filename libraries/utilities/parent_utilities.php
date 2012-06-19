@@ -14,6 +14,8 @@ function recursive_list($model_name, $arr_cat, $arr_list_father, $idfather, $url
 	
 	$end_ul='';
 	
+	echo '<div id="list_ul">';
+	
 	if($idfather==0)
 	{
 	
@@ -58,6 +60,8 @@ function recursive_list($model_name, $arr_cat, $arr_list_father, $idfather, $url
 	}
 	
 	echo $end_ul;
+	
+	echo '</div>';
 
 }
 
