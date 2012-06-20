@@ -46,7 +46,7 @@ $lang['common']['order']='Orden';
 
 $lang['common']['no_exists_elements_to_order']='No existen elementos a ordenar';
 
-$lang['common']['home']='home';
+$lang['common']['home']='Inicio';
 
 $lang['common']['pages']='Páginas';
 
