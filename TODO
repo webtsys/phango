@@ -37,6 +37,7 @@ New Features for next versions.
 - Put media in other server, add other variable called $media_url
 - Deprecating yes_entities.
 - A little system for process post automatically.
+- Add signals to position management. For change order simply position=position-1 where position<=new_position, and update the row with the new position.
 
 Brainstorming ideas.
 ----------------------------
