@@ -93,7 +93,7 @@ function obtain_parent_list($model_name, $title_field, $parent_field, $sql_fathe
 
 	$arr_list_father=array();
 	$arr_cat=array();
-	$sql_father.=' order by '.$parent_field.' ASC';
+	//$sql_father.=' order by '.$parent_field.' ASC';
 	
 	$query=$model[$model_name]->select($sql_father, array($model[$model_name]->idmodel, $title_field, $parent_field));
 
