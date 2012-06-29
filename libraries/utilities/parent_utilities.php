@@ -102,6 +102,9 @@ function obtain_parent_list($model_name, $title_field, $parent_field, $sql_fathe
 		settype($arr_list_father[$idfather], 'array');
 	
 		$arr_list_father[$idfather][]=$idcat;
+	
+		$title=$model[$model_name]->components[$title_field]->show_formatted($title);
+
 		$arr_cat[$idcat]=$title;
 
 	}
