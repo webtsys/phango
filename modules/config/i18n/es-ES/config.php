@@ -58,7 +58,7 @@ $lang['config']['index_page']='Página principal';
 
 $lang['config']['user_extra']='¿Campos extra de usuario?';
 
-$lang['config']['create_user']='¿Se pueden crear usuarios?';
+$lang['config']['create_user']='¿Se pueden registrar nuevos usuarios?';
 
 $lang['config']['textbb_type']='Tipo de formulario para html';
 
