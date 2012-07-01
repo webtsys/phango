@@ -7,6 +7,8 @@ function make_template_mixed($model, $idmodel)
 
 	$pos=0;
 
+	load_libraries_views('templates/two_template', array('contentleft', 'contentright', 'contentall'));
+
 	$query=$model->select('where idtemplate='.$idmodel.' order by position ASC', array('name', 'text'));
 
 	while(list($name, $text)=webtsys_fetch_row($query))

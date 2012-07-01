@@ -35,4 +35,22 @@ function ContentRightView($title, $content)
 
 }
 
+function ContentAllView($title, $content)
+{
+
+?>
+	
+	<div style="float:left;width:100%;border:solid #ffffff;border-width:0px;padding-left:4px;">
+		<div class="title">
+			<?php echo $title; ?>
+		</div>
+		<div class="cont">
+			<?php echo $content; ?>
+		</div>
+	</div>
+	<br clear="left" />
+<?php
+
+}
+
 ?>
