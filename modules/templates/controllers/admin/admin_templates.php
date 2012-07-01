@@ -62,7 +62,7 @@ function TemplatesAdmin()
 		case 1:
 
 			$arr_fields=array('name', 'position');
-			$arr_fields_edit=array('name', 'subtitle', 'text', 'idtemplate');
+			$arr_fields_edit=array('name', 'text', 'idtemplate');
 
 			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $_GET['IdTemplate']) );
 
@@ -71,7 +71,6 @@ function TemplatesAdmin()
 			$model['template_content']->forms['idtemplate']->SetForm($_GET['IdTemplate']);
 
 			$model['template_content']->forms['name']->label=$lang['common']['name'];
-			$model['template_content']->forms['subtitle']->label=$lang['templates']['subtitle'];
 			$model['template_content']->forms['text']->label=$lang['common']['text'];
 			
 			$model['template_content']->forms['text']->parameters=array('text', '', '', 'TextAreaBBForm');

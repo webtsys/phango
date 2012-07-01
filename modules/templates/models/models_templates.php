@@ -38,7 +38,7 @@ $model['template_content']=new template_content();
 $model['template_content']->components['name']=new I18nField(new TextField());
 $model['template_content']->components['name']->required=1;
 
-$model['template_content']->components['subtitle']=new I18nField(new TextField());
+//$model['template_content']->components['subtitle']=new I18nField(new TextField());
 
 $model['template_content']->components['text']=new I18nField(new TextHTMLField());
 $model['template_content']->components['text']->required=1;
