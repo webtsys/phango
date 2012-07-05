@@ -10,10 +10,12 @@ Knowed Bugs
 ----------------------------
 
 - Bug in order pages in Pages, "order_page" is not translated.
+- Bug in left view in default theme, try load lang shop without shop module installed.
 
 New Features for next versions.
 ----------------------------
 
+- Title in flags from languages.
 - Modules loading automatically in $activated_controllers.
 - Better installer.
 - Delete multiple elements in admin list.
@@ -30,7 +32,7 @@ New Features for next versions.
 - Cache system in database.
 - Config index page in pages module.
 - Connect with mysql when make the first connection.
-- Navigator type django in top menu.
+- Navigator type django in top menu. I can create a object where i write the order of the controllers in menu.
 - In check language status, set lang to search.
 - Make CharFields i18n, creating a array and serialize and count its length
 - Make a function for reading directories with a callback.
