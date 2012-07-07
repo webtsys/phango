@@ -306,7 +306,15 @@ function update_models_from_module($arr_modules)
 					$arr_padmin_mod[$my_model][$module]=str_replace('.php', '', $my_model);
 					
 					include($base_path.'modules/'.$module.'/models/models_'.$my_model.'.php');
-
+					
+					//Add extension
+					
+					if(file_exists('modules/'.$module.'/models/extension_'.$my_model.'.php'))
+					{
+					
+						load_extension($my_model);
+						
+					}
 
 				}
 
