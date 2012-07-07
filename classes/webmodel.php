@@ -7,7 +7,6 @@
 //Basic variables for phango. 
 //This variables is used for internal functions in phango
 
-
 $arr_error_model=array();
 $arr_error_model_text=array();
 $arr_module_sql=array();
@@ -15,6 +14,12 @@ $arr_module_insert=array();
 $arr_module_remove=array();
 $utility_cli=0;
 $yes_entities=1;
+
+//This variable is needed for add new fields to models without lost when you execute load_model without extension. Is saved in optional file added_fields.php
+
+$arr_models_loading=array();
+
+//The timestam for this moment...
 
 define("TODAY", time());
 
@@ -773,7 +778,7 @@ class ModelForm {
 				if($form->type->std_error!='')
 				{
 
-					$form->std_error=$form->type->txt_error;
+					$form->std_error=$form->type->std_error;
 
 				}
 				else
@@ -3237,6 +3242,62 @@ function load_model()
 	//Check if model and db is synced
 
 	check_model_exists();
+
+}
+
+function load_extension()
+{
+
+	global $base_path, $model, $lang, $cache_model;
+	
+	$names=func_get_args();
+	
+	foreach($names as $my_model)
+	{
+
+		$arr_file=explode('/', $my_model);
+
+		$my_path=$arr_file[0];
+
+		if(count($arr_file)>1)
+		{
+
+			$my_model=$arr_file[1];
+
+		}
+		
+	}
+	
+	if( !isset($cache_model[$my_model]) )
+	{
+	
+		$path_model=$base_path.'modules/'.$my_path.'/models/extension_'.$my_model.'.php';
+		
+		if(!include($path_model)) 
+		{
+		
+			$arr_error_sql[0]='<p>Error: Cannot load a file extension model.</p>';    
+			$arr_error_sql[1]='<p>Error: Cannot load '.$my_model.' file extension model.</p>';
+			
+			$output=ob_get_contents();
+
+			$arr_error_sql[1].='<p>Output: '.$output.'</p>';
+
+			ob_clean();
+		
+			echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
+
+			die();
+		
+		}
+		else
+		{
+		
+			$cache_model['extension_'.$my_model]=1;
+		
+		}
+	
+	}
 
 }
 

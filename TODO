@@ -11,6 +11,7 @@ Knowed Bugs
 
 - Bug in order pages in Pages, "order_page" is not translated.
 - Bug in left view in default theme, try load lang shop without shop module installed.
+- I18n bug in html block module.
 
 New Features for next versions.
 ----------------------------

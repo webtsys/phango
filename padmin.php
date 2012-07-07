@@ -27,6 +27,28 @@ if($argc<2)
 
 }
 
+//Connect to database
+
+if(! ( $connection=webtsys_connect($host_db, $login_db, $pass_db) && webtsys_select_db($db) ) )
+{
+
+	die("Error: ".webtsys_error()." - I can't connect to database\n");
+
+}
+
+//Load cache for can use load_model
+
+$query=webtsys_query(SQL_SHOW_TABLES);
+
+while(list($table)=webtsys_fetch_row($query))
+{
+
+	$arr_check_table[$table]=1;
+
+}
+
+//Obtain name file...
+
 $argv[1]=basename($argv[1]);
 
 if(!isset($argv[2]))
@@ -51,20 +73,19 @@ if(file_exists('modules/'.$argv[1].'/models/models_'.$argv[2].'.php'))
 		die("Don't exist ".$argv[2]." in modules/".$argv[1]."/models\n");
 	
 	}
+	
+	//Now load extensions for this model...
+	if(file_exists('modules/'.$argv[1].'/models/extension_'.$argv[2].'.php'))
+	{
+	
+		load_extension($argv[2]);
+		
+	}
 
 	//Update modules...
 
 	$arr_padmin_mod[$argv[1]]=str_replace('.php', '', $argv[2]);
 	
-}
-
-//Connect to database
-
-if(! ( $connection=webtsys_connect($host_db, $login_db, $pass_db) && webtsys_select_db($db) ) )
-{
-
-	die("Error: ".webtsys_error()." - I can't connect to database\n");
-
 }
 
 //Update/Insert table with primitive function update_table
