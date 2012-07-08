@@ -148,7 +148,9 @@ function Index()
 
 					ob_start();
 
-					echo load_view(array($form_contact, array(), $url_send_mail, ''), 'common/forms/updatemodelform');
+					//echo load_view(array($form_contact, array(), $url_send_mail, ''), 'common/forms/updatemodelform');
+					
+					echo load_view(array($description, $form_contact, $url_send_mail), 'contact/contact');
 
 					$form_result=ob_get_contents();
 

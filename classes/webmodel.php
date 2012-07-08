@@ -3268,9 +3268,9 @@ function load_extension()
 		
 	}
 	
-	if( !isset($cache_model[$my_model]) )
+	if( !isset($cache_model['extension_'.$my_model]) )
 	{
-	
+		
 		$path_model=$base_path.'modules/'.$my_path.'/models/extension_'.$my_model.'.php';
 		
 		if(!include($path_model)) 
