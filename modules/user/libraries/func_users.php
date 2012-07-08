@@ -319,14 +319,31 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 
 				$redirect=make_fancy_url($base_url, 'user', 'index', 'user_zone', $arr_data=array('op' => 0));
 
-				settype($register_page, 'string');
+				//settype($register_page, 'string');
 
 				if($register_page!="")
 				{
+				
+					//Check if base_64 url...
+				
+					$register_page_decoded = urldecode_redirect($register_page);
+					
+					if($register_page_decoded===false)
+					{
+					
+						$register_page=form_text($register_page);
 
-					$register_page=form_text($register_page);
+						$redirect=make_fancy_url($base_url, $register_page, 'index', $register_page, array());
+						
+					}
+					else if(preg_match('/^'.str_replace('/', '\/', $base_url).'/', $register_page_decoded))
+					{
+					
+						$register_page_decoded=form_text($register_page_decoded);
 
-					$redirect=make_fancy_url($base_url, $register_page, 'index', $register_page, array());
+						$redirect=$register_page_decoded;
+					
+					}
 
 				}
 
@@ -445,6 +462,5 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 	}
 
 }
-
 
 ?>

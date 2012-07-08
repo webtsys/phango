@@ -137,9 +137,10 @@ function Index()
 	}
 	else
 	{
-
-		die(header('Location: '.make_fancy_url($base_url, 'user', 'index', 'login', array('register_page' => 'admin') ) ));
-
+		$url_admin=make_fancy_url($base_url, 'admin', 'index', 'admin', array('IdModule' => $_GET['IdModule']));
+		
+		die(header('Location: '.make_fancy_url($base_url, 'user', 'index', 'login', array('register_page' => urlencode_redirect($url_admin)), true ) ));
+		
 	}
     
 }

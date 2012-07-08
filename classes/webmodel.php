@@ -2880,11 +2880,11 @@ function DateFormSet($post, $value)
 	
 //Url don't have final slash!!
 
-function make_fancy_url($url, $controller, $func_controller, $description_text, $arr_data=array())
+function make_fancy_url($url, $controller, $func_controller, $description_text, $arr_data=array(), $respect_upper=0)
 {
 	global $arr_func_encode_url;
 
-	$description_text=slugify($description_text);
+	$description_text=slugify($description_text, $respect_upper);
 
 	$arr_get=array();
 
@@ -2932,19 +2932,25 @@ function add_extra_fancy_url($url_fancy, $arr_data)
 
 //Function for normalize texts...
 
-function slugify($text)
+function slugify($text, $respect_upper=0)
 {
 
-	$from='àáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕñ';
-	$to='aaaaaaaceeeeiiiidnoooooouuuyybyRrn';
-
-	$text=@strtolower($text);
+	$from='àáâãäåæçèéêëìíîïðòóôõöøùúûýþÿŕñÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖØÙÚÛÝỲŸÞŔÑ';
+	$to=  'aaaaaaaceeeeiiiidoooooouuuybyrnAAAAAACEEEEIIIIDOOOOOOUUUYYYBRN';
 
 	$text=str_replace(" ", "-", $text);
 
 	$text = utf8_decode($text);    
 	$text = strtr($text, utf8_decode($from), $to);
-	$text = strtolower($text);
+	
+	//Used for pass base64 via GET that use upper, for example.
+	
+	if($respect_upper==0)
+	{
+	
+		$text = strtolower($text);
+		
+	}
 
 	return utf8_encode($text); 
 
@@ -3588,6 +3594,34 @@ function load_jscript_view()
 	}
 
 	return implode("", $arr_final_jscript);
+
+}
+
+function urlencode_redirect($url)
+{
+
+	$base64_url=base64_encode( $url );
+	
+	$arr_char_ugly='+/=';
+	$arr_char_cool='-_.';
+	
+	$replace=strtr($base64_url, $arr_char_ugly, $arr_char_cool);
+	
+	return $replace;
+
+}
+
+function urldecode_redirect($url_encoded)
+{
+
+	$arr_char_cool='-_.';
+	$arr_char_ugly='+/=';
+
+	$url_encoded=strtr($url_encoded, $arr_char_cool, $arr_char_ugly);
+	
+	$url=base64_decode( $url_encoded , true);
+	
+	return $url;
 
 }
 
