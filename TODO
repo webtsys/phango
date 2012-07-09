@@ -43,6 +43,9 @@ New Features for next versions.
 - Deprecating yes_entities.
 - A little system for process post automatically.
 - Add signals to position management. For change order simply position=position-1 where position<=new_position, and update the row with the new position.
+- Add Distinct to models?
+- Add new listing more simple that BasicList.
+- Add to basiclist the posibility of hidden the search form.
 
 Brainstorming ideas.
 ----------------------------
