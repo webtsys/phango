@@ -3,7 +3,7 @@
 function CommonView($title, $content)
 {
 
-global $base_url;
+global $base_url, $arr_cache_jscript;
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,6 +13,9 @@ global $base_url;
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title><?php echo $title; ?></title>
 	<link href="<?php echo $base_url; ?>/media/common/style/style.css" rel="stylesheet" type="text/css">
+	<?php 
+	echo load_jscript_view(); 
+	?>
 	</head>
 	<body>
 

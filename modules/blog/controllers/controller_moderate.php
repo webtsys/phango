@@ -3,15 +3,15 @@
 function Moderate()
 {
 
-	global $model, $lang, $base_url, $base_path, $user_data, $arr_module_admin, $config_data, $arr_block;
+	global $model, $lang, $base_url, $base_path, $user_data, $arr_module_admin, $config_data, $arr_block, $arr_cache_jscript;
 	
 	$content='';
 	
 	load_lang('blog');
 	load_libraries(array('check_admin', 'generate_admin_ng', 'forms/textareabb', 'forms/textbbpost'));
 	load_libraries(array('blog_functions'),$base_path.'modules/blog/libraries/');
-	load_model('blog');
-
+	load_model('blog'); 
+	
 	settype($_GET['op'], 'integer');
 	settype($_GET['IdBlog'], 'integer');
 
