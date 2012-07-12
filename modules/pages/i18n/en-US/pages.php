@@ -2,6 +2,8 @@
 
 $lang['pages']['property']='Property';
 
+$lang['pages']['order_page']='Order property';
+
 $lang['pages']['no_property']='Without properties';
 
 $lang['pages']['change_order_prop']='Change properties order';

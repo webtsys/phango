@@ -1,5 +1,9 @@
 <?php
 
+$lang['blocks']['edit_html_block']='edit_html_block';
+
+$lang['blocks']['html_code']='html_code';
+
 $lang['blocks']['edit_blocks']='edit_blocks';
 
 $lang['blocks']['module_no']='module_no';
@@ -37,10 +41,6 @@ $lang['blocks']['end_block']='end_block';
 $lang['blocks']['static_blocks']='static_blocks';
 
 $lang['blocks']['edit_module_if_exists']='edit_module_if_exists';
-
-$lang['blocks']['edit_html_block']='edit_html_block';
-
-$lang['blocks']['html_code']='html_code';
 
 $lang['blocks']['choose_lang']='choose_lang';
 

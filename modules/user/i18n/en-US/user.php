@@ -2,26 +2,6 @@
 
 $lang['user']['without_special_rank']='without_special_rank';
 
-$lang['user']['text_confirm']='text_confirm';
-
-$lang['user']['error_email']='error_email';
-
-$lang['user']['name']='Nombre';
-
-$lang['user']['last_name']='Apellidos';
-
-$lang['user']['enterprise_name']='enterprise_name';
-
-$lang['user']['email']='Email';
-
-$lang['user']['nif']='nif';
-
-$lang['user']['zip_code']='Codigo postal';
-
-$lang['user']['city']='Ciudad';
-
-$lang['user']['private_nick']='private_nick';
-
 $lang['user']['choose_avatar']='choose_avatar';
 
 $lang['user']['see_gallery']='see_gallery';
@@ -37,6 +17,8 @@ $lang['user']['success_avatar']='success_avatar';
 $lang['user']['error_avatar']='error_avatar';
 
 $lang['user']['comeback']='comeback';
+
+$lang['user']['avatar_size_wrong']='avatar_size_wrong';
 
 $lang['user']['error_email_exists']='error_email_exists';
 
@@ -66,8 +48,6 @@ $lang['user']['try_login_again']='try_login_again';
 
 $lang['user']['error_login_many_times']='error_login_many_times';
 
-$lang['user']['avatar_size_wrong']='avatar_size_wrong';
-
 $lang['user']['option_date_dmy']='option_date_dmy';
 
 $lang['user']['option_date_ymd']='option_date_ymd';
@@ -76,7 +56,55 @@ $lang['user']['ampm24']='ampm24';
 
 $lang['user']['ampmAM']='ampmam';
 
+$lang['user']['repeat_password']='repeat_password';
+
+$lang['user']['automatic_login']='automatic_login';
+
+$lang['user']['private_nick']='private_nick';
+
+$lang['user']['privileges_user']='privileges_user';
+
+$lang['user']['show_email']='Mostrar email';
+
+$lang['user']['hidden_status']='Estado oculto';
+
+$lang['user']['notify_private_messages']='Notificar mensajes privados';
+
+$lang['user']['format_date']='Formato de fecha';
+
+$lang['user']['timezone']='timezone';
+
+$lang['user']['ampm']='AM-PM - 24H';
+
+$lang['user']['yes_list']='Recibir mensajes de la web';
+
+$lang['user']['avatar']='Avatar';
+
+$lang['user']['rank']='Rango';
+
+$lang['user']['signature']='Firma';
+
+$lang['user']['interests']='Intereses';
+
+$lang['user']['nif']='nif';
+
+$lang['user']['enterprise_name']='enterprise_name';
+
+$lang['user']['zip_code']='Codigo postal';
+
+$lang['user']['activated_user']='Usuario activo';
+
+$lang['user']['no_user_profile']='No existe el perfil de usuario';
+
+$lang['user']['user_zone']='user_zone';
+
+$lang['user']['cannot_change_language']='cannot_change_language';
+
+$lang['user']['change_language']='change_language';
+
 $lang['user']['error_login_update']='error_login_update';
+
+$lang['user']['text_confirm']='text_confirm';
 
 $lang['user']['text_welcome']='text_welcome';
 
@@ -85,6 +113,8 @@ $lang['user']['text_answer']='text_answer';
 $lang['user']['text_password']='text_password';
 
 $lang['user']['thanks']='thanks';
+
+$lang['user']['error_email']='error_email';
 
 $lang['user']['new_user_is_registered']='new_user_is_registered';
 
@@ -118,20 +148,6 @@ $lang['user']['change_data_success']='change_data_success';
 
 $lang['user']['exit_login']='exit_login';
 
-$lang['user']['user_zone']='user_zone';
-
-$lang['user']['cannot_change_language']='cannot_change_language';
-
-$lang['user']['change_language']='change_language';
-
-$lang['user']['no_user_profile']='No existe el perfil de usuario';
-
-$lang['user']['profiles_list']='profiles_list';
-
-$lang['user']['profiles_list_explain']='profiles_list_explain';
-
-$lang['user']['see_profile']='see_profile';
-
 $lang['user']['admin_users']='admin_users';
 
 $lang['user']['create_user']='create_user';
@@ -143,20 +159,6 @@ $lang['user']['admin_no_fixed_ranks']='admin_no_fixed_ranks';
 $lang['user']['admin_fixed_ranks']='admin_fixed_ranks';
 
 $lang['user']['num_posts']='num_posts';
-
-$lang['user']['no_message']='Espacio ocupado por mensajes';
-
-$lang['user']['pages']='Páginas';
-
-$lang['user']['select_message']='Seleccionar mensaje';
-
-$lang['user']['delete_message']='Borrar mensaje';
-
-$lang['user']['select_all']='Seleccionar todos los mensajes';
-
-$lang['user']['search_users_message']='Buscar mensajes de usuarios';
-
-$lang['user']['forbbiden_access']='Acceso prohibido';
 
 $lang['user']['re_mprivate']='re_mprivate';
 
@@ -174,47 +176,41 @@ $lang['user']['data_overloaded_user']='En este buzón hay demasiados datos, borr
 
 $lang['user']['data_overloaded']='Sobrecarga de datos';
 
+$lang['user']['forbbiden_access']='Acceso prohibido';
+
+$lang['user']['no_message']='Espacio ocupado por mensajes';
+
+$lang['user']['pages']='Páginas';
+
+$lang['user']['select_message']='Seleccionar mensaje';
+
+$lang['user']['delete_message']='Borrar mensaje';
+
+$lang['user']['select_all']='Seleccionar todos los mensajes';
+
+$lang['user']['search_users_message']='Buscar mensajes de usuarios';
+
+$lang['user']['profiles_list']='profiles_list';
+
+$lang['user']['profiles_list_explain']='profiles_list_explain';
+
+$lang['user']['see_profile']='see_profile';
+
 $lang['user']['send_private']='Enviar mensaje privado';
 
 $lang['user']['go_profiles']='Ir a perfiles';
 
-$lang['user']['repeat_password']='repeat_password';
+$lang['user']['name']='Nombre';
 
-$lang['user']['automatic_login']='automatic_login';
+$lang['user']['last_name']='Apellidos';
 
-$lang['user']['privileges_user']='privileges_user';
+$lang['user']['email']='Email';
 
-$lang['user']['show_email']='Mostrar email';
-
-$lang['user']['hidden_status']='Estado oculto';
-
-$lang['user']['notify_private_messages']='Notificar mensajes privados';
-
-$lang['user']['format_date']='Formato de fecha';
-
-$lang['user']['timezone']='timezone';
-
-$lang['user']['ampm']='AM-PM - 24H';
-
-$lang['user']['yes_list']='Recibir mensajes de la web';
-
-$lang['user']['avatar']='Avatar';
-
-$lang['user']['rank']='Rango';
-
-$lang['user']['signature']='Firma';
-
-$lang['user']['interests']='Intereses';
-
-$lang['user']['activated_user']='Usuario activo';
+$lang['user']['city']='Ciudad';
 
 $lang['user']['login']='Identificarse';
 
 $lang['user']['my_account']='my_account';
-
-$lang['user']['register']='register';
-
-$lang['user']['push_remember']='push_remember';
 
 $lang['user']['modify_user']='modify_user';
 
@@ -223,6 +219,10 @@ $lang['user']['change_data']='change_data';
 $lang['user']['private_messages']='private_messages';
 
 $lang['user']['remember_password']='remember_password';
+
+$lang['user']['register']='register';
+
+$lang['user']['push_remember']='push_remember';
 
 $lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 

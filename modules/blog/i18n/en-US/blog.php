@@ -2,18 +2,6 @@
 
 $lang['blog']['principal_category']='principal_category';
 
-$lang['blog']['no_tags']='no_tags';
-
-$lang['blog']['no_contents']='no_contents';
-
-$lang['blog']['wait_admin']='wait_admin';
-
-$lang['blog']['edit_in_page_blog']='edit_in_page_blog';
-
-$lang['blog']['choose_blog_to_show']='choose_blog_to_show';
-
-$lang['blog']['num_post_home_index_blog']='num_post_home_index_blog';
-
 $lang['blog']['edit_son_blogs']='edit_son_blogs';
 
 $lang['blog']['edit_moderators']='edit_moderators';
@@ -27,6 +15,70 @@ $lang['blog']['subscript_post']='subscript_post';
 $lang['blog']['save_data']='save_data';
 
 $lang['blog']['error_captcha']='error_captcha';
+
+$lang['blog']['search_tags_results']='search_tags_results';
+
+$lang['blog']['no_tags']='no_tags';
+
+$lang['blog']['more']='more';
+
+$lang['blog']['no_contents']='no_contents';
+
+$lang['blog']['no_search']='no_search';
+
+$lang['blog']['search_tags']='search_tags';
+
+$lang['blog']['goback_admin_blog']='goback_admin_blog';
+
+$lang['blog']['tree_category']='tree_category';
+
+$lang['blog']['choose_the_blog_and_edit']='choose_the_blog_and_edit';
+
+$lang['blog']['entrance']='Entradilla';
+
+$lang['blog']['author']='Autor';
+
+$lang['blog']['accept_comment']='Aceptar comentario';
+
+$lang['blog']['edit_tags_for_post']='edit_tags_for_post';
+
+$lang['blog']['tag']='Etiqueta';
+
+$lang['blog']['edit_comment_from_page_blog']='edit_comment_from_page_blog';
+
+$lang['blog']['moderate_blogs']='moderate_blogs';
+
+$lang['blog']['wait_admin']='wait_admin';
+
+$lang['blog']['blog_options']='blog_options';
+
+$lang['blog']['blog_father']='blog_father';
+
+$lang['blog']['num_post']='num_post';
+
+$lang['blog']['num_words']='num_words';
+
+$lang['blog']['add_moderators_blog']='add_moderators_blog';
+
+$lang['blog']['go_back_index_blog']='go_back_index_blog';
+
+$lang['blog']['search_results']='search_results';
+
+$lang['blog']['search_blog']='search_blog';
+
+$lang['blog']['edit_comment']='edit_comment';
+
+$lang['blog']['delete_comment']='delete_comment';
+
+$lang['blog']['read_more']='read_more';
+
+$lang['blog']['permalink']='permalink';
+
+$lang['blog']['comments']='comments';
+
+$lang['blog']['send_post']='send_post';
+
+$lang['blog']['no_exist_post']='no_exist_post';
 
 $lang['blog']['unsubscribe_email']='unsubscribe_email';
 
@@ -56,28 +108,6 @@ $lang['blog']['you_unsubscribe_from_posts_explain']='you_unsubscribe_from_posts_
 
 $lang['blog']['down_email_in_article']='down_email_in_article';
 
-$lang['blog']['search_results']='search_results';
-
-$lang['blog']['more']='more';
-
-$lang['blog']['no_search']='no_search';
-
-$lang['blog']['search_blog']='search_blog';
-
-$lang['blog']['edit_comment']='edit_comment';
-
-$lang['blog']['delete_comment']='delete_comment';
-
-$lang['blog']['read_more']='read_more';
-
-$lang['blog']['permalink']='permalink';
-
-$lang['blog']['comments']='comments';
-
-$lang['blog']['send_post']='send_post';
-
-$lang['blog']['no_exist_post']='no_exist_post';
-
 $lang['blog']['please_wait_a_seconds_for_send_a_new_message']='please_wait_a_seconds_for_send_a_new_message';
 
 $lang['blog']['inform_comment']='inform_comment';
@@ -86,45 +116,15 @@ $lang['blog']['comment_made']='comment_made';
 
 $lang['blog']['down_article']='down_article';
 
-$lang['blog']['goback_admin_blog']='goback_admin_blog';
-
-$lang['blog']['tree_category']='tree_category';
-
-$lang['blog']['choose_the_blog_and_edit']='choose_the_blog_and_edit';
-
-$lang['blog']['entrance']='Entradilla';
-
-$lang['blog']['author']='Autor';
-
-$lang['blog']['accept_comment']='Aceptar comentario';
-
-$lang['blog']['edit_tags_for_post']='edit_tags_for_post';
-
-$lang['blog']['tag']='Etiqueta';
-
-$lang['blog']['edit_comment_from_page_blog']='edit_comment_from_page_blog';
-
-$lang['blog']['moderate_blogs']='moderate_blogs';
-
-$lang['blog']['search_tags_results']='search_tags_results';
-
-$lang['blog']['search_tags']='search_tags';
-
-$lang['blog']['blog_options']='blog_options';
-
-$lang['blog']['blog_father']='blog_father';
-
-$lang['blog']['num_post']='num_post';
-
-$lang['blog']['num_words']='num_words';
-
-$lang['blog']['add_moderators_blog']='add_moderators_blog';
-
-$lang['blog']['go_back_index_blog']='go_back_index_blog';
-
 $lang['blog']['posted_by']='posted_by';
 
 $lang['blog']['tags']='tags';
+
+$lang['blog']['edit_in_page_blog']='edit_in_page_blog';
+
+$lang['blog']['choose_blog_to_show']='choose_blog_to_show';
+
+$lang['blog']['num_post_home_index_blog']='num_post_home_index_blog';
 
 $lang['blog']['error_you_cannot_use_this_email']='error_you_cannot_use_this_email';
 

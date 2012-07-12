@@ -9,11 +9,6 @@ New features
 Knowed Bugs
 ----------------------------
 
-- Bug in order pages in Pages, "order_page" is not translated.
-- Bug in left view in default theme, try load lang shop without shop module installed.
-- I18n bug in html block module.
-- Bug in moderate blog for create an article in ckeditor. 
-- Need translation in text in comment in show post in blog.
 - Fix email for password lost.
 
 New Features for next versions.

@@ -40,6 +40,7 @@ function PagesAdmin()
 
 			$model['property_page']->forms['name']->label=$lang['common']['name'];
 			$model['property_page']->forms['property']->label=$lang['pages']['property'];
+			$model['property_page']->forms['order_page']->label=$lang['pages']['order_page'];
 
 			$arr_prop=array('', $lang['pages']['no_property'], '');
 			$arr_check_prop=array();

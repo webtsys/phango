@@ -114,6 +114,11 @@ function form_comment($data_insert=array(), $check_captcha=1)
 		}
 
 	}
+	
+	$model['comment_blog']->forms['author']->label=$lang['blog']['author'];
+	$model['comment_blog']->forms['email']->label=$lang['common']['email'];
+	$model['comment_blog']->forms['website']->label=$lang['common']['website'];
+	$model['comment_blog']->forms['text']->label=$lang['common']['text'];
 
 	//here formulary for make a comment...
 
