@@ -132,7 +132,7 @@ $lang['user']['cannot_register_users']='cannot_register_users';
 
 $lang['user']['lost_name']='lost_name';
 
-$lang['user']['hello']='hello';
+$lang['user']['hello_lost_pass']='hello_lost_pass';
 
 $lang['user']['user']='user';
 
@@ -218,11 +218,15 @@ $lang['user']['change_data']='change_data';
 
 $lang['user']['private_messages']='private_messages';
 
+$lang['user']['remember_password_explain']='remember_password_explain';
+
 $lang['user']['remember_password']='remember_password';
 
 $lang['user']['register']='register';
 
 $lang['user']['push_remember']='push_remember';
+
+$lang['user']['hello']='hello';
 
 $lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 

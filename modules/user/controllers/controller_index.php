@@ -421,7 +421,7 @@ function Index()
 						list( $nick, $email ) = webtsys_fetch_row( $query );
 
 						$topic_email = $lang['user']['lost_name'];
-						$body_email = $lang['user']['hello'] . "\n\n".$lang['user']['user']." : $nick"."\n\n". $lang['common']['email']." : $email"."\n\n"  . $lang['user']['new_pass'] . " : $password" . "\n\n" . $lang['user']['use_data'] . "\n\n" . $lang['common']['thanks'];
+						$body_email = $lang['user']['hello_lost_pass']."\n\n". $lang['user']['user_data'] . "\n\n".$lang['user']['user']." : $nick"."\n\n". $lang['common']['email']." : $email"."\n\n"  . $lang['user']['new_pass'] . " : $password" . "\n\n" . $lang['common']['thanks'];
 						
 						$password = sha1( $password );
 							
@@ -430,18 +430,16 @@ function Index()
 							
 							$portal_name=html_entity_decode($config_data['portal_name']);	
 
-							echo "<div align=\"center\">";
-
 							if ( send_mail($email, $topic_email, $body_email) )
 							{
 								$query = webtsys_query( "update user set password=\"$password\" where email=\"$email\"" );
-								echo  "<p>" . $lang['user']['success_change_password'];
+								echo  "<p>" . $lang['user']['success_change_password'].'</p>';
 
 							} 
 							else
 							{
 
-								echo  "<p>" . $lang['user']['success_change_password'];
+								echo  "<p>" . $lang['user']['success_change_password'].'</p>';
 
 							} 
 						} 
@@ -449,11 +447,11 @@ function Index()
 						else
 						{
 
-							echo  "<div align=\"center\"><p>" . $lang['user']['error_db_pass'];
+							echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
 
 						} 
 
-						echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 0))."\"><b>" . $lang['common']['go_back'] . "</b></a></div>";
+						echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 3))."\"><b>" . $lang['common']['go_back'] . "</b></a></div>";
 
 					break;
 

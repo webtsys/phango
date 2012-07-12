@@ -130,19 +130,21 @@ $lang['user']['error_captcha']='Error en captcha';
 
 $lang['user']['cannot_register_users']='No se pueden registrar usuarios';
 
-$lang['user']['lost_name']='Nombre de usuario perdido';
+$lang['user']['lost_name']='Usted solicitó una nueva contraseña';
 
-$lang['user']['hello']='Hola';
+$lang['user']['hello_lost_pass']='Hola, usted nos ha solicitado una nueva contraseña, ya que no recuerda la antigua.';
 
 $lang['user']['user']='Usuario';
 
 $lang['user']['new_pass']='Nueva contraseña';
 
-$lang['user']['use_data']='Datos de usuario';
+$lang['user']['user_data']='Datos de usuario';
 
 $lang['user']['success_change_password']='Se cambió la contraseña con éxito';
 
-$lang['user']['error_db_pass']='Error, la contraseña es incorrecta';
+$lang['user']['no_success_change_password']='Se produjo un error y no se pudo cambiar la contraseña';
+
+$lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
 
 $lang['user']['change_data_success']='Se cambió el perfil con éxito...';
 
@@ -218,11 +220,15 @@ $lang['user']['change_data']='Cambiar datos';
 
 $lang['user']['private_messages']='Mensajes privados';
 
+$lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
+
 $lang['user']['remember_password']='Recordar contraseña';
 
 $lang['user']['register']='Registrarse';
 
 $lang['user']['push_remember']='Recordar contraseña';
+
+$lang['user']['hello']='Hola';
 
 $lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 

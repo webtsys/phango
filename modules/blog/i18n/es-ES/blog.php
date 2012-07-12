@@ -16,6 +16,8 @@ $lang['blog']['save_data']='Guardar datos';
 
 $lang['blog']['error_captcha']='Error en captcha';
 
+$lang['blog']['author']='Autor';
+
 $lang['blog']['search_tags_results']='Resultados de busqueda de etiquetas';
 
 $lang['blog']['no_tags']='Sin etiquetas';
@@ -35,8 +37,6 @@ $lang['blog']['tree_category']='Arbol de categorías';
 $lang['blog']['choose_the_blog_and_edit']='Elija el blog y editelo';
 
 $lang['blog']['entrance']='Entradilla';
-
-$lang['blog']['author']='Autor';
 
 $lang['blog']['accept_comment']='Aceptar comentario';
 

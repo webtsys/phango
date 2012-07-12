@@ -9,7 +9,7 @@ New features
 Knowed Bugs
 ----------------------------
 
-- Fix email for password lost.
+- Fix double barr and warning in check_language.
 
 New Features for next versions.
 ----------------------------
@@ -42,6 +42,8 @@ New Features for next versions.
 - Add Distinct to models?
 - Add new listing more simple that BasicList.
 - Add to basiclist the posibility of hidden the search form.
+- A function that show a text with option to send a mail to the administrator.
+- Make a more secure password recovery.
 
 Brainstorming ideas.
 ----------------------------
