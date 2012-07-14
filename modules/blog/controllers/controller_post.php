@@ -15,7 +15,7 @@ function Post()
 
 	load_model('blog', 'captcha');
 
-	load_libraries(array('form_date', 'form_time', 'check_admin', 'pages', 'generate_forms', 'forms/textareabb', 'forms/textbbpost'));
+	load_libraries(array('form_date', 'form_time', 'check_admin', 'pages', 'generate_forms', 'forms/textareabb', 'forms/textbbpost',  'utilities/hierarchy_links'));
 
 	load_libraries(array('blog_functions'), $base_path.'modules/blog/libraries/');
 
@@ -39,6 +39,12 @@ function Post()
 	if($result['IdPage_blog']>0)
 	{
 
+		//Obtain tree...
+		
+		$arr_hierarchy_links=hierarchy_links('blog', 'blog_father', 'title', $result['idblog']);
+	
+		echo load_view(array($arr_hierarchy_links, 'blog', 'index', 'IdBlog', array(), 1), 'common/utilities/hierarchy_links');
+	
 		//Get moderators..
 		
 		$num_mod=$model['moderator_blog']->select_count('where iduser='.$user_data['IdUser'].' and idblog='.$result['idblog'], 'idModerator_blog');

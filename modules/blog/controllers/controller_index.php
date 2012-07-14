@@ -12,7 +12,7 @@ function Index()
 	$arr_block=select_view(array('blog'));
 
 	load_model('blog');
-	load_libraries(array('form_date', 'form_time', 'pages'));
+	load_libraries(array('form_date', 'form_time', 'pages', 'utilities/hierarchy_links'));
 
 	load_lang('blog');
 
@@ -34,6 +34,14 @@ function Index()
 		$select_post='';
 
 	}
+	
+	//Begin, put links..
+	
+	$arr_hierarchy_links=hierarchy_links('blog', 'blog_father', 'title', $_GET['IdBlog']);
+	
+	echo load_view(array($arr_hierarchy_links, 'blog', 'index', 'IdBlog', array(), 0), 'common/utilities/hierarchy_links');
+	
+	//Oh yeah, now load the posts...
 
 	$query=$model['blog']->select($select_blog, array('title', 'num_post'));
 
