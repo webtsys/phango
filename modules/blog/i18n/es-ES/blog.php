@@ -38,7 +38,7 @@ $lang['blog']['choose_the_blog_and_edit']='Elija el blog y editelo';
 
 $lang['blog']['entrance']='Entradilla';
 
-$lang['blog']['accept_comment']='Aceptar comentario';
+$lang['blog']['accept_comment']='Aceptar comentarios';
 
 $lang['blog']['edit_tags_for_post']='Editar etiquetas de este artículo';
 
