@@ -656,7 +656,7 @@ function SetValuesForm($post, $arr_form, $show_error=1)
 			}
 
 			//Set value for ModelForm to $value
-
+			
 			$arr_form[$name_field]->SetForm($value);
 	
 		}
@@ -2848,7 +2848,7 @@ function DateForm($field, $class='', $value='')
 function DateFormSet($post, $value)
 {
 
-	if(gettype('Array')=='array')
+	if(gettype($value)=='array')
 	{
 		foreach($value as $key => $val)
 		{
