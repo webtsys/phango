@@ -32,8 +32,8 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 			//removePlugins: 'flash,div,filebrowser,flash,format,forms,horizontalrule,iframe',
 			filebrowserImageBrowseUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'browser_image', 'browser_image', array()); ?>',
 			//filebrowserImageUploadUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'upload_image', 'upload_image', array()); ?>',
-			filebrowserWindowWidth : '640',
-			filebrowserWindowHeight : '480',
+			filebrowserWindowWidth : '800',
+			filebrowserWindowHeight : '600',
 			
 			removePlugins: 'div,forms,iframe',
 			enterMode : CKEDITOR.ENTER_BR,

@@ -689,6 +689,7 @@ class ModelForm {
 	public $txt_error;
 	public $html_field_name='';
 	public $required=0;
+	public $error_flag=0;
 
 	function __construct($name_form, $name_field, $form, $label, $type, $required=0, $parameters='')
 	{
@@ -787,6 +788,8 @@ class ModelForm {
 					$form->std_error=$form->txt_error;
 
 				}
+				
+				$form->error_flag=1;
 
 				if($form->required==1)
 				{

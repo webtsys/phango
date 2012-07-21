@@ -30,12 +30,17 @@ function Browser_image()
 			
 		$x=6;
 		
-		$arr_form['image_form1']=new ModelForm('create_image', 'image_form[1]', 'FileForm', $lang['common']['image'].' 1', $model['jscript_image']->components['image'], $required=1, $parameters='');
+		//$model['jscript_image']->components['image']->name_file='image_form1';
+		$arr_field['image_form1']=new ImageField('image_form1', $model['jscript_image']->components['image']->path, $model['jscript_image']->components['image']->url_path, '');
+		
+		$arr_form['image_form1']=new ModelForm('create_image', 'image_form1', 'ImageForm', $lang['common']['image'].' 1', $arr_field['image_form1'], $required=1, $parameters='');
 		
 		for($x=2;$x<6;$x++)
 		{
 		
-			$arr_form['form'.$x]=new ModelForm('create_image', 'image_form['.$x.']', 'FileForm', $lang['common']['image'].' '.$x, $model['jscript_image']->components['image'], $required=0, $parameters='');
+			$arr_field['image_form'.$x]=new ImageField('image_form'.$x, $model['jscript_image']->components['image']->path, $model['jscript_image']->components['image']->url_path, '');
+		
+			$arr_form['image_form'.$x]=new ModelForm('create_image', 'image_form'.$x.'', 'ImageForm', $lang['common']['image'].' '.$x, $arr_field['image_form'.$x], $required=0, $parameters='');
 		
 		}
 			
@@ -77,7 +82,7 @@ function Browser_image()
 			
 			$arr_fields=array('image');
 			
-			$url_options=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array());
+			$url_options=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
 			
 			$url_add_images=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('op' => 1, 'CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
 			
@@ -102,9 +107,9 @@ function Browser_image()
 			
 			//UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $enctype='')
 			
-			$url_post='';
+			$url_post=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('op' => 2, 'CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
 			
-			echo load_view(array($arr_form, array(), '', 'enctype="multipart/form-data"'), 'common/forms/updatemodelform');
+			echo load_view(array($arr_form, array(), $url_post, 'enctype="multipart/form-data"'), 'common/forms/updatemodelform');
 			
 			$cont_text=ob_get_contents();
 			
@@ -117,6 +122,43 @@ function Browser_image()
 			$url_go_back=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('op' => 0, 'CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
 			
 			echo '<p><a href="'.$url_go_back.'">'.$lang['common']['go_back'].'</a></p>';
+			
+			$content=ob_get_contents();
+			
+			ob_end_clean();
+		
+		break;
+		
+		case 2:
+		
+			ob_start();
+			
+			$arr_post=ModelForm::check_form($arr_form, $_POST);
+			
+			if($arr_post!=0)
+			{
+			
+				//Insert images..
+				
+				foreach($arr_form as $img_form)
+				{
+					
+					if($img_form->error_flag==0)
+					{
+					
+						$file_name=$img_form->type->name_file;
+					
+						$model['jscript_image']->insert(array('image' => $arr_post[$file_name]));
+					
+					}
+				
+				}
+			
+			}
+			
+			ob_end_clean();
+			load_libraries(array('redirect'));
+			die( redirect_webtsys( make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('CKEditorFuncNum' => $_GET['CKEditorFuncNum'])), $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
 			
 			$content=ob_get_contents();
 			
