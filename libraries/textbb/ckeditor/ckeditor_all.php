@@ -31,7 +31,7 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 			//extraPlugins : 'bbcodeweb,devtools',
 			//removePlugins: 'flash,div,filebrowser,flash,format,forms,horizontalrule,iframe',
 			filebrowserImageBrowseUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'browser_image', 'browser_image', array()); ?>',
-			filebrowserImageUploadUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'upload_image', 'upload_image', array()); ?>',
+			//filebrowserImageUploadUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'upload_image', 'upload_image', array()); ?>',
 			filebrowserWindowWidth : '640',
 			filebrowserWindowHeight : '480',
 			

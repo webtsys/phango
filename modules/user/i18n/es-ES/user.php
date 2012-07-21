@@ -2,6 +2,26 @@
 
 $lang['user']['without_special_rank']='Sin rango especial';
 
+$lang['user']['text_confirm']='Usted se ha registrado como usuario';
+
+$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
+
+$lang['user']['name']='Nombre';
+
+$lang['user']['last_name']='Apellidos';
+
+$lang['user']['enterprise_name']='Nombre de empresa';
+
+$lang['user']['email']='Email';
+
+$lang['user']['nif']='Número de documento de identificación';
+
+$lang['user']['zip_code']='Codigo postal';
+
+$lang['user']['city']='Ciudad';
+
+$lang['user']['private_nick']='Nick privado';
+
 $lang['user']['choose_avatar']='Elegir avatar';
 
 $lang['user']['see_gallery']='Ver galería';
@@ -17,8 +37,6 @@ $lang['user']['success_avatar']='Se añadió el avatar con éxito';
 $lang['user']['error_avatar']='Error al añadir el avatar';
 
 $lang['user']['comeback']='Salir de avatares';
-
-$lang['user']['avatar_size_wrong']='Tamaño de avatar, incorrecto';
 
 $lang['user']['error_email_exists']='Error: el email ya existe en la base de datos';
 
@@ -48,6 +66,8 @@ $lang['user']['try_login_again']='Intente identificarse de nuevo';
 
 $lang['user']['error_login_many_times']='Error: se ha intentado identificar erroneamente demasiadas veces, se le baneará unos minutos de la cuenta';
 
+$lang['user']['avatar_size_wrong']='Tamaño de avatar, incorrecto';
+
 $lang['user']['option_date_dmy']='Día-Mes-Año';
 
 $lang['user']['option_date_ymd']='Año-Mes-Día';
@@ -56,11 +76,111 @@ $lang['user']['ampm24']='24 Horas';
 
 $lang['user']['ampmAM']='AM-PM';
 
+$lang['user']['error_login_update']='Error al intentar actualizar su perfil';
+
+$lang['user']['text_welcome']='Bienvenido a nuestra página web';
+
+$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
+
+$lang['user']['text_password']='Esta es su contraseña';
+
+$lang['user']['thanks']='Gracias.';
+
+$lang['user']['new_user_is_registered']='Un nuevo usuario se ha registrado.';
+
+$lang['user']['new_user_is_registered_explain']='Se ha registrado un nuevo usuario.';
+
+$lang['user']['your_user_need_activated_explain']='Su usuario necesita ser activado<br />por el administrador.Espere a que este lo haga antes de identificarse en la web.<br />';
+
+$lang['user']['user_created']='Usuario creado';
+
+$lang['user']['user_instructions']='Le hemos enviado un correo con los datos de acceso a la página web';
+
+$lang['user']['error_captcha']='Error en captcha';
+
+$lang['user']['cannot_register_users']='No se pueden registrar usuarios';
+
+$lang['user']['lost_name']='Usted solicitó una nueva contraseña';
+
+$lang['user']['hello_lost_pass']='Hola, usted nos ha solicitado una nueva contraseña, ya que no recuerda la antigua.';
+
+$lang['user']['user_data']='Datos de usuario';
+
+$lang['user']['user']='Usuario';
+
+$lang['user']['new_pass']='Nueva contraseña';
+
+$lang['user']['success_change_password']='Se cambió la contraseña con éxito';
+
+$lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
+
+$lang['user']['change_data_success']='Se cambió el perfil con éxito...';
+
+$lang['user']['exit_login']='Desconexión';
+
+$lang['user']['user_zone']='Zona de usuarios';
+
+$lang['user']['cannot_change_language']='No puedo cambiar el lenguaje';
+
+$lang['user']['change_language']='Cambiar lenguaje';
+
+$lang['user']['no_user_profile']='No existe el perfil de usuario';
+
+$lang['user']['profiles_list']='Lista de perfiles';
+
+$lang['user']['profiles_list_explain']='En este listado encontrará a todos los usuarios registrados de esta web';
+
+$lang['user']['see_profile']='Ver perfil';
+
+$lang['user']['admin_users']='Administración de usuarios';
+
+$lang['user']['create_user']='Crear usuario';
+
+$lang['user']['activate_users']='Activar usuarios';
+
+$lang['user']['admin_no_fixed_ranks']='Rangos no fijos que dependen del numero de mensajes';
+
+$lang['user']['admin_fixed_ranks']='Rangos fijos';
+
+$lang['user']['num_posts']='Número de mensajes enviados';
+
+$lang['user']['no_message']='Espacio ocupado por mensajes';
+
+$lang['user']['pages']='Páginas';
+
+$lang['user']['select_message']='Seleccionar mensaje';
+
+$lang['user']['delete_message']='Borrar mensaje';
+
+$lang['user']['select_all']='Seleccionar todos los mensajes';
+
+$lang['user']['search_users_message']='Buscar usuario para enviarle mensaje';
+
+$lang['user']['forbbiden_access']='Acceso prohibido';
+
+$lang['user']['re_mprivate']='RE';
+
+$lang['user']['send_message']='Enviar mensaje';
+
+$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
+
+$lang['user']['see_message_user']='Ver mensaje';
+
+$lang['user']['need_data']='Se necesitan más datos';
+
+$lang['user']['data_overloaded_why']='Hay sobrecarga de datos';
+
+$lang['user']['data_overloaded_user']='En este buzón hay demasiados datos, borre algunos y vuelva a intentarlo';
+
+$lang['user']['data_overloaded']='Sobrecarga de datos';
+
+$lang['user']['send_private']='Enviar mensaje privado';
+
+$lang['user']['go_profiles']='Ir a perfiles';
+
 $lang['user']['repeat_password']='Repetir contraseña';
 
 $lang['user']['automatic_login']='Conexión automática';
-
-$lang['user']['private_nick']='Nick privado';
 
 $lang['user']['privileges_user']='Privilegios de usuario';
 
@@ -86,133 +206,15 @@ $lang['user']['signature']='Firma';
 
 $lang['user']['interests']='Intereses';
 
-$lang['user']['nif']='Número de documento de identificación';
-
-$lang['user']['enterprise_name']='Nombre de empresa';
-
-$lang['user']['zip_code']='Codigo postal';
-
 $lang['user']['activated_user']='Usuario activo';
-
-$lang['user']['no_user_profile']='No existe el perfil de usuario';
-
-$lang['user']['user_zone']='Zona de usuarios';
-
-$lang['user']['cannot_change_language']='No puedo cambiar el lenguaje';
-
-$lang['user']['change_language']='Cambiar lenguaje';
-
-$lang['user']['error_login_update']='Error al intentar actualizar su perfil';
-
-$lang['user']['text_confirm']='Usted se ha registrado como usuario';
-
-$lang['user']['text_welcome']='Bienvenido a nuestra página web';
-
-$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
-
-$lang['user']['text_password']='Esta es su contraseña';
-
-$lang['user']['thanks']='Gracias.';
-
-$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
-
-$lang['user']['new_user_is_registered']='Un nuevo usuario se ha registrado.';
-
-$lang['user']['new_user_is_registered_explain']='Se ha registrado un nuevo usuario.';
-
-$lang['user']['your_user_need_activated_explain']='Su usuario necesita ser activado<br />por el administrador.Espere a que este lo haga antes de identificarse en la web.<br />';
-
-$lang['user']['user_created']='Usuario creado';
-
-$lang['user']['user_instructions']='Le hemos enviado un correo con los datos de acceso a la página web';
-
-$lang['user']['error_captcha']='Error en captcha';
-
-$lang['user']['cannot_register_users']='No se pueden registrar usuarios';
-
-$lang['user']['lost_name']='Usted solicitó una nueva contraseña';
-
-$lang['user']['hello_lost_pass']='Hola, usted nos ha solicitado una nueva contraseña, ya que no recuerda la antigua.';
-
-$lang['user']['user']='Usuario';
-
-$lang['user']['new_pass']='Nueva contraseña';
-
-$lang['user']['user_data']='Datos de usuario';
-
-$lang['user']['success_change_password']='Se cambió la contraseña con éxito';
-
-$lang['user']['no_success_change_password']='Se produjo un error y no se pudo cambiar la contraseña';
-
-$lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
-
-$lang['user']['change_data_success']='Se cambió el perfil con éxito...';
-
-$lang['user']['exit_login']='Desconexión';
-
-$lang['user']['admin_users']='Administración de usuarios';
-
-$lang['user']['create_user']='Crear usuario';
-
-$lang['user']['activate_users']='Activar usuarios';
-
-$lang['user']['admin_no_fixed_ranks']='Rangos no fijos que dependen del numero de mensajes';
-
-$lang['user']['admin_fixed_ranks']='Rangos fijos';
-
-$lang['user']['num_posts']='Número de mensajes enviados';
-
-$lang['user']['re_mprivate']='RE';
-
-$lang['user']['send_message']='Enviar mensaje';
-
-$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
-
-$lang['user']['see_message_user']='Ver mensaje';
-
-$lang['user']['need_data']='Se necesitan más datos';
-
-$lang['user']['data_overloaded_why']='Hay sobrecarga de datos';
-
-$lang['user']['data_overloaded_user']='En este buzón hay demasiados datos, borre algunos y vuelva a intentarlo';
-
-$lang['user']['data_overloaded']='Sobrecarga de datos';
-
-$lang['user']['forbbiden_access']='Acceso prohibido';
-
-$lang['user']['no_message']='Espacio ocupado por mensajes';
-
-$lang['user']['pages']='Páginas';
-
-$lang['user']['select_message']='Seleccionar mensaje';
-
-$lang['user']['delete_message']='Borrar mensaje';
-
-$lang['user']['select_all']='Seleccionar todos los mensajes';
-
-$lang['user']['search_users_message']='Buscar usuario para enviarle mensaje';
-
-$lang['user']['profiles_list']='Lista de perfiles';
-
-$lang['user']['profiles_list_explain']='En este listado encontrará a todos los usuarios registrados de esta web';
-
-$lang['user']['see_profile']='Ver perfil';
-
-$lang['user']['send_private']='Enviar mensaje privado';
-
-$lang['user']['go_profiles']='Ir a perfiles';
-
-$lang['user']['name']='Nombre';
-
-$lang['user']['last_name']='Apellidos';
-
-$lang['user']['email']='Email';
-
-$lang['user']['city']='Ciudad';
 
 $lang['user']['login']='Identificarse';
 
 $lang['user']['my_account']='Mi cuenta';
+
+$lang['user']['register']='Registrarse';
+
+$lang['user']['push_remember']='Recordar contraseña';
 
 $lang['user']['modify_user']='Modificar usuario';
 
@@ -224,9 +226,7 @@ $lang['user']['remember_password_explain']='Por favor, introduzca el email con e
 
 $lang['user']['remember_password']='Recordar contraseña';
 
-$lang['user']['register']='Registrarse';
-
-$lang['user']['push_remember']='Recordar contraseña';
+$lang['user']['no_success_change_password']='Se produjo un error y no se pudo cambiar la contraseña';
 
 $lang['user']['hello']='Hola';
 

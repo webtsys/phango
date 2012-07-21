@@ -5,6 +5,8 @@ function Browser_image()
 
 	global $model, $base_path, $base_url, $config_data, $user_data, $lang, $arr_block;
 	
+	settype($_GET['op'], 'integer');
+	
 	load_lang('jscript');
 	
 	load_model('jscript');
@@ -19,9 +21,26 @@ function Browser_image()
 	
 	if(check_admin($user_data['IdUser']))
 	{
-		
+	
 		ob_start();
 		
+		//Generate form
+		
+		$arr_form=array();
+			
+		$x=6;
+		
+		$arr_form['image_form1']=new ModelForm('create_image', 'image_form[1]', 'FileForm', $lang['common']['image'].' 1', $model['jscript_image']->components['image'], $required=1, $parameters='');
+		
+		for($x=2;$x<6;$x++)
+		{
+		
+			$arr_form['form'.$x]=new ModelForm('create_image', 'image_form['.$x.']', 'FileForm', $lang['common']['image'].' '.$x, $model['jscript_image']->components['image'], $required=0, $parameters='');
+		
+		}
+			
+		//Columns in principal view
+	
 		$arr_block='admin_none';
 		
 		//Obtain headers..
@@ -48,21 +67,69 @@ function Browser_image()
 		$headers=ob_get_contents();
 		
 		ob_clean();
+	
+		switch($_GET['op'])
 		
-		$arr_fields=array('image');
+		{
 		
-		$url_options=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array());
+		default:
 		
-		ListModel('jscript_image', $arr_fields, $url_options, $options_func='ImageOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+			
+			$arr_fields=array('image');
+			
+			$url_options=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array());
+			
+			$url_add_images=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('op' => 1, 'CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
+			
+			?>
+			<p><a href="<?php echo $url_add_images; ?>"><?php echo $lang['jscript']['add_new_images']; ?></a></p>
+			<?php
+			
+			ListModel('jscript_image', $arr_fields, $url_options, $options_func='ImageOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+			
+			$content=ob_get_contents();
+			
+			ob_end_clean();
+			
 		
-		$content=ob_get_contents();
+		break;
 		
-		ob_end_clean();
+		case 1:
+		
+			ob_start();
+			
+			
+			
+			//UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $enctype='')
+			
+			$url_post='';
+			
+			echo load_view(array($arr_form, array(), '', 'enctype="multipart/form-data"'), 'common/forms/updatemodelform');
+			
+			$cont_text=ob_get_contents();
+			
+			ob_end_clean();
+		
+			ob_start();
+			
+			echo load_view(array($lang['jscript']['add_new_images'], $cont_text), 'content');
+			
+			$url_go_back=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('op' => 0, 'CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
+			
+			echo '<p><a href="'.$url_go_back.'">'.$lang['common']['go_back'].'</a></p>';
+			
+			$content=ob_get_contents();
+			
+			ob_end_clean();
+		
+		break;
+		
+		}
+		
 		
 		$title=$lang['jscript']['search_images'];
-		
+			
 		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin_none');
-		
 	}
 
 }
