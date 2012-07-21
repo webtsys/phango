@@ -393,8 +393,8 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	//Num elements in page
 
 	$num_elements=20;
-
-	$where_sql.=$arr_where_sql.' order by `'.$location.$_GET['order_field'].'` '.$arr_order[$_GET['order_desc']].' limit '.$_GET['begin_page'].', '.$num_elements;
+	
+	$where_sql.=$arr_where_sql.' order by '.$location.'`'.$_GET['order_field'].'` '.$arr_order[$_GET['order_desc']].' limit '.$_GET['begin_page'].', '.$num_elements;
 
 	//Quit id if don't need
 
