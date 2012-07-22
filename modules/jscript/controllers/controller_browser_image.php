@@ -90,6 +90,16 @@ function Browser_image()
 			<p><a href="<?php echo $url_add_images; ?>"><?php echo $lang['jscript']['add_new_images']; ?></a></p>
 			<?php
 			
+			//?order_field=image&order_desc=1&search_word=&search_field=IdJscript_image
+			
+			if(!isset($_GET['order_field']))
+			{
+			
+				$_GET['order_field']='IdJscript_image';
+				$_GET['order_desc']=1;
+			
+			}
+			
 			ListModel('jscript_image', $arr_fields, $url_options, $options_func='ImageOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 			
 			$content=ob_get_contents();
