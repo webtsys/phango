@@ -604,6 +604,26 @@ a.see {
 	background-repeat:repeat-x;
 	line-height:28px;
 	text-align:center;
+	float:left;
+	margin-right:2px;
+	padding:5px;
+	color: #868686;
+
+}
+
+.see_products {
+    
+	display: block;
+	min-width: 126px;
+	min-height: 28px;
+	border: solid #cbcbcb;
+	border-width:1px;
+	border-radius:5px;
+	background-image:url('images/background_barr.png');
+	background-position:bottom center;
+	background-repeat:repeat-x;
+	line-height:28px;
+	text-align:center;
 	/*border:solid #ffffff;
 	border-width:1px 1px 1px 1px;*/
 	float:left;
@@ -612,34 +632,6 @@ a.see {
 	color: #868686;
 
 }
-
-/*a.see:hover {
-
-	background-position: -126px 0px;
-
-}*/
-a.see_products {
-    
-	display: block;
-	width: 126px;
-	height: 28px;
-	border: solid #000000;
-	border-width:1px;
-	border-radius:5px;
-	background-image:url('images/title_bg.png');
-	line-height:28px;
-	text-align:center;
-	float:left;
-	margin-right:2px;
-	color: #868686;
-
-}
-
-/*a.see_products:hover {
-
-	background-position: -126px 0px;
-
-}*/
 
 .unvisible_image
 {
