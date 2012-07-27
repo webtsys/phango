@@ -1,240 +1,240 @@
 <?php
 
-$lang['user']['without_special_rank']='without_special_rank';
+$lang['user']['without_special_rank']='Without special rank';
 
-$lang['user']['text_confirm']='text_confirm';
+$lang['user']['text_confirm']='Now,you are a registered user';
 
-$lang['user']['error_email']='error_email';
+$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
 
-$lang['user']['name']='Nombre';
+$lang['user']['name']='Name';
 
-$lang['user']['last_name']='Apellidos';
+$lang['user']['last_name']='Last Name';
 
-$lang['user']['enterprise_name']='enterprise_name';
+$lang['user']['enterprise_name']='Enterprise name';
 
 $lang['user']['email']='Email';
 
-$lang['user']['nif']='nif';
+$lang['user']['nif']='ID';
 
-$lang['user']['zip_code']='Codigo postal';
+$lang['user']['zip_code']='Zip code';
 
-$lang['user']['city']='Ciudad';
+$lang['user']['city']='City';
 
-$lang['user']['private_nick']='private_nick';
+$lang['user']['private_nick']='Private nick';
 
-$lang['user']['choose_avatar']='choose_avatar';
+$lang['user']['choose_avatar']='Choose avatar';
 
-$lang['user']['see_gallery']='see_gallery';
+$lang['user']['see_gallery']='See avatar gallery';
 
-$lang['user']['no_gallery']='no_gallery';
+$lang['user']['no_gallery']='Galeries don&#39;t availables';
 
-$lang['user']['goback']='goback';
+$lang['user']['goback']='Go back';
 
-$lang['user']['choose']='choose';
+$lang['user']['choose']='Choose';
 
-$lang['user']['success_avatar']='success_avatar';
+$lang['user']['success_avatar']='You added the new avatar successfully';
 
-$lang['user']['error_avatar']='error_avatar';
+$lang['user']['error_avatar']='Error: the avatar could not added successfully';
 
-$lang['user']['comeback']='comeback';
+$lang['user']['comeback']='Go out from Avatars';
 
-$lang['user']['error_email_exists']='error_email_exists';
+$lang['user']['error_email_exists']='Error: email exists in database';
 
-$lang['user']['error_username_exists']='error_username_exists';
+$lang['user']['error_username_exists']='Error: username exists in database';
 
-$lang['user']['error_password_neq_repeat_password']='error_password_neq_repeat_password';
+$lang['user']['error_password_neq_repeat_password']='Error: passwords don&#39;t match';
 
-$lang['user']['delete_avatar']='delete_avatar';
+$lang['user']['delete_avatar']='Delete avatar';
 
-$lang['user']['no_avatar_selected']='no_avatar_selected';
+$lang['user']['no_avatar_selected']='No avatar selected';
 
-$lang['user']['choose_avatar_out']='choose_avatar_out';
+$lang['user']['choose_avatar_out']='Url of an avatar out of the web';
 
-$lang['user']['max_size']='max_size';
+$lang['user']['max_size']='Maximum size';
 
-$lang['user']['choose_avatar_web']='choose_avatar_web';
+$lang['user']['choose_avatar_web']='Choose avatar';
 
-$lang['user']['redirect']='redirect';
+$lang['user']['redirect']='Redirection';
 
-$lang['user']['login_success']='login_success';
+$lang['user']['login_success']='Login successful';
 
-$lang['user']['no_redir']='no_redir';
+$lang['user']['no_redir']='Redirecting';
 
-$lang['user']['error_login']='error_login';
+$lang['user']['error_login']='Error: you cannot login, your email or password is wrong';
 
-$lang['user']['try_login_again']='try_login_again';
+$lang['user']['try_login_again']='Try login again';
 
-$lang['user']['error_login_many_times']='error_login_many_times';
+$lang['user']['error_login_many_times']='Error: You have tried login many times. You are banned from the website for a few minutes';
 
-$lang['user']['avatar_size_wrong']='avatar_size_wrong';
+$lang['user']['avatar_size_wrong']='Avatar size is wrong';
 
-$lang['user']['option_date_dmy']='option_date_dmy';
+$lang['user']['option_date_dmy']='Day-Month-Year';
 
-$lang['user']['option_date_ymd']='option_date_ymd';
+$lang['user']['option_date_ymd']='Year-Month-Day';
 
-$lang['user']['ampm24']='ampm24';
+$lang['user']['ampm24']='24 hours';
 
-$lang['user']['ampmAM']='ampmam';
+$lang['user']['ampmAM']='PM-AM';
 
-$lang['user']['error_login_update']='error_login_update';
+$lang['user']['error_login_update']='Error: I cannot update your profile';
 
-$lang['user']['text_welcome']='text_welcome';
+$lang['user']['text_welcome']='Welcome to our webpage';
 
-$lang['user']['text_answer']='text_answer';
+$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
 
-$lang['user']['text_password']='text_password';
+$lang['user']['text_password']='This is your password';
 
-$lang['user']['thanks']='thanks';
+$lang['user']['thanks']='Thanks.';
 
-$lang['user']['new_user_is_registered']='new_user_is_registered';
+$lang['user']['new_user_is_registered']='A new user was registered';
 
-$lang['user']['new_user_is_registered_explain']='new_user_is_registered_explain';
+$lang['user']['new_user_is_registered_explain']='A new user was registered in the website';
 
-$lang['user']['your_user_need_activated_explain']='your_user_need_activated_explain';
+$lang['user']['your_user_need_activated_explain']='Your user need be activated&lt;br /&gt;by the admin.You must wait to this fact for login in the web.&lt;br /&gt;';
 
-$lang['user']['user_created']='user_created';
+$lang['user']['user_created']='User created';
 
-$lang['user']['user_instructions']='user_instructions';
+$lang['user']['user_instructions']='We have send a mail to your email adress with the account data';
 
-$lang['user']['error_captcha']='error_captcha';
+$lang['user']['error_captcha']='Error in captcha';
 
-$lang['user']['cannot_register_users']='cannot_register_users';
+$lang['user']['cannot_register_users']='Cannot register users';
 
-$lang['user']['lost_name']='lost_name';
+$lang['user']['lost_name']='You requested a new password';
 
-$lang['user']['hello_lost_pass']='hello_lost_pass';
+$lang['user']['hello_lost_pass']='Hello, you have requested a new password, because you can not remember the old.';
 
-$lang['user']['user_data']='Datos de usuario';
+$lang['user']['user_data']='User data';
 
-$lang['user']['user']='user';
+$lang['user']['user']='User';
 
-$lang['user']['new_pass']='new_pass';
+$lang['user']['new_pass']='New password';
 
-$lang['user']['success_change_password']='success_change_password';
+$lang['user']['success_change_password']='The password is changed successfully';
 
-$lang['user']['error_db_pass']='error_db_pass';
+$lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
 
-$lang['user']['change_data_success']='change_data_success';
+$lang['user']['change_data_success']='Profile updated successfully';
 
-$lang['user']['exit_login']='exit_login';
+$lang['user']['exit_login']='Logout';
 
-$lang['user']['user_zone']='user_zone';
+$lang['user']['user_zone']='User&#39;s zone';
 
-$lang['user']['cannot_change_language']='cannot_change_language';
+$lang['user']['cannot_change_language']='Cannot change the langage';
 
-$lang['user']['change_language']='change_language';
+$lang['user']['change_language']='Change language';
 
-$lang['user']['no_user_profile']='No existe el perfil de usuario';
+$lang['user']['no_user_profile']='Don&#39;t exists the user profile';
 
-$lang['user']['profiles_list']='profiles_list';
+$lang['user']['profiles_list']='Profiles list';
 
-$lang['user']['profiles_list_explain']='profiles_list_explain';
+$lang['user']['profiles_list_explain']='In this list will find all registered users of this website';
 
-$lang['user']['see_profile']='see_profile';
+$lang['user']['see_profile']='See profile';
 
-$lang['user']['admin_users']='admin_users';
+$lang['user']['admin_users']='Users administration';
 
-$lang['user']['create_user']='create_user';
+$lang['user']['create_user']='Create user';
 
-$lang['user']['activate_users']='activate_users';
+$lang['user']['activate_users']='Activate users';
 
-$lang['user']['admin_no_fixed_ranks']='admin_no_fixed_ranks';
+$lang['user']['admin_no_fixed_ranks']='Non-fixed ranks depending on the number of messages';
 
-$lang['user']['admin_fixed_ranks']='admin_fixed_ranks';
+$lang['user']['admin_fixed_ranks']='Fixed ranks';
 
-$lang['user']['num_posts']='num_posts';
+$lang['user']['num_posts']='Number of messages posted by the user';
 
-$lang['user']['no_message']='Espacio ocupado por mensajes';
+$lang['user']['no_message']='Messages size';
 
-$lang['user']['pages']='Páginas';
+$lang['user']['pages']='Pages';
 
-$lang['user']['select_message']='Seleccionar mensaje';
+$lang['user']['select_message']='Select message';
 
-$lang['user']['delete_message']='Borrar mensaje';
+$lang['user']['delete_message']='Delete message';
 
-$lang['user']['select_all']='Seleccionar todos los mensajes';
+$lang['user']['select_all']='Select all messages';
 
-$lang['user']['search_users_message']='Buscar mensajes de usuarios';
+$lang['user']['search_users_message']='Search user messages';
 
-$lang['user']['forbbiden_access']='Acceso prohibido';
+$lang['user']['forbbiden_access']='Forbbiden access';
 
-$lang['user']['re_mprivate']='re_mprivate';
+$lang['user']['re_mprivate']='RE';
 
-$lang['user']['send_message']='Enviar mensaje';
+$lang['user']['send_message']='Send message';
 
-$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
+$lang['user']['message_send_user']='Other user sent a message to your mailbox';
 
-$lang['user']['see_message_user']='Ver mensaje';
+$lang['user']['see_message_user']='View message';
 
-$lang['user']['need_data']='Se necesitan más datos';
+$lang['user']['need_data']='You need more data';
 
-$lang['user']['data_overloaded_why']='Hay sobrecarga de datos';
+$lang['user']['data_overloaded_why']='Your mailbox is overloaded';
 
-$lang['user']['data_overloaded_user']='En este buzón hay demasiados datos, borre algunos y vuelva a intentarlo';
+$lang['user']['data_overloaded_user']='Your mailbox is overloaded, deleted some messages and try again';
 
-$lang['user']['data_overloaded']='Sobrecarga de datos';
+$lang['user']['data_overloaded']='Your mailbox is overloaded';
 
-$lang['user']['send_private']='Enviar mensaje privado';
+$lang['user']['send_private']='Send private message';
 
-$lang['user']['go_profiles']='Ir a perfiles';
+$lang['user']['go_profiles']='Go to profiles';
 
-$lang['user']['repeat_password']='repeat_password';
+$lang['user']['repeat_password']='Repeat password';
 
-$lang['user']['automatic_login']='automatic_login';
+$lang['user']['automatic_login']='Automatic login';
 
-$lang['user']['privileges_user']='privileges_user';
+$lang['user']['privileges_user']='User privileges';
 
-$lang['user']['show_email']='Mostrar email';
+$lang['user']['show_email']='Show email';
 
-$lang['user']['hidden_status']='Estado oculto';
+$lang['user']['hidden_status']='Hidden status';
 
-$lang['user']['notify_private_messages']='Notificar mensajes privados';
+$lang['user']['notify_private_messages']='Notify private messages in your email';
 
-$lang['user']['format_date']='Formato de fecha';
+$lang['user']['format_date']='Date format';
 
-$lang['user']['timezone']='timezone';
+$lang['user']['timezone']='Timezone';
 
 $lang['user']['ampm']='AM-PM - 24H';
 
-$lang['user']['yes_list']='Recibir mensajes de la web';
+$lang['user']['yes_list']='Receive messages from the web';
 
 $lang['user']['avatar']='Avatar';
 
-$lang['user']['rank']='Rango';
+$lang['user']['rank']='Rank';
 
-$lang['user']['signature']='Firma';
+$lang['user']['signature']='Signature';
 
-$lang['user']['interests']='Intereses';
+$lang['user']['interests']='Interests';
 
-$lang['user']['activated_user']='Usuario activo';
+$lang['user']['activated_user']='Activated user';
 
-$lang['user']['login']='Identificarse';
+$lang['user']['login']='Login';
 
-$lang['user']['my_account']='my_account';
+$lang['user']['my_account']='My account';
 
-$lang['user']['register']='register';
+$lang['user']['register']='Register';
 
-$lang['user']['push_remember']='push_remember';
+$lang['user']['push_remember']='Remember password';
 
-$lang['user']['modify_user']='modify_user';
+$lang['user']['modify_user']='Change user';
 
-$lang['user']['change_data']='change_data';
+$lang['user']['change_data']='Change data';
 
-$lang['user']['private_messages']='private_messages';
+$lang['user']['private_messages']='Private messages';
 
-$lang['user']['remember_password_explain']='remember_password_explain';
+$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
 
-$lang['user']['remember_password']='remember_password';
+$lang['user']['remember_password']='Remember password';
 
-$lang['user']['no_success_change_password']='Se produjo un error y no se pudo cambiar la contraseña';
+$lang['user']['no_success_change_password']='Error: cannot change the password, contact with website admin';
 
-$lang['user']['hello']='hello';
+$lang['user']['hello']='Hello';
 
 $lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 
-$lang['user']['iduser']='iduser';
+$lang['user']['iduser']='User';
 
-$lang['user']['discount']='discount';
+$lang['user']['discount']='Discount';
 
 $lang['user']['discount_percent']='discount_percent';
 
@@ -254,139 +254,139 @@ $lang['user']['payment_discount_percent']='payment_discount_percent';
 
 $lang['user']['total_price']='total_price';
 
-$lang['user']['thanks_for_your_register']='thanks_for_your_register';
+$lang['user']['thanks_for_your_register']='Thanks for your register';
 
-$lang['user']['sended_message']='Mensaje enviado';
+$lang['user']['sended_message']='Message sent';
 
-$lang['user']['redirecting']='Redireccionando';
+$lang['user']['redirecting']='Redirecting';
 
-$lang['user']['success']='Éxito';
+$lang['user']['success']='Success';
 
-$lang['user']['press_here']='Pulse aquí';
+$lang['user']['press_here']='Press here';
 
-$lang['user']['page_chosen']='page_chosen';
+$lang['user']['page_chosen']='Page chosen';
 
 $lang['user']['email_login']='Email';
 
-$lang['user']['real_name']='Nombre real';
+$lang['user']['real_name']='Real name';
 
-$lang['user']['cond_register']='Condiciones de registro';
+$lang['user']['cond_register']='Terms of register';
 
-$lang['user']['accept_cond_register']='Aceptar condiciones de registro';
+$lang['user']['accept_cond_register']='Accept terms of register';
 
-$lang['user']['goback_register']='Regresar a registro';
+$lang['user']['goback_register']='Go back to register';
 
-$lang['user']['user_error_captcha']='Error en el captcha';
+$lang['user']['user_error_captcha']='Error on captcha';
 
-$lang['user']['user_error_nick_or_pass']='Error: usuario o contraseña incorrectos.';
+$lang['user']['user_error_nick_or_pass']='Error: email or password wrong';
 
-$lang['user']['user_error']='Error en usuario, alguno de los datos es incorrecto';
+$lang['user']['user_error']='Error in user, any data is wrong';
 
-$lang['user']['error_accept_conditions']='Error: no aceptó las condiciones de registro';
+$lang['user']['error_accept_conditions']='Error: You did not accept terms of register';
 
-$lang['user']['back_options']='Regresar a las opciones de usuario';
+$lang['user']['back_options']='Go back to user options';
 
-$lang['user']['updated']='Actualizado';
+$lang['user']['updated']='Updated';
 
-$lang['user']['profile_options']='Opciones de perfil';
+$lang['user']['profile_options']='Profile options';
 
-$lang['user']['email_symbol']='Símbolo de email';
+$lang['user']['email_symbol']='Email symbol';
 
-$lang['user']['no_profiles']='No hay perfiles';
+$lang['user']['no_profiles']='No profiles';
 
-$lang['user']['delete_success']='Se eliminó con éxito';
+$lang['user']['delete_success']='Deleted successfully';
 
 $lang['user']['delete_press']='delete_press';
 
-$lang['user']['unactivated_user']='Usuario no activo';
+$lang['user']['unactivated_user']='User disables';
 
-$lang['user']['theme_user']='Apariencia elegida por el usuario';
+$lang['user']['theme_user']='Theme choosen by the user';
 
-$lang['user']['format_time']='Hora de Greenwich';
+$lang['user']['format_time']='Greenwich time';
 
-$lang['user']['language']='Lenguaje';
+$lang['user']['language']='Language';
 
-$lang['user']['active_users']='Activar usuarios';
+$lang['user']['active_users']='Activate users';
 
-$lang['user']['activare_user']='Activar usuario';
+$lang['user']['activare_user']='Activate user';
 
-$lang['user']['list_users']='Lista de usuarios';
+$lang['user']['list_users']='Users list';
 
-$lang['user']['search_user']='Buscar usuario';
+$lang['user']['search_user']='Search user';
 
 $lang['user']['go_back_admin_user']='Regresar a administración de usuarios';
 
 $lang['user']['error_nick']='Error en nick';
 
-$lang['user']['goback_nick']='goback_nick';
+$lang['user']['goback_nick']='Go back to nick';
 
-$lang['user']['error_nouser']='Error, no existe el usuario';
+$lang['user']['error_nouser']='Error, user don&#39;t exists';
 
-$lang['user']['profile_data']='Datos de perfil';
+$lang['user']['profile_data']='Profile data';
 
-$lang['user']['user_or_email_exists']='Usuario o email existe';
+$lang['user']['user_or_email_exists']='User or email don&#39;t exists';
 
-$lang['user']['user_created_success']='Usuario creado con éxito';
+$lang['user']['user_created_success']='User created successfully';
 
-$lang['user']['profiles']='Perfiles';
+$lang['user']['profiles']='Profiles';
 
-$lang['user']['remember_password_login']='Introduzca su email para enviarle una nueva contraseña';
+$lang['user']['remember_password_login']='Enter your email to send you a new password';
 
-$lang['user']['no_exists_user']='No existe usuario';
+$lang['user']['no_exists_user']='No exists user';
 
-$lang['user']['active']='Activar';
+$lang['user']['active']='Enable';
 
-$lang['user']['unactive']='Desactivar';
+$lang['user']['unactive']='Disable';
 
-$lang['user']['yes']='Sí';
+$lang['user']['yes']='Yes';
 
 $lang['user']['no']='No';
 
-$lang['user']['normal_user']='Usuario normal';
+$lang['user']['normal_user']='Normal user';
 
-$lang['user']['mod_user']='Moderador';
+$lang['user']['mod_user']='Moderator';
 
-$lang['user']['admin_user']='Administrador';
+$lang['user']['admin_user']='Administrator';
 
-$lang['user']['use_bb']='Usa html';
+$lang['user']['use_bb']='Can use html';
 
-$lang['user']['size_unlimited']='Tamaño ilimitado';
+$lang['user']['size_unlimited']='Unlimited size';
 
-$lang['user']['welcome']='Bienvenido';
+$lang['user']['welcome']='Welcome';
 
-$lang['user']['here']='Aquí puede modificar sus datos de usuario';
+$lang['user']['here']='Here, you can update your profile';
 
-$lang['user']['pass']='Contraseña';
+$lang['user']['pass']='Password';
 
-$lang['user']['country']='País';
+$lang['user']['country']='Country';
 
-$lang['user']['format_here']='Hora configurada';
+$lang['user']['format_here']='Selected time';
 
-$lang['user']['localtime']='Hora local';
+$lang['user']['localtime']='Local time';
 
-$lang['user']['form_time']='Tipo de hora';
+$lang['user']['form_time']='Time type';
 
-$lang['user']['more_data']='Más datos';
+$lang['user']['more_data']='More data';
 
-$lang['user']['website']='Sitio Web';
+$lang['user']['website']='Website';
 
-$lang['user']['priv_user']='priv_user';
+$lang['user']['priv_user']='Privileges user';
 
-$lang['user']['status_user']='Estado de usuario';
+$lang['user']['status_user']='User status';
 
-$lang['user']['send_user']='Modificar usuario';
+$lang['user']['send_user']='Modify user';
 
-$lang['user']['error_passwd_neq_repeat_passwd']='error_passwd_neq_repeat_passwd';
+$lang['user']['error_passwd_neq_repeat_passwd']='Error: passwords don&#39;t match';
 
-$lang['user']['no_user_profile_exist']='No existe el perfil de usuario';
+$lang['user']['no_user_profile_exist']='The profile don&#39;t exists';
 
 $lang['user']['name_module_users']='name_module_users';
 
 $lang['user']['conditions_register']='Condiciones de registro';
 
-$lang['user']['list_profile']='Lista de perfiles';
+$lang['user']['list_profile']='Profiles list';
 
-$lang['user']['direction']='direction';
+$lang['user']['direction']='Address';
 
 $lang['user']['use_data']='use_data';
 

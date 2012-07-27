@@ -90,7 +90,7 @@ $lang['user']['new_user_is_registered']='Un nuevo usuario se ha registrado.';
 
 $lang['user']['new_user_is_registered_explain']='Se ha registrado un nuevo usuario.';
 
-$lang['user']['your_user_need_activated_explain']='Su usuario necesita ser activado<br />por el administrador.Espere a que este lo haga antes de identificarse en la web.<br />';
+$lang['user']['your_user_need_activated_explain']='Su usuario necesita ser activado&lt;br /&gt;por el administrador.Espere a que este lo haga antes de identificarse en la web.&lt;br /&gt;';
 
 $lang['user']['user_created']='Usuario creado';
 
@@ -230,7 +230,7 @@ $lang['user']['no_success_change_password']='Se produjo un error y no se pudo ca
 
 $lang['user']['hello']='Hola';
 
-$lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
+$lang['user']['<?php echo $key_component; ?>']='&amp;lt;rphp-echo-$key_component;-r&amp;gt;';
 
 $lang['user']['iduser']='Usuario';
 

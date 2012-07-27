@@ -16,8 +16,7 @@ $lang['modules']['deleting_module']='Borrando módulo';
 
 $lang['modules']['module_deleted_if_error_check']='Módulo eliminado con éxito';
 
-$lang['modules']['error_not_set_arr_module_remove']='Error: no está bien configurado el 
-módulo para eliminarlo correctamente, necesita definir la matriz arr_module_remove';
+$lang['modules']['error_not_set_arr_module_remove']='Error: no está bien configurado el<br />módulo para eliminarlo correctamente, necesita definir la matriz arr_module_remove<br />';
 
 $lang['modules']['module_no_exists']='No existe ese módulo';
 

@@ -10,7 +10,7 @@ $lang['error_model']['check_error_field']='Error in field';
 
 $lang['error_model']['check_error_field_required']='Error: field required';
 
-$lang['error_model']['file_no_exists']='File don&#39;t found';
+$lang['error_model']['file_no_exists']='File don&amp;#39;t found';
 
 $lang['error_model']['img_format_error']='Error in image format';
 

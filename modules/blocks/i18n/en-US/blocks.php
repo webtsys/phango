@@ -1,47 +1,47 @@
 <?php
 
-$lang['blocks']['edit_blocks']='edit_blocks';
+$lang['blocks']['edit_blocks']='Edit blocks';
 
-$lang['blocks']['module_no']='module_no';
+$lang['blocks']['module_no']='No module chosen';
 
-$lang['blocks']['dinamyc_pages']='dinamyc_pages';
+$lang['blocks']['dinamyc_pages']='Dynamic pages';
 
-$lang['blocks']['moderator_cant_change_sections']='moderator_cant_change_sections';
+$lang['blocks']['moderator_cant_change_sections']='This moderator can change sections';
 
-$lang['blocks']['inherit_by_default']='inherit_by_default';
+$lang['blocks']['inherit_by_default']='Inherit by default';
 
-$lang['blocks']['no_inherit_by_default']='no_inherit_by_default';
+$lang['blocks']['no_inherit_by_default']='No heredado por defecto';
 
-$lang['blocks']['change_inherit_type']='change_inherit_type';
+$lang['blocks']['change_inherit_type']='Change inherit type';
 
-$lang['blocks']['blocks_left']='blocks_left';
+$lang['blocks']['blocks_left']='Left column sections';
 
-$lang['blocks']['blocks_right']='blocks_right';
+$lang['blocks']['blocks_right']='Right column sections';
 
-$lang['blocks']['activate_barr']='activate_barr';
+$lang['blocks']['activate_barr']='Top barr';
 
-$lang['blocks']['title_block']='title_block';
+$lang['blocks']['title_block']='Block title';
 
-$lang['blocks']['url_block']='url_block';
+$lang['blocks']['url_block']='Url or block content';
 
-$lang['blocks']['hierarchy_block']='hierarchy_block';
+$lang['blocks']['hierarchy_block']='Position';
 
-$lang['blocks']['change_order']='change_order';
+$lang['blocks']['change_order']='Change order';
 
-$lang['blocks']['block_module_no_editable']='block_module_no_editable';
+$lang['blocks']['block_module_no_editable']='Block don&#39;t editable';
 
-$lang['blocks']['begin_block']='begin_block';
+$lang['blocks']['begin_block']='Begin block';
 
-$lang['blocks']['end_block']='end_block';
+$lang['blocks']['end_block']='End block';
 
-$lang['blocks']['static_blocks']='static_blocks';
+$lang['blocks']['static_blocks']='Static blocks';
 
-$lang['blocks']['edit_module_if_exists']='edit_module_if_exists';
+$lang['blocks']['edit_module_if_exists']='Edit module if exists';
 
-$lang['blocks']['edit_html_block']='edit_html_block';
+$lang['blocks']['edit_html_block']='Edit html block';
 
-$lang['blocks']['html_code']='html_code';
+$lang['blocks']['html_code']='Html code';
 
-$lang['blocks']['choose_lang']='choose_lang';
+$lang['blocks']['choose_lang']='Choose language block';
 
 ?>

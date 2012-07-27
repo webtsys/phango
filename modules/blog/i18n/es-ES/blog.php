@@ -8,7 +8,7 @@ $lang['blog']['no_contents']='Sin contenidos';
 
 $lang['blog']['wait_admin']='Espere a que algún administrador incluya algún contenido';
 
-$lang['blog']['edit_in_page_blog']='Edici&amp;oacute;n de propiedad blog en pagina';
+$lang['blog']['edit_in_page_blog']='Edici&amp;amp;oacute;n de propiedad blog en pagina';
 
 $lang['blog']['choose_blog_to_show']='Elegir blog para mostar sus últimos post';
 
