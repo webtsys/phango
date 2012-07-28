@@ -1,71 +1,71 @@
 <?php
 
-$lang['config']['option_date_dmy']='option_date_dmy';
+$lang['config']['option_date_dmy']='Day-Month-Year';
 
-$lang['config']['option_date_ymd']='option_date_ymd';
+$lang['config']['option_date_ymd']='Year-Month-Day';
 
-$lang['config']['ampm24']='ampm24';
+$lang['config']['ampm24']='24 Hours';
 
-$lang['config']['ampmAM']='ampmam';
+$lang['config']['ampmAM']='AM-PM';
 
-$lang['config']['choose_page']='choose_page';
+$lang['config']['choose_page']='Choose page...';
 
-$lang['config']['no_textbb']='no_textbb';
+$lang['config']['no_textbb']='Without html editor';
 
-$lang['config']['no_captcha']='no_captcha';
+$lang['config']['no_captcha']='Without captcha';
 
-$lang['config']['dir_theme']='dir_theme';
+$lang['config']['dir_theme']='Web theme';
 
-$lang['config']['portal_name']='portal_name';
+$lang['config']['portal_name']='Site name';
 
-$lang['config']['portal_email']='portal_email';
+$lang['config']['portal_email']='Website email';
 
-$lang['config']['x_avatar']='x_avatar';
+$lang['config']['x_avatar']='Avatar width';
 
-$lang['config']['y_avatar']='y_avatar';
+$lang['config']['y_avatar']='Avatar height';
 
-$lang['config']['date_format']='date_format';
+$lang['config']['date_format']='Date format';
 
-$lang['config']['ampm']='ampm';
+$lang['config']['ampm']='Time format';
 
-$lang['config']['accept_bbcode_signature']='accept_bbcode_signature';
+$lang['config']['accept_bbcode_signature']='Enable html in signatures';
 
-$lang['config']['name_guest']='name_guest';
+$lang['config']['name_guest']='Guest name';
 
-$lang['config']['metatags']='metatags';
+$lang['config']['metatags']='Metatags';
 
-$lang['config']['meta_description']='meta_description';
+$lang['config']['meta_description']='Meta description';
 
-$lang['config']['meta_author']='meta_author';
+$lang['config']['meta_author']='Web author';
 
-$lang['config']['meta_copyright']='meta_copyright';
+$lang['config']['meta_copyright']='Copyright';
 
-$lang['config']['foot']='foot';
+$lang['config']['foot']='Foot text (you can use html)';
 
-$lang['config']['active_users']='active_users';
+$lang['config']['active_users']='Is the administrator who activated the users?';
 
-$lang['config']['ssl_feature']='ssl_feature';
+$lang['config']['ssl_feature']='SSL';
 
-$lang['config']['cookie_secure']='cookie_secure';
+$lang['config']['cookie_secure']='Secure cookie';
 
-$lang['config']['censoring']='censoring';
+$lang['config']['censoring']='Censoring';
 
-$lang['config']['wait_message']='wait_message';
+$lang['config']['wait_message']='Seconds to wait to send a new message';
 
-$lang['config']['surveys']='surveys';
+$lang['config']['surveys']='Surveys?';
 
-$lang['config']['index_page']='index_page';
+$lang['config']['index_page']='Index page';
 
-$lang['config']['user_extra']='user_extra';
+$lang['config']['user_extra']='Extra fields for user?';
 
-$lang['config']['create_user']='create_user';
+$lang['config']['create_user']='Can register new users?';
 
-$lang['config']['textbb_type']='textbb_type';
+$lang['config']['textbb_type']='Html form type';
 
-$lang['config']['cond_register']='cond_register';
+$lang['config']['cond_register']='Terms of register';
 
-$lang['config']['timezone']='timezone';
+$lang['config']['timezone']='Time zone';
 
-$lang['config']['captcha_type']='captcha_type';
+$lang['config']['captcha_type']='Protection type for posting';
 
 ?>
