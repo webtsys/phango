@@ -190,7 +190,7 @@ $lang['common']['second']='Second';
 
 $lang['common']['logout']='Logout';
 
-$lang['common']['with_*_field_required']='with_*_field_required';
+$lang['common']['with_*_field_required']='The fields with * are required';
 
 $lang['common']['login']='Login';
 

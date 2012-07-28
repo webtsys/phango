@@ -5,22 +5,24 @@ function Change_lang()
 
 	ob_start();
 
-	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $config_data, $arr_i18n, $webtsys_id;
+	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $config_data, $arr_i18n, $webtsys_id, $script_base_controller, $script_file;
 
 	$arr_block=select_view(array('users'));
 	
 	load_libraries(array('form_date'));
 	load_lang('user');
 
+	settype($_GET['language'], 'string');
+	
 	$arr_slug_lang=array();
 
 	foreach($arr_i18n as $lang_item)
 	{
-
-		$arr_slug_lang[slugify($lang_item)]=$lang_item;
+		
+		$arr_slug_lang[$lang_item]=$lang_item;
 
 	}
-
+	
 	if($user_data['IdUser']>0)
 	{
 
@@ -30,15 +32,25 @@ function Change_lang()
 		
 		if($model['user']->update(array('language' => $arr_slug_lang[$_GET['language']]), 'where IdUser='.$user_data['IdUser']))
 		{
+		
 			if($_SERVER['HTTP_REFERER']=='')
 			{
 
 				$_SERVER['HTTP_REFERER']=$base_url;
 
 			}
-
+			
+			//http://localhost/phangodev/index.php/user/show/change_lang/change_language/language/en-US
+			
+			if(  preg_match('change_lang', $_SERVER['HTTP_REFERER']) )
+			{
+			
+				$_SERVER['HTTP_REFERER']=$base_url;
+			
+			}
+			
 			$_SESSION['language']=$arr_slug_lang[$_GET['language']];
-
+			
 			header('Location: '.$_SERVER['HTTP_REFERER']);
 			die;
 
@@ -65,6 +77,13 @@ function Change_lang()
 
 				$_SERVER['HTTP_REFERER']=$base_url;
 
+			}
+			
+			if(  preg_match('change_lang', $_SERVER['HTTP_REFERER']) )
+			{
+			
+				$_SERVER['HTTP_REFERER']=$base_url;
+			
 			}
 
 			$_SESSION['language']=$arr_slug_lang[$_GET['language']];
