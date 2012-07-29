@@ -45,6 +45,7 @@ New Features for next versions.
 - Add to basiclist the posibility of hidden the search form.
 - A function that show a text with option to send a mail to the administrator.
 - Make a more secure password recovery.
+- In admin,include submenus by module. Obtain an array from model file?.
 
 Brainstorming ideas.
 ----------------------------
