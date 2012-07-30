@@ -1,5 +1,5 @@
 <?php
 
-$lang['rank_admin']['rank']='Ranks';
+$lang['rank_admin']['rank_admin_name']='Ranks';
 
 ?>

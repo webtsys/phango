@@ -2252,8 +2252,8 @@ function form_text( $text )
 
     $text = trim( $text );
 
-    $arr_tags=array('/&/', '/</', '/>/', '/"/', '/\'/', "/  /");
-    $arr_entities=array('&amp;', '&lt;', '&gt;', '&quot;', '&#39;', '&nbsp;');
+    $arr_tags=array('/</', '/>/', '/"/', '/\'/', "/  /");
+    $arr_entities=array('&lt;', '&gt;', '&quot;', '&#39;', '&nbsp;');
 	
     if($yes_entities==1)
     {
