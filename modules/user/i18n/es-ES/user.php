@@ -110,7 +110,7 @@ $lang['user']['user']='Usuario';
 
 $lang['user']['new_pass']='Nueva contraseña';
 
-$lang['user']['success_change_password']='Se cambió la contraseña con éxito';
+$lang['user']['success_change_password']='Se cambió la contraseña con éxito.';
 
 $lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
 

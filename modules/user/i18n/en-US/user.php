@@ -324,9 +324,9 @@ $lang['user']['error_nouser']='Error, user don&#39;t exists';
 
 $lang['user']['profile_data']='Profile data';
 
-$lang['user']['user_or_email_exists']='User or email don&#39;t exists';
+$lang['user']['user_or_email_exists']='User or email don&#39;t exists.';
 
-$lang['user']['user_created_success']='User created successfully';
+$lang['user']['user_created_success']='User created successfully.';
 
 $lang['user']['profiles']='Profiles';
 
@@ -382,7 +382,7 @@ $lang['user']['no_user_profile_exist']='The profile don&#39;t exists';
 
 $lang['user']['name_module_users']='name_module_users';
 
-$lang['user']['conditions_register']='Condiciones de registro';
+$lang['user']['conditions_register']='Terms of register';
 
 $lang['user']['list_profile']='Profiles list';
 
