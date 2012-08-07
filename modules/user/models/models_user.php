@@ -209,6 +209,12 @@ $model['login_tried']->components['ip']=new CharField(255);
 $model['login_tried']->components['num_tried']=new IntegerField(11);
 $model['login_tried']->components['time']=new IntegerField(11);
 
+$model['recovery_password']=new Webmodel('recovery_password');
+
+$model['recovery_password']->components['iduser']=new ForeignKeyField('user', 11);
+$model['recovery_password']->components['token_recovery']=new CharField(255);
+$model['recovery_password']->components['date_token']=new DateField();
+
 //Variable for more options in user...
 
 function user_options($iduser)

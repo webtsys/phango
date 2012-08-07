@@ -412,46 +412,148 @@ function Index()
 
 					case 1:
 					
-						$email = form_text( $_POST['email'] );
-
-						$password=generate_random_password(); 
+						settype($_GET['token_recovery'], 'string');
 						
-						$query=$model['user']->select( 'where email="'.$email.'" and iduser>0', array('private_nick', 'email') );
-
-						list( $nick, $email ) = webtsys_fetch_row( $query );
-
-						$topic_email = $lang['user']['lost_name'];
-						$body_email = $lang['user']['hello_lost_pass']."\n\n". $lang['user']['user_data'] . "\n\n".$lang['user']['user']." : $nick"."\n\n". $lang['common']['email']." : $email"."\n\n"  . $lang['user']['new_pass'] . " : $password" . "\n\n" . $lang['common']['thanks'];
+						$_GET['token_recovery']=form_text($_GET['token_recovery']);
 						
-						$password = sha1( $password );
-							
-						if ( $email != "" )
+						if($_GET['token_recovery']=='')
 						{
+						
+							$email = @form_text( $_POST['email'] );
+						
+							$query=$model['user']->select( 'where email="'.$email.'" and iduser>0', array('IdUser', 'private_nick', 'email') );
 							
-							$portal_name=html_entity_decode($config_data['portal_name']);	
-
-							if ( send_mail($email, $topic_email, $body_email) )
+							list($iduser_recovery, $nick, $email)=webtsys_fetch_row($query);
+							
+							settype($iduser_recovery, 'integer');
+							
+							if($iduser_recovery>0)
 							{
-								$query = webtsys_query( "update user set password=\"$password\" where email=\"$email\"" );
-								echo  "<p>" . $lang['user']['success_change_password'].'</p>';
-
-							} 
+							
+								$email = @form_text( $_POST['email'] );
+						
+								$query=$model['user']->select( 'where email="'.$email.'" and iduser>0', array('IdUser', 'private_nick', 'email') );
+								
+								list($iduser_recovery, $nick, $email)=webtsys_fetch_row($query);
+								
+								settype($iduser_recovery, 'integer');
+							
+								//Create token recovery...
+								
+								$token_recovery=get_token();
+								
+								$query=$model['recovery_password']->delete('where iduser='.$iduser_recovery);
+								
+								$query=$model['recovery_password']->insert(array('iduser' => $iduser_recovery, 'token_recovery' => sha1($token_recovery), 'date_token' => TODAY) );
+								
+								//Send email
+								
+								$url_check_token=make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 3, 'token_recovery' => $token_recovery, 'action' => 1));
+								
+								$topic_email = $lang['user']['lost_name'];
+								$body_email = $lang['user']['hello_lost_pass']."\n\n".$lang['user']['explain_code_pass']
+								."\n\n".$lang['user']['copy_paste_code'].': '.$url_check_token."\n\n". $lang['common']['thanks'];
+								
+								
+								
+								if ( send_mail($email, $topic_email, $body_email) )
+								{
+								
+									echo '<p>'.$lang['user']['explain_email_code_pass'].'</p>';
+								
+								}
+								else
+								{
+								
+									echo '<p>'.$lang['user']['cannot_email_code_pass'].'</p>';
+								
+								}
+								
+							
+							}
 							else
 							{
 
-								echo  "<p>" . $lang['user']['success_change_password'].'</p>';
+								echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
+								
+								echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 3))."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
 
-							} 
-						} 
-
+							}
+						
+						}
 						else
 						{
 
-							echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
+							$query=$model['recovery_password']->select('where token_recovery="'.sha1($_GET['token_recovery']).'"', array('iduser'));
+							
+							list($iduser_recovery)=webtsys_fetch_row($query);
+							
+							settype($iduser_recovery, 'integer');
+						
+							if($iduser_recovery>0)
+							{
+							
+								$query=$model['user']->select( 'where IdUser="'.$iduser_recovery.'" and iduser>0', array('IdUser', 'private_nick', 'email') );
+								
+								list($iduser_recovery, $nick, $email)=webtsys_fetch_row($query);
+								
+								settype($iduser_recovery, 'integer');
 
-						} 
+								$password=generate_random_password(); 
 
-						echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 3))."\"><b>" . $lang['common']['go_back'] . "</b></a></div>";
+								$topic_email = $lang['user']['success_change_password'];
+								$body_email = $lang['user']['hello_lost_pass_successful']."\n\n". $lang['user']['user_data'] . "\n\n".$lang['user']['user']." : $nick"."\n\n". $lang['common']['email']." : $email"."\n\n"  . $lang['user']['new_pass'] . " : $password" . "\n\n" . $lang['common']['thanks'];
+								
+								$password = sha1( $password );
+									
+								if ( $email != "" )
+								{
+									
+									$portal_name=html_entity_decode($config_data['portal_name']);	
+									
+									$query=$model['recovery_password']->delete('where iduser='.$iduser_recovery);
+
+									if ( send_mail($email, $topic_email, $body_email) )
+									{
+										$query = webtsys_query( "update user set password=\"$password\" where email=\"$email\"" );
+										
+										echo  "<p>" . $lang['user']['success_change_password'].'</p>';
+										echo  "<p>" . $lang['user']['success_change_password_explain'].'</p>';
+
+									} 
+									else
+									{
+
+										echo  "<p>" . $lang['user']['success_change_password'].'</p>';
+										
+										echo  "<p>" . $lang['user']['error_sending_mail_change_password'].'</p>';
+										
+										echo '<pre>';
+										
+										echo $body_email;
+										
+										echo '</pre>';
+
+									} 
+								} 
+
+								else
+								{
+
+									echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
+
+								}
+								
+							}
+							else
+							{
+							
+								echo  "<p>" . $lang['user']['error_token_pass'].'</p>';
+							
+							}
+
+							echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 0))."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
+						}
 
 					break;
 

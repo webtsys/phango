@@ -390,4 +390,20 @@ $lang['user']['direction']='Address';
 
 $lang['user']['use_data']='use_data';
 
+$lang['user']['explain_code_pass']='You have requested a new password. Copy and paste the url in your browser and the system change the password for you. If you don&#39;t request this operation, ignore this message.';
+
+$lang['user']['copy_paste_code']='Copy and paste this url';
+
+$lang['user']['explain_email_code_pass']='We sent to you, an email with instructions for obtaining a new password to gain access to the system.';
+
+$lang['user']['cannot_email_code_pass']='We cannot send the instructions to change your password to your email. Please contact with the administrator of this site to solve the problem.';
+
+$lang['user']['hello_lost_pass_successful']='Hello, we have changed your password and is shown below. With these data should be back online in the system.';
+
+$lang['user']['success_change_password_explain']='We sent your new password to your email.';
+
+$lang['user']['error_sending_mail_change_password']='How we can not send your new password to your email at this time, we will show your user data in plaintext. For security, change your password once you login in the system.';
+
+$lang['user']['error_token_pass']='Error: wrong code has been used to change a password.';
+
 ?>

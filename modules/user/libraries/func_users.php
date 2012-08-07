@@ -463,4 +463,13 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 
 }
 
+function get_token()
+{
+
+	$rand_prefix=generate_random_password();
+	
+	return sha1( uniqid($rand_prefix, true) );
+
+}
+
 ?>

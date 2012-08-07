@@ -230,11 +230,11 @@ $lang['user']['no_success_change_password']='Se produjo un error y no se pudo ca
 
 $lang['user']['hello']='Hola';
 
-$lang['user']['<?php echo $key_component; ?>']='&amp;lt;rphp-echo-$key_component;-r&amp;gt;';
+$lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 
 $lang['user']['iduser']='Usuario';
 
-$lang['user']['discount']='discount';
+$lang['user']['discount']='Discount';
 
 $lang['user']['discount_percent']='discount_percent';
 
@@ -370,7 +370,7 @@ $lang['user']['more_data']='Más datos';
 
 $lang['user']['website']='Sitio Web';
 
-$lang['user']['priv_user']='priv_user';
+$lang['user']['priv_user']='Privileges user';
 
 $lang['user']['status_user']='Estado de usuario';
 
@@ -387,5 +387,21 @@ $lang['user']['conditions_register']='Condiciones de registro';
 $lang['user']['list_profile']='Lista de perfiles';
 
 $lang['user']['direction']='Dirección';
+
+$lang['user']['explain_code_pass']='Usted ha solicitado una nueva contraseña. Copie y pegue la siguiente url en su navegador, y se generará una nueva contraseña para usted. Si no solicitó esta operación, ignore este mensaje.';
+
+$lang['user']['copy_paste_code']='Copie y pegue esta url';
+
+$lang['user']['explain_email_code_pass']='Hemos enviado a su email un mensaje con instrucciones para obtener una nueva contraseña con la que poder acceder a su sistema.';
+
+$lang['user']['cannot_email_code_pass']='No podemos enviarle a su email las instrucciones para cambiar su contraseña. Por favor, contacte con el administrador de esta web para solucionar el problema.';
+
+$lang['user']['hello_lost_pass_successful']='Hola, hemos cambiado su contraseña y se la mostramos a continuación. Con estos datos podrá volver a identificarse en el sistema.';
+
+$lang['user']['success_change_password_explain']='Hemos enviado a su email su nueva contraseña.';
+
+$lang['user']['error_sending_mail_change_password']='No podemos envíarle su nueva contraseña a su email en este momento, le mostramos sus datos de usuario en texto plano. Para más seguridad, cambie su contraseña una vez logre identificarse en el sistema de nuevo.';
+
+$lang['user']['error_token_pass']='Error: ha utilizado un código incorrecto para cambiar una contraseña.';
 
 ?>
