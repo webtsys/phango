@@ -104,15 +104,31 @@ $lang['user']['lost_name']='Usted solicitó una nueva contraseña';
 
 $lang['user']['hello_lost_pass']='Hola, usted nos ha solicitado una nueva contraseña, ya que no recuerda la antigua.';
 
+$lang['user']['explain_code_pass']='Usted ha solicitado una nueva contraseña. Copie y pegue la siguiente url en su navegador, y se generará una nueva contraseña para usted. Si no solicitó esta operación, ignore este mensaje.';
+
+$lang['user']['copy_paste_code']='Copie y pegue esta url';
+
+$lang['user']['explain_email_code_pass']='Hemos enviado a su email un mensaje con instrucciones para obtener una nueva contraseña con la que poder acceder a su sistema.';
+
+$lang['user']['cannot_email_code_pass']='No podemos enviarle a su email las instrucciones para cambiar su contraseña. Por favor, contacte con el administrador de esta web para solucionar el problema.';
+
+$lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
+
+$lang['user']['success_change_password']='Se cambió la contraseña con éxito.';
+
+$lang['user']['hello_lost_pass_successful']='Hola, hemos cambiado su contraseña y se la mostramos a continuación. Con estos datos podrá volver a identificarse en el sistema.';
+
 $lang['user']['user_data']='Datos de usuario';
 
 $lang['user']['user']='Usuario';
 
 $lang['user']['new_pass']='Nueva contraseña';
 
-$lang['user']['success_change_password']='Se cambió la contraseña con éxito.';
+$lang['user']['success_change_password_explain']='Hemos enviado a su email su nueva contraseña.';
 
-$lang['user']['error_db_pass']='Error, el email que ha introducido no es correcto';
+$lang['user']['error_sending_mail_change_password']='No podemos envíarle su nueva contraseña a su email en este momento, le mostramos sus datos de usuario en texto plano. Para más seguridad, cambie su contraseña una vez logre identificarse en el sistema de nuevo.';
+
+$lang['user']['error_token_pass']='Error: ha utilizado un código incorrecto para cambiar una contraseña.';
 
 $lang['user']['change_data_success']='Se cambió el perfil con éxito...';
 
@@ -387,21 +403,5 @@ $lang['user']['conditions_register']='Condiciones de registro';
 $lang['user']['list_profile']='Lista de perfiles';
 
 $lang['user']['direction']='Dirección';
-
-$lang['user']['explain_code_pass']='Usted ha solicitado una nueva contraseña. Copie y pegue la siguiente url en su navegador, y se generará una nueva contraseña para usted. Si no solicitó esta operación, ignore este mensaje.';
-
-$lang['user']['copy_paste_code']='Copie y pegue esta url';
-
-$lang['user']['explain_email_code_pass']='Hemos enviado a su email un mensaje con instrucciones para obtener una nueva contraseña con la que poder acceder a su sistema.';
-
-$lang['user']['cannot_email_code_pass']='No podemos enviarle a su email las instrucciones para cambiar su contraseña. Por favor, contacte con el administrador de esta web para solucionar el problema.';
-
-$lang['user']['hello_lost_pass_successful']='Hola, hemos cambiado su contraseña y se la mostramos a continuación. Con estos datos podrá volver a identificarse en el sistema.';
-
-$lang['user']['success_change_password_explain']='Hemos enviado a su email su nueva contraseña.';
-
-$lang['user']['error_sending_mail_change_password']='No podemos envíarle su nueva contraseña a su email en este momento, le mostramos sus datos de usuario en texto plano. Para más seguridad, cambie su contraseña una vez logre identificarse en el sistema de nuevo.';
-
-$lang['user']['error_token_pass']='Error: ha utilizado un código incorrecto para cambiar una contraseña.';
 
 ?>
