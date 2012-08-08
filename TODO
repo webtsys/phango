@@ -12,6 +12,7 @@ Knowed Bugs
 ----------------------------
 
 - Fix double barr and warning in check_language.
+- Need add the deleting of recovery passwords token...
 
 New Features for next versions.
 ----------------------------
