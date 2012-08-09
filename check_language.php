@@ -41,7 +41,7 @@ if(isset($arr_options['status']))
 	
 }
 else
-if($arr_options['f']!='')
+if(@$arr_options['f']!='')
 {
 
 	//scan_file($argv[1]);

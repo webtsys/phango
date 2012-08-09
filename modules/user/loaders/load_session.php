@@ -26,6 +26,12 @@ else
 	$ip = trim( nl2br( htmlentities( getenv( "REMOTE_ADDR" ), ENT_QUOTES) ) );
 }
 
+//We need delete recovery_password...
+
+$delete_time_rec=TODAY-7200;
+
+$query=$model['recovery_password']->delete('where date_token<'.$delete_time_rec);
+
 //We need delete anonymous...
 
 $delete_time=TODAY-7200;
