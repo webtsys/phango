@@ -17,21 +17,23 @@ function Index()
 	load_lang('blog');
 
 	settype($_GET['IdBlog'], 'integer');
+	
+	$select_date_blog='date<='.TODAY;
 
 	$select_blog='where IdBlog='.$_GET['IdBlog'];
 
-	$select_count_post='where idblog='.$_GET['IdBlog'];
+	$select_count_post='where idblog='.$_GET['IdBlog'].' and '.$select_date_blog;
 
-	$select_post='and page_blog.idblog='.$_GET['IdBlog'];
+	$select_post='and page_blog.idblog='.$_GET['IdBlog'].' and '.$select_date_blog;
 
 	if($_GET['IdBlog']==0)
 	{
 
 		$select_blog='';
 
-		$select_count_post='';
+		$select_count_post='where '.$select_date_blog;
 
-		$select_post='';
+		$select_post='and page_blog.'.$select_date_blog;
 
 	}
 	

@@ -23,7 +23,7 @@ function Post()
 
 	settype($_GET['IdPage_blog'], 'integer');
 
-	$query=webtsys_query('select page_blog.*, user.private_nick from page_blog, user where user.Iduser=page_blog.author and page_blog.IdPage_blog='.$_GET['IdPage_blog']);
+	$query=webtsys_query('select page_blog.*, user.private_nick from page_blog, user where user.Iduser=page_blog.author and page_blog.date<='.TODAY.' and page_blog.IdPage_blog='.$_GET['IdPage_blog']);
 
 	$result=webtsys_fetch_array($query);
 

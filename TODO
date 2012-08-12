@@ -6,7 +6,7 @@ Testing.
 New features
 ----------------------------
 
-
+- In blogs, if a post date is in the future, show post in the future.
 
 Knowed Bugs
 ----------------------------
@@ -16,7 +16,6 @@ Knowed Bugs
 New Features for next versions.
 ----------------------------
 
-- In blogs, if a post date is in the future, show post in the future.
 - Title in flags of languages.
 - Modules loading automatically in $activated_controllers.
 - Better installer.
