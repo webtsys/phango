@@ -17,6 +17,7 @@ function BlocksAdmin()
 	$_GET['module']=form_text($_GET['module']);
 
 	?>
+	<h3><?php echo $lang['blocks']['edit_blocks_module']; ?></h3>
 	<form method="get" action="<?php echo make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', $arr_data=array('IdModule' => $_GET['IdModule'])); ?>" name="form_block">
 	<?php
 	

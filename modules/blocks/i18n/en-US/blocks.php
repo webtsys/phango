@@ -2,6 +2,8 @@
 
 $lang['blocks']['edit_blocks']='Edit blocks';
 
+$lang['blocks']['edit_blocks_module']='Edit blocks of selected module';
+
 $lang['blocks']['module_no']='No module chosen';
 
 $lang['blocks']['dinamyc_pages']='Dynamic pages';

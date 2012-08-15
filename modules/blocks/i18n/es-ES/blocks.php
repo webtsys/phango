@@ -1,6 +1,8 @@
 <?php
 
-$lang['blocks']['edit_blocks']='Editar bloques';
+$lang['blocks']['edit_blocks']='Editar secciones';
+
+$lang['blocks']['edit_blocks_module']='Editar secciones del módulo elegido';
 
 $lang['blocks']['module_no']='Ningún módulo elegido';
 
