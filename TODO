@@ -9,8 +9,6 @@ New features
 Knowed Bugs
 ----------------------------
 
-- Fix double barr and warning in check_language.
-
 New Features for next versions.
 ----------------------------
 
@@ -45,6 +43,7 @@ New Features for next versions.
 - A function that show a text with option to send a mail to the administrator.
 - Make a more secure password recovery.
 - In admin,include submenus by module. Obtain an array from model file?.
+- Configure modules in administrator.
 
 Brainstorming ideas.
 ----------------------------

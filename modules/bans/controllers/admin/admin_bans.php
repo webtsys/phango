@@ -25,6 +25,7 @@ function BansAdmin()
 	$model['ban']->forms['ip']->label=$lang['common']['ip'];
 	$model['ban']->forms['message']->label=$lang['common']['message'];
 	$model['ban']->forms['time_ban']->label=$lang['bans']['time_ban'];
+	$model['ban']->forms['time_ban']->SetForm(0);
 	$model['ban']->forms['modules_ban']->label=$lang['bans']['modules_ban'];
 
 	$arr_modules=array(array(0), $lang['bans']['all_modules'], 0);

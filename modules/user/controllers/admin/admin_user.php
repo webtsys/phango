@@ -23,6 +23,9 @@ function UserAdmin()
 	$model['user']->forms['password']->required=1;
 	$model['user']->forms['repeat_password']->required=1;
 	$model['user']->forms['avatar']->form='TextForm';
+	
+	$model['user']->forms['show_email']->SetForm(0);
+	$model['user']->forms['hidden_status']->SetForm(0);
 
 	switch($_GET['op'])
 	{
