@@ -7,7 +7,7 @@ Well, I think that variables don't need explain but...
 
 **********************/
 
-//No touch, define a constant neccesary for diverses scripts...
+//Don't touch, define a constant neccesary for diverses scripts...
 
 define('PAGE', '1');
 
@@ -31,13 +31,13 @@ define('TYPE_DB','mysql');
 
 #Path variables
 
-//Cookie_path, normally coincides with the first server directory path
+//Cookie_path, path of cookie, Example,if your domain is http://www.example.com/mysite, the content in content_path will be '/mysite/'. If your domain is http://www.example.com, you don't need change default $cookie_path
 $cookie_path = '/';
 
 //The name of session...
 define('COOKIE_NAME', 'webtsys_id');
 
-//base url, without last slash, this is 
+//base url, without last slash. Put here tipically, the url of home page of your site.
 $base_url = 'http://www.example.com';
 
 //base path, the REAL PATH in the server. 
@@ -50,7 +50,7 @@ define('DEBUG', '1');
 
 //Language, define display language, you can create many new languages using check_language.php, for the code, use the l10n standard.
 $language = 'en-US';
-//Avaliables languages, you can add a new language appending a new language in the array.
+//Avaliables languages, you can append a new language in the array.
 $arr_i18n=array('es-ES','en-US');
 
 //Touch this variables only if you know that you make.
@@ -60,7 +60,7 @@ $arr_i18n_tinycme=array('es-ES' => 'es.js','en-ES' => 'en.js');
 //Timezone, define timezone, you can choose timezones from this list: http://php.net/manual/es/timezones.php
 define('MY_TIMEZONE', 'America/New_York');
 
-//App index.Here you
+//App index.Here you can say to phango what module want that is showed in home page.
 
 $app_index='welcome';
 

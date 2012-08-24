@@ -17,6 +17,39 @@ if(!@include("config.php"))
 
 }
 
+//Check if path is correct...
+
+if(!file_exists($base_path))
+{
+
+	$base_path=str_replace('application/index.php', '', $_SERVER['SCRIPT_FILENAME']);
+	
+	$http='http://';
+	
+	if(isset($_SERVER['HTTPS']))
+	{
+	
+		$http='https://';
+	
+	}
+	
+	$base_url=$http.$_SERVER['SERVER_NAME'].''.str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+	
+	
+	//echo $_SERVER['SCRIPT_NAME'];
+	//echo $_SERVER['SERVER_NAME'];
+	
+	/*echo $base_url;
+	
+	die;*/
+
+	/*include('../views/default/common/common.php');
+
+	CommonView('Phango Framework is installed', '<p>Phango Framework is installed, but you need a correct $base_path variable</p><p>Copy config_sample.php  to config.php and edit the file</p>');
+	die();*/
+
+}
+
 session_name(COOKIE_NAME.'_session');
 
 session_set_cookie_params(0, $cookie_path);
