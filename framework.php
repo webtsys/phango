@@ -24,6 +24,17 @@ if(!file_exists($base_path))
 
 	$base_path=str_replace('application/index.php', '', $_SERVER['SCRIPT_FILENAME']);
 	
+	//Need port, if 80 $port=''
+	
+	$port=':'.$_SERVER['SERVER_PORT'];
+	
+	if($port==':80')
+	{
+	
+		$port='';
+	
+	}
+	
 	$http='http://';
 	
 	if(isset($_SERVER['HTTPS']))
@@ -33,20 +44,11 @@ if(!file_exists($base_path))
 	
 	}
 	
-	$base_url=$http.$_SERVER['SERVER_NAME'].''.str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+	$cookie_path=str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
 	
+	$base_url=$http.$_SERVER['SERVER_NAME'].$port.''.str_replace('/index.php', '', $cookie_path);
 	
-	//echo $_SERVER['SCRIPT_NAME'];
-	//echo $_SERVER['SERVER_NAME'];
-	
-	/*echo $base_url;
-	
-	die;*/
-
-	/*include('../views/default/common/common.php');
-
-	CommonView('Phango Framework is installed', '<p>Phango Framework is installed, but you need a correct $base_path variable</p><p>Copy config_sample.php  to config.php and edit the file</p>');
-	die();*/
+	$cookie_path=$cookie_path.'/';
 
 }
 
@@ -184,7 +186,7 @@ $select_db=@webtsys_select_db( $db );
 
 
 //If no connect error message...
-
+/*
 if($connection==false  || $select_db!=1) {
     
 	$arr_error_sql[0]='Please wait. The site is down.';    
@@ -194,7 +196,7 @@ if($connection==false  || $select_db!=1) {
 	die();
 
 }
-
+*/
 //Variables
 
 //set_magic_quotes is deprecated but many versions of php use them and we need disable it...
@@ -203,62 +205,67 @@ if($connection==false  || $select_db!=1) {
 
 //Preparing models for checking in load_model...
 
-$table='';
-
-$query=webtsys_query(SQL_SHOW_TABLES);
-
-while(list($table)=webtsys_fetch_row($query))
+if($connection!=false  && $select_db==1) 
 {
 
-	$arr_check_table[$table]=1;
+	$table='';
 
-}
+	$query=webtsys_query(SQL_SHOW_TABLES);
 
-//Now loading things how sessions or another modules.
-
-if(isset($arr_check_table['module']))
-{
-	
-	load_model("modules");
-
-	$module_names=array();
-
-	$query=$model['module']->select('WHERE load_module!="" order by order_module ASC', array('IdModule', 'name', 'load_module') );
-
-	while(list($idmodule, $module, $load_module)=webtsys_fetch_row($query)) 
+	while(list($table)=webtsys_fetch_row($query))
 	{
-		
-		$module_names[$idmodule]=basename($module);
-		$general_modules[]=basename($load_module);
-		
+
+		$arr_check_table[$table]=1;
+
 	}
 
-	$c_modules=0;
+	//Now loading things how sessions or another modules.
 
-	foreach($module_names as $module) 
+	if(isset($arr_check_table['module']))
 	{
 		
-		if(!include($base_path.'modules/'.$module.'/loaders/'.$general_modules[$c_modules]))
+		load_model("modules");
+
+		$module_names=array();
+
+		$query=$model['module']->select('WHERE load_module!="" order by order_module ASC', array('IdModule', 'name', 'load_module') );
+
+		while(list($idmodule, $module, $load_module)=webtsys_fetch_row($query)) 
 		{
-
-			$arr_error_sql[0]='<p>Error: Cannot load a loader.</p>';    
-			$arr_error_sql[1]='<p>Error: Cannot load '.$general_modules[$c_modules].' loader.</p>';
 			
-			$output=ob_get_contents();
-
-			$arr_error_sql[1].='<p>Output: '.$output.'</p>';
-
-			ob_clean();
-		
-			echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
-
-			die();
-
+			$module_names[$idmodule]=basename($module);
+			$general_modules[]=basename($load_module);
+			
 		}
-		
-		$c_modules++;
-	}
 
+		$c_modules=0;
+
+		foreach($module_names as $module) 
+		{
+			
+			if(!include($base_path.'modules/'.$module.'/loaders/'.$general_modules[$c_modules]))
+			{
+
+				$arr_error_sql[0]='<p>Error: Cannot load a loader.</p>';    
+				$arr_error_sql[1]='<p>Error: Cannot load '.$general_modules[$c_modules].' loader.</p>';
+				
+				$output=ob_get_contents();
+
+				$arr_error_sql[1].='<p>Output: '.$output.'</p>';
+
+				ob_clean();
+			
+				echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
+
+				die();
+
+			}
+			
+			$c_modules++;
+		}
+
+	}
+	
 }
 
 //Check for csrf attacks

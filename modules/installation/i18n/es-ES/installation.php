@@ -1,5 +1,9 @@
 <?php
 
+$lang['installation']['create_config_file']='Crear fichero de configuración';
+
+$lang['installation']['create_config_file_explain']='create_config_file_explain';
+
 $lang['installation']['create_user']='Crear usuario';
 
 $lang['installation']['create_user_explain']='Introduzca su nombre de usuario y email para crear al usuario administrador de la web';

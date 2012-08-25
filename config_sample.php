@@ -44,7 +44,7 @@ $base_url = 'http://www.example.com';
 $base_path='/var/www/htdocs/phango/';
 
 //DEBUG, if you active DEBUG, phango send messages with error to stdout
-define('DEBUG', '1');
+define('DEBUG', '0');
 
 #Language variables
 
