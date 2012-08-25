@@ -31,7 +31,27 @@ function Index()
 	
 	}
 	
-	$arr_forms['language']=new ModelForm('config', 'language', 'SelectForm', $lang['common']['change_language'], new ChoiceField(255, 'string', $arr_i18n), $required=1, $parameters=$arr_lang);
+	$arr_forms['language']=new ModelForm('config', 'language', 'SelectForm', $lang['installation']['choose_language'], new ChoiceField(255, 'string', $arr_i18n), $required=1, $parameters=$arr_lang);
+	
+	$arr_forms_lang['language']=$arr_forms['language'];
+	
+	//Host_db,db, login_db, pass_db, cookie_path, COOKIE_NAME, $base_url, $base_path, $language, MY_TIMEZONE, app_index=pages, activated_controllers=array('admin', 'pages', 'blog', 'shop','jscript', 'user', 'templates', prefix_key
+			
+	$arr_forms['host_db']=new ModelForm('config', 'host_db', 'TextForm', $lang['installation']['host_db'], new CharField(255), $required=1, $parameters='localhost');
+	
+	$arr_forms['login_db']=new ModelForm('config', 'login_db', 'TextForm', $lang['installation']['host_db'], new CharField(255), $required=1, $parameters='');
+	
+	$arr_forms['pass_db']=new ModelForm('config', 'pass_db', 'PasswordForm', $lang['installation']['pass_db'], new CharField(255), $required=1, $parameters='');
+	
+	$arr_forms['cookie_path']=new ModelForm('config', 'cookie_path', 'TextForm', $lang['installation']['cookie_path'], new CharField(255), $required=1, $parameters=$cookie_path);
+	
+	$arr_forms['cookie_name']=new ModelForm('config', 'cookie_name', 'TextForm', $lang['installation']['cookie_name'], new CharField(255), $required=1, $parameters=COOKIE_NAME);
+	
+	$arr_forms['cookie_name']=new ModelForm('config', 'cookie_name', 'TextForm', $lang['installation']['cookie_name'], new CharField(255), $required=1, $parameters=COOKIE_NAME);
+	
+	$arr_forms['base_url']=new ModelForm('config', 'base_url', 'TextForm', $lang['installation']['base_url'], new CharField(255), $required=1, $parameters=$base_url);
+	
+	$arr_forms['base_path']=new ModelForm('config', 'base_path', 'TextForm', $lang['installation']['base_path'], new CharField(255), $required=1, $parameters=$base_path);
 
 	switch($_GET['op'])
 	{
@@ -44,7 +64,7 @@ function Index()
 			
 			//new ChoiceField(255, 'string', $arr_i18n);
 			
-			echo load_view(array($arr_forms, $arr_fields=array(), make_fancy_url($base_url, 'installation', 'index', 'install_phango', array('op' => 1) )), 'common/forms/updatemodelform'); 
+			echo load_view(array($arr_forms_lang, $arr_fields=array(), make_fancy_url($base_url, 'installation', 'index', 'install_phango', array('op' => 1) )), 'common/forms/updatemodelform'); 
 		
 		break;
 		
@@ -68,8 +88,11 @@ function Index()
 			
 			//echo $_SESSION['language_install'];
 			
-			//Host_db,db, login_db, pass_db, cookie_path, COOKIE_NAME, $base_url, $base_path, $language, MY_TIMEZONE, app_index=pages, activated_controllers=array('admin', 'pages', 'blog', 'shop','jscript', 'user', 'templates'
-			//prefix_key
+			echo '<h1>'.$lang['installation']['create_config_file'].'</h1>';
+			
+			echo '<p>'.$lang['installation']['create_config_file_explain_fields'].'</p><hr />';
+			
+			echo load_view(array($arr_forms, $arr_fields=array(), make_fancy_url($base_url, 'installation', 'index', 'install_phango', array('op' => 1) )), 'common/forms/updatemodelform'); 
 		
 		break;
 		
