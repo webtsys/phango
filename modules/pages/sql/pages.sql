@@ -1,0 +1,3 @@
+INSERT INTO `page` VALUES (1,'a:2:{s:5:\"es-ES\";s:16:\"Pagina principal\";s:5:\"en-US\";s:9:\"Home Page\";}','a:2:{s:5:"es-ES";s:104:"Esta es una p&aacute;gina de ejemplo para Web-T-syS <strong>CMS</strong> y Phango <strong>Shop</strong>!";s:5:"en-US";s:105:"<p>This is a home page example for Web-T-syS <strong>CMS</strong> and Phango <strong>Shop</strong>!.</p> ";}');
+
+UPDATE config_webtsys set index_page='1';

@@ -50,6 +50,7 @@ $model['property_page']->components['options']=new SerializeField();
 
 $model['property_page']->components['order_page']=new IntegerField();
 
+$arr_module_sql['pages']='pages.sql';
 
 $arr_module_insert['pages']=array('name' => 'pages', 'admin' => 1, 'admin_script' => array('pages', 'pages'), 'load_module' => '', 'app_index' => 1, 'required' => 1);
 
