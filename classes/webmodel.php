@@ -1609,59 +1609,98 @@ class DateField {
 	
 }
 
-//FileField is a field for upload files...
-
 class FileField {
 
-	public $value="";	
+	public $value="";
 	public $label="";
 	public $required=0;
 	public $form="FileForm";
 	public $name_file="";
 	public $path="";
+	public $url_path="";
 	public $type='';
 	public $quot_open='\'';
 	public $quot_close='\'';
 	public $std_error='';
 
-	function __construct($name_file, $path, $type)
+	function __construct($name_file, $path, $url_path, $type)
 	{
 
 		$this->name_file=$name_file;
 		$this->path=$path;
+		$this->url_path=$url_path;
 		$this->type=$type;
 
 	}
 
-	//The check look if the file is upload and prevents the file type is not php
-	//Obviously can't prevent if the file is dangerous or not. To fix in next releases.
-
+	//Check if the file is correct..
+	
 	function check($file)
-	{
-
-		global $lang;
-
-		$this->value=form_text($_FILES[$file]['name']);
-	
-		if(!preg_match("/\.php/",$_FILES[$file]['tmp_name']))
-		{
-			if( move_uploaded_file ( $_FILES[$file]['tmp_name'] , $this->path.'/'.$_FILES[$file]['name'] ))
-			{
+	{	
 		
-				return $_FILES[$file]['name'];
-	
-			}
-			else
+		global $lang;
+		
+		$file_field=$this->name_file;
+
+		settype($_POST['delete_'.$file_field], 'integer');
+		
+		if($_POST['delete_'.$file_field]==1)
+		{
+
+			$file_delete=form_text($_POST[$file_field]);
+
+			if($file_delete!='')
 			{
 
-				$this->std_error.=$lang['error_model']['file_no_exists'];
+				@unlink($this->path.'/'.$file_delete);
+
+				$file='';
 
 			}
+
+		}
+		
+		if(isset($_FILES[$file_field]['tmp_name']))
+		{
+				
+			if($_FILES[$file_field]['tmp_name']!='')
+			{
+	
+				if( move_uploaded_file ( $_FILES[$file_field]['tmp_name'] , $this->path.'/'.$_FILES[$file_field]['name'] ) )
+				{
+
+					return $_FILES[$file_field]['name'];
+
+					//return $this->path.'/'.$_FILES[$file]['name'];
+					
+				}
+				else
+				{
+
+					$this->std_error=$lang['common']['error_cannot_upload_this_file_to_the_server'];
+
+					return '';
+
+				}
+					
+
+			}
+			else if($file!='')
+			{
+
+				return $file;
+
+			}
+
 		}
 
+		$this->value='';
+		
 		return '';
-	
+
+
 	}
+
 
 	function get_type_sql()
 	{
@@ -1674,6 +1713,13 @@ class FileField {
 	{
 
 		return $value;
+
+	}
+	
+	function show_file_url($value)
+	{
+
+		return $this->url_path.'/'.$value;
 
 	}
 
@@ -1739,12 +1785,12 @@ class ImageField {
 			/*print_r($_POST);
 			die;*/
 
-			$image_bill=form_text($_POST['image_bill']);
+			$image_file=form_text($_POST[$file]);
 
-			if($image_bill!='')
+			if($image_file!='')
 			{
 
-				@unlink($this->path.'/'.$image_bill);
+				@unlink($this->path.'/'.$image_file);
 
 				$image='';
 
@@ -2535,21 +2581,30 @@ function PasswordFormSet($post, $value)
 
 //Create a input file
 
-function FileForm($name="", $class='', $value='')
+function FileForm($name="", $class='', $value='', $delete_inline=0, $path_file='')
 {
+	
+	global $base_url, $base_path, $lang;
 
-	global $lang;
-
-	$file_url='';
+	$file_url=$path_file.'/'.$value;
+	
+	$file_exist='';
 
 	if($value!='')
 	{
 
-		$value.' <input type="checkbox" name="delete_'.$name.'" value="1"> '.$lang['common']['delete_file'];
+		$file_exist='<a href="'.$file_url.'">'.basename($value).'</a> ';
+		
+		if($delete_inline==1)
+		{
+
+			$file_exist.=$lang['common']['delete_file'].' <input type="checkbox" name="delete_'.$name.'" class="'.$class.'" value="1" />';
+
+		}
 
 	}
 
-	return '<input type="file" name="'.$name.'" class="'.$class.'" value="" /> '.$value;
+	return '<input type="hidden" name="'.$name.'" value="'.$value.'"/><input type="file" name="'.$name.'" class="'.$class.'" value="" /> '.$file_exist;
 
 }
 
@@ -2557,12 +2612,13 @@ function FileForm($name="", $class='', $value='')
 
 function FileFormSet($post, $value)
 {
-
+	
 	$value = replace_quote_text( $value );
 
 	return $value;
 
 }
+
 
 //Create a special form for a image
 
