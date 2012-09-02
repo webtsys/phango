@@ -58,6 +58,8 @@ $lang['common']['no']='No';
 
 $lang['common']['yes']='Sí';
 
+$lang['common']['error_cannot_upload_this_file_to_the_server']='error_cannot_upload_this_file_to_the_server';
+
 $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: no puedo subir la imagen al servidor. ¿Hay permisos para ello?.';
 
 $lang['common']['any_option_chosen']='Elija cualquier opción...';

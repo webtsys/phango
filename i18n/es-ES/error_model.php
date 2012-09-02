@@ -8,10 +8,10 @@ $lang['error_model']['check_error_field']='Error en campo';
 
 $lang['error_model']['check_error_field_required']='Error: campo requerido';
 
-$lang['error_model']['file_no_exists']='Archivo no encontrado';
-
 $lang['error_model']['img_format_error']='Error en formato de imagen';
 
 $lang['error_model']['email_format_error']='Error en formato de email';
+
+$lang['error_model']['file_no_exists']='Archivo no encontrado';
 
 ?>
