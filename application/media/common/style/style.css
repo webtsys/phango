@@ -143,6 +143,7 @@ h1
 	background-position:top;
 	background-repeat: repeat-x;
 	background-color: #fcf7fd;
+	border-radius: 8px 8px 0px 0px;
 	border:solid #cccccc;
 	border-width:1px 1px 1px 1px;
 	color: #333333;
@@ -299,6 +300,7 @@ margin-right:auto;
 	position:relative;
 	overflow:auto;
 	margin-bottom:10px;
+	border-radius: 0px 0px 5px 5px;
 	
 }
 
