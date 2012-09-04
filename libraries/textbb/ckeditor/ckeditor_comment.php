@@ -15,12 +15,12 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 
 	$edit_image='';
 
-	/*if(ini_get ( "allow_url_fopen" )==1)
+	if(ini_get ( "allow_url_fopen" )==1)
 	{
 
 		$edit_image=', \'Image\'';
 
-	}*/
+	}
 	
 	?>
 	

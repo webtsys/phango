@@ -123,7 +123,19 @@ $model['comment_blog']->components['text']->allowedtags['em']=array('pattern' =>
 $model['comment_blog']->components['text']->allowedtags['i']=array('pattern' => '/&lt;i.*?&gt;(.*?)&lt;\/i&gt;/s', 'replace' => '<i_tmp>$1</i_tmp>', 'example' => '<i></i>');
 $model['comment_blog']->components['text']->allowedtags['u']=array('pattern' => '/&lt;u.*?&gt;(.*?)&lt;\/u&gt;/s', 'replace' => '<u_tmp>$1</u_tmp>', 'example' => '<u></u>');
 $model['comment_blog']->components['text']->allowedtags['blockquote']=array('pattern' => '/&lt;blockquote.*?&gt;(.*?)&lt;\/blockquote&gt;/s', 'replace' => '<blockquote_tmp>$1</blockquote_tmp>', 'example' => '<blockquote></blockquote>', 'recursive' => 1);
-$model['comment_blog']->components['text']->allowedtags['img']=array('pattern' => '/&lt;img.*?alt=&quot;([aA-zZ]+)&quot;.*?src=&quot;('.str_replace('/', '\/', $base_url).'\/media\/smileys\/[^\r\n\t<"].*?)&quot;.*?\/&gt;/', 'replace' => '<img_tmp alt="$1" src="$2"/>', 'example' => '<img alt="emoticon" src="" />');
+//$model['comment_blog']->components['text']->allowedtags['img']=array('pattern' => '/&lt;img.*?alt=&quot;([aA-zZ]+)&quot;.*?src=&quot;('.str_replace('/', '\/', $base_url).'\/media\/smileys\/[^\r\n\t<"].*?)&quot;.*?\/&gt;/', 'replace' => '<img_tmp alt="$1" src="$2"/>', 'example' => '<img alt="emoticon" src="" />');
+
+$model['comment_blog']->components['text']->allowedtags['img_emoticon']=array('pattern' => '/&lt;img.*?alt=&quot;([aA-zZ]+)&quot;.*?src=&quot;('.str_replace('/', '\/', $base_url).'\/media\/smileys\/[^\r\n\t<"].*?)&quot;.*?\/&gt;/', 'replace' => '<img_tmp alt="$1" src="$2"/>', 'example' => '<img alt="emoticon" src="" />');
+
+if(ini_get ( "allow_url_fopen" )==1)
+{
+
+	load_libraries(array('check_image'));
+
+	$model['comment_blog']->components['text']->allowedtags['img']=array('pattern' => '/&lt;img.*?src=&quot;(http:\/\/.*?)&quot;.*?\/&gt;/e', 'replace' => 'check_image(\'$1\')', 'example' => '<img src="http://www.domain.com/images/image.png" />');
+
+}
+
 
 $model['comment_blog']->components['text']->required=1;
 
