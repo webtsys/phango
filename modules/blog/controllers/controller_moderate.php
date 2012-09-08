@@ -263,32 +263,62 @@ function Moderate()
 			break;
 
 			case 3:
-
+			
+				settype($_GET['yes_delete'], 'integer');
+				
 				settype($_GET['IdComment_blog'], 'integer');
 
 				$query=$model['comment_blog']->select('where IdComment_blog='.$_GET['IdComment_blog'], array(), 1);
 
 				$result=webtsys_fetch_array($query);
 				
+				settype($result['IdComment_blog'], 'integer');
 				settype($result['idpage_blog'], 'integer');
-
-				$query=$model['page_blog']->select('where IdPage_blog='.$result['idpage_blog'], array('title'));
 				
+				$query=$model['page_blog']->select('where IdPage_blog='.$result['idpage_blog'], array('title'));
+					
 				list($title_page_blog)=webtsys_fetch_row($query);
 				
-				$model['page_blog']->reset_require();
+				if($_GET['yes_delete']==1)
+				{
+					
+					$model['page_blog']->reset_require();
 
-				$model['page_blog']->components['num_comments']=new CharField(255);
-				$model['page_blog']->components['num_comments']->quot_open='';
-				$model['page_blog']->components['num_comments']->quot_close='';
+					$model['page_blog']->components['num_comments']=new CharField(255);
+					$model['page_blog']->components['num_comments']->quot_open='';
+					$model['page_blog']->components['num_comments']->quot_close='';
 
-				$model['page_blog']->update(array('num_comments' => 'num_comments-1'), 'where IdPage_blog='.$result['idpage_blog']);
+					$model['page_blog']->update(array('num_comments' => 'num_comments-1'), 'where IdPage_blog='.$result['idpage_blog']);
 
-				$model['comment_blog']->delete('where IdComment_blog='.$_GET['IdComment_blog']);
+					$model['comment_blog']->delete('where IdComment_blog='.$_GET['IdComment_blog']);
 
-				load_libraries(array('redirect'));
+					load_libraries(array('redirect'));
+					
+					ob_end_clean();
 
-				die( redirect_webtsys( make_fancy_url($base_url, 'blog', 'post', $title_page_blog, array('IdPage_blog' => $result['idpage_blog']) ),  $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+					die( redirect_webtsys( make_fancy_url($base_url, 'blog', 'post', $title_page_blog, array('IdPage_blog' => $result['idpage_blog']) ),  $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+					
+				}
+				else
+				{
+					//http://localhost/phangodev/index.php/blog/show/moderate/moderate_comment/IdComment_blog/4/IdBlog//op/3
+					
+					echo '<h3>'.$lang['blog']['do_you_want_delete_post'].'</h3>';
+					
+					?>
+					<form method="get" action="<?php echo make_fancy_url($base_url, 'blog', 'moderate', 'moderate_comment', array('IdComment_blog' => $result['IdComment_blog'], 'IdBlog' => $result['idpage_blog'], 'op' => 3, 'yes_delete' => 1)); ?>">
+					<?php
+					
+					echo load_view(array($result['author'], $result['text']), 'content');
+					
+					?>
+					<input type="submit" value="<?php echo $lang['common']['yes']; ?>" />
+					<input type="button" value="<?php echo $lang['common']['no']; ?>" onclick="javascript:location.href='<?php echo make_fancy_url($base_url, 'blog', 'post', $title_page_blog, array('IdPage_blog' => $result['idpage_blog']) ); ?>';"/>
+					</form>
+					<?php
+					
+				
+				}
 
 			break;
 

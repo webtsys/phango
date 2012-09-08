@@ -46,6 +46,8 @@ $lang['blog']['tag']='Tag';
 
 $lang['blog']['edit_comment_from_page_blog']='Edit comment for this post';
 
+$lang['blog']['do_you_want_delete_post']='do_you_want_delete_post';
+
 $lang['blog']['moderate_blogs']='Moderate blogs';
 
 $lang['blog']['wait_admin']='You should wait for an administrator to write something';

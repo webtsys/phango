@@ -46,6 +46,8 @@ $lang['blog']['tag']='Etiqueta';
 
 $lang['blog']['edit_comment_from_page_blog']='Editar comentario de este artículo';
 
+$lang['blog']['do_you_want_delete_post']='do_you_want_delete_post';
+
 $lang['blog']['moderate_blogs']='Moderar blogs';
 
 $lang['blog']['wait_admin']='Espere a que algún administrador incluya algún contenido';
