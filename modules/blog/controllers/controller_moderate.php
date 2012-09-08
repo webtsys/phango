@@ -237,28 +237,42 @@ function Moderate()
 				$query=$model['comment_blog']->select('where IdComment_blog='.$_GET['IdComment_blog'], array(), 1);
 
 				$comment_post=webtsys_fetch_array($query);
-
-				$query=$model['page_blog']->select('where IdPage_blog='.$comment_post['idpage_blog'], array('title'), 1);
-
-				list($title_page_blog)=webtsys_fetch_row($query);
-
-				echo '<h3>'.$lang['blog']['edit_comment_from_page_blog'].': '.$title_page_blog.'</h3>';
 				
-				$model['comment_blog']->create_form();
-
-				unset($_POST['idpage_blog']);
-
-				$idpage_blog=$comment_post['idpage_blog'];
-
-				unset($comment_post['idpage_blog']);
-
-				$model['comment_blog']->components['idpage_blog']->required=0;
+				settype($comment_post['IdComment_blog'], 'integer');
 				
-				SetValuesForm($comment_post, $model['comment_blog']->forms, 0);
+				if($comment_post['IdComment_blog']>0)
+				{
+				
+					$query=$model['page_blog']->select('where IdPage_blog='.$comment_post['idpage_blog'], array('title'), 1);
 
-				InsertModelForm('comment_blog', $url_edit, $url_edit, $arr_fields=array('author', 'text', 'email', 'website', 'ip', 'date_comment'), $_GET['IdComment_blog'], $goback=0);
+					list($title_page_blog)=webtsys_fetch_row($query);
 
-				echo '<p><a href="'.make_fancy_url($base_url, 'blog', 'post', $title_page_blog, array('IdPage_blog' => $idpage_blog) ).'">'.$lang['common']['go_back'].'</a></p>';
+					echo '<h3>'.$lang['blog']['edit_comment_from_page_blog'].': '.$title_page_blog.'</h3>';
+					
+					$model['comment_blog']->create_form();
+
+					unset($_POST['idpage_blog']);
+
+					$idpage_blog=$comment_post['idpage_blog'];
+
+					unset($comment_post['idpage_blog']);
+
+					$model['comment_blog']->components['idpage_blog']->required=0;
+					
+					$model['comment_blog']->forms['author']->label=$lang['blog']['author'];
+					$model['comment_blog']->forms['text']->label=$lang['common']['text'];
+					$model['comment_blog']->forms['email']->label=$lang['common']['email'];
+					$model['comment_blog']->forms['website']->label=$lang['common']['website'];
+					$model['comment_blog']->forms['ip']->label=$lang['common']['ip'];
+					$model['comment_blog']->forms['date_comment']->label=$lang['common']['date'];
+					
+					SetValuesForm($comment_post, $model['comment_blog']->forms, 0);
+
+					InsertModelForm('comment_blog', $url_edit, $url_edit, $arr_fields=array('author', 'text', 'email', 'website', 'ip', 'date_comment'), $_GET['IdComment_blog'], $goback=0);
+
+					echo '<p><a href="'.make_fancy_url($base_url, 'blog', 'post', $title_page_blog, array('IdPage_blog' => $idpage_blog) ).'">'.$lang['common']['go_back'].'</a></p>';
+					
+				}
 
 			break;
 

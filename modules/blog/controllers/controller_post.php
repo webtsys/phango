@@ -57,9 +57,9 @@ function Post()
 
 				global $lang, $result, $base_url;
 
-				$url_moderate=make_fancy_url($base_url, 'blog', 'moderate', 'moderate_comment', array('IdComment_blog' => $idcomment, 'IdBlog' => $result['idblog'], 'op' => 2));
+				$url_moderate=make_fancy_url($base_url, 'blog', 'moderate', 'moderate_comment', array('IdComment_blog' => $idcomment, 'op' => 2));
 
-				$url_delete_post=make_fancy_url($base_url, 'blog', 'moderate', 'moderate_comment', array('IdComment_blog' => $idcomment, 'IdBlog' => $result['idblog'], 'op' => 3));
+				$url_delete_post=make_fancy_url($base_url, 'blog', 'moderate', 'moderate_comment', array('IdComment_blog' => $idcomment, 'op' => 3));
 		
 				return '<a href="'.$url_moderate.'">'.$lang['blog']['edit_comment'].'</a> <a href="'.$url_delete_post.'">'.$lang['blog']['delete_comment'].'</a>';
 		
