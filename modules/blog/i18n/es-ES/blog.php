@@ -46,7 +46,7 @@ $lang['blog']['tag']='Etiqueta';
 
 $lang['blog']['edit_comment_from_page_blog']='Editar comentario de este artículo';
 
-$lang['blog']['do_you_want_delete_post']='do_you_want_delete_post';
+$lang['blog']['do_you_want_delete_post']='¿Quieres eliminar este comentario?';
 
 $lang['blog']['moderate_blogs']='Moderar blogs';
 
@@ -122,13 +122,13 @@ $lang['blog']['posted_by']='Enviado por';
 
 $lang['blog']['tags']='Etiquetas';
 
-$lang['blog']['edit_in_page_blog']='Edici&amp;amp;oacute;n de propiedad blog en pagina';
+$lang['blog']['edit_in_page_blog']='Edición de propiedad blog en pagina';
 
 $lang['blog']['choose_blog_to_show']='Elegir blog para mostar sus últimos post';
 
 $lang['blog']['num_post_home_index_blog']='Número de posts en página principal';
 
-$lang['blog']['error_you_cannot_use_this_email']='Error, tu no puedes usar este email';
+$lang['blog']['error_you_cannot_use_this_email']='Error, no puedes usar este email';
 
 $lang['blog']['principal_categories']='Categorías principales';
 

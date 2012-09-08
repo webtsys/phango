@@ -46,7 +46,7 @@ $lang['blog']['tag']='Tag';
 
 $lang['blog']['edit_comment_from_page_blog']='Edit comment for this post';
 
-$lang['blog']['do_you_want_delete_post']='do_you_want_delete_post';
+$lang['blog']['do_you_want_delete_post']='Do you want delete this post?';
 
 $lang['blog']['moderate_blogs']='Moderate blogs';
 
