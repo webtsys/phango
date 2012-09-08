@@ -19,7 +19,7 @@ function update_block($url)
 	load_libraries(array('forms/textareabb'));
 
 	$num_blocks=$model['html_block']->select_count('where idblock='.$_GET['IdBlocks'], 'IdHtml_block');
-	echo mysql_error();
+	
 	$query=$model['blocks']->select('where IdBlocks='.$_GET['IdBlocks'], array('title_block') );
 	
 	list($title)=webtsys_fetch_row($query);

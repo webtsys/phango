@@ -15,7 +15,7 @@ $query=webtsys_query('delete from ban where time_ban<'.$time_ban.' and time_ban!
 
 $query=webtsys_query("select IdBan, message, modules_ban from ban where ( (iduser=\"".$user_data['IdUser']."\" and iduser>0) or ip=\"$ip\") and (time_ban=0 or time_ban>".$time_ban.")");
 
-list($idban, $message, $ser_modules_ban)=mysql_fetch_row($query);
+list($idban, $message, $ser_modules_ban)=webtsys_fetch_row($query);
 
 $modules_ban=unserialize($ser_modules_ban);
 

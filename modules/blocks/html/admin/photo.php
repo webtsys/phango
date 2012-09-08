@@ -18,7 +18,7 @@ function update_block($url)
 	settype($_GET['op_block'], 'integer');
 
 	$num_blocks=$model['photo']->select_count('where module="'.$_GET['module'].'" and idblock='.$_GET['IdBlocks'], 'IdPhoto');
-	echo mysql_error();
+	
 	$query=$model['blocks']->select('where IdBlocks='.$_GET['IdBlocks'], array('title_block') );
 	
 	list($title)=webtsys_fetch_row($query);

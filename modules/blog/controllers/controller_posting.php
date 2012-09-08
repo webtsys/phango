@@ -194,7 +194,7 @@ function Posting()
 		
 						$post['token']=md5(uniqid(rand(), true));
 						$post['idpage_blog']=$_GET['IdPage_blog'];
-						$post['email']=mysql_real_escape_string ($_POST['email']);
+						$post['email']=webtsys_escape_string ($_POST['email']);
 			
 						$model['subscription']->insert($post);
 			

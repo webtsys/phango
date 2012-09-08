@@ -128,7 +128,7 @@ function getblock($module, $order_mods='DESC')
 
 	$result_q=array();
 	
-	while($result=mysql_fetch_array($query))
+	while($result=webtsys_fetch_array($query))
 	{
 		//ereg('helper:/', $result['url_block'])
 		if(preg_match('/^helper:\//', $result['url_block']))

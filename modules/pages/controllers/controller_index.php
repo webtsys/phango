@@ -9,7 +9,7 @@ function Index()
 
 	if($_GET['IdPage']==0)
 	{
-
+		settype($config_data['index_page'], 'integer');
 		$_GET['IdPage']=$config_data['index_page'];
 
 	}

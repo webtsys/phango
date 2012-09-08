@@ -23,7 +23,7 @@ $link='article.php?IdPage_blog='.$_GET['IdPage_blog'];
 
 $total_pages= pages( $_GET['begin_page_article'], $total_elements, $num_elements, $link , 20, 'begin_page_article', '#list_pages');
 
-$query=mysql_query('select IdPage_blog, title from page_blog where author='.$GLOBALS['author'].' order by date DESC limit '.$_GET['begin_page_article'].', '.$num_elements);
+$query=webtsys_query('select IdPage_blog, title from page_blog where author='.$GLOBALS['author'].' order by date DESC limit '.$_GET['begin_page_article'].', '.$num_elements);
 
 while(list($idpage_blog, $title_page)=webtsys_fetch_row($query))
 {

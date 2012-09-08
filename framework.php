@@ -177,26 +177,12 @@ settype($_GET['begin_page'], 'integer');
 
 //Connection to sqldb
 
+$set_query=0;
+
 $connection=@webtsys_connect( $host_db, $login_db, $pass_db );
 
 $select_db=@webtsys_select_db( $db );
 
-//Load all tables for check if exists al models...
-
-
-
-//If no connect error message...
-/*
-if($connection==false  || $select_db!=1) {
-    
-	$arr_error_sql[0]='Please wait. The site is down.';    
-	$arr_error_sql[1]='Error: database don\'t work -> '.webtsys_error();
-	
-	echo load_view(array('title' => 'Phango site is down', 'content' => '<p>'.$arr_error_sql[DEBUG].'</p>'), 'common/common');
-	die();
-
-}
-*/
 //Variables
 
 //set_magic_quotes is deprecated but many versions of php use them and we need disable it...
@@ -207,11 +193,11 @@ if($connection==false  || $select_db!=1) {
 
 if($connection!=false  && $select_db==1) 
 {
-
+	
 	$table='';
 
 	$query=webtsys_query(SQL_SHOW_TABLES);
-
+	
 	while(list($table)=webtsys_fetch_row($query))
 	{
 
@@ -327,8 +313,20 @@ if(in_array($script_base_controller, $activated_controllers))
 
 			//script function obtain external data from get or post
 			//If you need access to variables, use global keyword.
+			
+			if($connection===false && $set_query>0)
+			{
+				
 
+				show_error('Error in system', 'Error: system tried access to db but the system cannot connect any db.', $output_external='');
+
+
+			}
+			
 			$script_function();
+			
+			//If we tried use queries, see $set_query variable and connection.
+			
 
 		}
 		else 
