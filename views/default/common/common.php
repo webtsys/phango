@@ -14,7 +14,13 @@ global $base_url, $arr_cache_jscript;
 	<title><?php echo $title; ?></title>
 	<link href="<?php echo $base_url; ?>/media/common/style/style.css" rel="stylesheet" type="text/css">
 	<?php 
-	echo load_jscript_view(); 
+	//I need this for use this view in install file...
+	if(function_exists('load_jscript_view'))
+	{
+	
+		echo load_jscript_view(); 
+		
+	}
 	?>
 	</head>
 	<body>

@@ -5,12 +5,14 @@ function Index()
 
 	global $user_data, $model, $lang, $base_path, $base_url, $cookie_path, $arr_module_insert, $arr_module_sql, $arr_padmin_mod, $language, $config_data, $arr_i18n, $arr_check_table;
 	
-	if(!isset($_SESSION['language_install']))
+	if(!isset($_SESSION['language']))
 	{
 	
-		$_SESSION['language_install']=$language;
+		$_SESSION['language']=$language;
 		
 	}
+	
+	$language=$_SESSION['language'];
 
 	load_libraries(array('update_table', 'generate_forms', 'timestamp_zone', 'forms/userforms'));
 	
@@ -86,7 +88,7 @@ function Index()
 			if(in_array($_POST['language'], $arr_i18n))
 			{
 			
-				$_SESSION['language_install']=$_POST['language'];
+				$_SESSION['language']=$_POST['language'];
 			
 			}
 
@@ -97,7 +99,7 @@ function Index()
 
 		case 2:
 			
-			//echo $_SESSION['language_install'];
+			//echo $_SESSION['language'];
 			
 			echo '<h1>'.$lang['installation']['create_config_file'].'</h1>';
 			
