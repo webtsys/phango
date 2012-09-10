@@ -1,48 +1,48 @@
 <?php
 
-$lang['installation']['choose_language']='choose_language';
+$lang['installation']['choose_language']='Choose language';
 
-$lang['installation']['host_db']='host_db';
+$lang['installation']['host_db']='<p>Servidor de base de datos(normalmente localhost)&nbsp;</p><p>Database server(usuarlly localhost)&nbsp;</p>';
 
-$lang['installation']['db']='db';
+$lang['installation']['db']='Database name';
 
-$lang['installation']['login_db']='login_db';
+$lang['installation']['login_db']='Database username';
 
-$lang['installation']['pass_db']='pass_db';
+$lang['installation']['pass_db']='Database password';
 
-$lang['installation']['cookie_path']='cookie_path';
+$lang['installation']['cookie_path']='Cookie path (Only modify if don&#39;t match with default)';
 
-$lang['installation']['cookie_name']='cookie_name';
+$lang['installation']['cookie_name']='Cookie name that will use the CMS';
 
-$lang['installation']['base_url']='base_url';
+$lang['installation']['base_url']='Base url (only change if don&#39;t match with default)';
 
-$lang['installation']['base_path']='base_path';
+$lang['installation']['base_path']='<p>El directorio del servidor donde está instalado el CMS&nbsp;</p><p>Server path where is installed the CMS&nbsp;</p>';
 
-$lang['installation']['timezone']='timezone';
+$lang['installation']['timezone']='Timezone';
 
-$lang['installation']['create_config_file']='create_config_file';
+$lang['installation']['create_config_file']='Create config file';
 
-$lang['installation']['create_config_file_explain']='create_config_file_explain';
+$lang['installation']['create_config_file_explain']='Here, you will can create a new config file config.php without need of touch the config.php file that you created previously.';
 
-$lang['installation']['create_config_file_explain_fields']='create_config_file_explain_fields';
+$lang['installation']['create_config_file_explain_fields']='Fill the next fields for create the config.php file.';
 
-$lang['installation']['error_fields']='error_fields';
+$lang['installation']['error_fields']='Several errors. Fix it for next step.';
 
-$lang['installation']['finishing_install']='finishing_install';
+$lang['installation']['finishing_install']='Finishing install';
 
-$lang['installation']['cannot_install_new_phango_in_db_no_clean']='cannot_install_new_phango_in_db_no_clean';
+$lang['installation']['cannot_install_new_phango_in_db_no_clean']='Can not install the web system in a database that is not clean.';
 
-$lang['installation']['you_need_check_if_you_have_old_valid_config_file']='you_need_check_if_you_have_old_valid_config_file';
+$lang['installation']['you_need_check_if_you_have_old_valid_config_file']='You need to check if there is no valid config.php previously installed.';
 
 $lang['installation']['install_phango']='Install phango';
 
 $lang['installation']['installing_modules']='Installing modules';
 
-$lang['installation']['user_installed']='user_installed';
+$lang['installation']['user_installed']='The user was installed successfully.';
 
-$lang['installation']['creating_config_file']='creating_config_file';
+$lang['installation']['creating_config_file']='Creating config file';
 
-$lang['installation']['create_config_file_copy_paste']='create_config_file_copy_paste';
+$lang['installation']['create_config_file_copy_paste']='Copy and paste the new config.php';
 
 $lang['installation']['phango_is_installed_if_not_error']='Phango installed correctly if there was no error';
 
@@ -50,15 +50,15 @@ $lang['installation']['you_can_remove_welcome_and_installation']='You can remove
 
 $lang['installation']['go_to_phango']='Go to Phango';
 
-$lang['installation']['error_fields_db']='error_fields_db';
+$lang['installation']['error_fields_db']='Error in database';
 
-$lang['installation']['is_correct_db']='is_correct_db';
+$lang['installation']['is_correct_db']='Database exists?';
 
-$lang['installation']['is_correct_host_db']='is_correct_host_db';
+$lang['installation']['is_correct_host_db']='Is it correct server database?';
 
-$lang['installation']['is_correct_login_db']='is_correct_login_db';
+$lang['installation']['is_correct_login_db']='Is it correct user database?';
 
-$lang['installation']['is_correct_pass_db']='is_correct_pass_db';
+$lang['installation']['is_correct_pass_db']='Is it correct password database?';
 
 $lang['installation']['create_user']='Create user';
 
