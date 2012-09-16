@@ -954,13 +954,19 @@ class IntegerField {
 	public $quot_open='\'';
 	public $quot_close='\'';
 	public $std_error='';
+	public $only_positive=false;
+	public $min_num=0;
+	public $max_num=0;
 
-	function __construct($size=11)
+	function __construct($size=11, $only_positive=false, $min_num=0, $max_num=0)
 	{
 
 		$this->size=$size;
 		$this->form='TextForm';
 		$this->set_form='list_value';
+		$this->only_positive=$only_positive;
+		$this->min_num=$min_num;
+		$this->max_num=$max_num;
 
 	}
 
@@ -968,7 +974,30 @@ class IntegerField {
 	{
 
 		$this->value=form_text($value);
+		
 		settype($value, "integer");
+		
+		if($this->only_positive==true && $value<0)
+		{
+		
+			$value=0;
+		
+		}
+		
+		if($this->min_num<>0 && $value<$this->min_num)
+		{
+		
+			$value=$this->min_num;
+		
+		}
+		
+		if($this->max_num<>0 && $value>$this->max_num)
+		{
+		
+			$value=$this->max_num;
+		
+		}
+		
 		return $value;
 
 	}

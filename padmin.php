@@ -29,7 +29,11 @@ if($argc<2)
 
 //Connect to database
 
-if(! ( $connection=webtsys_connect($host_db, $login_db, $pass_db) && webtsys_select_db($db) ) )
+$connection='';
+
+$connection=webtsys_connect($host_db, $login_db, $pass_db);
+
+if(! (  $connection && webtsys_select_db($db) ) )
 {
 
 	die("Error: ".webtsys_error()." - I can't connect to database\n");
