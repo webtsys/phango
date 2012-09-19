@@ -3,7 +3,7 @@
 function Index()
 {
 
-	global $user_data, $model, $lang, $base_path, $base_url, $cookie_path, $arr_module_insert, $arr_module_sql, $arr_padmin_mod, $language, $config_data, $arr_i18n, $arr_check_table;
+	global $user_data, $model, $lang, $base_path, $base_url, $cookie_path, $arr_module_insert, $arr_module_sql, $arr_padmin_mod, $language, $config_data, $arr_i18n, $arr_check_table, $connection;
 	
 	if(!isset($_SESSION['language']))
 	{
