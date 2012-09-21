@@ -67,7 +67,7 @@ class I18nField {
 
 		settype($arr_lang[$_SESSION['default_language']], 'string');
 
-		if($arr_lang[$language]=='' && $arr_lang[$_SESSION['default_language']]!='')
+		if($arr_lang[$language]=='' && $arr_lang[$_SESSION['default_language']]=='')
 		{
 			
 			return $arr_lang[$_SESSION['default_language']];
