@@ -67,11 +67,30 @@ class I18nField {
 
 		settype($arr_lang[$_SESSION['default_language']], 'string');
 
-		if($arr_lang[$language]=='')
+		if($arr_lang[$language]=='' && $arr_lang[$_SESSION['default_language']]!='')
 		{
 			
 			return $arr_lang[$_SESSION['default_language']];
 
+		}
+		else
+		{
+		
+			//Need  view var with text...
+			
+			//$arr_lang_first=array_unique($arr_lang);
+			foreach($arr_lang as $key_lang => $val_lang)
+			{
+			
+				if($val_lang!='')
+				{
+				
+					return $val_lang;
+				
+				}
+			
+			}
+		
 		}
 		
 		return $arr_lang[$language];
