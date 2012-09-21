@@ -70,12 +70,6 @@ class I18nField {
 		if($arr_lang[$language]=='' && $arr_lang[$_SESSION['default_language']]=='')
 		{
 			
-			return $arr_lang[$_SESSION['default_language']];
-
-		}
-		else
-		{
-		
 			//Need  view var with text...
 			
 			//$arr_lang_first=array_unique($arr_lang);
@@ -90,6 +84,12 @@ class I18nField {
 				}
 			
 			}
+
+		}
+		else
+		{
+		
+			return $arr_lang[$_SESSION['default_language']];
 		
 		}
 		
