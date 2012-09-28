@@ -75,6 +75,7 @@ function TemplatesAdmin()
 			$model['template_content']->forms['idtemplate']->form='SelectModelForm';
 			$model['template_content']->forms['idtemplate']->parameters=array('idtemplate', '', $_GET['IdTemplate'], 'template', 'name', '');
 			$model['template_content']->forms['idtemplate']->SetForm($_GET['IdTemplate']);
+			$model['template_content']->forms['idtemplate']->label=$lang['templates']['name_template'];
 
 			$model['template_content']->forms['name']->label=$lang['common']['name'];
 			$model['template_content']->forms['text']->label=$lang['common']['text'];
