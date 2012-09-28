@@ -60,6 +60,8 @@ function TemplatesAdmin()
 		break;
 
 		case 1:
+		
+			load_libraries(array('forms/selectmodelform'));
 
 			$arr_fields=array('name', 'position');
 			$arr_fields_edit=array('name', 'text', 'idtemplate');
@@ -67,7 +69,11 @@ function TemplatesAdmin()
 			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $_GET['IdTemplate']) );
 
 			$model['template_content']->create_form();
-
+			
+			//SelectModelForm($name, $class, $value, $model_name, $identifier_field, $where='')
+			
+			$model['template_content']->forms['idtemplate']->form='SelectModelForm';
+			$model['template_content']->forms['idtemplate']->parameters=array('idtemplate', '', $_GET['IdTemplate'], 'template', 'name', '');
 			$model['template_content']->forms['idtemplate']->SetForm($_GET['IdTemplate']);
 
 			$model['template_content']->forms['name']->label=$lang['common']['name'];
@@ -79,7 +85,7 @@ function TemplatesAdmin()
 
 			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '2', 'IdTemplate' => $_GET['IdTemplate']) ).'">'.$lang['templates']['go_to_order_template_content'].'</a></p>';
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['common']['go_back'].'</a></p>';
+			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['templates']['go_back_index_templates'].'</a></p>';
 
 		break;
 

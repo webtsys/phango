@@ -46,7 +46,7 @@ $model['template_content']->components['text']->required=1;
 
 $model['template_content']->components['idtemplate']=new IntegerField(10);
 $model['template_content']->components['idtemplate']->required=1;
-$model['template_content']->components['idtemplate']->form='HiddenForm';
+//$model['template_content']->components['idtemplate']->form='HiddenForm';
 
 $model['template_content']->components['position']=new IntegerField(10);
 
