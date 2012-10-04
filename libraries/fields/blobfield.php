@@ -26,6 +26,7 @@ class BlobField {
 		
 		//Delete Javascript tags and simple quotes.
 		$this->value=$value;
+		$value=addslashes($value);
 		return $value;
 
 	}

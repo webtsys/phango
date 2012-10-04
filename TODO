@@ -9,6 +9,9 @@ New features
 Knowed Bugs
 ----------------------------
 
+- Check if exists a image with same name in same path.
+- Don't work fine the cache for javascript.
+
 New Features for next versions.
 ----------------------------
 

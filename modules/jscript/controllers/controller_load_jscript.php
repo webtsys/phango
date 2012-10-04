@@ -77,7 +77,7 @@ function Load_Jscript()
 				$file_jscript=trim(file_get_contents($jscript_source));
 				
 				$gzip_jscript=gzencode($file_jscript, 6);
-
+				
 				//Write cache in db
 
 				$query=$model['jscript_cache']->delete( 'where name="'.$_GET['input_script'].'"' );
