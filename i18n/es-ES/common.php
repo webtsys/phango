@@ -62,6 +62,8 @@ $lang['common']['error']='Error';
 
 $lang['common']['title']='Título';
 
+$lang['common']['text']='Texto';
+
 $lang['common']['image']='Imagen';
 
 $lang['common']['category']='Categoría';
@@ -97,8 +99,6 @@ $lang['common']['phone']='Teléfono';
 $lang['common']['fax']='Fax';
 
 $lang['common']['zip_code']='Código postal';
-
-$lang['common']['text']='Texto';
 
 $lang['common']['captcha']='Captcha';
 
