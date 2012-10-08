@@ -1,9 +1,9 @@
 <?php
 
-$lang['banners']['position_banner']='position_banner';
+$lang['banners']['position_banner']='Posición del banner';
 
-$lang['banners']['banner_position_top_all_pages']='banner_position_top_all_pages';
+$lang['banners']['banner_position_top_all_pages']='Arriba, en todas las páginas';
 
-$lang['banners']['banner_blocks']='banner_blocks';
+$lang['banners']['banner_blocks']='Banners en bloques';
 
 ?>
