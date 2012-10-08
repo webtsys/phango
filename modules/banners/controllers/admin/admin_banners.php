@@ -5,7 +5,7 @@ function BannersAdmin()
 
 	global $base_url, $base_path, $model, $lang;
 	
-	load_libraries(array('generate_admin_ng'));
+	load_libraries(array('generate_admin_ng', 'forms/textareabb'));
 	load_model('banners');
 	load_lang('banners');
 	
@@ -17,6 +17,7 @@ function BannersAdmin()
 	
 	$model['banners']->forms['title']->label=$lang['common']['title'];
 	$model['banners']->forms['content']->label=$lang['common']['text'];
+	$model['banners']->forms['content']->form='TextAreaBBForm';
 	$model['banners']->forms['position_banner']->label=$lang['banners']['position_banner'];
 	
 	$arr_post=array(0);
