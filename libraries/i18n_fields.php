@@ -88,8 +88,8 @@ class I18nField {
 		}
 		else if($arr_lang[$language]=='')
 		{
-		
-			return $arr_lang[$_SESSION['language']];
+			
+			return $arr_lang[$_SESSION['default_language']];
 		
 		}
 		
