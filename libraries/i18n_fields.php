@@ -62,7 +62,7 @@ class I18nField {
 		$arr_lang=@unserialize($value);
 
 		settype($arr_lang, 'array');
-
+		
 		settype($arr_lang[$language], 'string');
 
 		settype($arr_lang[$_SESSION['default_language']], 'string');
@@ -86,10 +86,10 @@ class I18nField {
 			}
 
 		}
-		else
+		else if($arr_lang[$language]=='')
 		{
 		
-			return $arr_lang[$_SESSION['default_language']];
+			return $arr_lang[$_SESSION['language']];
 		
 		}
 		

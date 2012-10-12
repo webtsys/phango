@@ -6,6 +6,8 @@ Testing.
 New features
 ----------------------------
 
+- With method_exists, check if exists function "delete_field" for a field in model delete method.
+
 Knowed Bugs
 ----------------------------
 

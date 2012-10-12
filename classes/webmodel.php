@@ -2759,7 +2759,7 @@ function CheckBoxFormSet($post, $value)
 function SelectForm($name="", $class='', $value='', $more_options='')
 {
 	
-	$select='<select name="'.$name.'" class="'.$class.'" '.$more_options.'>'."\n";
+	$select='<select name="'.$name.'" id="'.$name.'" class="'.$class.'" '.$more_options.'>'."\n";
 
 	list($key, $default)= each($value);
 
