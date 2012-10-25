@@ -7,6 +7,7 @@ New features
 ----------------------------
 
 - With method_exists, check if exists function "delete_field" for a field in model delete method.
+- If error in generate_admin_ng update or insert,but the error is in a field don't required, put text in redirection.
 
 Knowed Bugs
 ----------------------------
