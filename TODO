@@ -19,7 +19,6 @@ Also, don't work update image.
 New Features for next versions.
 ----------------------------
 
-- Add support to choose lang via default lang navigator?.
 - Title in flags of languages.
 - Modules loading automatically in $activated_controllers.
 - Better installer.
