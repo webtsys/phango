@@ -30,7 +30,7 @@ function ContentRightView($title, $content)
 			<?php echo $content; ?>
 		</div>
 	</div>
-	<br clear="left" />
+	<br clear="all" />
 <?php
 
 }

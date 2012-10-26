@@ -3172,6 +3172,21 @@ function load_libraries_views($template, $func_views=array())
 	
 	ob_start();
 	
+	//Check func views...
+
+	foreach($func_views as $template_check)
+	{
+
+		if(isset($cache_template[$template_check]))
+		{
+			//Function view loaded, return because load_view load the function automatically.
+		
+			return;
+		
+		}
+
+	}
+	
 	if(!include($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
 	{
 

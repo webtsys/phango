@@ -5,6 +5,8 @@ function Index()
 
 	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $config_data;
 
+	ob_start();
+	
 	settype($_GET['IdPage'], 'integer');
 
 	if($_GET['IdPage']==0)
@@ -41,22 +43,36 @@ function Index()
 
 	$cont_index_page.=ob_get_contents();
 
-	ob_clean();
-
+	ob_end_clean();
+      
+	ob_start();
 	
-	$query_prop=$model['property_page']->select('where idpage='.$_GET['IdPage'].' order by order_page ASC', array('property', 'options'));
+	$arr_arr_options=array();
+	$arr_property_path=array();
+	$arr_property=array();
+  
+	$query_prop=$model['property_page']->select('where idpage='.$_GET['IdPage'].' order by order_page ASC', array('IdProperty_page', 'property', 'options'));
 
-	while(list($property, $ser_options)=webtsys_fetch_row($query_prop))
+	while(list($idprop, $property, $ser_options)=webtsys_fetch_row($query_prop))
 	{
-		$arr_options=unserialize($ser_options);
+		$arr_arr_options[$idprop]=unserialize($ser_options);
+		
+		$arr_property_check=explode('|', $property);
+		
+		$arr_property_path[$idprop]=$arr_property_check[0];
+		
+		$arr_property[$idprop]=basename($arr_property_check[1]);
+		
 
-		$arr_property=explode('|', $property);
-		
-		$property_path=$arr_property[0];
-		$property=basename($arr_property[1]);
-		
+	}
+	
+	foreach($arr_arr_options as $idprop => $arr_options)
+	{
+	
+		$property_path=$arr_property_path[$idprop];
+		$property=$arr_property[$idprop];
+	
 		include($base_path.'modules/'.$property_path.'/property/php/'.$property);
-
 	}
 
 	$cont_index_page.=ob_get_contents();
