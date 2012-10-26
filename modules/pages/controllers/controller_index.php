@@ -72,7 +72,15 @@ function Index()
 		$property_path=$arr_property_path[$idprop];
 		$property=$arr_property[$idprop];
 	
-		include($base_path.'modules/'.$property_path.'/property/php/'.$property);
+		include_once($base_path.'modules/'.$property_path.'/property/php/'.$property);
+		
+		$func_property=str_replace('.php', '', $property);
+		
+		if(function_exists($func_property))
+		{
+			echo $func_property($arr_options);
+		}
+		
 	}
 
 	$cont_index_page.=ob_get_contents();

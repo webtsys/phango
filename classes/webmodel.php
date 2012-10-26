@@ -3170,9 +3170,9 @@ function load_libraries_views($template, $func_views=array())
 
 	//Load views from a source file...
 	
-	ob_start();
-	
 	//Check func views...
+	
+	$no_loaded=0;
 
 	foreach($func_views as $template_check)
 	{
@@ -3181,42 +3181,44 @@ function load_libraries_views($template, $func_views=array())
 		{
 			//Function view loaded, return because load_view load the function automatically.
 		
-			return;
+			$no_loaded++;
 		
 		}
 
 	}
 	
-	if(!include($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
-	{
-
-		$output_error_view=ob_get_contents();
-
-		ob_clean();
-
-		if(!include($base_path.'modules/'.$script_base_controller.'/views/'.strtolower($template).'.php')) 
+	if($no_loaded==0)
+	{	
+		if(!include_once($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
 		{
-
-			$output=ob_get_contents();
+			
+			$output_error_view=ob_get_contents();
 
 			ob_clean();
 
-			include($base_path.'views/default/common/common.php');
-			
-			CommonView('Phango Framework error','<p>Error while loading template library <strong>'.$template.'</strong>, check config.php or that template library exists... </p><p>Output: '.$output_error_view.$output.'</p>');
-			
-			ob_end_flush();
-			
-			die;
+			if(!include_once($base_path.'modules/'.$script_base_controller.'/views/'.strtolower($template).'.php')) 
+			{
+
+				$output=ob_get_contents();
+
+				ob_clean();
+
+				include($base_path.'views/default/common/common.php');
+				
+				CommonView('Phango Framework error','<p>Error while loading template library <strong>'.$template.'</strong>, check config.php or that template library exists... </p><p>Output: '.$output_error_view.$output.'</p>');
+				
+				ob_end_flush();
+				
+				die;
+
+			}
 
 		}
-
+		
 	}
-
-	ob_end_flush();
-
-	//Register views...
-
+	
+	//Forever register views if the code use different functions in a same library.
+	
 	foreach($func_views as $template)
 	{
 
