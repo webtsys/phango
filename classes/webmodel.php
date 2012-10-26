@@ -1803,6 +1803,7 @@ class ImageField {
 		global $lang;
 		
 		$file=$this->name_file;
+		$image=basename($image);
 
 		settype($_POST['delete_'.$file], 'integer');
 
@@ -1836,6 +1837,27 @@ class ImageField {
 				
 				$_FILES[$file]['name']=form_text($_FILES[$file]['name']);
 				$this->value=$_FILES[$file]['name'];
+				
+				/*//Check if exists a image with same name.
+				
+				if(file_exists($this->path.'/'.$_FILES[$file]['name']))
+				{
+				
+					$this->std_error=$lang['common']['a_image_with_same_name_exists'];
+					
+					return $image;
+				
+				}*/
+				
+				//Delete other image if exists..
+				
+				if($image!='')
+				{
+				
+					unlink($this->path.'/'.$image);
+				
+				}
+				
 				//gif 1
 				//jpg 2
 				//png 3

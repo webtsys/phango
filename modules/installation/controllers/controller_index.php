@@ -17,7 +17,15 @@ function Index()
 	load_libraries(array('update_table', 'generate_forms', 'timestamp_zone', 'forms/userforms'));
 	
 	load_lang('installation', 'user', 'common');
-
+	
+	/*$datetime_default=new DateTime();
+	
+	$timezone_default=$datetime_default->getTimezone()->getName();*/
+	
+	//Obtain value from ini because phango put default value from config.php in America/New_York
+	
+	$timezone_default = ini_get('date.timezone');
+	
 	settype($_GET['op'], 'integer');
 
 	$cont_index='';
@@ -62,7 +70,7 @@ function Index()
 	
 	$arr_forms['base_path']=new ModelForm('config', 'base_path', 'TextForm', $lang['installation']['base_path'], new CharField(255), $required=1, $parameters=$base_path);
 	
-	$arr_forms['timezone']=new ModelForm('config', 'timezone', 'TimeZoneForm', $lang['installation']['timezone'], new CharField(255), $required=1, $parameters=array(MY_TIMEZONE));
+	$arr_forms['timezone']=new ModelForm('config', 'timezone', 'TimeZoneForm', $lang['installation']['timezone'], new CharField(255), $required=1, $parameters=array($timezone_default));
 	
 	//$arr_forms['timezone']->SetForm(MY_TIMEZONE);
 
@@ -203,8 +211,20 @@ function Index()
 
 					$post['date_register']=TODAY;
 					$post['format_date']=$config_data['date_format'];
-					$post['format_time']=obtain_timestamp_zone(MY_TIMEZONE);
-					$post['timezone']=MY_TIMEZONE;
+					
+					$post['timezone']=$_POST['timezone'];
+					
+					//Check if timezone exists.
+					
+					if(date_create($post['timezone'])===false)
+					{
+					
+						$post['timezone']=$timezone_default;
+					
+					}
+					
+					$post['format_time']=obtain_timestamp_zone($_POST['timezone'], $timezone_default);
+					
 					$post['ampm']=$config_data['ampm'];
 					$post['last_connection']=TODAY;
 					$post['begin_last_connection']=TODAY;

@@ -1,6 +1,6 @@
 <?php
 
-function obtain_timestamp_zone($timezone)
+function obtain_timestamp_zone($timezone, $default_timezone=MY_TIMEZONE)
 {
 
 	$dateTimeZone=new DateTimeZone($timezone);
@@ -8,7 +8,7 @@ function obtain_timestamp_zone($timezone)
 	if($dateTimeZone==false)
 	{
 
-		$dateTimeZone=new DateTimeZone(MY_TIMEZONE);
+		$dateTimeZone=new DateTimeZone($default_timezone);
 
 	}
 
