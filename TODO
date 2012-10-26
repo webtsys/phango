@@ -14,7 +14,6 @@ Knowed Bugs
 
 - Error, if i load a image to the server via browser_image and i don't have permissions, i don't have error. 
 Also, don't work update image.
-- Bug in load_libraries_views. No save cache.
 
 New Features for next versions.
 ----------------------------
