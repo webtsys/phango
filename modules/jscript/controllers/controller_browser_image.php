@@ -40,7 +40,7 @@ function Browser_image()
 		
 			$arr_field['image_form'.$x]=new ImageField('image_form'.$x, $model['jscript_image']->components['image']->path, $model['jscript_image']->components['image']->url_path, '');
 		
-			$arr_form['image_form'.$x]=new ModelForm('create_image', 'image_form'.$x.'', 'ImageForm', $lang['common']['image'].' '.$x, $arr_field['image_form'.$x], $required=0, $parameters='');
+			$arr_form['image_form'.$x]=new ModelForm('create_image', 'image_form'.$x.'', 'ImageForm', $lang['common']['image'].' '.$x, $arr_field['image_form'.$x], $required=0, $parameters='' );
 		
 		}
 			
@@ -100,6 +100,14 @@ function Browser_image()
 			
 			}
 			
+			$model['jscript_image']->create_form();
+			
+			$model['jscript_image']-> set_enctype_binary();
+			
+			//ImageForm($name="", $class='', $value='', $delete_inline=0, $path_image='')
+			$model['jscript_image']->forms['image']->label=$lang['common']['image'];
+			$model['jscript_image']->forms['image']->parameters=array('image', '', '', $delete_inline=0, $path_image=$model['jscript_image']->components['image']->url_path);
+			
 			ListModel('jscript_image', $arr_fields, $url_options, $options_func='ImageOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 			
 			$content=ob_get_contents();
@@ -150,6 +158,8 @@ function Browser_image()
 			
 				//Insert images..
 				
+				$error=0;
+				
 				foreach($arr_form as $img_form)
 				{
 					
@@ -158,21 +168,54 @@ function Browser_image()
 					
 						$file_name=$img_form->type->name_file;
 					
-						$model['jscript_image']->insert(array('image' => $arr_post[$file_name]));
+						if(!$model['jscript_image']->insert(array('image' => $arr_post[$file_name])))
+						{
+							
+							$error++;
+						
+						}
 					
 					}
 				
 				}
+				
+				if($error==0)
+				{
+				
+					ob_end_clean();
+					load_libraries(array('redirect'));
+					die( redirect_webtsys( make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('CKEditorFuncNum' => $_GET['CKEditorFuncNum'])), $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+					
+					$content=ob_get_contents();
+					
+					ob_end_clean();
+					
+				}
+				else
+				{
+				
+					$content=$lang['common']['error_cannot_upload_this_image_to_the_server'].'<br />'.ob_get_contents();
+					
+					ob_end_clean();
+				
+				}
+			
+			}
+			else
+			{
+			
+				//die(header('Location:'. make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('CKEditorFuncNum' => $_GET['CKEditorFuncNum'])) ));
+				
+				$url_go_back=make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('op' => 1, 'CKEditorFuncNum' => $_GET['CKEditorFuncNum']));
+			
+				echo '<p><a href="'.$url_go_back.'">'.$lang['common']['go_back'].'</a></p>';
+				
+				$content=$lang['common']['error_cannot_upload_this_image_to_the_server'].'<br />'.ob_get_contents();
+					
+				ob_end_clean();
 			
 			}
 			
-			ob_end_clean();
-			load_libraries(array('redirect'));
-			die( redirect_webtsys( make_fancy_url($base_url, 'jscript', 'browser_image', 'script', array('CKEditorFuncNum' => $_GET['CKEditorFuncNum'])), $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
-			
-			$content=ob_get_contents();
-			
-			ob_end_clean();
 		
 		break;
 		

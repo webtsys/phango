@@ -15,7 +15,7 @@ $model['jscript_image']=new Webmodel('jscript_image');
 $path=$base_path.'application/media/upload_images/';
 $url_path=$base_url.'/media/upload_images/';
 
-$model['jscript_image']->components['image']=new ImageField('upload', $path, $url_path, '');
+$model['jscript_image']->components['image']=new ImageField('image', $path, $url_path, '');
 
 $model['jscript_image']->components['image']->required=1;
 

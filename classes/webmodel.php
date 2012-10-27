@@ -2025,6 +2025,13 @@ class ImageField {
 		return ;
 
 	}
+	
+	function process_delete_field($value)
+	{
+	
+		
+	
+	}
 
 }
 
