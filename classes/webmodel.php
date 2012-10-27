@@ -1770,6 +1770,25 @@ class FileField {
 		return ;
 
 	}
+	
+	function process_delete_field($model, $name_field, $conditions)
+	{
+	
+		$query=$model->select($conditions, array($name_field));
+		
+		while(list($file_name)=webtsys_fetch_row($query))
+		{
+		
+			if(!unlink($this->path.'/'.$file_name))
+			{
+			
+				$this->std_error=$lang['common']['cannot_delete_file'];
+			
+			}
+		
+		}
+	
+	}
 
 }
 
