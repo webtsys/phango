@@ -64,6 +64,8 @@ $lang['common']['a_image_with_same_name_exists']='Existe una imagen con el mismo
 
 $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: no puedo subir la imagen al servidor. ¿Hay permisos para ello?.';
 
+$lang['common']['cannot_delete_image']='No puedo borrar la imagen, ¿existe en el disco?.';
+
 $lang['common']['any_option_chosen']='Elija cualquier opción...';
 
 $lang['common']['delete_file']='Borrar archivo';

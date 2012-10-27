@@ -6,14 +6,8 @@ Testing.
 New features
 ----------------------------
 
-- With method_exists, check if exists function "delete_field" for a field in model delete method.
-- If error in generate_admin_ng update or insert,but the error is in a field don't required, put text in redirection.
-
 Knowed Bugs
 ----------------------------
-
-- Error, if i load a image to the server via browser_image and i don't have permissions, i don't have error. 
-Also, don't work update image.
 
 New Features for next versions.
 ----------------------------
@@ -51,6 +45,7 @@ New Features for next versions.
 - Make a more secure password recovery.
 - In admin,include submenus by module. Obtain an array from model file?.
 - Configure modules in administrator.
+- If error in generate_admin_ng update or insert,but the error is in a field don't required, put text in redirection.
 
 Brainstorming ideas.
 ----------------------------

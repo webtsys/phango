@@ -432,6 +432,18 @@ class Webmodel {
 
 	function delete($conditions="")
 	{
+	
+		foreach($this->components as $name_field => $component)
+		{
+		
+			if(method_exists($component,  'process_delete_field'))
+			{
+			
+				$component->process_delete_field($this, $name_field, $conditions);
+			
+			}
+		
+		}
 
  		return webtsys_query('delete from '.$this->name.' '.$conditions);
 		
@@ -2026,10 +2038,24 @@ class ImageField {
 
 	}
 	
-	function process_delete_field($value)
+	function process_delete_field($model, $name_field, $conditions)
 	{
 	
+	
+		//die;
+		$query=$model->select($conditions, array($name_field));
 		
+		while(list($image_name)=webtsys_fetch_row($query))
+		{
+		
+			if(!unlink($this->path.'/'.$image_name))
+			{
+			
+				$this->std_error=$lang['common']['cannot_delete_image'];
+			
+			}
+		
+		}
 	
 	}
 
