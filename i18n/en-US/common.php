@@ -60,6 +60,8 @@ $lang['common']['yes']='Yes';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error: cannot upload this file to the server';
 
+$lang['common']['cannot_delete_file']='Cannot delete image. File exists?.';
+
 $lang['common']['a_image_with_same_name_exists']='A image with same name exists in the server';
 
 $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
