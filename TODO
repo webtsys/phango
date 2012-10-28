@@ -6,12 +6,15 @@ Testing.
 New features
 ----------------------------
 
+- In modules, a option for add moderators for access to modules. 
+
 Knowed Bugs
 ----------------------------
 
 New Features for next versions.
 ----------------------------
 
+- Make a multilogin?.
 - Title in flags of languages.
 - Modules loading automatically in $activated_controllers.
 - Better installer.

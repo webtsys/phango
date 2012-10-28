@@ -6,6 +6,17 @@ body
 
 }
 
+iframe
+{
+
+	width:100%;
+	border:solid #5b5b5b;
+	border-width:1px;
+	border: solid #bcbcbc;
+	border-width:1px;
+	border-radius:5px;
+}
+
 #center_body {
 
 	position:relative;

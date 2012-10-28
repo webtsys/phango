@@ -1473,7 +1473,18 @@ class SerializeField {
 	public $quot_open='\'';
 	public $quot_close='\'';
 	public $std_error='';
-	public $related_field='';
+	public $related_type='';
+	
+	//type_data can be any field type that is loaded IntegerField, etc..
+	
+	function __construct($related_type='TextField')
+	{
+	
+		$this->related_type=$related_type;
+		
+	}
+	
+	public $type_data='';
 
 	//This method is used for check all members from serialize
 
@@ -1495,7 +1506,10 @@ class SerializeField {
 				else
 				{
 
-					$value[$key]=form_text($value_key);
+					//Create new type.
+					$type_field=new $this->related_type();
+				
+					$value[$key]=$type_field->check($value_key);
 
 				}
 
@@ -1514,8 +1528,8 @@ class SerializeField {
 		$value=$this->recursive_form($value);
 
 		$this->value=$value;
-		//print_r($value); die;
-		return serialize($value);
+		
+		return webtsys_escape_string(serialize($value));
 
 	}
 
@@ -2200,8 +2214,7 @@ class ForeignKeyField extends IntegerField{
 
 	function show_formatted($value)
 	{
-		echo $this->name_field_to_field;
-		die;
+		
 		return $model[$this->related_model]->components[$this->name_field_to_field]->show_formatted($value);
 
 		//return $value;

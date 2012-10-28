@@ -178,8 +178,9 @@ function webtsys_select_db( $db )
 
 function webtsys_escape_string($sql_string)
 {
+	global $connection;
 
-	return mysqli_real_escape_string($sql_string);
+	return mysqli_real_escape_string($connection, $sql_string);
 
 }
 
