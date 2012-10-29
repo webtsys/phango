@@ -46,6 +46,8 @@ $lang['common']['no_exists_elements_to_order']='There are no items to order';
 
 $lang['common']['home']='Home';
 
+$lang['common']['the_value_can_not_be_greater_than_100']='The value can not be greater than 100';
+
 $lang['common']['error_you_need_this_language_field']='Error: you need to fill the field mandatory language';
 
 $lang['common']['cannot_load_jquery']='Not loaded jquery, required for this method to work';

@@ -46,6 +46,8 @@ $lang['common']['no_exists_elements_to_order']='No existen elementos a ordenar';
 
 $lang['common']['home']='Inicio';
 
+$lang['common']['the_value_can_not_be_greater_than_100']='El valor no puede ser más grande de 100';
+
 $lang['common']['error_you_need_this_language_field']='Error: necesitas obligatoriamente rellenar el campo de lenguaje';
 
 $lang['common']['cannot_load_jquery']='No se ha cargado jquery, necesario para que funcione este método';
