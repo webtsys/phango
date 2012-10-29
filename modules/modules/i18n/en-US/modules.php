@@ -20,6 +20,10 @@ $lang['modules']['error_not_set_arr_module_remove']='Error: the module is not se
 
 $lang['modules']['module_no_exists']='Module don&amp;#39;t exists';
 
+$lang['modules']['add_moderator_to_module']='add_moderator_to_module';
+
+$lang['modules']['go_back_home']='go_back_home';
+
 $lang['modules']['disable_module']='Disable module';
 
 $lang['modules']['no_options_module']='Module don&amp;#39;t have any option';

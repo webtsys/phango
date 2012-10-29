@@ -14,6 +14,7 @@ Knowed Bugs
 New Features for next versions.
 ----------------------------
 
+- A function to make switchs easily and clean. 
 - Make a multilogin?.
 - Title in flags of languages.
 - Modules loading automatically in $activated_controllers.

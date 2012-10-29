@@ -20,6 +20,10 @@ $lang['modules']['error_not_set_arr_module_remove']='Error: no está bien config
 
 $lang['modules']['module_no_exists']='No existe ese módulo';
 
+$lang['modules']['add_moderator_to_module']='add_moderator_to_module';
+
+$lang['modules']['go_back_home']='go_back_home';
+
 $lang['modules']['disable_module']='Desactivar módulo';
 
 $lang['modules']['no_options_module']='Este módulo no tiene opciones';

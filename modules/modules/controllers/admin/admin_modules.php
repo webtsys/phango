@@ -219,6 +219,47 @@ function ModulesAdmin()
 			echo '<p><a href="'.make_fancy_url( $base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
 		break;
+		
+		case 3:			
+		
+			load_libraries(array('forms/selectmodelform'));
+			
+			settype($_GET['idmodule'], 'integer');
+			
+			$query=$model['module']->select('where IdModule='.$_GET['idmodule'], array('IdModule', 'name'));
+			
+			list($idmodule, $name_module)=webtsys_fetch_row($query);
+			
+			settype($idmodule, 'integer');
+			
+			if($idmodule>0)
+			{
+			
+				$name_module=$lang[$name_module.'_admin'][$name_module.'_admin_name'];
+				
+				echo '<h3>'.$lang['modules']['add_moderator_to_module'].' -  '.$name_module.'</h3>';
+				$arr_fields=array('moderator');
+				$arr_fields_edit=array();
+				
+				$url_options=make_fancy_url( $base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'idmodule' => $_GET['idmodule']) );
+				
+				$model['moderators_module']->create_form();
+				
+				$model['moderators_module']->forms['idmodule']->form='HiddenForm';
+				$model['moderators_module']->forms['idmodule']->SetForm($_GET['idmodule']);
+				
+				$model['moderators_module']->forms['moderator']->form='SelectModelForm';
+				$model['moderators_module']->forms['moderator']->label=$lang['common']['moderator'];
+				
+				$model['moderators_module']->forms['moderator']->parameters=array('moderator', '', 0, 'user', 'private_nick', $where='where privileges_user=1');
+			
+				generate_admin_model_ng('moderators_module', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+				
+				echo '<p><a href="'.make_fancy_url( $base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule']) ).'">'.$lang['modules']['go_back_home'].'</a></p>';
+				
+			}
+		
+		break;
 
 	}
 
@@ -234,13 +275,15 @@ function OptionsModulesModel($url_options, $model_name, $id, $arr_row)
 	if($arr_row['required']==0)
 	{
 
+		$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'module' => $arr_row['name'], 'idmodule' => $id)).'">'.$lang['modules']['add_moderator_to_module'].'</a>';
 		$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 2, 'module' => $arr_row['name'])).'">'.$lang['modules']['disable_module'].'</a>';
 
 	}
 	else
 	{
 
-		$arr_options[]=$lang['modules']['no_options_module'];
+		//$arr_options[]=$lang['modules']['no_options_module'];
+		$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'module' => $arr_row['name'], 'idmodule' => $id)).'">'.$lang['modules']['add_moderator_to_module'].'</a>';
 
 	}
 

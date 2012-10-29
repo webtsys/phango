@@ -23,7 +23,7 @@ function Index()
 	//Make menu...
 	//Admin was internationalized
 	
-	if(check_admin($user_data['IdUser']))
+	if(check_admin($user_data['IdUser']) || $user_data['privileges_user']==1)
 	{
 
 		//variables for define titles for admin page
@@ -36,6 +36,8 @@ function Index()
 		$name_modules=array();
 
 		$urls=array();
+		
+		$arr_permissions_admin=array();
 
 		$module_admin=array();
 
@@ -84,12 +86,50 @@ function Index()
 			$urls[$name_module]=make_fancy_url($base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
 
 			$module_admin[$idmodule]=$name_module;
+			
+			$arr_permissions_admin[$idmodule]=1;
 
 		}
 
 		$file_include=$base_path.'modules/'.$arr_admin_script[ $_GET['IdModule'] ][0].'/controllers/admin/admin_'.$arr_admin_script[ $_GET['IdModule'] ][1].'.php';
 		
-		if(file_exists($file_include) && $module_admin[$_GET['IdModule']]!='')
+		if($user_data['privileges_user']==1)
+		{
+		
+			$arr_permissions_admin=array();
+			//$arr_module_saved=array();
+			$arr_module_strip=array();
+			
+			$arr_permissions_admin[$_GET['IdModule']]=0;
+			$arr_permissions_admin[0]=1;
+		
+			$query=$model['moderators_module']->select('where moderator='.$user_data['IdUser'], array('idmodule'), 1);
+			
+			while(list($idmodule_mod)=webtsys_fetch_row($query))
+			{
+			
+				settype($idmodule_mod, 'integer');
+				
+				$arr_permissions_admin[$idmodule_mod]=1;
+				
+				$arr_module_saved[]=$module_admin[$idmodule_mod];
+				
+			}
+			
+			$arr_module_strip=array_diff( array_keys($name_modules), $arr_module_saved );
+			
+			foreach($arr_module_strip as $name_module_strip)
+			{
+				
+				unset($name_modules[$name_module_strip]);
+				unset($urls[$name_module_strip]);
+			
+			}
+			
+			
+		}
+		
+		if(file_exists($file_include) && $module_admin[$_GET['IdModule']]!='' && $arr_permissions_admin[$_GET['IdModule']]==1)
 		{
 			
 			include($file_include);
