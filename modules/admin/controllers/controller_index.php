@@ -38,6 +38,7 @@ function Index()
 		$urls=array();
 		
 		$arr_permissions_admin=array();
+		$arr_permissions_admin[0]=1;
 
 		$module_admin=array();
 

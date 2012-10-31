@@ -190,6 +190,10 @@ $lang['common']['categories']='Categorías';
 
 $lang['common']['any_option']='Todas las opción';
 
+$lang['common']['registered_users']='Usuarios registrados';
+
+$lang['common']['html']='Html';
+
 $lang['common']['required']='Requerido';
 
 $lang['common']['html_allowed']='Html permitido';
@@ -272,8 +276,6 @@ $lang['common']['weight']='Peso';
 
 $lang['common']['any_user_choose']='Elija a un usuario...';
 
-$lang['common']['html']='Html';
-
 $lang['common']['subtitle']='Subtítulo';
 
 $lang['common']['content']='Contenido';
@@ -285,8 +287,6 @@ $lang['common']['form']='Formulario';
 $lang['common']['type_user']='Tipo de usuario';
 
 $lang['common']['all_users']='Todos los usuarios';
-
-$lang['common']['registered_users']='Usuarios registrados';
 
 $lang['common']['last']='Último';
 

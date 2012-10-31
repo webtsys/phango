@@ -190,6 +190,10 @@ $lang['common']['categories']='Categories';
 
 $lang['common']['any_option']='All options';
 
+$lang['common']['registered_users']='Registered users';
+
+$lang['common']['html']='Html';
+
 $lang['common']['required']='Required';
 
 $lang['common']['html_allowed']='Allowed html';
@@ -272,8 +276,6 @@ $lang['common']['weight']='Peso';
 
 $lang['common']['any_user_choose']='Choose any user...';
 
-$lang['common']['html']='Html';
-
 $lang['common']['subtitle']='Subtitle';
 
 $lang['common']['content']='Content';
@@ -285,8 +287,6 @@ $lang['common']['form']='Form';
 $lang['common']['type_user']='User type';
 
 $lang['common']['all_users']='All users';
-
-$lang['common']['registered_users']='Registered users';
 
 $lang['common']['last']='Last';
 
