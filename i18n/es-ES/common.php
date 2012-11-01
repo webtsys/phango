@@ -190,6 +190,8 @@ $lang['common']['categories']='Categorías';
 
 $lang['common']['any_option']='Todas las opción';
 
+$lang['common']['list']='list';
+
 $lang['common']['registered_users']='Usuarios registrados';
 
 $lang['common']['html']='Html';
