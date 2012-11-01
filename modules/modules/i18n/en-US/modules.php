@@ -18,14 +18,14 @@ $lang['modules']['module_deleted_if_error_check']='The module was successfully d
 
 $lang['modules']['error_not_set_arr_module_remove']='Error: the module is not set up. To remove it properly, you need to define the arr_module_remove array';
 
-$lang['modules']['module_no_exists']='Module don&amp;#39;t exists';
+$lang['modules']['module_no_exists']='Module don\'t exists';
 
-$lang['modules']['add_moderator_to_module']='add_moderator_to_module';
+$lang['modules']['add_moderator_to_module']='Añadir moderador a módulo';
 
-$lang['modules']['go_back_home']='go_back_home';
+$lang['modules']['go_back_home']='Go back to modules home';
 
 $lang['modules']['disable_module']='Disable module';
 
-$lang['modules']['no_options_module']='Module don&amp;#39;t have any option';
+$lang['modules']['no_options_module']='Module don\'t have any option';
 
 ?>

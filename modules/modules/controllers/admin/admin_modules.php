@@ -253,7 +253,7 @@ function ModulesAdmin()
 				
 				$model['moderators_module']->forms['moderator']->parameters=array('moderator', '', 0, 'user', 'private_nick', $where='where privileges_user=1');
 			
-				generate_admin_model_ng('moderators_module', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+				generate_admin_model_ng('moderators_module', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='where idmodule='.$_GET['idmodule'], $arr_fields_form=array(), $type_list='Basic');
 				
 				echo '<p><a href="'.make_fancy_url( $base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule']) ).'">'.$lang['modules']['go_back_home'].'</a></p>';
 				
