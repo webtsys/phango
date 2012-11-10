@@ -51,7 +51,7 @@ function Index()
 	$arr_forms_lang['language']=$arr_forms['language'];
 	
 	//Host_db,db, login_db, pass_db, cookie_path, COOKIE_NAME, $base_url, $base_path, $language, MY_TIMEZONE, app_index=pages, activated_controllers=array('admin', 'pages', 'blog', 'shop','jscript', 'user', 'templates', prefix_key
-			
+	
 	$arr_forms['host_db']=new ModelForm('config', 'host_db', 'TextForm', $lang['installation']['host_db'], new CharField(255), $required=1, $parameters='localhost');
 	
 	$arr_forms['db']=new ModelForm('config', 'db', 'TextForm', $lang['installation']['db'], new CharField(255), $required=1, $parameters='');
@@ -95,8 +95,9 @@ function Index()
 		
 			if(in_array($_POST['language'], $arr_i18n))
 			{
-			
+				
 				$_SESSION['language']=$_POST['language'];
+				
 			
 			}
 
@@ -229,7 +230,21 @@ function Index()
 					$post['last_connection']=TODAY;
 					$post['begin_last_connection']=TODAY;
 					$post['privileges_user']=2;
-					$post['language']=$language;
+					
+					if(in_array($_POST['language'], $arr_i18n))
+					{
+						
+						$post['language']=$_POST['language'];
+						
+					}
+					else
+					{
+					
+						$post['language']=$language;
+					
+					}
+					
+					
 					$post['activated_user']=1;
 
 					if($model['user']->insert($post))

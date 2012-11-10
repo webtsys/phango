@@ -2,7 +2,7 @@
 
 $lang['installation']['choose_language']='Choose language';
 
-$lang['installation']['host_db']='<p>Servidor de base de datos(normalmente localhost)&nbsp;</p><p>Database server(usuarlly localhost)&nbsp;</p>';
+$lang['installation']['host_db']='Database server(usually localhost)';
 
 $lang['installation']['db']='Database name';
 
@@ -10,13 +10,13 @@ $lang['installation']['login_db']='Database username';
 
 $lang['installation']['pass_db']='Database password';
 
-$lang['installation']['cookie_path']='Cookie path (Only modify if don&#39;t match with default)';
+$lang['installation']['cookie_path']='Cookie path (Only modify if don\'t match with default)';
 
 $lang['installation']['cookie_name']='Cookie name that will use the CMS';
 
-$lang['installation']['base_url']='Base url (only change if don&#39;t match with default)';
+$lang['installation']['base_url']='Base url (only change if don\'t match with default)';
 
-$lang['installation']['base_path']='<p>El directorio del servidor donde está instalado el CMS&nbsp;</p><p>Server path where is installed the CMS&nbsp;</p>';
+$lang['installation']['base_path']='Server path where is installed the CMS';
 
 $lang['installation']['timezone']='Timezone';
 
