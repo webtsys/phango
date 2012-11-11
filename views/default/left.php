@@ -167,7 +167,7 @@ for($i=0;$i<$c_title;$i++)
 <div id="content">
 <?php echo $content; ?>
 </div>
-
+<br clear="all" />
 <div id="footer">
 	<div id="footer-align">
 		<?php echo $config_data['foot']; ?>

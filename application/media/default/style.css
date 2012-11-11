@@ -268,7 +268,7 @@ a:hover.no_choose_flag
 	width:175px;
 	/*border:solid #ffffff;
 	border-width:5px;*/
-	margin:0px;
+	margin:0px 0px 5px 0px;
 	padding:0px;
 
 }
@@ -423,7 +423,7 @@ a:hover.no_choose_flag
 .content_right
 {
 	
-	width:732px;
+	width:772px;
 	float:left;
 	
 	
