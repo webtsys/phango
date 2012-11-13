@@ -104,7 +104,75 @@ class I18nField {
 
 	}
 	
+	function add_slugify_i18n_post($field, $post)
+	{
+	
+		global $model, $arr_i18n;
+	
+		foreach($arr_i18n as $lang_field)
+		{
+		
+			$post[$field.'_'.$lang_field]=SlugifyField::check($post[$field][$lang_field]);
+		
+		}
+		
+		return $post;
+	
+	}
+	
 }
+
+//Now, class slugifyfield. This class can be used for create orders or searchs in mysql if you need other thing distinct to default search of default order (default order don't work fine with serializefields how i18nfield). The programmer have the responsability of update this fields via update or insert method.
+
+class SlugifyField {
+
+	public $value="";
+	public $label="";
+	public $required=0;
+	public $form="TextForm";
+	public $quot_open='\'';
+	public $quot_close='\'';
+	public $std_error='';
+
+	static function check($value)
+	{
+		
+		return slugify($value);
+	}
+
+	function get_type_sql()
+	{
+
+		return 'TEXT NOT NULL';
+		
+
+	}
+
+	function get_parameters_default()
+	{
+
+		return;
+
+	}
+	
+	static function add_slugify_i18n_fields($model_name, $field)
+	{
+	
+		global $model, $arr_i18n;
+	
+		foreach($arr_i18n as $lang_field)
+		{
+
+			$model[$model_name]->components[$field.'_'.$lang_field]=new SlugifyField();
+			
+		}
+	
+	}
+	
+}
+
+
+
 
 function MultiLangForm($field, $class='', $arr_values=array(), $type_form='TextForm')
 {

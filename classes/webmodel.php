@@ -161,6 +161,13 @@ class Webmodel {
 				if(isset($fields[$key]))
 				{
 					$arr_fields[]='`'.$key.'`='.$component->quot_open.$fields[$key].$component->quot_close;
+					
+					/*if(method_exists($component,  'process_update_field'))
+					{
+					
+						$component->process_update_field($this, $name_field, $conditions);
+					
+					}*/
 				}
 	
 			}

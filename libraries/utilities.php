@@ -42,4 +42,25 @@ function show_variables_check_model($model, $post_name, $fields)
 
 }
 
+function show_edit_fields($model_name)
+{
+
+	global $model;
+
+	echo 'array( ';
+
+	foreach($model[$model_name]->components as $key => $field)
+	{
+
+		$arr_value[]='\''.$key.'\'';
+
+	}
+
+	echo implode(', ', $arr_value);
+
+	echo ' )';
+
+}
+
+
 ?>

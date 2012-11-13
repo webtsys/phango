@@ -43,6 +43,7 @@ function update_table($model)
 			
 			foreach($model[$key]->components as $key_data => $data)
 			{
+			
 				$arr_table[]='`'.$key_data.'` '.$model[$key]->components[$key_data]->get_type_sql();
 
 				//Check if foreignkeyfield...
