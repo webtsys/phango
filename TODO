@@ -9,6 +9,8 @@ New features
 Knowed Bugs
 ----------------------------
 
+In slugify. Strip dots, and ¿?.
+
 New Features for next versions.
 ----------------------------
 

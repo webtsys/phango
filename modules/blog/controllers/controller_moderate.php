@@ -62,7 +62,7 @@ function Moderate()
 		$yes_admin=1;
 		$sql_user='';
 		$arr_perm=array();
-		//http://localhost/phangofm/index.php/admin/show/index/blog/IdModule/10
+		
 		$query=$model['module']->select('where name="blog" limit 1', array('IdModule'));
 
 		list($idmodule)=webtsys_fetch_row($query);
@@ -112,6 +112,12 @@ function Moderate()
 	
 	if($yes_admin===1)
 	{
+	
+		$query=$model['blog']->select('where IdBlog='.$_GET['IdBlog'], array('IdBlog'));
+		
+		list($idblog)=webtsys_fetch_row($query);
+		
+		settype($idblog, 'integer');
 		
 		//variables for define titles for admin page
 		switch($_GET['op'])
@@ -123,15 +129,8 @@ function Moderate()
 			echo '<h3>'.$lang['blog']['tree_category'].'</h3>';
 
 			//Arbol de categorías
-			
-			/*$first_url[$_GET['IdBlog']]='<ul><li><a href="'.make_fancy_url($base_url, 'blog', 'moderate', 'blogs', array()).'">'.$lang['blog']['principal_category'].'</a><ul>';
-			$first_url[0]='<ul><li><strong>'.$lang['blog']['principal_category'].'</strong></li><ul>';
-			
-			echo $first_url[$_GET['IdBlog']];*/
 
 			recursive_list('blog', $arr_cat, $arr_list_father, 0, make_fancy_url($base_url, 'blog', 'moderate', 'edit_blogs', array() ), $arr_perm);
-
-			//echo '</ul></li></ul>';
 
 			if($_GET['IdBlog']==0)
 			{
@@ -183,7 +182,8 @@ function Moderate()
 				$model['page_blog']->forms['date']->label=$lang['common']['date'];
 				$model['page_blog']->forms['accept_comment']->label=$lang['blog']['accept_comment'];
 
-				generate_admin_model_ng('page_blog', $arr_fields, $arr_fields_edit, $url_options, $options_func='ModerateOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+				generate_admin_model_ng('page_blog', $arr_fields, $arr_fields_edit, $url_options, $options_func='ModerateOptionsListModel', 
+				$where_sql='where idblog='.$idblog, $arr_fields_form=array(), $type_list='Basic');
 
 			}
 
