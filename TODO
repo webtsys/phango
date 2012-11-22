@@ -6,10 +6,10 @@ Testing.
 New features
 ----------------------------
 
+- Add function for add css to views how javascript.
+
 Knowed Bugs
 ----------------------------
-
-In slugify. Strip dots, and ¿?.
 
 New Features for next versions.
 ----------------------------
