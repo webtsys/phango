@@ -1,9 +1,5 @@
 <?php
 
-$lang['blocks']['edit_html_block']='Edit html block';
-
-$lang['blocks']['html_code']='Html code';
-
 $lang['blocks']['edit_blocks']='Edit blocks';
 
 $lang['blocks']['edit_blocks_module']='Edit blocks of selected module';
@@ -43,6 +39,10 @@ $lang['blocks']['end_block']='End block';
 $lang['blocks']['static_blocks']='Static blocks';
 
 $lang['blocks']['edit_module_if_exists']='Edit module if exists';
+
+$lang['blocks']['edit_html_block']='Edit html block';
+
+$lang['blocks']['html_code']='Html code';
 
 $lang['blocks']['choose_lang']='Choose language block';
 
