@@ -14,6 +14,7 @@ Knowed Bugs
 New Features for next versions.
 ----------------------------
 
+- Methods for access to querys easily, example: $model['model']->selectById(1);, selectCount(), agnosticselect();
 - A function to make switchs easily and clean. 
 - Make a multilogin?.
 - Title in flags of languages.
