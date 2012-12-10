@@ -30,7 +30,7 @@ New Features for next versions.
 - Create a constant where is showed the phango version. The upgrades need make for version to version. Versions x.x don't need beast upgrade because i don't change the db. Versions x+1.0, yes.
 - Tool for clean i18n. 
 - Tool for translations via web.
-- Helpers for create "where" in querys.
+- Helpers for create "where" in querys. Very simple, an array, and the simbols into value, example: 'IdProduct' => array('and[or][...][by default and]', 5), and check component IdProduct.
 - Multiple databases without problems. Don't need db by default.
 - Cache system in database.
 - Config index page in pages module.
