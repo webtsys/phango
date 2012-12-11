@@ -1680,18 +1680,18 @@ class FileField {
 	public $name_file="";
 	public $path="";
 	public $url_path="";
-	public $type='';
+	//public $type='';
 	public $quot_open='\'';
 	public $quot_close='\'';
 	public $std_error='';
 
-	function __construct($name_file, $path, $url_path, $type)
+	function __construct($name_file, $path, $url_path)
 	{
 
 		$this->name_file=$name_file;
 		$this->path=$path;
 		$this->url_path=$url_path;
-		$this->type=$type;
+		//$this->type=$type;
 
 	}
 
