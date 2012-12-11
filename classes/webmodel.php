@@ -2221,6 +2221,8 @@ class ForeignKeyField extends IntegerField{
 
 	function show_formatted($value)
 	{
+	
+		global $model;
 		
 		return $model[$this->related_model]->components[$this->name_field_to_field]->show_formatted($value);
 
