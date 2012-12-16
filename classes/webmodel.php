@@ -632,6 +632,17 @@ class Webmodel {
 		$this->enctype='enctype="multipart/form-data"';
 
 	}
+	
+	//Here, define extension methods with call...
+	
+	public function __call($name_method, $arguments)
+	{
+	
+		array_unshift($arguments, $this);
+	
+		call_user_func_array($name_method.'_method_class', $arguments);
+	
+	}
 
 }
 
