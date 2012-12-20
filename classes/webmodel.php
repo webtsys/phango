@@ -638,6 +638,8 @@ class Webmodel {
 	public function __call($name_method, $arguments)
 	{
 	
+		load_libraries(array('classes_extensions/'.$name_method));
+	
 		array_unshift($arguments, $this);
 	
 		call_user_func_array($name_method.'_method_class', $arguments);
