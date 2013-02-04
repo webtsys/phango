@@ -200,7 +200,7 @@ class Webmodel {
 
 		global $model;
 
-		 $this->clean_extra_fields();
+		 //$this->clean_extra_fields();
 
 		if(count($arr_select)==0)
 		{
@@ -222,6 +222,8 @@ class Webmodel {
 		$arr_model=array($this->name);
 		//$arr_where is an array where is stored the relationship between models
 		$arr_where=array('1=1');
+		
+		$arr_extra_model=array();
 
 		foreach($arr_select as $key => $my_field)
 		{
@@ -231,13 +233,70 @@ class Webmodel {
 
 			//Check if a field link with other field from another table...
 
-			list($arr_select, $arr_extra_select, $arr_model, $arr_where)=$this->recursive_fields_select($key, $this->name, $my_field, $raw_query, $arr_select, $arr_extra_select, $arr_model, $arr_where);
+			//list($arr_select, $arr_extra_select, $arr_model, $arr_where)=$this->recursive_fields_select($key, $this->name, $my_field, $raw_query, $arr_select, $arr_extra_select, $arr_model, $arr_where);
+			if(get_class($this->components[$my_field])=='ForeignKeyField')
+			{
 			
+				$arr_extra_model[$key]=$my_field; //$this->components[$my_field]->related_model;
+			
+			}
+			
+		}
+		
+		if($raw_query==0)
+		{
+		
+			//Add all fields if fields_related_model is not defined.
+			
+			foreach($arr_extra_model as $key => $my_field)
+			{
+			
+				$model_name_related=$this->components[$my_field]->related_model;
+				
+				//Set default fields from related model if fields_related_model is not defined...
+				/*
+				if(count($this->components[$my_field]->fields_related_model)==0)
+				{
+				
+					$this->components[$my_field]->fields_related_model=array_keys( $model[$model_name_related]->components );
+				
+				}*/
+				
+				//Set the value for the component foreignkeyfield if name_field_to_field is set.
+			
+				if($this->components[$my_field]->name_field_to_field!='')
+				{
+				
+					$arr_select[$key]=$model_name_related.'.`'.$this->components[$my_field]->name_field_to_field.'` as '.$my_field;
+					
+					$key_related=array_search($this->components[$my_field]->name_field_to_field, $this->components[$my_field]->fields_related_model);
+					
+					unset( $this->components[$my_field]->fields_related_model[$key_related] );
+				
+				}
+				
+				//Set the new fields added for related model...
+				
+				foreach($this->components[$my_field]->fields_related_model as $fields_related)
+				{
+				
+					$arr_select[]=$model_name_related.'.`'.$fields_related.'` as '.$model_name_related.'_'.$fields_related;
+				
+				}
+				
+				$arr_model[]=$model_name_related;
+				
+				//Set the where connection
+				
+				$arr_where[]=$this->name.'.`'.$my_field.'`='.$model_name_related.'.`'.$model[$model_name_related]->idmodel.'`';
+			
+			}
+		
 		}
 
 		//Merge $arr_select variable with $arr_extra_select that is a fields array from another table related by a ForeignKeyField
 
-		$arr_select=array_merge($arr_select, $arr_extra_select);
+		//$arr_select=array_merge($arr_select, $arr_extra_select);
 
 		//Final fields from use in query
 		
@@ -268,7 +327,7 @@ class Webmodel {
 
 		}
 
-		$this->create_extra_fields();
+		//$this->create_extra_fields();
 		
 		//Make the query...
 		
