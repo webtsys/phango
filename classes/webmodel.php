@@ -269,10 +269,15 @@ class Webmodel {
 				
 					$arr_select[$key]=$model_name_related.'.`'.$this->components[$my_field]->name_field_to_field.'` as '.$my_field;
 					
-					$key_related=array_search($this->components[$my_field]->name_field_to_field, $this->components[$my_field]->fields_related_model);
+					/*$key_related=array_search($this->components[$my_field]->name_field_to_field, $this->components[$my_field]->fields_related_model);
 					
-					unset( $this->components[$my_field]->fields_related_model[$key_related] );
-				
+					if($key_related!=null)
+					{
+					
+						unset( $this->components[$my_field]->fields_related_model[$key_related] );
+						
+					}*/
+					
 				}
 				
 				//Set the new fields added for related model...
