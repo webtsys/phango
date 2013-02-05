@@ -12,6 +12,7 @@ $arr_error_model_text=array();
 $arr_module_sql=array();
 $arr_module_insert=array();
 $arr_module_remove=array();
+
 $utility_cli=0;
 $yes_entities=1;
 
@@ -3468,9 +3469,9 @@ $cache_model=array();
 
 function load_model()
 {
-
-	global $base_path, $model, $lang, $cache_model, $arr_module_insert;
-
+	
+	global $base_path, $model, $lang, $cache_model, $arr_module_insert, $arr_extension_model;
+	
 	$names=func_get_args();
 	
 	//Load a source file only	
@@ -3518,6 +3519,16 @@ function load_model()
 				$cache_model[$my_model]=1;
 
 			}
+			
+			//Now, load extension if necessary
+			
+			if(isset($arr_extension_model[$my_model]))
+			{
+				
+				load_extension($my_model);
+			
+			}
+			
 
 		}
 

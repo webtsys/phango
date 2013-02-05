@@ -2,6 +2,12 @@
 //Basic framework
 ob_start();
 
+//Set basic arrays...
+
+$arr_extension_model=array();
+
+//Adding config...
+
 if(!@include("config.php")) 
 {
 
