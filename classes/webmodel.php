@@ -2315,6 +2315,15 @@ class ForeignKeyField extends IntegerField{
 		return array('', $lang['common']['any_option_chosen'], '');
 
 	}
+	
+	function get_all_fields()
+	{
+	
+		global $model;
+		
+		return array_keys($model[$this->related_model]->components);
+	
+	}
 
 }
 
