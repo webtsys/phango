@@ -12,7 +12,7 @@ function BansAdmin()
 	$arr_fields_edit=array('iduser', 'description', 'ip', 'message', 'time_ban', 'modules_ban');
 	$url_options=make_fancy_url($base_url, 'admin', 'index', 'bans', $arr_data=array('IdModule' => $_GET['IdModule']));
 
-	$model['ban']->components['iduser']->fields_related_model=array('private_nick');
+	$model['ban']->components['iduser']->fields_related_model=array();
 	$model['ban']->components['iduser']->name_field_to_field='private_nick';
 
 	$model['ban']->create_form();
