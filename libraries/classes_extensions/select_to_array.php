@@ -1,22 +1,27 @@
 <?php
 
-function select_to_array($class, $param_templates, $conditions="", $arr_select=array(), $raw_query=0)
+function select_to_array($conditions="", $arr_select=array(), $raw_query=0)
 {
 
-	$arr_rows=array();
-
-	$query=$class->select($conditions, $arr_select, $raw_query);
+	$arr_return=array();
 	
-	//Load interval...
-	
-	while($arr_element=webtsys_fetch_array($query))
+	if(count($arr_select)>0 && !isset($arr_select[$this->idmodel]))
 	{
 	
-		$arr_rows[$arr_element[$class->idmodel]]=$arr_element;
+		$arr_select[]=$this->model;
 	
 	}
+
+	$query=$this->select($conditions, $arr_select, $raw_query);
 	
-	return $arr_rows;
+	while($arr_row=webtsys_fetch_array($query))
+	{
+	
+		$arr_return[$this->idmodel]=$arr_row;
+		
+	}
+	
+	return $arr_return;
 
 }
 
