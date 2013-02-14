@@ -268,7 +268,7 @@ class Webmodel {
 				if($this->components[$my_field]->name_field_to_field!='')
 				{
 				
-					$arr_select[$key]=$model_name_related.'.`'.$this->components[$my_field]->name_field_to_field.'` as '.$my_field;
+					$arr_select[$key]=$model_name_related.'.`'.$this->components[$my_field]->name_field_to_field.'` as `'.$my_field.'`';
 					
 					/*$key_related=array_search($this->components[$my_field]->name_field_to_field, $this->components[$my_field]->fields_related_model);
 					
@@ -286,7 +286,7 @@ class Webmodel {
 				foreach($this->components[$my_field]->fields_related_model as $fields_related)
 				{
 				
-					$arr_select[]=$model_name_related.'.`'.$fields_related.'` as '.$model_name_related.'_'.$fields_related;
+					$arr_select[]=$model_name_related.'.`'.$fields_related.'` as `'.$model_name_related.'_'.$fields_related.'`';
 				
 				}
 				
