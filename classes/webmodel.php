@@ -1394,6 +1394,7 @@ class TextField {
 	public $quot_close='\'';
 	public $std_error='';
 	public $multilang=0;
+	public $br=1;
 
 	function __construct($multilang=0)
 	{
@@ -1408,7 +1409,7 @@ class TextField {
 		
 		//Delete Javascript tags and simple quotes.
 		$this->value=$value;
-		return form_text($value);
+		return form_text($value, $this->br);
 
 	}
 
@@ -2501,7 +2502,7 @@ if(function_exists('get_magic_quotes_gpc'))
 
 //this function is used to clean up the text of undesirable elements
 
-function form_text( $text )
+function form_text( $text ,$br=1)
 {
 
     global $yes_entities;
@@ -2513,7 +2514,7 @@ function form_text( $text )
     $arr_tags=array('/</', '/>/', '/"/', '/\'/', "/  /");
     $arr_entities=array('&lt;', '&gt;', '&quot;', '&#39;', '&nbsp;');
 	
-    if($yes_entities==1)
+    if($br==1)
     {
 
 	$text = preg_replace($arr_tags, $arr_entities, $text);
