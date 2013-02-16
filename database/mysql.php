@@ -71,11 +71,14 @@ function webtsys_close( $idconnection )
 	return 1;
 } 
 
-function webtsys_fetch_array( $query ,$assoc_type=MYSQL_ASSOC)
+function webtsys_fetch_array( $query ,$assoc_type=0)
 {
 	global $connection;
 	
-	$arr_final = mysqli_fetch_array( $query ,$assoc_type);
+	$arr_assoc[0]=MYSQL_ASSOC;
+	$arr_assoc[1]=MYSQL_NUM;
+	;
+	$arr_final = mysqli_fetch_array( $query ,$arr_assoc[$assoc_type]);
 
 	return $arr_final;
 } 

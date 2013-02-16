@@ -707,7 +707,7 @@ class Webmodel {
 	
 		array_unshift($arguments, $this);
 	
-		call_user_func_array($name_method.'_method_class', $arguments);
+		return call_user_func_array($name_method.'_method_class', $arguments);
 	
 	}
 
