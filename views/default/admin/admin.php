@@ -3,7 +3,7 @@
 function AdminView($header, $title, $content, $name_modules, $url_modules)
 {
 
-	global $base_url, $lang, $arr_cache_jscript, $arr_cache_jscript_gzipped, $arr_i18n, $language;
+	global $base_url, $lang, $arr_cache_jscript, $arr_cache_jscript_gzipped, $arr_i18n, $language, $config_data;
 	
 	?>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -34,7 +34,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules)
 			$arr_selected[slugify($language)]='choose_flag_general';
 
 			?>
-			<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/common/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a> 
+			<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/<?php echo $config_data['dir_theme']; ?>/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a> 
 			<?php
 
 		}

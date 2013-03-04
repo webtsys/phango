@@ -179,7 +179,7 @@ function MultiLangForm($field, $class='', $arr_values=array(), $type_form='TextF
 	//make a foreach with all langs
 	//default, es_ES, en_US, show default if no exists translation for selected language.
 	
-	global $arr_i18n, $language, $base_url, $lang;
+	global $arr_i18n, $language, $base_url, $lang, $config_data;
 
 	ob_start();
 
@@ -226,7 +226,7 @@ function MultiLangForm($field, $class='', $arr_values=array(), $type_form='TextF
 		$arr_selected[slugify($_SESSION['default_language'])]='choose_flag';
 
 		?>
-		<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" id="<?php echo $field.'_'.$lang_item; ?>_flag" href="#" onclick="change_form_language_<?php echo $field; ?>('<?php echo $field; ?>', '<?php echo $field.'_'.$lang_item; ?>'); return false;"><img src="<?php echo $base_url; ?>/media/common/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>&nbsp;
+		<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" id="<?php echo $field.'_'.$lang_item; ?>_flag" href="#" onclick="change_form_language_<?php echo $field; ?>('<?php echo $field; ?>', '<?php echo $field.'_'.$lang_item; ?>'); return false;"><img src="<?php echo $base_url; ?>/media/<?php echo $config_data['dir_theme']; ?>/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>&nbsp;
 		<?php
 
 	}
