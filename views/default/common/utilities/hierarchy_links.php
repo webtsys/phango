@@ -8,17 +8,6 @@ function Hierarchy_LinksView($arr_hierarchy, $module, $controller, $idfield, $ar
 	
 	$arr_final=array();
 	
-	/*foreach($arr_hierarchy as $key => $arr_id)
-	{
-	
-		$arr_tmp_param=$arr_parameters;
-		
-		$arr_tmp_param[$idfield]=$arr_id['id'];
-	
-		$arr_final[$key]='<a href="'.make_fancy_url($base_url, $module, $controller, $arr_id['name'], $arr_tmp_param).'">'.$arr_id['name'].'</a>';
-	
-	}*/
-	
 	$c=count($arr_hierarchy)-1;
 	
 	for($x=0;$x<$c;$x++)
