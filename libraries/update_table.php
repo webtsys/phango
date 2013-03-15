@@ -56,7 +56,7 @@ function update_table($model)
 					$id_table_related='Id'.ucfirst($model[$key]->components[$key_data]->related_model);
 
 					$arr_sql_index[$key_data]='CREATE INDEX index_'.$key.'_'.$key_data.' ON '.$key.'('.$key_data.');';
-					$arr_sql_set_index[$key_data]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+					//$arr_sql_set_index[$key_data]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
 				}
 			}
@@ -73,7 +73,7 @@ function update_table($model)
 				echo "---Creating index for ".$key_data."\n";
 
 				$query=webtsys_query($sql_index);
-				$query=webtsys_query($arr_sql_set_index[$key_data]);
+				//$query=webtsys_query($arr_sql_set_index[$key_data]);
 
 			}
 
