@@ -598,7 +598,7 @@ function Index()
 				$model['user']->components['private_nick']->required=0;
 
 				$return_zone_user='<p><a href="'.make_fancy_url($base_url, 'user', 'index', 'change_data', $arr_data=array() ).'">'.$lang['common']['go_back'].'</a></p>';
-
+				
 				switch($_GET['action'])
 				{
 
@@ -663,8 +663,6 @@ function Index()
 
 						ob_end_clean();
 
-						//echo load_view(array('title' => $lang['user']['choose_avatar'], 'content' => $cont_avatar), 'content');
-
 						echo $cont_avatar;
 
 					break;
@@ -677,7 +675,10 @@ function Index()
 
 				$model['user']->update(array('key_connection' => ''), 'where IdUser='.$user_data['IdUser']);
 
-				//$_SESSION['webtsys_id']='';
+				//Delete session too...
+				
+				session_destroy();
+				
 				setcookie ( COOKIE_NAME, FALSE, 0, $cookie_path);
 				die( redirect_webtsys( "index.php", $lang['user']['redirect'], $lang['user']['exit_login'], $lang['user']['no_redir'] , $arr_block) );
 

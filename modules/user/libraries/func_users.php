@@ -272,7 +272,7 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 	{
 
 		
-		$id=session_id(); //sha1(uniqid(rand(), true));
+		$id=sha1(uniqid(rand(), true));
 
 		$post=array('key_connection'=>sha1($id));
 
