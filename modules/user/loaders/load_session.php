@@ -40,7 +40,7 @@ $query=webtsys_query("delete from anonymous where last_connection<".$delete_time
 
 $user_data=array('IdUser'=>0, 'privileges_user'=>0, 'format_date'=>$config_data['date_format'], 'format_time' => $config_data['time_format'], 'ampm'=>$config_data['ampm'], 'nick' =>$config_data['name_guest'], 'private_nick' =>$config_data['name_guest'], 'website' =>'', 'email'=>'', 'before_last_connection'=>0, 'last_connection' => TODAY, 'language' => $language);
 
-//$webtsys_id=session_id();//sha1(uniqid(mt_rand(), true));
+$webtsys_id=session_id();//sha1(uniqid(mt_rand(), true));
 
 settype($_COOKIE[COOKIE_NAME], 'string');
 

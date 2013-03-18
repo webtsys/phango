@@ -63,7 +63,8 @@ if(!file_exists($base_path))
 if(isset($_COOKIE[COOKIE_NAME]))
 {
 
-	echo session_id();
+	//echo session_id();
+	session_id($_COOKIE[COOKIE_NAME]);
 
 }
 
