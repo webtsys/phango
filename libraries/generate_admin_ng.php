@@ -223,7 +223,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 		$arr_label_fields=array();
 		$cell_sizes=array();
 
-		list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $where_sql, $url_options);
+		list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options);
 		
 		//Num elements in page
 		
@@ -513,11 +513,11 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 
 }
 
-function SearchInField($model_name, $arr_fields, $where_sql, $url_options, $yes_id=1)
+function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $where_sql, $url_options, $yes_id=1)
 {
 
 	global $lang, $model;
-
+	
 	load_libraries(array('search_in_field'));
 
 	if(count($model[$model_name]->forms)==0)
@@ -531,10 +531,11 @@ function SearchInField($model_name, $arr_fields, $where_sql, $url_options, $yes_
 
 	}
 
-	if(!in_array($model[$model_name]->idmodel, $arr_fields) && $yes_id==1)
+	if(!in_array($model[$model_name]->idmodel, $arr_fields_order) && $yes_id==1)
 	{
 
-		array_unshift($arr_fields, $model[$model_name]->idmodel);
+		array_unshift($arr_fields_order, $model[$model_name]->idmodel);
+		array_unshift($arr_fields_search, $model[$model_name]->idmodel);
 		
 		$model[$model_name]->forms[ $model[$model_name]->idmodel ]->label='#Id.';
 
@@ -548,17 +549,17 @@ function SearchInField($model_name, $arr_fields, $where_sql, $url_options, $yes_
 	
 	$arr_order_select=array();
 
-	if( !in_array($_GET['order_field'], $arr_fields) )
+	if( !in_array($_GET['order_field'], $arr_fields_order) )
 	{
 
-		$_GET['order_field']=$arr_fields[0]; //$model[$model_name]->idmodel;
+		$_GET['order_field']=$arr_fields_order[0]; //$model[$model_name]->idmodel;
 
 	}
-
-	if( !in_array($_GET['search_field'], $arr_fields) )
+	
+	if( !in_array($_GET['search_field'], $arr_fields_search) )
 	{
 
-		$_GET['search_field']=$arr_fields[0]; //$model[$model_name]->idmodel;
+		$_GET['search_field']=$arr_fields_search[0]; //$model[$model_name]->idmodel;
 
 	}
 	
@@ -579,12 +580,21 @@ function SearchInField($model_name, $arr_fields, $where_sql, $url_options, $yes_
 	$arr_order_select[]=1;
 
 	$arr_order_field=array($_GET['order_field']);
+	$arr_search_field=array($_GET['search_field']);
 
-	foreach($arr_fields as $field_label)
+	foreach($arr_fields_order as $field_label)
 	{
 
 		$arr_order_field[]=$model[$model_name]->forms[$field_label]->label;
 		$arr_order_field[]=$field_label;
+
+	}
+	
+	foreach($arr_fields_search as $field_label)
+	{
+
+		$arr_search_field[]=$model[$model_name]->forms[$field_label]->label;
+		$arr_search_field[]=$field_label;
 
 	}
 
@@ -594,7 +604,7 @@ function SearchInField($model_name, $arr_fields, $where_sql, $url_options, $yes_
 
 	$arr_order_field[0]=$_GET['search_field'];
 
-	$form_search.='<p>'.$lang['common']['search'].': '.TextForm('search_word', '', $_GET['search_word']).' '.$lang['common']['search_by'].': '.SelectForm('search_field', '', $arr_order_field).'</p><p><input type="submit" value="'.$lang['common']['send'].'"/> <input type="button" value="'.$lang['common']['reset'].'" onclick="javascript:location.href=\''.$url_options.'\'"/>';
+	$form_search.='<p>'.$lang['common']['search'].': '.TextForm('search_word', '', $_GET['search_word']).' '.$lang['common']['search_by'].': '.SelectForm('search_field', '', $arr_search_field).'</p><p><input type="submit" value="'.$lang['common']['send'].'"/> <input type="button" value="'.$lang['common']['reset'].'" onclick="javascript:location.href=\''.$url_options.'\'"/>';
 
 	$form_search.='</form></p>';
 	

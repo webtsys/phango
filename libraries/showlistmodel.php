@@ -19,7 +19,7 @@ function ShowListModel($model_name, $arr_fields, $url_options, $where_sql='', $y
 	$arr_label_fields=array();
 	$cell_sizes=array();
 
-	list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $where_sql, $url_options, $yes_id);
+	list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id);
 
 	BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $func_options, $url_options, $yes_id, $yes_options);
 
