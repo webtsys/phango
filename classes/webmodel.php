@@ -2297,6 +2297,13 @@ class ForeignKeyField extends IntegerField{
 		
 
 	}
+	
+	function get_type_sql()
+	{
+
+		return 'INT('.$this->size.') NULL';
+
+	}
 
 	function show_formatted($value)
 	{

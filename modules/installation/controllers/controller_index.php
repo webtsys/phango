@@ -183,14 +183,7 @@ function Index()
 					
 					echo '<h3>'.$lang['installation']['installing_modules'].'</h3>';
 
-					$arr_modules=array('modules', 'config', 'bans', 'blocks', 'pages', 'templates', 'jscript');
-
-					if(file_exists($base_path.'/modules/shop/'))
-					{
-
-						$arr_modules[]='shop';
-
-					}
+					$arr_modules=array('modules', 'user', 'config', 'bans', 'blocks', 'pages', 'templates', 'jscript');
 
 					update_models_from_module($arr_modules);
 
@@ -200,9 +193,16 @@ function Index()
 
 					$config_data=webtsys_fetch_array($query);
 
-					$arr_modules=array('user');
+					//$arr_modules=array('user');
+					
+					if(file_exists($base_path.'/modules/shop/'))
+					{
 
-					update_models_from_module($arr_modules);
+						$arr_modules=array('shop');
+						
+						update_models_from_module($arr_modules);
+
+					}
 
 					$post['private_nick']=$_POST['private_nick'];
 					$post['email']=$_POST['email'];
@@ -246,6 +246,8 @@ function Index()
 					
 					
 					$post['activated_user']=1;
+					
+					$post['rank']=0;
 
 					if($model['user']->insert($post))
 					{

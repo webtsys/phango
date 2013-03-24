@@ -279,10 +279,14 @@ function Index()
 						break;
 
 						case 1:
+						
+							$arr_fields_form[]='rank';
 
 							settype($_POST['private_nick'], 'string');
 							settype($_POST['email'], 'string');
 							settype($_POST['password'], 'string');
+							
+							$_POST['rank']=0;
 
 							$check_captcha=1;
 
