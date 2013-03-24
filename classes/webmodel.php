@@ -120,6 +120,7 @@ class Webmodel {
 			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES (\''.implode("', '",$fields).'\') ') ) )
 			{
 			
+				$this->std_error.=$lang['error_model']['cant_insert'].' ';
 				return 0;
 			
 			}
@@ -188,6 +189,7 @@ class Webmodel {
 			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions)))
 			{
 			
+				$this->std_error.=$lang['error_model']['cant_update'].' ';
 				return 0;
 			
 			}
