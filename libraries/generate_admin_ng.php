@@ -178,7 +178,7 @@ function ConfigInsertModel($model_name, $arr_fields, $post)
 
 	if($model[$model_name]->$func_update($post, 'limit 1'))
 	{
-
+		
 		return 1;
 
 	}

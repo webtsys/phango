@@ -117,8 +117,18 @@ class Webmodel {
 		
 		if( $fields=$this->check_all($post) )
 		{	
-			$query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES (\''.implode("', '",$fields).'\') ');
-			return 1;
+			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES (\''.implode("', '",$fields).'\') ') ) )
+			{
+			
+				return 0;
+			
+			}
+			else
+			{
+			
+				return 1;
+				
+			}
 		}
 		else
 		{	
@@ -175,9 +185,18 @@ class Webmodel {
 
 			//Create the query..
 		
-			$query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions);
+			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions)))
+			{
 			
-			return 1;
+				return 0;
+			
+			}
+			else
+			{
+			
+				return 1;
+			
+			}
 		}
 		else
 		{
@@ -2291,7 +2310,7 @@ class ForeignKeyField extends IntegerField{
 		else
 		{
 			
-			return 0;
+			return NULL;
 
 		}
 		
