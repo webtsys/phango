@@ -213,7 +213,7 @@ function Moderate()
 				$model['page_tag_blog']->forms['idtag']->form='SelectModelForm';
 				$model['page_tag_blog']->forms['idtag']->parameters=array('idtag', '', '', 'tag_blog', 'tag', $where='order by tag ASC');
 
-				$model['page_tag_blog']->components['idtag']->fields_related_model=array('tag');
+				//$model['page_tag_blog']->components['idtag']->fields_related_model=array('tag');
 				$model['page_tag_blog']->components['idtag']->name_field_to_field='tag';
 
 				$model['page_tag_blog']->forms['idtag']->label=$lang['blog']['tag'];

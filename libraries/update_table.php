@@ -4,6 +4,9 @@ function update_table($model)
 {
 
 	global $arr_i18n;
+	
+	$arr_sql_index=array();
+	$arr_sql_set_index=array();
 
 	foreach($model as $key => $thing)
 	
@@ -24,7 +27,6 @@ function update_table($model)
 		$default=""; 
 		$extra="";
 		$key_field_old=$model[$key]->idmodel;
-		$arr_sql_index=array();
 		
 		//$arr_multilang=array();
 	
@@ -51,8 +53,13 @@ function update_table($model)
 				{
 
 					//Create indexes...
-
-					$arr_sql_index[$key_data]='CREATE INDEX index_'.$key.'_'.$key_data.' ON '.$key.'('.$key_data.');';
+					
+					$arr_sql_index[$key][$key_data]='CREATE INDEX index_'.$key.'_'.$key_data.' ON '.$key.'('.$key_data.');';
+					
+					$table_related=$model[$key]->components[$key_data]->related_model;
+					$id_table_related='Id'.ucfirst($model[$key]->components[$key_data]->related_model);				
+					
+					$arr_sql_set_index[$key][$key_data]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
 				}
 			}
@@ -63,14 +70,15 @@ function update_table($model)
 			
 			$query=webtsys_query($sql_query);
 
-			foreach($arr_sql_index as $key_data => $sql_index)
+			/*foreach($arr_sql_index as $key_data => $sql_index)
 			{
 
 				echo "---Creating index for ".$key_data."\n";
 
 				$query=webtsys_query($sql_index);
+				$query=webtsys_query($arr_sql_set_index[$key_data]);
 
-			}
+			}*/
 
 		}
 		else
@@ -126,9 +134,17 @@ function update_table($model)
 					if(isset($model[$key]->components[$field]->related_model) && $keys[$field]=='')
 					{
 
-						echo "---Creating index for ".$field." from ".$key."\n";
+						//echo "---Creating index for ".$field." from ".$key."\n";
 
-						$query=webtsys_query('CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.')');
+						//$query=webtsys_query('CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.')');
+						
+						$arr_sql_index[$key][$field]='CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.');';
+					
+						$table_related=$model[$key]->components[$field]->related_model;
+						$id_table_related='Id'.ucfirst($model[$key]->components[$field]->related_model);				
+						
+						$arr_sql_set_index[$key][$field]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+						
 
 					}
 
@@ -181,9 +197,16 @@ function update_table($model)
 				if(isset($model[$key]->components[$new_field]->related_model) )
 				{
 
-					echo "---Creating index for ".$new_field." from ".$key."\n";
+					/*echo "---Creating index for ".$new_field." from ".$key."\n";
 
-					$query=webtsys_query('CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.')');
+					$query=webtsys_query('CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.')');*/
+					
+					$arr_sql_index[$new_field]='CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.');';
+					
+					$table_related=$model[$key]->components[$new_field]->related_model;
+					$id_table_related='Id'.ucfirst($model[$key]->components[$new_field]->related_model);				
+					
+					$arr_sql_set_index[$new_field]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$new_field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
 				}
 		
@@ -201,6 +224,21 @@ function update_table($model)
 		
 		}
 	
+	}
+	
+	//Create Indexes...
+	
+	foreach($arr_sql_index as $model_name => $arr_index)
+	{
+		foreach($arr_sql_index[$model_name] as $key_data => $sql_index)
+		{
+
+			echo "---Creating index for ".$key_data." on model ".$model_name."\n";
+
+			$query=webtsys_query($sql_index);
+			$query=webtsys_query($arr_sql_set_index[$model_name][$key_data]);
+
+		}
 	}
 
 }

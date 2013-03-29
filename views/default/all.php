@@ -67,7 +67,7 @@ foreach($arr_i18n as $lang_item)
 	$arr_selected[slugify($language)]='choose_flag';
 
 	?>
-	<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/common/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>
+	<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/default/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>
 	<?php
 
 }

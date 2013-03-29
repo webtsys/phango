@@ -58,6 +58,16 @@ if(!file_exists($base_path))
 
 }
 
+//Check session_id, if exists $_COOKIE[COOKIE_NAME], change id to COOKIE_NAME id...
+
+if(isset($_COOKIE[COOKIE_NAME]))
+{
+
+	//echo session_id();
+	session_id($_COOKIE[COOKIE_NAME]);
+
+}
+
 session_name(COOKIE_NAME.'_session');
 
 session_set_cookie_params(0, $cookie_path);

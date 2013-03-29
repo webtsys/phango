@@ -51,4 +51,12 @@ function recursive_obtain_father($arr_id_father, $id, $arr_id_name, $arr_hierarc
 
 }
 
+function hierarchy_links_ctl($arr_controller)
+{
+
+	
+
+}
+
+
 ?>
