@@ -2268,8 +2268,9 @@ class ForeignKeyField extends IntegerField{
 	//field related in the model...
 	public $related_model='';
 	public $container_model='';
+	public $null_relation=true;
 
-	function __construct($related_model, $size=11)
+	function __construct($related_model, $size=11, $null_relation=true)
 	{
 
 		$this->size=$size;
@@ -2280,6 +2281,7 @@ class ForeignKeyField extends IntegerField{
 		$this->fields_related_model=array();
 		//Representative field for related model...
 		$this->name_field_to_field='';
+		$this->null_relation=$null_relation;
 
 	}
 
