@@ -93,6 +93,9 @@ function update_table($model)
 			}
 		
 			//unset($allfields['Id'.ucfirst($key)]);
+			
+			$arr_null['NO']='NOT NULL';
+			$arr_null['YES']='NULL';
 
 			unset($allfields[$model[$key]->idmodel]);
 		
@@ -106,7 +109,9 @@ function update_table($model)
 				$fields[]=$field;
 				$types[$field]=$type;
 				$keys[$field]=$key_db;
-	
+				
+				$null_set[$field]=$arr_null[$null];
+				
 			}
 			
 			foreach($fields as $field)
@@ -119,7 +124,7 @@ function update_table($model)
 					
 					unset($allfields[$field]);
 					
-					if($model[$key]->components[$field]->get_type_sql()!=($type." NOT NULL"))
+					if($model[$key]->components[$field]->get_type_sql()!=($type.' '.$null_set[$field]))
 					{
 						
 						$query=webtsys_query('alter table '.$key.' modify `'.$field.'` '.$model[$key]->components[$field]->get_type_sql());
