@@ -307,6 +307,8 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 
 		$model['user']->components['password']->required=0;
 		
+		$model['user']->update($post, 'where IdUser='.$result['IdUser']);
+		
 		if($model['user']->update($post, 'where IdUser='.$result['IdUser']))
 		{
 			
