@@ -2268,9 +2268,9 @@ class ForeignKeyField extends IntegerField{
 	//field related in the model...
 	public $related_model='';
 	public $container_model='';
-	public $null_relation=true;
+	public $null_relation=1;
 
-	function __construct($related_model, $size=11, $null_relation=true)
+	function __construct($related_model, $size=11, $null_relation=1)
 	{
 
 		$this->size=$size;
@@ -2323,8 +2323,11 @@ class ForeignKeyField extends IntegerField{
 	
 	function get_type_sql()
 	{
+	
+		$arr_null[0]='NOT NULL';
+		$arr_null[1]='NULL';
 
-		return 'INT('.$this->size.') NULL';
+		return 'INT('.$this->size.') '.$arr_null[$this->null_relation];
 
 	}
 
