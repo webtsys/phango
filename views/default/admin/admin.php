@@ -13,10 +13,10 @@ function AdminView($header, $title, $content, $name_modules, $url_modules)
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title><?php echo $title; ?></title>
 		<link href="<?php echo $base_url; ?>/media/common/style/style.css" rel="stylesheet" type="text/css">
-		<?php echo $header; ?>
 		<?php 
 			echo load_jscript_view(); 
 		?>
+		<?php echo $header; ?>
 		</head>
 		<body>
 		<div id="languages_general">
