@@ -1,6 +1,6 @@
 <?php
 
-function SelectModelFormByOrder($name, $class, $value, $model_name, $identifier_field, $field_parent, $where='')
+function SelectModelFormByOrder($name, $class, $value, $model_name, $identifier_field, $field_parent, $where='', $null_yes=1)
 {
 
 	//Need here same thing that selectmodelform...
@@ -14,7 +14,16 @@ function SelectModelFormByOrder($name, $class, $value, $model_name, $identifier_
 
 	}
 	
-	$arr_model=array($value, $lang['common']['no_element_chosen'], 0);
+	$arr_model=array($value);
+	
+	if($null_yes==1)
+	{
+	
+		$arr_model[]=$lang['common']['no_element_chosen'];
+		$arr_model[]=0;
+	
+	}
+	
 	$arr_elements=array();
 	
 	$query=$model[$model_name]->select($where, array($model[$model_name]->idmodel, $identifier_field, $field_parent));
