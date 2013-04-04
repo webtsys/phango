@@ -9,6 +9,8 @@ New features
 - Add class for create switch. Can be $class('op_var', array(1 => 'func1', 2 => 'func2'), array('func1' => 
 $arr_parameters, 'func2' => $arr_parameters2), $class->show();, this class is a library.
 - Add function for add css to views how javascript.
+- A function for obtain a index fancy url.
+- A function for obtain where var.
 
 Knowed Bugs
 ----------------------------
