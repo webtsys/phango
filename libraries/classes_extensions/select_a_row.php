@@ -5,7 +5,7 @@ function select_a_row_method_class($class, $idrow, $arr_select=array(), $raw_que
 
 	settype($idrow, 'integer');
 	
-	$query=$class->select('where '.$class->idmodel.'=\''.$idrow.'\'', $arr_select, $raw_query);
+	$query=$class->select('where '.$class->name.'.`'.$class->idmodel.'`=\''.$idrow.'\'', $arr_select, $raw_query);
 	
 	return webtsys_fetch_array($query, $assoc);
 
