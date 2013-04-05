@@ -63,6 +63,10 @@ class Webmodel {
 	//Variable for indicate how many extra fields for foreignkeyfield have created for clean components
 
 	public $arr_trash_components=array();
+	
+	//Key is a model name, and the first element of array for the element is the connection.
+	
+	public $related_models=array();
 
 	//Construct the model
 
@@ -268,21 +272,12 @@ class Webmodel {
 		if($raw_query==0)
 		{
 		
-			//Add all fields if fields_related_model is not defined.
+			//Add fields defined on fields_related_model.
 			
 			foreach($arr_extra_model as $key => $my_field)
 			{
 			
 				$model_name_related=$this->components[$my_field]->related_model;
-				
-				//Set default fields from related model if fields_related_model is not defined...
-				/*
-				if(count($this->components[$my_field]->fields_related_model)==0)
-				{
-				
-					$this->components[$my_field]->fields_related_model=array_keys( $model[$model_name_related]->components );
-				
-				}*/
 				
 				//Set the value for the component foreignkeyfield if name_field_to_field is set.
 			
@@ -290,15 +285,6 @@ class Webmodel {
 				{
 				
 					$arr_select[$key]=$model_name_related.'.`'.$this->components[$my_field]->name_field_to_field.'` as `'.$my_field.'`';
-					
-					/*$key_related=array_search($this->components[$my_field]->name_field_to_field, $this->components[$my_field]->fields_related_model);
-					
-					if($key_related!=null)
-					{
-					
-						unset( $this->components[$my_field]->fields_related_model[$key_related] );
-						
-					}*/
 					
 				}
 				
@@ -318,12 +304,26 @@ class Webmodel {
 				$arr_where[]=$this->name.'.`'.$my_field.'`='.$model_name_related.'.`'.$model[$model_name_related]->idmodel.'`';
 			
 			}
+			
+			//Now define inverse relationship...
+			
+			foreach($this->related_models as $model_name_related => $fields_related)
+			{
+			
+				foreach($fields_related as $field_related)
+				{
+				
+					$arr_select[]=$model_name_related.'.`'.$field_related.'` as `'.$model_name_related.'_'.$field_related.'`';
+					
+				}
+				
+				$arr_model[]=$model_name_related;
+				
+				$arr_where[]=$this->name.'.`'.$this->idmodel.'`='.$model_name_related.'.`'.$fields_related[0].'`';
+			
+			}
 		
 		}
-
-		//Merge $arr_select variable with $arr_extra_select that is a fields array from another table related by a ForeignKeyField
-
-		//$arr_select=array_merge($arr_select, $arr_extra_select);
 
 		//Final fields from use in query
 		
