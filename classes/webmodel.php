@@ -512,8 +512,17 @@ class Webmodel {
 
 	function select_count($conditions, $field)
 	{
+	
+		$arr_model=array($this->name);
+	
+		foreach($this->related_models as $model_name_related => $fields_related)
+		{
+			
+			$arr_model[]=$model_name_related;
+		
+		}
 
-		$query=webtsys_query('select count('.$field.') from '.$this->name.' '.$conditions);
+		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions);
 		
 		list($count_field)= webtsys_fetch_row($query);
 
@@ -2303,7 +2312,7 @@ class ForeignKeyField extends IntegerField{
 
 		//Need checking if the value exists with a select_count
 		
-		$num_rows=$model[$this->related_model]->select_count('where '.$model[$this->related_model]->idmodel.'='.$value, $model[$this->related_model]->idmodel);
+		$num_rows=$model[$this->related_model]->select_count('where '.$this->related_model.'.'.$model[$this->related_model]->idmodel.'='.$value, $model[$this->related_model]->idmodel);
 		
 		if($num_rows>0)
 		{
