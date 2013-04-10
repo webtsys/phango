@@ -362,121 +362,6 @@ class Webmodel {
 		
 	}
 
-	//@Options for recursive_fields_select
-	// @param $key_select 
-
-	function recursive_fields_select($key_select, $model_name, $my_field, $raw_query, $arr_select, $arr_extra_select, $arr_model, $arr_where)
-	{
-
-		global $model;
-		
-		//Check if the field is a foreignkeyfield...
-
-		if(isset($model[$model_name]->components[$my_field]->related_model) && $raw_query==0)
-		{
-			//Check is load the related model from this foreignkeyfield
-
-			if(!isset($model[$model[$model_name]->components[$my_field]->related_model]) )
-			{
-
-				//If not send error to output...
-
-				$output=ob_get_contents();
-
-				$arr_error_sql[0].='<p>You need load related model</p>';
-				$arr_error_sql[1].='<p>You need load related model '.$model[$model_name]->components[$my_field]->related_model.' for '.$model[$model_name]->name.'</p><p>Output: '.$output.'</p>';
-
-				ob_clean();
-			
-				echo load_view(array('title' => 'Phango site is down', 'content' => $arr_error_sql[DEBUG]), 'common/common');
-
-				die();
-
-			}
-
-			//Now load an array fill with all fields from related_model
-			
-			$model_related=$model[$model_name]->components[$my_field]->related_model;
-
-			//Clean components related for tables son...
-
-			$model[$model_related]->clean_extra_fields();
-
-			//Here we decide if a only field or all fields...
-
-			if(count($model[$model_name]->components[$my_field]->fields_related_model)==0)
-			{
-
-				//fields_related_model doesn't exists 
-
-				$arr_related_model=array_keys($model[ $model_related ]->components);
-				
-			}
-			else
-			{
-
-				//fields_related_model exists and only load this field from related_model
-
-				$arr_related_model=$model[$model_name]->components[$my_field]->fields_related_model;
-
-			}
-			
-			//Here is related a field from related model as the representative value of the model
-
-			if( isset($model[$model_related]->components[$model[$model_name]->components[$my_field]->name_field_to_field]) )
-			{
-				//Obtain key from related field
-				$key_value=array_search($model[$model_name]->components[$my_field]->name_field_to_field, $arr_related_model);
-				
-				//Deleteting the value field from array where is stored the field from related model
-				unset($arr_related_model[$key_value]);
-				
-				//Replacement foreignkeyfield with field from related model
-
-				$identifier_field=$model[ $model_related ]->name.'_'.$model[$model_name]->components[$my_field]->name_field_to_field;
-
-				$arr_select[$key_select]=$model[ $model_related ]->name.'.'.$model[$model_name]->components[$my_field]->name_field_to_field.' as `'.$identifier_field.'`';
-
-				//Create tmp component...
-
-				//$model[$model_name]->components[$identifier_field]=&$model[$model_related] ->components[ $model[$model_name]->components[$my_field]->name_field_to_field ];
-				
-				$this->arr_trash_components[$identifier_field]=array($model_related, $model[$model_name]->components[$my_field]->name_field_to_field);
-
-			}
-
-			//Recursive part from method, searching related values into model related
-			
-			foreach($arr_related_model as $key_related => $related_field)
-			{
-
-				$identifier_field=$model[ $model_related ]->name.'_'.$related_field;
-
-				$arr_extra_select[$key_related]=$model[ $model_related ]->name.'.`'.$related_field.'` as `'.$identifier_field.'`';
-				
-				list($arr_select, $arr_extra_select, $arr_model, $arr_where)=$model[$model_name]->recursive_fields_select($key_select, $model[ $model_related ]->name, $related_field, $raw_query, $arr_select, $arr_extra_select, $arr_model, $arr_where);
-
-				/*print_r($arr_model);
-				echo '<p>';*/
-
-				//Create tmp component...
-				
-				//$model[$model_name]->components[$identifier_field]=&$model[$model_related]->components[ $related_field ];
-
-				$this->arr_trash_components[$identifier_field]=array($model_related, $related_field);
-
-			}
-
-			$arr_model[]=$model_related;
-
-			$arr_where[]=$model_related.'.'.$model[ $model_related ]->idmodel.'='.$model[$model_name]->name.'.'.$my_field;
-			
-		}
-	
-		//Return the values for compose query
-		return array($arr_select, $arr_extra_select, $arr_model, $arr_where);
-
-	}
 
 	function clean_extra_fields()
 	{
@@ -514,12 +399,33 @@ class Webmodel {
 	{
 	
 		$arr_model=array($this->name);
+		$arr_where=array('1=1');
 	
 		foreach($this->related_models as $model_name_related => $fields_related)
 		{
 			
 			$arr_model[]=$model_name_related;
+			
+			$arr_where[]=$this->name.'.`'.$this->idmodel.'`='.$model_name_related.'.`'.$fields_related[0].'`';
 		
+		}
+		
+		$where=implode(" and ", $arr_where);
+		
+		if(preg_match('/^where/', $conditions) || preg_match('/^WHERE/', $conditions))
+		{
+			
+			$conditions=str_replace('where', '', $conditions);
+			$conditions=str_replace('WHERE', '', $conditions);
+
+			$conditions='WHERE '.$where.' and '.$conditions;
+			
+		}
+		else
+		{
+			
+			$conditions='WHERE '.$where.' '.$conditions;
+
 		}
 
 		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions);
