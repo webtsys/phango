@@ -76,7 +76,7 @@ class Webmodel {
 	
 	//@param $name_model is the name of the model
 	
-	function __construct($name_model)
+	public function __construct($name_model)
 	{
 		
 		$this->name=$name_model;
@@ -85,7 +85,7 @@ class Webmodel {
 
 	}
 
-	function change_id_default($name_id)
+	public function change_id_default($name_id)
 	{
 
 		//Check if i create more components, if create more, die.
@@ -108,7 +108,7 @@ class Webmodel {
 	//Method for create a new row in the model.
 	//@param $post is a array where each key is referred to a model field. 
 
-	function insert($post)
+	public function insert($post)
 	{
 
 		global $lang;
@@ -150,7 +150,7 @@ class Webmodel {
 	//@param $post is a array where each key is referred to a model field. 
 	//@param $conditions is a sql sentence for specific conditions for the query Example: "where id=2"
 	
-	function update($post, $conditions="")
+	public function update($post, $conditions="")
 	{
 
 		global $lang;
@@ -220,7 +220,7 @@ class Webmodel {
 	//You have use webtsys_fetch_row or alternatives for obtain data
 	//Conditions are sql lang, more simple, more kiss
 
-	function select($conditions="", $arr_select=array(), $raw_query=0)
+	public function select($conditions="", $arr_select=array(), $raw_query=0)
 	{
 		//Check conditions.., script must check, i can't make all things!, i am not a machine!
 
@@ -363,7 +363,7 @@ class Webmodel {
 	}
 
 
-	function clean_extra_fields()
+	public function clean_extra_fields()
 	{
 
 		//Clean components...
@@ -377,7 +377,7 @@ class Webmodel {
 
 	}
 
-	function create_extra_fields()
+	public function create_extra_fields()
 	{
 
 		global $model;
@@ -395,7 +395,7 @@ class Webmodel {
 
 	//This method count num rows for the sql condition
 
-	function select_count($conditions, $field)
+	public function select_count($conditions, $field)
 	{
 	
 		$arr_model=array($this->name);
@@ -438,7 +438,7 @@ class Webmodel {
 
 	//This method delete rows for the sql condition
 
-	function delete($conditions="")
+	public function delete($conditions="")
 	{
 	
 		foreach($this->components as $name_field => $component)
@@ -459,7 +459,7 @@ class Webmodel {
 
 	//A helper function for obtain names from components
 
-	function all_fields()
+	public function all_fields()
 	{
 
 		return array_keys($this->components);
@@ -468,7 +468,7 @@ class Webmodel {
 
 	//Check if components are valid, if not fill $this->std_error
 
-	function check_all($post)
+	public function check_all($post)
 	{
 
 		global $lang;
@@ -549,7 +549,7 @@ class Webmodel {
 
 	//Helper function for unset components if necessary
 
-	function unset_components($arr_components=array())
+	public function unset_components($arr_components=array())
 	{
 
 		foreach($arr_components as $value)
@@ -562,7 +562,7 @@ class Webmodel {
 
 	}
 
-	function create_form()
+	public function create_form()
 	{
 
 		//With function for create form, we use an array for specific order, after i can insert more fields in the form.
@@ -596,7 +596,7 @@ class Webmodel {
 
 	//Method for obtain an array with all errors in components
 	
-	function return_error_form()
+	public function return_error_form()
 	{
 
 		$arr_error=array();
@@ -614,7 +614,7 @@ class Webmodel {
 
 	//Method for reset required fields from components. Use this if you need update a field from a model that you don't want update required fields.
 
-	function reset_require()
+	public function reset_require()
 	{
 		
 
@@ -627,7 +627,7 @@ class Webmodel {
 
 	}
 
-	function set_enctype_binary()
+	public function set_enctype_binary()
 	{
 
 		$this->enctype='enctype="multipart/form-data"';
