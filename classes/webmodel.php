@@ -465,6 +465,15 @@ class Webmodel {
 		return array_keys($this->components);
 
 	}
+	
+	public function stripped_all_fields($arr_strip)
+	{
+	
+		$arr_total_fields=$this->all_fields();
+
+		
+
+	}
 
 	//Check if components are valid, if not fill $this->std_error
 
