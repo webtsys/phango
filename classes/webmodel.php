@@ -655,6 +655,20 @@ class Webmodel {
 		return call_user_func_array($name_method.'_method_class', $arguments);
 	
 	}
+	
+	static public function check_where($arr_where)
+	{
+	
+		foreach($arr_where as $key => $value)
+		{
+		
+			$arr_where[$key]=$this->components[$key]->check($value);
+		
+		}
+		
+		return $arr_where;
+	
+	}
 
 }
 
