@@ -598,7 +598,7 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 
 	}
 
-	$form_search='<form method="get" action="'.add_extra_fancy_url( $url_options, array() ).'">';
+	/*$form_search='<form method="get" action="'.add_extra_fancy_url( $url_options, array() ).'">';
 	$form_search.=set_csrf_key();
 	$form_search.=$lang['common']['order_by'].': '.SelectForm('order_field', '', $arr_order_field).' '.$lang['common']['in_order'].': '.SelectForm('order_desc', '', $arr_order_select);
 
@@ -608,7 +608,9 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 
 	$form_search.='</form></p>';
 	
-	echo load_view(array($lang['common']['order_and_search'], $form_search), 'content');
+	echo load_view(array($lang['common']['order_and_search'], $form_search), 'content');*/
+	
+	echo load_view(array($arr_search_field, $arr_order_field, $arr_order_select, $url_options), 'common/forms/searchform');
 
 	//Query for order
 

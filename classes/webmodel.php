@@ -471,7 +471,7 @@ class Webmodel {
 	
 		$arr_total_fields=$this->all_fields();
 
-		
+		return array_intersect($arr_strip, $arr_total_fields);
 
 	}
 
