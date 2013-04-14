@@ -188,4 +188,14 @@ function Index()
     
 }
 
+function set_admin_link($text_admin, $parameters)
+{
+	global $base_url;
+
+	$parameters['IdModule']=$_GET['IdModule'];
+
+	return make_fancy_url($base_url, 'admin', 'index', $text_admin, $parameters);
+
+}
+
 ?>
