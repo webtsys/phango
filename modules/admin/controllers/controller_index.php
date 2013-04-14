@@ -75,7 +75,7 @@ function Index()
 			if(!isset($lang[$name_module.'_admin'][$name_module.'_admin_name']))
 			{
 
-				$name_modules[$name_module]=$name_module;
+				$name_modules[$name_module]=ucfirst($name_module);
 				$lang[$name_module.'_admin'][$name_module.'_admin_name']=ucfirst($name_modules[$name_module]);
 			
 			}

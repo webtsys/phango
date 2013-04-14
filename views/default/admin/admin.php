@@ -61,7 +61,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
 						{
 						
 							?>
-							<a class="sub_module" href="<?php echo $extra_data['extra_url'][$key_module]['url_module']; ?>"><?php echo $extra_data['extra_url'][$key_module]['name_module']; ?></a>
+							<a class="sub_module" href="<?php echo $extra_data['extra_url'][$key_module]['url_module']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $extra_data['extra_url'][$key_module]['name_module']; ?></a>
 							<?php
 						
 						}
