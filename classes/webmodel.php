@@ -1095,10 +1095,10 @@ class BooleanField {
 	public $quot_close='\'';
 	public $std_error='';
 
-	function __construct($size=11)
+	function __construct()
 	{
 
-		$this->size=$size;
+		$this->size=1;
 		$this->form='SelectForm';
 		$this->set_form='list_value';
 
@@ -1124,6 +1124,8 @@ class BooleanField {
 	function get_type_sql()
 	{
 
+		//Int for simple compatibility with sql dbs.
+	
 		return 'INT('.$this->size.') NOT NULL';
 
 	}
