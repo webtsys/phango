@@ -1,6 +1,6 @@
 <?php
 
-function AdminView($header, $title, $content, $name_modules, $url_modules)
+function AdminView($header, $title, $content, $name_modules, $url_modules, $extra_data)
 {
 
 	global $base_url, $lang, $arr_cache_jscript, $arr_cache_jscript_gzipped, $arr_i18n, $language, $config_data;
@@ -54,6 +54,17 @@ function AdminView($header, $title, $content, $name_modules, $url_modules)
 						?>
 						<a href="<?php echo $url_modules[$key_module]; ?>"><?php echo $name_module; ?></a>
 						<?php
+						
+						//If have $key_module with an extra_url element from extra_data, put here.
+						
+						if(isset($extra_data['extra_url'][$key_module]))
+						{
+						
+							?>
+							<a class="sub_module" href="<?php echo $extra_data['extra_url'][$key_module]['url_module']; ?>"><?php echo $extra_data['extra_url'][$key_module]['name_module']; ?></a>
+							<?php
+						
+						}
 					}
 
 					?>

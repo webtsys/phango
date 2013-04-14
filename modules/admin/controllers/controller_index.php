@@ -19,6 +19,8 @@ function Index()
 	$config_data['dir_theme']=$original_theme.'/admin';
 
 	$arr_block='admin_none';
+	
+	$extra_urls=array();
 
 	//Make menu...
 	//Admin was internationalized
@@ -142,7 +144,7 @@ function Index()
 
 				echo '<h1>'.$lang[$module_admin[$_GET['IdModule']].'_admin'][$module_admin[$_GET['IdModule']].'_admin_name'].'</h1>';
 
-				$func_admin();
+				$extra_data=$func_admin();
 
 			}
 			else
@@ -173,7 +175,7 @@ function Index()
 	
 		ob_end_clean();
 		
-		echo load_view(array('header' => $header, 'title' => $lang['admin']['admin_zone'], 'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls ), 'admin');
+		echo load_view(array('header' => $header, 'title' => $lang['admin']['admin_zone'], 'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin');
 
 	}
 	else
