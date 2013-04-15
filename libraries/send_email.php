@@ -1,5 +1,7 @@
 <?php
 
+//Now, we use swiftmailer.
+
 function send_mail($email, $subject, $message, $content_type='plain', $bcc='')
 {
 

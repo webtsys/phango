@@ -673,7 +673,7 @@ class Webmodel {
 	public function set_component($name, $type, $arguments)
 	{
 	
-		$rc = new ReflectionClass($type);
+		$rc=new ReflectionClass($type);
 		$this->components[$name]=$rc->newInstanceArgs($arguments);
 		
 		//Set first label...
