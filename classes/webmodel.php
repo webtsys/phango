@@ -3865,9 +3865,34 @@ function load_jscript_view()
 
 	}
 
-	return implode("", $arr_final_jscript);
+	return implode("\n", $arr_final_jscript);
 
 }
+
+$arr_cache_header=array();
+
+function load_header_view()
+{
+
+	global $arr_cache_header, $base_url;
+
+	//Delete repeat scripts...
+
+	$arr_cache_header=array_unique($arr_cache_header, SORT_STRING);
+	
+	$arr_final_header=array();
+
+	foreach($arr_cache_jscript as $idheader => $header)
+	{
+
+		$arr_final_header[]=$header;
+
+	}
+
+	return implode("\n", $arr_final_header);
+
+}
+
 
 function urlencode_redirect($url)
 {
