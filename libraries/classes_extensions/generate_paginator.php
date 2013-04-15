@@ -37,7 +37,7 @@ function generate_paginator_method_class($class, $where, $arr_fields, $arr_extra
 	
 	down_table_config();
 	
-	echo pages( $_GET['begin_page'], $total_elements, $num_elements, $url_paginament ,$initial_num_pages, $begin_page_var);
+	echo '<p class="paginator">'.pages( $_GET['begin_page'], $total_elements, $num_elements, $url_paginament ,$initial_num_pages, $begin_page_var).'</p>';
 
 }
 
