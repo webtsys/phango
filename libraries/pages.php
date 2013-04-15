@@ -62,7 +62,7 @@ function pages( $begin_page, $total_elements, $num_elements, $link ,$initial_num
 
 		$num_page=ceil($x/$num_elements)+1;
 		$arr_pages[$x]="<a class=\"link_pages\" href=\"$middle_link\" onclick=\"$func_jscript\">$num_page</a> ";
-		$arr_pages[$begin_page]=$num_page.' ';
+		$arr_pages[$begin_page]='<span class="selected_page">'.$num_page.'</span> ';
 		$pages .= $arr_pages[$x];
 
 	}
