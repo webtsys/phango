@@ -471,7 +471,7 @@ class Webmodel {
 	
 		$arr_total_fields=$this->all_fields();
 
-		return array_intersect($arr_strip, $arr_total_fields);
+		return array_diff($arr_total_fields, $arr_strip);
 
 	}
 
@@ -667,6 +667,19 @@ class Webmodel {
 		}
 		
 		return $arr_where;
+	
+	}
+	
+	public function set_component($name, $type, $arguments)
+	{
+	
+		$rc = new ReflectionClass($type);
+		$this->components[$name]=$rc->newInstanceArgs($arguments);
+		
+		//Set first label...
+		
+		$this->components[$name]->label=ucfirst(str_replace('_', '', $name));
+		$this->components[$name]->name_component=$name;
 	
 	}
 
