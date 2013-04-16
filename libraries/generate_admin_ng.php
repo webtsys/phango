@@ -165,7 +165,7 @@ function ConfigInsertModel($model_name, $arr_fields, $post)
 
 	global $model;
 
-	$num_insert=$model[$model_name]->select_count($model_name, $model[$model_name]->idmodel);
+	$num_insert=$model[$model_name]->select_count('', $model[$model_name]->idmodel);
 
 	$func_update='insert';
 
@@ -175,7 +175,7 @@ function ConfigInsertModel($model_name, $arr_fields, $post)
 		$func_update='update';
 
 	}
-
+	
 	if($model[$model_name]->$func_update($post, 'limit 1'))
 	{
 		
