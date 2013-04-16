@@ -2332,8 +2332,27 @@ class ForeignKeyField extends IntegerField{
 	function get_parameters_default()
 	{
 		global $lang;
+		
+		load_libraries(array('forms/selectmodelform'));
+		
+		//SelectModelForm($name, $class, $value, $model_name, $identifier_field, $where='')
+		
+		//Prepare parameters for selectmodelform
+		
+		/*if(isset($this->name_component) && $this->name_field_to_field!='')
+		{
+		
+			$this->parameters=array($this->name_component, '', '', $this->related_model, $this->name_field_to_field, '');
 
+			return '';
+			
+		}
+		else
+		{*/
+		
 		return array('', $lang['common']['any_option_chosen'], '');
+			
+		//}
 
 	}
 	
