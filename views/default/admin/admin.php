@@ -59,9 +59,13 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
 						if(isset($extra_data['extra_url'][$key_module]))
 						{
 						
-							?>
-							<a class="sub_module" href="<?php echo $extra_data['extra_url'][$key_module]['url_module']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $extra_data['extra_url'][$key_module]['name_module']; ?></a>
-							<?php
+							foreach($extra_data['extra_url'][$key_module]['url_module'] as $key => $url_module)
+							{
+						
+								?>
+								<a class="sub_module" href="<?php echo $url_module; ?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo ucfirst($extra_data['extra_url'][$key_module]['name_module'][$key]); ?></a>
+								<?php
+							}
 						
 						}
 					}
