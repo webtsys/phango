@@ -36,7 +36,7 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 
 				ob_start();
 				
-				echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype), 'common/forms/updatemodelform');
+				echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin'), 'common/forms/updatemodelform');
 
 				$cont_index=ob_get_contents();
 
@@ -293,7 +293,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 
 function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic')
 {
-	global $model;
+	global $model, $arr_cache_header, $arr_cache_jscript, $lang;
 
 	settype($_GET['op_edit'], 'integer');
 	settype($_GET['op_action'], 'integer');
@@ -307,11 +307,40 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 		default:
 
 			
-			if($_GET['op_edit']==0)
+		/*	if($_GET['op_edit']==0)
 			{
+			
+				//Set javascript code
+				
+				$arr_cache_jscript[]='jquery.min.js';
+				
+				ob_start();
+				
+				?>
+				<script language="Javascript">
+				
+				$(document).ready( function () {
+				
+					$('#form_generate_admin').hide();
+					
+				});
+				
+				</script>
+				<?php
+				
+				$arr_cache_header[]=ob_get_contents();
+				
+				ob_end_clean();
 
 				InsertModelForm($model_name, $url_admin, $url_options, $arr_fields_edit, $id=0, 0);
 
+			}*/
+			
+			if($_GET['op_edit']==0)
+			{
+			
+				echo '<p class="add_new_item"><a href="'.add_extra_fancy_url($url_options, array('op_action' => 1)).'">'.$lang['common']['add_new_item'].': '.$model[$model_name]->label.'</a></p>';
+				
 			}
 
 			ListModel($model_name, $arr_fields, $url_options, $options_func, $where_sql, $arr_fields_edit, $type_list);
@@ -320,11 +349,11 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 
 		case 1:
 			
+			echo '<h3>'.$lang['common']['add_new_item'].': '.$model[$model_name]->label.'</h3>';
 
 			InsertModelForm($model_name, $url_admin, $url_options, $arr_fields_edit, $id=0);
 
 		break;
-
 
 	}
 

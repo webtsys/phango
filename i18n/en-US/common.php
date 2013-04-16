@@ -168,6 +168,16 @@ $lang['common']['admin_panel']='Admin panel';
 
 $lang['common']['with_*_field_required']='The fields with * are required';
 
+$lang['common']['order_by']='Order by';
+
+$lang['common']['in_order']='In order';
+
+$lang['common']['search_by']='Search by';
+
+$lang['common']['reset']='Reset';
+
+$lang['common']['order_and_search']='Search and order';
+
 $lang['common']['logout']='Logout';
 
 $lang['common']['login']='Login';
@@ -184,6 +194,8 @@ $lang['common']['cannot_load_jquery']='Not loaded jquery, required for this meth
 
 $lang['common']['cannot_update_insert_in_model']='I cannot insert or update this element';
 
+$lang['common']['add_new_item']='Add new item';
+
 $lang['common']['delete_model']='Delete element';
 
 $lang['common']['delete']='Delete';
@@ -191,16 +203,6 @@ $lang['common']['delete']='Delete';
 $lang['common']['ascent']='Up';
 
 $lang['common']['descent']='Falling';
-
-$lang['common']['order_by']='Order by';
-
-$lang['common']['in_order']='In order';
-
-$lang['common']['search_by']='Search by';
-
-$lang['common']['reset']='Reset';
-
-$lang['common']['order_and_search']='Search and order';
 
 $lang['common']['no_exists_elements_to_order']='There are no items to order';
 

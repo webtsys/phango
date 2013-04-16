@@ -38,6 +38,8 @@ class Webmodel {
 
 	public $name;
 	
+	public $label;
+	
 	public $idmodel;
 
 	//Components is a array for the fields of this model
@@ -82,6 +84,7 @@ class Webmodel {
 		$this->name=$name_model;
 		$this->idmodel='Id'.ucfirst($this->name);
 		$this->components[$this->idmodel]=new PrimaryField();
+		$this->label=$this->name;
 
 	}
 
@@ -461,8 +464,15 @@ class Webmodel {
 
 	public function all_fields()
 	{
-
-		return array_keys($this->components);
+	
+		if(count($this->forms==0))
+		{
+		
+			$this->create_form();
+		
+		}
+	
+		return array_keys($this->forms);
 
 	}
 	
@@ -583,7 +593,7 @@ class Webmodel {
 			
 			//Create form from model's components
 
-			$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, $component_name, $component, $component->required, '');
+			$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
 
 			//Set parameters to default
 			$parameters='';
@@ -670,7 +680,7 @@ class Webmodel {
 	
 	}
 	
-	public function set_component($name, $type, $arguments)
+	public function set_component($name, $type, $arguments, $required=0)
 	{
 	
 		$rc=new ReflectionClass($type);
@@ -678,8 +688,32 @@ class Webmodel {
 		
 		//Set first label...
 		
-		$this->components[$name]->label=ucfirst(str_replace('_', '', $name));
+		$this->components[$name]->label=set_name_default($name);
 		$this->components[$name]->name_component=$name;
+		$this->components[$name]->required=$required;
+	
+	}
+	
+	public function InsertAfterFieldForm($name_form_after, $name_form_new, $form_new)
+	{
+	
+		$arr_form_new=array();
+	
+		foreach($this->forms as $form_key => $form_field)
+		{
+		
+			$arr_form_new[$form_key]=$form_field;
+			
+			if($form_key==$name_form_after)
+			{
+				
+				$arr_form_new[$name_form_new]=$form_new;
+			
+			}
+		
+		}
+		
+		$this->forms=$arr_form_new;
 	
 	}
 
@@ -828,29 +862,6 @@ class ModelForm {
 		
 		$this->parameters[2]=$parameters;
 		
-	}
-	
-	static public function InsertAfterField($arr_form, $name_form_after, $name_form_new, $form_new)
-	{
-	
-		$arr_form_new=array();
-	
-		foreach($arr_form as $form_key => $form_field)
-		{
-		
-			$arr_form_new[$form_key]=$form_field;
-			
-			if($form_key==$name_form_after)
-			{
-			
-				$arr_form_new[$name_form_new]=$form_new;
-			
-			}
-		
-		}
-		
-		return $arr_form_new;
-	
 	}
 
 	static function check_form($arr_form, $post)
@@ -3946,6 +3957,13 @@ function urldecode_redirect($url_encoded)
 	$url=base64_decode( $url_encoded , true);
 	
 	return $url;
+
+}
+
+function set_name_default($name)
+{
+
+	return ucfirst(str_replace('_', ' ', $name));
 
 }
 
