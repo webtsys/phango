@@ -856,11 +856,25 @@ class ModelForm {
 		$this->parameters[2]=$func_setvalue($this->parameters[2], $value, $form_type_set);
 		
 	}
+	
+	function SetValueForm($value, $form_type_set='')
+	{
+	
+		$this->SetForm($value, $form_type_set);
+	
+	}
 
 	function SetParameters($parameters)
 	{
 		
 		$this->parameters[2]=$parameters;
+		
+	}
+	
+	function SetParametersForm($parameters)
+	{
+		
+		$this->parameters=$parameters;
 		
 	}
 
