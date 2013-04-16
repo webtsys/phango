@@ -829,6 +829,29 @@ class ModelForm {
 		$this->parameters[2]=$parameters;
 		
 	}
+	
+	static public function InsertAfterField($arr_form, $name_form_after, $name_form_new, $form_new)
+	{
+	
+		$arr_form_new=array();
+	
+		foreach($arr_form as $form_key => $form_field)
+		{
+		
+			$arr_form_new[$form_key]=$form_field;
+			
+			if($form_key==$name_form_after)
+			{
+			
+				$arr_form_new[$name_form_new]=$form_new;
+			
+			}
+		
+		}
+		
+		return $arr_form_new;
+	
+	}
 
 	static function check_form($arr_form, $post)
 	{
