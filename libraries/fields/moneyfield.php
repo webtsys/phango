@@ -42,7 +42,7 @@ class BasicMoneyField extends DoubleField{
 	}
 
 	
-	static function currency_format($value, $symbol_currency)
+	static function currency_format($value, $symbol_currency='&euro;')
 	{
 
 
