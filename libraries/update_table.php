@@ -57,7 +57,8 @@ function update_table($model)
 					$arr_sql_index[$key][$key_data]='CREATE INDEX index_'.$key.'_'.$key_data.' ON '.$key.'('.$key_data.');';
 					
 					$table_related=$model[$key]->components[$key_data]->related_model;
-					$id_table_related='Id'.ucfirst($model[$key]->components[$key_data]->related_model);				
+					$id_table_related=$model[ $table_related ]->idmodel;
+					//'Id'.ucfirst($model[$key]->components[$key_data]->related_model);				
 					
 					$arr_sql_set_index[$key][$key_data]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
@@ -146,7 +147,8 @@ function update_table($model)
 						$arr_sql_index[$key][$field]='CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.');';
 					
 						$table_related=$model[$key]->components[$field]->related_model;
-						$id_table_related='Id'.ucfirst($model[$key]->components[$field]->related_model);				
+						$id_table_related=$model[$table_related]->idmodel;
+						//'Id'.ucfirst($model[$key]->components[$field]->related_model);				
 						
 						$arr_sql_set_index[$key][$field]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 						
@@ -209,7 +211,8 @@ function update_table($model)
 					$arr_sql_index[$new_field]='CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.');';
 					
 					$table_related=$model[$key]->components[$new_field]->related_model;
-					$id_table_related='Id'.ucfirst($model[$key]->components[$new_field]->related_model);				
+					$id_table_related=$model[$table_related]->idmodel;
+					//'Id'.ucfirst($model[$key]->components[$new_field]->related_model);				
 					
 					$arr_sql_set_index[$new_field]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$new_field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
