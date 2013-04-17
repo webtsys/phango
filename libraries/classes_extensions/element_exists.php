@@ -1,6 +1,6 @@
 <?php
 
-function element_exists_class($class, $idrow, $field_search='')
+function element_exists_method_class($class, $idrow, $field_search='')
 {
 
 	if($field_search=='')
