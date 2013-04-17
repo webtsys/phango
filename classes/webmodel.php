@@ -465,7 +465,7 @@ class Webmodel {
 	public function all_fields()
 	{
 	
-		if(count($this->forms==0))
+		if(count($this->forms)==0)
 		{
 		
 			$this->create_form();
