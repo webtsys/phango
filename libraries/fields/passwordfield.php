@@ -22,6 +22,8 @@ class PasswordField extends CharField {
 
 	}
 	
+	//I load the password with the username and check here.
+	
 	static public function check_password($value, $hash_password_check)
 	{
 	
