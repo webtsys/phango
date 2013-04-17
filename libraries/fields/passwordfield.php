@@ -27,7 +27,7 @@ class PasswordField extends CharField {
 	static public function check_password($value, $hash_password_check)
 	{
 	
-		$token_pass=preg_replace('/(.*)_.*/', '$1', $value);
+		$token_pass=preg_replace('/(.*)[_].*/', '$1', $value);
 		
 		$hash_password=$token_pass.'_'.sha1($token_pass.'_'.$value);
 		
