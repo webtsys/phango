@@ -26,7 +26,7 @@ function SelectWindowForm($name="", $class='', $value='', $module='', $model_nam
 			
 			//window.open('','','width=200,height=100');
 		
-			return '<span id="select_window_form_'.$name.'">'.$arr_model[$field].'</span><input type="hidden" name="'.$name.'" class="'.$class.'" id="'.$name.'_field_form" value="'.$value.'"/> <a href="#" onclick="window.open(\''.$url_choose_option.'\', \'\', \'width=800,height=600\'); return false;">'.$lang['common']['any_option_chosen'].'</a>';
+			return '<span id="select_window_form_'.$name.'">'.$arr_model[$field].'</span><input type="hidden" name="'.$name.'" class="'.$class.'" id="'.$name.'_field_form" value="'.$value.'"/> <a href="#" onclick="window.open(\''.$url_choose_option.'\', \'\', \'width=900,height=700,scrollbars=yes\'); return false;">'.$lang['common']['any_option_chosen'].'</a>';
 		
 		}
 	
