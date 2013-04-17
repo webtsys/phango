@@ -12,12 +12,13 @@ $block_type, $block_id, $config_data, $headers='')
 		<html>
 		<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title><?php echo $title; ?></title>
+		<link href="<?php echo $base_url; ?>/media/common/style/style.css" rel="stylesheet" type="text/css">
 		<?php echo $headers; ?>
 		<?php 
 		echo load_jscript_view(); 
+		echo load_header_view(); 		
 		?>
-		<title><?php echo $title; ?></title>
-		<link href="<?php echo $base_url; ?>/media/common/style/style.css" rel="stylesheet" type="text/css">
 		</head>
 		<body>
 		<div id="center_body">

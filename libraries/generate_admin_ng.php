@@ -36,7 +36,7 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 
 				ob_start();
 				
-				echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin'), 'common/forms/updatemodelform');
+				echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin_'.$model_name), 'common/forms/updatemodelform');
 
 				$cont_index=ob_get_contents();
 
@@ -423,7 +423,14 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 
 	$num_elements=20;
 	
-	$where_sql_count=$arr_where_sql;
+	$where_sql_count='';
+	
+	if($arr_where_sql!='')
+	{
+	
+		$where_sql_count=' and '.$arr_where_sql;
+		
+	}
 	
 	$where_sql.=$arr_where_sql.' order by '.$location.'`'.$_GET['order_field'].'` '.$arr_order[$_GET['order_desc']].' limit '.$_GET['begin_page'].', '.$num_elements;
 

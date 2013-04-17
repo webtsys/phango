@@ -2847,7 +2847,7 @@ This functions are called via $model->form
 function TextForm($name="", $class='', $value='')
 {
 
-	return '<input type="text" name="'.$name.'" id="'.$name.'" class="'.$class.'" value="'.$value.'" />';
+	return '<input type="text" name="'.$name.'" id="'.$name.'_field_form" class="'.$class.'" value="'.$value.'" />';
 
 }
 
@@ -2969,7 +2969,7 @@ function ImageFormSet($post, $value)
 function TextAreaForm($name="", $class='', $value='')
 {
 
-	return '<textarea name="'.$name.'" class="'.$class.'" id="'.$name.'">'.$value.'</textarea>';
+	return '<textarea name="'.$name.'" class="'.$class.'" id="'.$name.'_field_form">'.$value.'</textarea>';
 
 }
 
@@ -3034,7 +3034,7 @@ function CheckBoxFormSet($post, $value)
 function SelectForm($name="", $class='', $value='', $more_options='')
 {
 	
-	$select='<select name="'.$name.'" id="'.$name.'" class="'.$class.'" '.$more_options.'>'."\n";
+	$select='<select name="'.$name.'" id="'.$name.'_field_form" class="'.$class.'" '.$more_options.'>'."\n";
 
 	list($key, $default)= each($value);
 
@@ -3097,7 +3097,7 @@ function SelectFormSet($post, $value)
 function SelectManyForm($name="", $class='', $value='', $more_options='' )
 {
 	
-	$select='<select name="'.$name.'[]" class="'.$class.'" '.$more_options.' multiple>'."\n";
+	$select='<select name="'.$name.'[]" id="'.$name.'_field_form" class="'.$class.'" '.$more_options.' multiple>'."\n";
 
 	list($key, $arr_values)= each($value);
 

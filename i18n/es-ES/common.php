@@ -92,6 +92,8 @@ $lang['common']['html_allowed']='Html permitido';
 
 $lang['common']['image']='Imagen';
 
+$lang['common']['select']='Seleccionar';
+
 $lang['common']['status']='Estado';
 
 $lang['common']['author']='Autor';
