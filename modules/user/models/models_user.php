@@ -229,7 +229,7 @@ function user_options($iduser)
 
 }
 
-function generate_random_password()
+function generate_random_password($length_pass=14)
 {
 
 	$x=0;
@@ -240,8 +240,6 @@ function generate_random_password()
 	shuffle($abc);
 	
 	$c_chars=count($abc)-1;
-
-	$length_pass=14;
 
 	$password_final='';
 

@@ -122,9 +122,33 @@ class Webmodel {
 		
 		unset($post[$this->idmodel]);
 		
+		$arr_fields=array();
+		
 		if( $fields=$this->check_all($post) )
 		{	
-			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES (\''.implode("', '",$fields).'\') ') ) )
+			
+			//Foreach for create the query that comes from the $post array
+			
+			foreach($fields as $key => $field)
+			{
+			
+				$quot_open=$this->components[$key]->quot_open;
+				$quot_close=$this->components[$key]->quot_close;
+			
+				if(get_class($this->components[$key])=='ForeignKeyField' && $fields[$key]==NULL)
+				{
+				
+					$quot_open='';
+					$quot_close='';
+					$fields[$key]='NULL';
+				
+				}
+			
+				$arr_fields[]=$quot_open.$fields[$key].$quot_close;
+			
+			}
+		
+			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES ('.implode(", ",$arr_fields).') ') ) )
 			{
 			
 				$this->std_error.=$lang['error_model']['cant_insert'].' ';
@@ -179,14 +203,21 @@ class Webmodel {
 			{
 				if(isset($fields[$key]))
 				{
-					$arr_fields[]='`'.$key.'`='.$component->quot_open.$fields[$key].$component->quot_close;
-					
-					/*if(method_exists($component,  'process_update_field'))
+				
+					$quot_open=$component->quot_open;
+					$quot_close=$component->quot_close;
+				
+					if(get_class($component)=='ForeignKeyField' && $fields[$key]==NULL)
 					{
 					
-						$component->process_update_field($this, $name_field, $conditions);
+						$quot_open='';
+						$quot_close='';
+						$fields[$key]='NULL';
 					
-					}*/
+					}
+				
+					$arr_fields[]='`'.$key.'`='.$quot_open.$fields[$key].$quot_close;
+					
 				}
 	
 			}
@@ -934,7 +965,7 @@ class ModelForm {
 
 /*****************************************
 
-Now, we define components for use in models. I don't use a base model for charfields for have more flexibility: more simple, more kiss.
+Now, we define components for use in models. I don't use a base model for charfields for have more flexibility: more simple(more verbose), more kiss.
 
 ******************************************/
 
@@ -2308,6 +2339,13 @@ class ForeignKeyField extends IntegerField{
 		
 		if($num_rows>0)
 		{
+		
+			if($value==0)
+			{
+			
+				return NULL;
+			
+			}
 
 			return $value;
 
