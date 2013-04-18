@@ -187,7 +187,7 @@ class subscription extends Webmodel {
 
 $model['subscription']=new subscription();
 
-$model['subscription']->components['idpage_blog']=new IntegerField(10);
+$model['subscription']->components['idpage_blog']=new ForeignKeyField('page_blog');
 
 $model['subscription']->components['email']=new CharField(250);
 
