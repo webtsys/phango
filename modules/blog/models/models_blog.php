@@ -147,7 +147,7 @@ $model['comment_blog']->components['website']=new CharField(255);
 $model['comment_blog']->components['ip']=new CharField(255);
 $model['comment_blog']->components['ip']->required=1;
 
-$model['comment_blog']->components['idpage_blog']=new IntegerField(11);
+$model['comment_blog']->components['idpage_blog']=new ForeignKeyField('page_blog');
 $model['comment_blog']->components['idpage_blog']->required=1;
 
 $model['comment_blog']->components['date_comment']=new DateField(255);
