@@ -286,7 +286,7 @@ function Index()
 							settype($_POST['email'], 'string');
 							settype($_POST['password'], 'string');
 							
-							$_POST['rank']=0;
+							$_POST['rank']=1;
 
 							$check_captcha=1;
 
@@ -324,12 +324,6 @@ function Index()
 								$topic_email=$lang['user']['text_confirm'];
 							
 								$body_email=load_view(array($_POST['private_nick'], $_POST['email'], form_text($_POST['password']) ), 'common/user/mailviews/mailregister');
-					
-								/*$body_email.=$lang['user']['text_welcome']." " .$_POST['private_nick']."\n";	
-								$body_email.=$lang['user']['text_answer']."\n\n";
-								$body_email.=$lang['user']['text_password'].": ".form_text($_POST['password'])."\n\n";*/
-					
-								//$body_email.=$lang['user']['thanks']."\n\n";
 								
 								if( !send_mail($email, $topic_email, $body_email, 'html') )
 								{

@@ -1,2 +1,2 @@
 insert into rank (name) VALUES ("");
-update rank set IdRank=0;
+update rank set IdRank=1 where IdRank=0;

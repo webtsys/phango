@@ -25,7 +25,7 @@ class rank extends Webmodel {
 
 			//Update 
 
-			$query=$this->select('where num_posts<='.$num_posts.' and IdRank!=0 and fixed=0 order by num_posts DESC limit 1', array('IdRank'));
+			$query=$this->select('where num_posts<='.$num_posts.' and IdRank!=1 and fixed=0 order by num_posts DESC limit 1', array('IdRank'));
 
 			list($idrank)=webtsys_fetch_row($query);
 

@@ -35,7 +35,7 @@ function RankAdmin()
 			$arr_fields=array('name', 'num_posts', 'image');
 			$arr_fields_edit=$arr_fields;
 	
-			$where_sql='where fixed=0 and IdRank>0';
+			$where_sql='where fixed=0 and IdRank>1';
 
 			generate_admin_model_ng('rank', $arr_fields, $arr_fields_edit, $url_options_no_fixed, $options_func='BasicOptionsListModel', $where_sql, $arr_fields_form=array(), $type_list='Basic');
 
@@ -50,7 +50,7 @@ function RankAdmin()
 			$arr_fields=array('name', 'fixed', 'image');
 			$arr_fields_edit=$arr_fields;
 	
-			$where_sql='where fixed=1 and IdRank>0';
+			$where_sql='where fixed=1 and IdRank>1';
 
 			generate_admin_model_ng('rank', $arr_fields, $arr_fields_edit, $url_options_fixed, $options_func='BasicOptionsListModel', $where_sql, $arr_fields_form=array(), $type_list='Basic');
 

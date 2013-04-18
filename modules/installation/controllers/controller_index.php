@@ -247,7 +247,7 @@ function Index()
 					
 					$post['activated_user']=1;
 					
-					$post['rank']=0;
+					$post['rank']=1;
 
 					if($model['user']->insert($post))
 					{

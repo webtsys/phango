@@ -62,7 +62,7 @@ function update_table($model)
 
 					//'Id'.ucfirst($model[$key]->components[$key_data]->related_model);				
 					
-					$arr_sql_set_index[$key][$key_data]='ALTER TABLE `'.$key.'` ADD CONSTRAINT `'.$key_data.'IDX` FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+					$arr_sql_set_index[$key][$key_data]='ALTER TABLE `'.$key.'` ADD CONSTRAINT `'.$key_data.'_'.$key.'IDX` FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
 				}
 			}
@@ -149,7 +149,7 @@ function update_table($model)
 						
 						$id_table_related=load_id_model_related($model[$key]->components[$field]);
 						
-						$arr_sql_set_index[$key][$field]='ALTER TABLE `'.$key.'` ADD CONSTRAINT `'.$field.'IDX` FOREIGN KEY ( `'.$field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+						$arr_sql_set_index[$key][$field]='ALTER TABLE `'.$key.'` ADD CONSTRAINT `'.$field.'_'.$key.'IDX` FOREIGN KEY ( `'.$field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 						
 
 					}
@@ -213,7 +213,7 @@ function update_table($model)
 					
 					$id_table_related=load_id_model_related($model[$key]->components[$new_field]);
 					
-					$arr_sql_set_index[$key][$new_field]='ALTER TABLE `'.$key.'` ADD CONSTRAINT `'.$new_field.'IDX` FOREIGN KEY ( `'.$new_field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
+					$arr_sql_set_index[$key][$new_field]='ALTER TABLE `'.$key.'` ADD CONSTRAINT `'.$new_field.'_'.$key.'IDX` FOREIGN KEY ( `'.$new_field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
 				}
 		
@@ -228,7 +228,7 @@ function update_table($model)
 				
 					//Drop foreignkeyfield
 					
-				$query=webtsys_query('ALTER TABLE `'.$key.'` DROP FOREIGN KEY '.$new_field.'IDX');
+				$query=webtsys_query('ALTER TABLE `'.$key.'` DROP FOREIGN KEY '.$new_field.'_'.$key.'IDX');
 				
 				//}
 
