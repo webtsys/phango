@@ -57,7 +57,9 @@ function update_table($model)
 					$arr_sql_index[$key][$key_data]='CREATE INDEX index_'.$key.'_'.$key_data.' ON '.$key.'('.$key_data.');';
 					
 					$table_related=$model[$key]->components[$key_data]->related_model;
-					$id_table_related=$model[ $table_related ]->idmodel;
+					
+					$id_table_related=load_id_model_related($model[$key]->components[$key_data]);
+
 					//'Id'.ucfirst($model[$key]->components[$key_data]->related_model);				
 					
 					$arr_sql_set_index[$key][$key_data]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$key_data.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
@@ -140,15 +142,12 @@ function update_table($model)
 					if(isset($model[$key]->components[$field]->related_model) && $keys[$field]=='')
 					{
 
-						//echo "---Creating index for ".$field." from ".$key."\n";
-
-						//$query=webtsys_query('CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.')');
 						
 						$arr_sql_index[$key][$field]='CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.');';
 					
 						$table_related=$model[$key]->components[$field]->related_model;
-						$id_table_related=$model[$table_related]->idmodel;
-						//'Id'.ucfirst($model[$key]->components[$field]->related_model);				
+						
+						$id_table_related=load_id_model_related($model[$key]->components[$field]);
 						
 						$arr_sql_set_index[$key][$field]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 						
@@ -211,8 +210,8 @@ function update_table($model)
 					$arr_sql_index[$new_field]='CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.');';
 					
 					$table_related=$model[$key]->components[$new_field]->related_model;
-					$id_table_related=$model[$table_related]->idmodel;
-					//'Id'.ucfirst($model[$key]->components[$new_field]->related_model);				
+					
+					$id_table_related=load_id_model_related($model[$key]->components[$new_field]);
 					
 					$arr_sql_set_index[$new_field]='ALTER TABLE `'.$key.'` ADD FOREIGN KEY ( `'.$new_field.'` ) REFERENCES `'.$table_related.'` (`'.$id_table_related.'`) ON DELETE RESTRICT ON UPDATE RESTRICT;';
 
@@ -382,6 +381,57 @@ function update_models_from_module($arr_modules)
 	}
 	echo '</pre>';
 	echo '</p>';
+
+}
+
+function load_id_model_related($foreignkeyfield)
+{
+
+	global $model, $cache_model;
+
+	$table_related=$foreignkeyfield->related_model;
+	
+	$id_table_related='';
+					
+	if(!isset($model[ $table_related ]->idmodel))
+	{
+		
+		//$id_table_related='Id'.ucfirst($model[$key]->components[$new_field]->related_model);
+		//Need load the model
+		
+		if(isset($foreignkeyfield->params_loading_mod['module']) && isset($foreignkeyfield->params_loading_mod['model']))
+		{
+		
+			load_model($foreignkeyfield->params_loading_mod);
+			
+			//obtain id
+			
+			$id_table_related=$model[ $foreignkeyfield->params_loading_mod['model'] ]->idmodel;
+			
+			/*unset($model[ $foreignkeyfield->params_loading_mod['model'] ]);
+			
+			unset($cache_model);*/
+			
+		}
+	
+	}
+	else
+	{
+	
+		$id_table_related=$model[ $table_related ]->idmodel;
+	
+	}
+	
+	if($id_table_related=='')
+	{
+	
+		//Set standard...
+	
+		$id_table_related='Id'.ucfirst($table_related);
+	
+	}
+	
+	return $id_table_related;
 
 }
 

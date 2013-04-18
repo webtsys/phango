@@ -44,7 +44,7 @@ $model['template_content']->components['text']=new I18nField(new TextHTMLField()
 $model['template_content']->components['text']->required=1;
 //$model['template_content']->components['text']->form='TextAreaBBForm';
 
-$model['template_content']->components['idtemplate']=new IntegerField(10);
+$model['template_content']->components['idtemplate']=new ForeignKeyField('template');
 $model['template_content']->components['idtemplate']->required=1;
 //$model['template_content']->components['idtemplate']->form='HiddenForm';
 

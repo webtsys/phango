@@ -14,10 +14,10 @@ class mprivate extends Webmodel {
 
 $model['mprivate']=new mprivate();
 
-$model['mprivate']->components['iduser_sender']=new CharField(255);
+$model['mprivate']->components['iduser_sender']=new ForeignKeyField('user');
 $model['mprivate']->components['iduser_sender']->required=1;
 
-$model['mprivate']->components['iduser']=new CharField(255);
+$model['mprivate']->components['iduser']=new ForeignKeyField('user');
 $model['mprivate']->components['iduser']->required=1;
 
 $model['mprivate']->components['author']=new CharField();
