@@ -364,6 +364,8 @@ class Webmodel {
 		$fields=implode(", ", $arr_select);
 
 		//The tables used in the query
+		
+		$arr_model=array_unique($arr_model, SORT_STRING);
 
 		$selected_models=implode(", ", $arr_model);
 		
