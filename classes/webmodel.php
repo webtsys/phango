@@ -69,6 +69,8 @@ class Webmodel {
 	//Key is a model name, and the first element of array for the element is the connection.
 	
 	public $related_models=array();
+	
+	public $prev_check=0;
 
 	//Construct the model
 
@@ -517,6 +519,20 @@ class Webmodel {
 		return array_diff($arr_total_fields, $arr_strip);
 
 	}
+	
+	public function check_element($key, $value)
+	{
+	
+		return $this->components[$key]->check($value);
+	
+	}
+	
+	public function no_check_element($key, $value)
+	{
+	
+		return $value;
+	
+	}
 
 	//Check if components are valid, if not fill $this->std_error
 
@@ -526,6 +542,15 @@ class Webmodel {
 		global $lang;
 	
 		//array where sanitized values are stored...
+		
+		$func_check='check_element';
+		
+		if($this->prev_check==1)
+		{
+		
+			$func_check='no_check_element';
+		
+		}
 
 		$arr_components=array();
 
@@ -545,7 +570,7 @@ class Webmodel {
 
 				//Check if the value is valid..
 
-				$arr_components[$key]=$this->components[$key]->check($post[$key]);
+				$arr_components[$key]=$this->$func_check($key, $post[$key]);
 
 				//If value isn't valid and is required set error for this component...
 
@@ -775,14 +800,15 @@ function SetValuesForm($post, $arr_form, $show_error=1)
 			if($arr_form[$name_field]->type->std_error!='' && $show_error==1)
 			{
 				
-				if($arr_form[$name_field]->std_error!='')
+				/*if($arr_form[$name_field]->std_error!='')
 				{
 					
 					$arr_form[$name_field]->std_error=$arr_form[$name_field]->txt_error;
 					
 
 				}
-				else
+				else*/
+				if($arr_form[$name_field]->std_error=='')
 				{
 					
 					$arr_form[$name_field]->std_error=$arr_form[$name_field]->type->std_error;
@@ -1998,15 +2024,19 @@ class ImageField {
 
 			//Delete old_image
 
-			/*print_r($_POST);
-			die;*/
-
 			$image_file=form_text($_POST[$file]);
 
 			if($image_file!='')
 			{
 
 				@unlink($this->path.'/'.$image_file);
+				
+				foreach($this->img_width as $key => $value)
+				{
+
+					@unlink($this->path.'/'.$key.'_'.$image_file);
+				
+				}
 
 				$image='';
 
@@ -2225,7 +2255,21 @@ class ImageField {
 			if(!unlink($this->path.'/'.$image_name))
 			{
 			
-				$this->std_error=$lang['common']['cannot_delete_image'];
+				//Unlink mini_images
+				
+				foreach($this->img_width as $key => $value)
+				{
+				
+					if(!unlink($this->path.'/'.$key.'_'.$image_name))
+					{
+						
+						$this->std_error.=$lang['common']['cannot_delete_image'].': '.$key.'_'.$image_name;
+					
+					}
+				
+				}
+			
+				$this->std_error.=$lang['common']['cannot_delete_image'].': '.$image_name;
 			
 			}
 		
