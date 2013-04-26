@@ -46,7 +46,7 @@ function generate_paginator_method_class($class, $where, $arr_fields, $arr_extra
 		foreach($arr_extra_fields['func'] as $extra_field_func)
 		{
 		
-			$arr_new_list[$extra_field_func]=$extra_field_func($arr_content);
+			$arr_new_list[$extra_field_func]=implode('<br />', $extra_field_func($url_paginament, $class->name, $arr_content[$class->idmodel], $arr_content));
 		
 		}
 		
