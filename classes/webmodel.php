@@ -1992,6 +1992,7 @@ class ImageField {
 	public $quot_close='\'';
 	public $std_error='';
 	public $quality_jpeg=75;
+	public $min_size=array();
 
 	function __construct($name_file, $path, $url_path, $type, $thumb=0, $img_width=array('mini' => 150), $quality_jpeg=85)
 	{
@@ -2053,6 +2054,19 @@ class ImageField {
 				
 				$_FILES[$file]['name']=form_text($_FILES[$file]['name']);
 				$this->value=$_FILES[$file]['name'];
+				
+				//Check size
+				
+				if($arr_image[0]<$this->min_size[0] || $arr_image[1]<$this->min_size[1])
+				{
+				
+					$this->std_error=$lang['common']['image_size_is_not_correct'].'<br />'.$lang['common']['min_size'].': '.$this->min_size[0].'x'.$this->min_size[1];
+					
+					$this->value='';
+					return '';
+					
+				
+				}
 				
 				/*//Check if exists a image with same name.
 				
@@ -2134,6 +2148,28 @@ class ImageField {
 				
 						$mini_photo=str_replace('.gif', '.jpg', $mini_photo);
 						$mini_photo=str_replace('.png', '.jpg', $mini_photo);*/
+						
+						//Reduce size for default if $this->img_width['']
+						
+						if(isset($this->img_width['']))
+						{
+							if($arr_image[0]>$this->img_width[''])
+							{
+								$width=$this->img_width[''];
+							
+								$ratio = ($arr_image[0] / $width);
+								$height = round($arr_image[1] / $ratio);
+							
+								$thumb = imagecreatetruecolor($width, $height);
+								
+								imagecopyresampled ($thumb, $img, 0, 0, 0, 0, $width, $height, $arr_image[0], $arr_image[1]);
+								
+								$image_func_create ( $thumb, $this->path.'/'.$_FILES[$file]['name'], $this->quality_jpeg );
+								
+							}
+							
+							unset($this->img_width['']);
+						}
 
 						//Make thumb if specific...
 						if($this->thumb==1)
@@ -2143,7 +2179,7 @@ class ImageField {
 							
 							foreach($this->img_width as $name_width => $width)
 							{
-
+							
 								$ratio = ($arr_image[0] / $width);
 								$height = round($arr_image[1] / $ratio);
 							
@@ -2245,6 +2281,7 @@ class ImageField {
 	function process_delete_field($model, $name_field, $conditions)
 	{
 	
+		global $lang;
 	
 		//die;
 		$query=$model->select($conditions, array($name_field));
@@ -2252,10 +2289,12 @@ class ImageField {
 		while(list($image_name)=webtsys_fetch_row($query))
 		{
 		
-			if(!unlink($this->path.'/'.$image_name))
+			if(unlink($this->path.'/'.$image_name))
 			{
 			
 				//Unlink mini_images
+				
+				unset($this->img_width['']);
 				
 				foreach($this->img_width as $key => $value)
 				{
@@ -2270,6 +2309,12 @@ class ImageField {
 				}
 			
 				$this->std_error.=$lang['common']['cannot_delete_image'].': '.$image_name;
+			
+			}
+			else
+			{
+			
+				$this->std_error.=$lang['common']['cannot_delete_image'].': '.$key.'_'.$image_name;
 			
 			}
 		
