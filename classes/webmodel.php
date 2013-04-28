@@ -1992,7 +1992,7 @@ class ImageField {
 	public $quot_close='\'';
 	public $std_error='';
 	public $quality_jpeg=75;
-	public $min_size=array();
+	public $min_size=array(0, 0);
 
 	function __construct($name_file, $path, $url_path, $type, $thumb=0, $img_width=array('mini' => 150), $quality_jpeg=85)
 	{
@@ -2057,14 +2057,19 @@ class ImageField {
 				
 				//Check size
 				
-				if($arr_image[0]<$this->min_size[0] || $arr_image[1]<$this->min_size[1])
+				if($this->min_size[0]>0 && $this->min_size[1]>0)
 				{
 				
-					$this->std_error=$lang['common']['image_size_is_not_correct'].'<br />'.$lang['common']['min_size'].': '.$this->min_size[0].'x'.$this->min_size[1];
+					if($arr_image[0]<$this->min_size[0] || $arr_image[1]<$this->min_size[1])
+					{
 					
-					$this->value='';
-					return '';
+						$this->std_error=$lang['common']['image_size_is_not_correct'].'<br />'.$lang['common']['min_size'].': '.$this->min_size[0].'x'.$this->min_size[1];
+						
+						$this->value='';
+						return '';
+						
 					
+					}
 				
 				}
 				
