@@ -29,7 +29,7 @@ function Browser_list_field()
 		$module=slugify($_GET['module']);
 		$model_name=slugify($_GET['model']);
 		$field_ident=slugify($_GET['field']);
-		$field_fill=slugify($_GET['field']);
+		$field_fill=slugify($_GET['field_fill']);
 	
 		ob_start();
 
@@ -41,7 +41,7 @@ function Browser_list_field()
 			$(document).ready( function () {
 			
 				$('.select_id').click( function () {
-				
+					
 					var form_modify = $('#<?php echo $field_fill; ?>_field_form', window.opener.document);
 					var form_text_modify = $('#select_window_form_<?php echo $field_fill; ?>', window.opener.document);
 					
@@ -91,7 +91,7 @@ function Browser_list_field()
 			$arr_fields=array($field_ident);
 			$arr_fields_edit=array();
 			
-			$url_options=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field_ident));
+			$url_options=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field_ident, 'field_fill' => $field_fill));
 			
 			ListModel($model_name, $arr_fields, $url_options, $options_func='ChooseOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 		
