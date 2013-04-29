@@ -2966,7 +2966,7 @@ function PasswordForm($name="", $class='', $value='')
 
 	$value = replace_quote_text( $value );
 
-	return '<input type="password" name="'.$name.'" class="'.$class.'" value="'.$value.'" />';
+	return '<input type="password" name="'.$name.'" class="'.$class.'" id="'.$name.'_field_form" value="'.$value.'" />';
 
 }
 
