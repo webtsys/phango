@@ -29,7 +29,7 @@ function Browser_list_field()
 		$module=slugify($_GET['module']);
 		$model_name=slugify($_GET['model']);
 		$field_ident=slugify($_GET['field']);
-		$field_fill=slugify($_GET['field_fill']);
+		$field_fill=slugify($_GET['field']);
 	
 		ob_start();
 
