@@ -13,6 +13,15 @@ class PasswordField extends CharField {
 
 	public function check($value)
 	{
+	
+		$value=trim($value);
+		
+		if($value=='')
+		{
+		
+			return '';
+		
+		}
 
 		$token_pass=generate_random_password();
 		
