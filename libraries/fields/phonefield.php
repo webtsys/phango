@@ -9,7 +9,7 @@ class PhoneField extends CharField{
 		if(!preg_match('/^[0-9]+$/', $value))
 		{
 			
-			return 0;
+			return '';
 		
 		}
 
