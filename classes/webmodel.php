@@ -3391,6 +3391,15 @@ function add_extra_fancy_url($url_fancy, $arr_data)
 
 }
 
+function controller_fancy_url($func_name, $description_text, $arr_data=array(), $respect_upper=0)
+{
+
+	global $base_url;
+
+	return make_fancy_url($base_url, PHANGO_SCRIPT_BASE_CONTROLLER, $func_name, $description_text, $arr_data=array(), $respect_upper=0);
+
+}
+
 //Function for normalize texts...
 
 function slugify($text, $respect_upper=0)
