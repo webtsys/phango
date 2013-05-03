@@ -3262,7 +3262,7 @@ function SelectManyFormSet($post, $value)
 
 //A special form for dates in format day/month/year
 
-function DateForm($field, $class='', $value='')
+function DateForm($field, $class='', $value='', $set_time=1)
 {
 
 	global $lang, $user_data;
@@ -3295,10 +3295,15 @@ function DateForm($field, $class='', $value='')
 	$date='<input type="text" name="'.$field.'[]" value="'.$day.'" size="2"/>'."\n";
 	$date.='<input type="text" name="'.$field.'[]" value="'.$month.'" size="2"/>'."\n";
 	$date.='<input type="text" name="'.$field.'[]" value="'.$year.'" size="4"/>'."\n&nbsp;&nbsp;&nbsp;";
+	
+	if($set_time==1)
+	{
 
-	$date.=$lang['common']['hour'].' <input type="text" name="'.$field.'[]" value="'.$hour.'" size="2"/>'."\n";
-	$date.=$lang['common']['minute'].' <input type="text" name="'.$field.'[]" value="'.$minute.'" size="2"/>'."\n";
-	$date.=$lang['common']['second'].' <input type="text" name="'.$field.'[]" value="'.$second.'" size="2"/>'."\n";
+		$date.=$lang['common']['hour'].' <input type="text" name="'.$field.'[]" value="'.$hour.'" size="2"/>'."\n";
+		$date.=$lang['common']['minute'].' <input type="text" name="'.$field.'[]" value="'.$minute.'" size="2"/>'."\n";
+		$date.=$lang['common']['second'].' <input type="text" name="'.$field.'[]" value="'.$second.'" size="2"/>'."\n";
+		
+	}
 
 	return $date;
 
