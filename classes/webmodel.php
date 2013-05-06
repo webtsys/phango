@@ -3292,9 +3292,9 @@ function DateForm($field, $class='', $value='', $set_time=1)
 	}
 		
 
-	$date='<input type="text" name="'.$field.'[]" value="'.$day.'" size="2"/>'."\n";
+	$date='<span id="'.$field.'_field_form"><input type="text" name="'.$field.'[]" value="'.$day.'" size="2"/>'."\n";
 	$date.='<input type="text" name="'.$field.'[]" value="'.$month.'" size="2"/>'."\n";
-	$date.='<input type="text" name="'.$field.'[]" value="'.$year.'" size="4"/>'."\n&nbsp;&nbsp;&nbsp;";
+	$date.='<input type="text" name="'.$field.'[]" value="'.$year.'" size="4"/>'."\n&nbsp;&nbsp;&nbsp;</span>";
 	
 	if($set_time==1)
 	{
