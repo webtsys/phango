@@ -188,7 +188,7 @@ $lang['common']['home']='Inicio';
 
 $lang['common']['no_element_chosen']='Elija opción...';
 
-$lang['common']['the_value_can_not_be_greater_than_100']='El valor no puede ser más grande de 100';
+$lang['common']['the_value_can_not_be_greater_than_100']='El valor no puede ser más grande de 100 ni menor que 0';
 
 $lang['common']['error_you_need_this_language_field']='Error: necesitas obligatoriamente rellenar el campo de lenguaje';
 

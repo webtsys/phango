@@ -188,7 +188,7 @@ $lang['common']['home']='Home';
 
 $lang['common']['no_element_chosen']='Choose option...';
 
-$lang['common']['the_value_can_not_be_greater_than_100']='The value can not be greater than 100';
+$lang['common']['the_value_can_not_be_greater_than_100']='The value can not be greater than 100 or less than zero';
 
 $lang['common']['error_you_need_this_language_field']='Error: you need to fill the field mandatory language';
 

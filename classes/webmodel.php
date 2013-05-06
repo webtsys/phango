@@ -3322,7 +3322,11 @@ function DateFormSet($post, $value)
 			settype($value[$key], 'integer');
 
 		}
-
+		
+		settype($value[3], 'integer');
+		settype($value[4], 'integer');
+		settype($value[5], 'integer');
+		
 		$final_value=gmmktime ($value[3], $value[4], $value[5], $value[1], $value[0], $value[2] );
 
 	}
@@ -3401,7 +3405,7 @@ function controller_fancy_url($func_name, $description_text, $arr_data=array(), 
 
 	global $base_url;
 
-	return make_fancy_url($base_url, PHANGO_SCRIPT_BASE_CONTROLLER, $func_name, $description_text, $arr_data=array(), $respect_upper=0);
+	return make_fancy_url($base_url, PHANGO_SCRIPT_BASE_CONTROLLER, $func_name, $description_text, $arr_data, $respect_upper);
 
 }
 
