@@ -1,6 +1,6 @@
 <?php
 
-function wrap_words($text, $num_words)
+function wrap_words($text, $num_words, $text_explain='...')
 {
 
 	$arr_text=explode(' ', $text);
@@ -23,7 +23,7 @@ function wrap_words($text, $num_words)
 
 	}
 
-	return implode(' ', $arr_final_text).' ...';
+	return implode(' ', $arr_final_text).' '.$text_explain;
 
 }
 

@@ -1,11 +1,18 @@
 <?php
 
-function select_to_array_method_class($class, $conditions="", $arr_select=array(), $raw_query=0)
+function select_to_array_method_class($class, $conditions="", $arr_select=array(), $raw_query=0, $index_id='')
 {
 
 	$arr_return=array();
 	
-	$arr_select[]=$class->idmodel;
+	if($index_id=='')
+	{
+	
+		$index_id=$class->idmodel;
+	
+	}
+	
+	$arr_select[]=$index_id;
 	
 	if(count($arr_select)==1)
 	{
@@ -20,7 +27,7 @@ function select_to_array_method_class($class, $conditions="", $arr_select=array(
 	{
 	
 		
-		$arr_return[$arr_row[$class->idmodel]]=$arr_row;
+		$arr_return[$arr_row[$index_id]]=$arr_row;
 			
 		
 	}
