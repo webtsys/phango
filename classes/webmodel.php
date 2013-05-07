@@ -944,14 +944,14 @@ class ModelForm {
 		
 		foreach($arr_form as $key_form => $form)
 		{
-
+			
 			settype($post[$key_form], 'string');
 			
 			$post[$key_form]=$form->type->check($post[$key_form]);
-
+			
 			if($post[$key_form]=='')
 			{
-
+				
 				if($form->type->std_error!='')
 				{
 
@@ -2140,13 +2140,13 @@ class ImageField {
 					
 					if( move_uploaded_file ( $_FILES[$file]['tmp_name'] , $this->path.'/'.$_FILES[$file]['name'] ))
 					{
-
+						
 						//Make jpeg.
 
 						$func_final=$func_image[$arr_image[2]];
 
 						$img = $func_final($this->path.'/'.$_FILES[$file]['name']);
-
+						
 						//imagejpeg ( $img, $this->path.'/'.$_FILES[$file]['name'], $this->quality_jpeg );
 						
 						/*$mini_photo=$_FILES[$file]['name'];
@@ -2179,7 +2179,7 @@ class ImageField {
 						//Make thumb if specific...
 						if($this->thumb==1)
 						{
-
+							
 							//Convert to jpeg.
 							
 							foreach($this->img_width as $name_width => $width)
@@ -2193,7 +2193,7 @@ class ImageField {
 								imagecopyresampled ($thumb, $img, 0, 0, 0, 0, $width, $height, $arr_image[0], $arr_image[1]);
 								
 								$image_func_create ( $thumb, $this->path.'/'.$name_width.'_'.$_FILES[$file]['name'], $this->quality_jpeg );
-								
+								;
 								//imagepng ( resource $image [, string $filename [, int $quality [, int $filters ]]] )
 
 							}
@@ -2201,7 +2201,7 @@ class ImageField {
 						}
 						
 						//unlink($_FILES[$file]['tmp_name']);
-
+						
 						return $_FILES[$file]['name'];
 
 						//return $this->path.'/'.$_FILES[$file]['name'];
