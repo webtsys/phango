@@ -5,7 +5,7 @@ function generate_paginator_method_class($class, $where, $arr_fields, $arr_extra
 
 	global $lang;
 	
-	load_libraries(array('table_config', 'pages'));
+	load_libraries(array('table_config', 'pages', 'generate_admin_ng'));
 	
 	$arr_heads=array();
 	

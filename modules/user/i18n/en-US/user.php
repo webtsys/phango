@@ -1,5 +1,35 @@
 <?php
 
+$lang['user']['message_send_user']='Other user sent a message to your mailbox';
+
+$lang['user']['see_message_user']='View message';
+
+$lang['user']['text_welcome']='Welcome to our webpage';
+
+$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
+
+$lang['user']['thanks']='Thanks.';
+
+$lang['user']['modify_user']='Change user';
+
+$lang['user']['change_data']='Change data';
+
+$lang['user']['private_messages']='Private messages';
+
+$lang['user']['register']='Register';
+
+$lang['user']['push_remember']='Remember password';
+
+$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
+
+$lang['user']['remember_password']='Remember password';
+
+$lang['user']['login']='Login';
+
+$lang['user']['my_account']='My account';
+
+$lang['user']['repeat_password']='Repeat password';
+
 $lang['user']['private_nick']='Private nick';
 
 $lang['user']['admin_users']='Users administration';
@@ -34,10 +64,6 @@ $lang['user']['re_mprivate']='RE';
 
 $lang['user']['send_message']='Send message';
 
-$lang['user']['message_send_user']='Other user sent a message to your mailbox';
-
-$lang['user']['see_message_user']='View message';
-
 $lang['user']['need_data']='You need more data';
 
 $lang['user']['data_overloaded_why']='Your mailbox is overloaded';
@@ -69,14 +95,6 @@ $lang['user']['error_login_many_times']='Error: You have tried login many times.
 $lang['user']['error_login']='Error: you cannot login, your email or password is wrong';
 
 $lang['user']['text_confirm']='Now,you are a registered user';
-
-$lang['user']['text_welcome']='Welcome to our webpage';
-
-$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
-
-$lang['user']['text_password']='This is your password';
-
-$lang['user']['thanks']='Thanks.';
 
 $lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
 
@@ -133,8 +151,6 @@ $lang['user']['profiles_list']='Profiles list';
 $lang['user']['profiles_list_explain']='In this list will find all registered users of this website';
 
 $lang['user']['see_profile']='See profile';
-
-$lang['user']['repeat_password']='Repeat password';
 
 $lang['user']['automatic_login']='Automatic login';
 
@@ -222,25 +238,9 @@ $lang['user']['email']='Email';
 
 $lang['user']['city']='City';
 
-$lang['user']['modify_user']='Change user';
-
-$lang['user']['change_data']='Change data';
-
-$lang['user']['private_messages']='Private messages';
-
-$lang['user']['register']='Register';
-
-$lang['user']['push_remember']='Remember password';
-
-$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
-
-$lang['user']['remember_password']='Remember password';
-
-$lang['user']['login']='Login';
-
-$lang['user']['my_account']='My account';
-
 $lang['user']['without_special_rank']='Without special rank';
+
+$lang['user']['text_password']='This is your password';
 
 $lang['user']['no_success_change_password']='Error: cannot change the password, contact with website admin';
 

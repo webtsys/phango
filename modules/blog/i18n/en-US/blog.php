@@ -1,5 +1,11 @@
 <?php
 
+$lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
+
+$lang['blog']['comment_made']='Post by';
+
+$lang['blog']['down_article']='Unsubscribe';
+
 $lang['blog']['edit_in_page_blog']='Edit blog property in page';
 
 $lang['blog']['choose_blog_to_show']='Choose blog for show its last posts';
@@ -39,12 +45,6 @@ $lang['blog']['please_wait_a_seconds_for_send_a_new_message']='Please, wait a se
 $lang['blog']['send_post']='Post reply';
 
 $lang['blog']['no_exist_post']='No contents';
-
-$lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
-
-$lang['blog']['comment_made']='Post by';
-
-$lang['blog']['down_article']='Unsubscribe';
 
 $lang['blog']['search_tags_results']='Tag search results';
 
