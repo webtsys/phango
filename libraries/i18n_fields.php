@@ -302,25 +302,5 @@ function MultiLangFormSet($post, $value)
 
 }
 
-/*function show_formatted_static($value)
-{
-	global $language;
-
-	$arr_lang=@unserialize($value);
-
-	settype($arr_lang, 'array');
-
-	settype($arr_lang[$_SESSION['default_language']], 'string');
-
-	if($arr_lang[$language]=='')
-	{
-			
-		return $arr_lang[$_SESSION['default_language']];
-					
-	}
-		
-	return $arr_lang[$language];
-
-}*/
 
 ?>

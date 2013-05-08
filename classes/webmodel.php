@@ -3414,10 +3414,10 @@ function controller_fancy_url($func_name, $description_text, $arr_data=array(), 
 function slugify($text, $respect_upper=0)
 {
 
-	$from='àáâãäåæçèéêëìíîïðòóôõöøùúûýþÿŕñÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖØÙÚÛÝỲŸÞŔÑ/?¿';
-	$to=  'aaaaaaaceeeeiiiidoooooouuuybyrnAAAAAACEEEEIIIIDOOOOOOUUUYYYBRN---';
+	$from='àáâãäåæçèéêëìíîïðòóôõöøùúûýþÿŕñÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÒÓÔÕÖØÙÚÛÝỲŸÞŔÑ/?¿"';
+	$to=  'aaaaaaaceeeeiiiidoooooouuuybyrnAAAAAACEEEEIIIIDOOOOOOUUUYYYBRN----';
 
-	$text=str_replace(" ", "-", $text);
+	$text=trim(str_replace(" ", "-", $text));
 
 	$text = utf8_decode($text);    
 	$text = strtr($text, utf8_decode($from), $to);
