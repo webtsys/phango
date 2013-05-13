@@ -14,12 +14,12 @@ class NormalizeField extends TextField {
 
 	}
 	
-	static public function check_text($value)
+	static public function check_text($value, $separator='-')
 	{
 	
 		$str_normalize=slugify(strip_tags($value));
 		
-		$arr_normalize=explode('-', $str_normalize);
+		$arr_normalize=explode($separator, $str_normalize);
 		
 		sort($arr_normalize);
 		
