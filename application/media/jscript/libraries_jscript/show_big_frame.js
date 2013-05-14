@@ -6,7 +6,15 @@
 			
 			//First function click for out of the image preview
 			
+			//obtain rel html input...
+			
+			html_id='#'+$(this).attr('rel');
+			
 			$('body').on('click', '#icon_close_frame', function () {
+				
+				$(html_id).hide();
+				
+				$(html_id).appendTo('#container_frame');
 				
 				$('#show_big_frame').remove();
 				$('#center_frame').remove();
@@ -34,11 +42,8 @@
 			
 			$('#frame_big').append('<a id="icon_close_frame" href="#"></a>');
 			
-			//obtain rel html input...
 			
-			html_id='#'+$(this).attr('rel');
-			
-			$(html_id).clone().appendTo('#frame_big');
+			$(html_id).appendTo('#frame_big');
 			
 			$(html_id).show();
 			
