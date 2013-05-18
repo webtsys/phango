@@ -1,6 +1,6 @@
 <?php
 
-class I18nField {
+class I18nField extends PhangoField {
 
 	public $value="";
 	public $label="";
@@ -124,7 +124,7 @@ class I18nField {
 
 //Now, class slugifyfield. This class can be used for create orders or searchs in mysql if you need other thing distinct to default search of default order (default order don't work fine with serializefields how i18nfield). The programmer have the responsability of update this fields via update or insert method.
 
-class SlugifyField {
+class SlugifyField extends PhangoField {
 
 	public $value="";
 	public $label="";

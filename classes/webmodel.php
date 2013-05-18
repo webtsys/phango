@@ -997,9 +997,15 @@ Now, we define components for use in models. I don't use a base model for charfi
 
 ******************************************/
 
+class PhangoField {
+
+	public $indexed=0;
+
+}
+
 //Charfield is a field for short text.
 
-class CharField {
+class CharField extends PhangoField {
 
 	//Basic variables that define the field
 
@@ -1074,7 +1080,7 @@ class CharField {
 //Selections always integers
 //PrimaryField is used for primary keys for models
 
-class PrimaryField {
+class PrimaryField extends PhangoField {
 	
 	public $value=0;
 	public $label="";
@@ -1119,7 +1125,7 @@ class PrimaryField {
 
 //Integerfield is a field for integers values.
 
-class IntegerField {
+class IntegerField extends PhangoField {
 
 	public $size=11;
 	public $value=0;
@@ -1203,7 +1209,7 @@ class IntegerField {
 
 //Booleanfield is a field for boolean values.
 
-class BooleanField {
+class BooleanField extends PhangoField {
 
 	public $size=1;
 	public $value=0;
@@ -1287,7 +1293,7 @@ class BooleanField {
 
 //Doublefield is a field for doubles values.
 
-class DoubleField {
+class DoubleField extends PhangoField {
 
 	public $size=11;
 	public $value=0;
@@ -1341,7 +1347,7 @@ class DoubleField {
 
 }
 
-class ChoiceField {
+class ChoiceField extends PhangoField {
 
 	public $size=11;
 	public $value=0;
@@ -1464,7 +1470,7 @@ class ChoiceField {
 
 //Textfield is a field for long text values.
 
-class TextField {
+class TextField extends PhangoField {
 
 	public $value="";
 	public $label="";
@@ -1522,7 +1528,7 @@ class TextField {
 
 //TextHTMLfield is a field for long text values based in html.
 
-class TextHTMLField {
+class TextHTMLField extends PhangoField {
 
 	public $value="";
 	public $label="";
@@ -1630,7 +1636,7 @@ class TextHTMLField {
 
 //Serializefield is a field if you need save serialize values
 
-class SerializeField {
+class SerializeField extends PhangoField {
 
 	public $value="";
 	public $label="";
@@ -1728,7 +1734,7 @@ class SerializeField {
 
 //Datefield is a field for save dates in timestamp, this value is a timestamp and you need use form_date or form_time for format DateField
 
-class DateField {
+class DateField extends PhangoField {
 
 	public $size=11;	
 	public $value="";	
@@ -1831,7 +1837,7 @@ class DateField {
 	
 }
 
-class FileField {
+class FileField extends PhangoField {
 
 	public $value="";
 	public $label="";
@@ -1976,7 +1982,7 @@ class FileField {
 //Imagefield is a field for upload images
 //This field don't have for now a maximum width and height. To fix in next releases.
 
-class ImageField {
+class ImageField extends PhangoField {
 
 	public $value="";
 	public $label="";
@@ -2331,7 +2337,7 @@ class ImageField {
 
 //Keyfield is a indexed field in a sql statement...
 
-class KeyField {
+class KeyField extends PhangoField {
 
 	public $size=11;
 	public $value=0;
@@ -2577,7 +2583,7 @@ class ParentField extends IntegerField{
 
 //Emailfield is a field that only accepts emails
 
-class EmailField {
+class EmailField extends PhangoField {
 
 	public $size=200;
 	public $value="";

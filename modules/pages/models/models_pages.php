@@ -20,6 +20,9 @@ $model['page']->components['name']=new I18nField(new CharField(600));
 $model['page']->components['name']->required=1;
 
 $model['page']->components['text']=new I18nField(new TextHTMLField());
+
+SlugifyField::add_slugify_i18n_fields('page', 'name');
+
 //$model['page']->components['text']->form='TextAreaBBForm';
 
 class property_page extends Webmodel {

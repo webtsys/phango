@@ -2,7 +2,7 @@
 
 //Warning, blobfield is dangerous because don't check the binary value. If you use this you must make sure that you obtain data from safe sources.
 
-class BlobField {
+class BlobField extends PhangoField {
 
 	public $value="";
 	public $label="";

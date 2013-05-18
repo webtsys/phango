@@ -3,7 +3,7 @@
 function PagesAdmin()
 {
 
-	global $base_url, $base_path, $model, $lang, $header, $module_admin;
+	global $base_url, $base_path, $model, $lang, $header, $module_admin, $arr_cache_jscript;
 
 	settype($_GET['op'], 'integer');
 	settype($_GET['IdPage'], 'integer');
@@ -12,7 +12,9 @@ function PagesAdmin()
 	load_model('pages');
 	load_lang('pages');
 	
-	$header='<script language="Javascript" src="'.make_fancy_url($base_url, 'jscript', 'load_jscript', 'script', array('input_script' => 'jquery.min.js')).'"></script>';
+	//$header='<script language="Javascript" src="'.make_fancy_url($base_url, 'jscript', 'load_jscript', 'script', array('input_script' => 'jquery.min.js')).'"></script>';
+	
+	$arr_cache_jscript[]='jquery.min.js';
 
 	switch($_GET['op'])
 	{
@@ -27,7 +29,7 @@ function PagesAdmin()
 			
 			$model['page']->forms['text']->parameters=array('text', $class='', $arr_values=array(), $type_form='TextAreaBBForm');
 			$arr_fields=array('name');
-			$arr_fields_edit=array();
+			$arr_fields_edit=array('name', 'text');
 			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule']));
 
 			generate_admin_model_ng('page', $arr_fields, $arr_fields_edit, $url_options, $options_func='PagesOptions', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
