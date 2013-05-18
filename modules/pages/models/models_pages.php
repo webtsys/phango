@@ -11,7 +11,21 @@ class page extends Webmodel {
 
 		parent::__construct("page");
 
-	}	
+	}
+	
+	public function insert($post)
+	{
+	
+		return parent::insert($post);
+	
+	}
+	
+	public function update($post, $conditions="")
+	{
+	
+		return parent::update($post, $conditions);
+	
+	}
 	
 }
 
