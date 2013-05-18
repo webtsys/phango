@@ -1,5 +1,7 @@
 <?php
 
+global $arr_i18n;
+
 load_libraries(array('i18n_fields'));
 
 class page extends Webmodel {
@@ -22,6 +24,16 @@ $model['page']->components['name']->required=1;
 $model['page']->components['text']=new I18nField(new TextHTMLField());
 
 SlugifyField::add_slugify_i18n_fields('page', 'name');
+
+foreach($arr_i18n as $lang_i18n)
+{
+
+	$model['page']->components['name_'.$lang_i18n]->type='VARCHAR(255)';
+	$model['page']->components['name_'.$lang_i18n]->indexed=true;
+
+}
+
+//$model['page']->components['text']->
 
 //$model['page']->components['text']->form='TextAreaBBForm';
 

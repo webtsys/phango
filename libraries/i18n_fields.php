@@ -133,6 +133,7 @@ class SlugifyField extends PhangoField {
 	public $quot_open='\'';
 	public $quot_close='\'';
 	public $std_error='';
+	public $type='TEXT';
 
 	static function check($value)
 	{
@@ -143,7 +144,7 @@ class SlugifyField extends PhangoField {
 	function get_type_sql()
 	{
 
-		return 'TEXT NOT NULL';
+		return $this->type.' NOT NULL';
 		
 
 	}

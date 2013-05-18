@@ -48,13 +48,23 @@ function update_table($model)
 			
 				$arr_table[]='`'.$key_data.'` '.$model[$key]->components[$key_data]->get_type_sql();
 
+				//Check if indexed
+				
+				if($model[$key]->components[$key_data]->indexed==true)
+				{
+				
+					$arr_sql_index[$key][$key_data]='CREATE INDEX `index_'.$key.'_'.$key_data.'` ON '.$key.'(`'.$key_data.'`);';
+					$arr_sql_set_index[$key][$key_data]='';
+				
+				}
+				
 				//Check if foreignkeyfield...
 				if(isset($model[$key]->components[$key_data]->related_model))
 				{
 
 					//Create indexes...
 					
-					$arr_sql_index[$key][$key_data]='CREATE INDEX index_'.$key.'_'.$key_data.' ON '.$key.'('.$key_data.');';
+					$arr_sql_index[$key][$key_data]='CREATE INDEX `index_'.$key.'_'.$key_data.'` ON '.$key.'(`'.$key_data.'`);';
 					
 					$table_related=$model[$key]->components[$key_data]->related_model;
 					
@@ -136,6 +146,16 @@ function update_table($model)
 						
 				
 					}
+					
+					//Check if indexed
+				
+					if($model[$key]->components[$field]->indexed==true && $keys[$field]=='')
+					{
+					
+						$arr_sql_index[$key][$field]='CREATE INDEX `index_'.$key.'_'.$field.'` ON '.$key.'(`'.$field.'`);';
+						$arr_sql_set_index[$key][$field]='';
+					
+					}
 
 					//Set index
 
@@ -143,7 +163,7 @@ function update_table($model)
 					{
 
 						
-						$arr_sql_index[$key][$field]='CREATE INDEX index_'.$key.'_'.$field.' ON '.$key.'('.$field.');';
+						$arr_sql_index[$key][$field]='CREATE INDEX `index_'.$key.'_'.$field.'` ON '.$key.'(`'.$field.'`);';
 					
 						$table_related=$model[$key]->components[$field]->related_model;
 						
@@ -154,12 +174,12 @@ function update_table($model)
 
 					}
 
-					if(!isset($model[$key]->components[$field]->related_model) && $keys[$field]!='')
+					if(!isset($model[$key]->components[$field]->related_model) && $keys[$field]!='' && $model[$key]->components[$field]->indexed==false)
 					{
 						
 						echo "---Delete index for ".$field." from ".$key."\n";
 						
-						$query=webtsys_query('DROP INDEX index_'.$key.'_'.$field.' ON '.$key);
+						$query=webtsys_query('DROP INDEX `index_'.$key.'_'.$field.'` ON '.$key);
 
 					}
 		
@@ -199,6 +219,16 @@ function update_table($model)
 				$query=webtsys_query('alter table '.$key.' add `'.$new_field.'` '.$model[$key]->components[$new_field]->get_type_sql());
 
 				echo "Adding ".$new_field." to ".$key."...\n";
+				
+				//Check if indexed
+				
+				if($model[$key]->components[$new_field]->indexed==true)
+				{
+				
+					$arr_sql_index[$key][$new_field]='CREATE INDEX `index_'.$key.'_'.$new_field.'` ON '.$key.'(`'.$new_field.'`);';
+					$arr_sql_set_index[$key][$new_field]='';
+				
+				}
 
 				if(isset($model[$key]->components[$new_field]->related_model) )
 				{
@@ -207,7 +237,7 @@ function update_table($model)
 
 					$query=webtsys_query('CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.')');*/
 					
-					$arr_sql_index[$key][$new_field]='CREATE INDEX index_'.$key.'_'.$new_field.' ON '.$key.'('.$new_field.');';
+					$arr_sql_index[$key][$new_field]='CREATE INDEX `index_'.$key.'_'.$new_field.'` ON '.$key.'(`'.$new_field.'`);';
 					
 					$table_related=$model[$key]->components[$new_field]->related_model;
 					
@@ -252,7 +282,11 @@ function update_table($model)
 			echo "---Creating index for ".$key_data." on model ".$model_name."\n";
 
 			$query=webtsys_query($sql_index);
-			$query=webtsys_query($arr_sql_set_index[$model_name][$key_data]);
+			
+			if($arr_sql_set_index[$model_name][$key_data]!='')
+			{
+				$query=webtsys_query($arr_sql_set_index[$model_name][$key_data]);
+			}
 
 		}
 	}
