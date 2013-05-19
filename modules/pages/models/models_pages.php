@@ -16,12 +16,16 @@ class page extends Webmodel {
 	public function insert($post)
 	{
 	
+		$post=$this->components['name']->add_slugify_i18n_post('name', $post);
+	
 		return parent::insert($post);
 	
 	}
 	
 	public function update($post, $conditions="")
 	{
+	
+		$post=$this->components['name']->add_slugify_i18n_post('name', $post);
 	
 		return parent::update($post, $conditions);
 	

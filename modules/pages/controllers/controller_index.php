@@ -3,19 +3,29 @@
 function Index()
 {
 
-	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $config_data;
+	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $config_data, $text_url;
 
 	ob_start();
 	
 	settype($_GET['IdPage'], 'integer');
+	
+	$sql_text='where IdPage='.$_GET['IdPage'];
 
-	if($_GET['IdPage']==0)
+	if($_GET['IdPage']==0 && $text_url=='')
 	{
 		settype($config_data['index_page'], 'integer');
 		$_GET['IdPage']=$config_data['index_page'];
+		$sql_text='where IdPage='.$_GET['IdPage'];
 
 	}
-
+	else
+	if($text_url!='' && $_GET['IdPage']==0)
+	{
+	
+		$sql_text='where `name_'.$_SESSION['language'].'`="'.$text_url.'"';
+	
+	}
+	
 	$cont_index_page='';
 
 	$arr_block='';
@@ -27,8 +37,8 @@ function Index()
 	//Load page...
 
 	load_model('pages');
-
-	$query=$model['page']->select('where IdPage='.$_GET['IdPage'], array('name', 'text'));
+	
+	$query=$model['page']->select($sql_text, array('name', 'text'));
 
 	list($name_page, $text)=webtsys_fetch_row($query);
 	

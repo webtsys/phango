@@ -171,6 +171,7 @@ $script_file='controller_'.$script_file;
 
 //Converse fancy urls in get parameters...
 
+$text_url='';
 
 //clean_url_getvar();
 	
@@ -198,9 +199,10 @@ if($cget % 2 ==0 )
 		//$arr_func_encode_get[DEBUG]($arr_variables[$x]);
 
 	}
+	
+	$text_url=slugify($arr_url[1]);
 
 }
-
 
 //Get variables very used
 
