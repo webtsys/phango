@@ -36,14 +36,14 @@ function Load_Jscript()
 
 	settype($_SERVER ['HTTP_ACCEPT_ENCODING'], 'string');
 	
-	$jscript_source=$base_path.'application/media/jscript/libraries_jscript/'.$_GET['input_script'];
+	$jscript_source=$base_path.'application/media/'.$config_data['dir_theme'].'/jscript/libraries_jscript/'.$_GET['input_script'];
 
 	$file_found=1;
 
 	if(!file_exists($jscript_source))
 	{
 
-		$jscript_source=$base_path.'application/media/'.$config_data['dir_theme'].'/jscript/libraries_jscript/'.$_GET['input_script'];
+		$jscript_source=$base_path.'application/media/jscript/libraries_jscript/'.$_GET['input_script'];
 
 	}
 

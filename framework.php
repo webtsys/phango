@@ -199,7 +199,12 @@ if($cget % 2 ==0 )
 		//$arr_func_encode_get[DEBUG]($arr_variables[$x]);
 
 	}
-	
+
+}
+
+if($cget>0)
+{
+
 	$text_url=slugify($arr_url[1]);
 
 }

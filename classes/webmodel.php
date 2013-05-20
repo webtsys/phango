@@ -942,38 +942,45 @@ class ModelForm {
 
 		$error=0;
 		
-		foreach($arr_form as $key_form => $form)
+		foreach($post as $key_form => $value_form)
 		{
 			
-			settype($post[$key_form], 'string');
+			//settype($post[$key_form], 'string');
 			
-			$post[$key_form]=$form->type->check($post[$key_form]);
-			
-			if($post[$key_form]=='')
+			if(isset($arr_form[$key_form]))
 			{
+			
+				$form=$arr_form[$key_form];
+			
+				$post[$key_form]=$form->type->check($post[$key_form]);
 				
-				if($form->type->std_error!='')
+				if($post[$key_form]=='')
 				{
+					
+					if($form->type->std_error!='')
+					{
 
-					$form->std_error=$form->type->std_error;
+						$form->std_error=$form->type->std_error;
 
-				}
-				else
-				{
+					}
+					else
+					{
 
-					$form->std_error=$form->txt_error;
+						$form->std_error=$form->txt_error;
 
+					}
+					
+					$form->error_flag=1;
+
+					if($form->required==1)
+					{
+
+						$error++;
+
+					}
+		
 				}
 				
-				$form->error_flag=1;
-
-				if($form->required==1)
-				{
-
-					$error++;
-
-				}
-	
 			}
 
 		}
