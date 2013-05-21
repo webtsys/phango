@@ -644,6 +644,8 @@ class Webmodel {
 
 		//With function for create form, we use an array for specific order, after i can insert more fields in the form.
 
+		$this->forms=array();
+		
 		$arr_form=array();
 		
 		if(count($fields_form)==0)
