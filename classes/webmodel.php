@@ -639,33 +639,48 @@ class Webmodel {
 
 	}
 
-	public function create_form()
+	public function create_form($fields_form=array())
 	{
 
 		//With function for create form, we use an array for specific order, after i can insert more fields in the form.
 
 		$arr_form=array();
-
-		foreach($this->components as $component_name => $component)
+		
+		if(count($fields_form)==0)
 		{
+		
+			$fields_form=array_keys($this->components);
 			
-			//Create form from model's components
+		}
+		
+		//foreach($this->components as $component_name => $component)
+		foreach($fields_form as $component_name)
+		{
+		
+			if(isset($this->components[$component_name]))
+			{
+			
+				$component=&$this->components[$component_name];
+			
+				//Create form from model's components
 
-			$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
+				$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
 
-			//Set parameters to default
-			$parameters='';
+				//Set parameters to default
+				$parameters='';
 
-			/*if($this->forms[$component_name]->parameters[2]==0)
-			{*/
+				/*if($this->forms[$component_name]->parameters[2]==0)
+				{*/
+					
+				$parameters=$component->get_parameters_default();
+
+				//}
+
+				//Use method from ModelForm for set initial parameters...
+
+				$this->forms[$component_name]->SetParameters($parameters);
 				
-			$parameters=$component->get_parameters_default();
-
-			//}
-
-			//Use method from ModelForm for set initial parameters...
-
-			$this->forms[$component_name]->SetParameters($parameters);
+			}
 
 		}
 
