@@ -194,7 +194,7 @@ if($cget % 2 ==0 )
 		
 		//Cut big variables...
 
-		$_GET[$arr_variables[$x]]=slugify(substr($arr_variables[$x+1], 0, 255), 1);
+		$_GET[$arr_variables[$x]]=urldecode(slugify(substr($arr_variables[$x+1], 0, 255), 1));
 
 		//$arr_func_encode_get[DEBUG]($arr_variables[$x]);
 
