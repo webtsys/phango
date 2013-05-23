@@ -7,6 +7,8 @@ function Browser_list_field()
 	
 	settype($_GET['op'], 'integer');
 	
+	$_GET['op_edit']=0;
+	
 	load_lang('jscript');
 	
 	load_model('jscript');
@@ -21,8 +23,8 @@ function Browser_list_field()
 	
 	$headers='';
 	
-	if(check_admin($user_data['IdUser']))
-	{
+	/*if(check_admin($user_data['IdUser']))
+	{*/
 	
 		$arr_cache_jscript[]='jquery.min.js';
 		
@@ -104,7 +106,7 @@ function Browser_list_field()
 		$title=''; //$lang['jscript']['search_on_table'];
 			
 		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin_none');
-	}
+	//}
 
 }
 
