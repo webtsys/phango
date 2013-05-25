@@ -3117,7 +3117,7 @@ function TextAreaFormSet($post, $value)
 function HiddenForm($name="", $class='', $value='')
 {
 
-	return '<input type="hidden" name="'.$name.'" value="'.$value.'"/>';
+	return '<input type="hidden" name="'.$name.'" value="'.$value.'" id="'.$name.'_field_form"/>';
 
 }
 
