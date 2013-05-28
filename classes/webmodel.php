@@ -3142,7 +3142,7 @@ function CheckBoxForm($name="", $class='', $value='')
 	$arr_checked[0]='';
 	$arr_checked[1]='checked';
 	
-	return '<input type="checkbox" name="'.$name.'" value="1" class="'.$class.'" '.$arr_checked[$value].'/>';
+	return '<input type="checkbox" name="'.$name.'" value="1" id="'.$name.'_field_form" class="'.$class.'" '.$arr_checked[$value].'/>';
 
 }
 
