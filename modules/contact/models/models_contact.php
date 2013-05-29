@@ -1,11 +1,53 @@
 <?php
 
+global $arr_i18n;
+
 load_libraries(array('i18n_fields'));
 
-$model['contact']=new Webmodel('contact');
+class Contact extends Webmodel {
+
+	function __construct()
+	{
+
+		parent::__construct("contact");
+
+	}
+	
+	public function insert($post)
+	{
+	
+		$post=$this->components['name']->add_slugify_i18n_post('name', $post);
+	
+		return parent::insert($post);
+	
+	}
+	
+	public function update($post, $conditions="")
+	{
+	
+		$post=$this->components['name']->add_slugify_i18n_post('name', $post);
+	
+		return parent::update($post, $conditions);
+	
+	}
+	
+}
+
+$model['contact']=new Contact('contact');
 
 $model['contact']->components['name']=new I18nField(new TextField());
 $model['contact']->components['name']->required=1;
+
+SlugifyField::add_slugify_i18n_fields('contact', 'name');
+
+foreach($arr_i18n as $lang_i18n)
+{
+
+	$model['contact']->components['name_'.$lang_i18n]->type='VARCHAR(255)';
+	$model['contact']->components['name_'.$lang_i18n]->indexed=true;
+
+}
+
 $model['contact']->components['description']=new I18nField(new TextHTMLField());
 $model['contact']->components['email']=new EmailField();
 $model['contact']->components['email']->required=1;

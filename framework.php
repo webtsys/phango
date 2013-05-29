@@ -147,6 +147,8 @@ $arr_url=@explode('/', $arr_get_url[1]);
 
 $script_file=@form_text(slugify($arr_url[0]));
 
+$arr_url[1]=@form_text($arr_url[1]);
+
 $arr_variables=array_slice($arr_url, 2);
 
 if($script_controller=='') 
@@ -202,12 +204,12 @@ if($cget % 2 ==0 )
 
 }
 
-if($cget>0)
-{
+/*if($cget>0)
+{*/
 
-	$text_url=slugify($arr_url[1]);
+$text_url=slugify($arr_url[1]);
 
-}
+//}
 
 //Get variables very used
 

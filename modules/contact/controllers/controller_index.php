@@ -3,8 +3,12 @@
 function Index()
 {
 
-	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id;
-
+	global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $text_url;
+	
+	load_lang('contact');
+	load_model('contact');
+	load_libraries(array('forms/textbbpost'));
+	
 	$cont_index='';
 
 	$arr_block='';
@@ -12,16 +16,20 @@ function Index()
 	$arr_block=select_view(array('contact'));
 
 	settype($_GET['op'], 'integer');
-
-	//Load page...
-
-	load_lang('contact');
-	load_model('contact');
-	load_libraries(array('forms/textbbpost'));
-
 	settype($_GET['IdContact'], 'integer');
+	
+	//Load page...
+	
+	$sql_text='where IdContact='.$_GET['IdContact'];
+	
+	if($text_url!='' && $_GET['IdContact']==0)
+	{
+	
+		$sql_text='where `name_'.$_SESSION['language'].'`="'.$text_url.'"';
+	
+	}
 
-	$query=$model['contact']->select('where IdContact='.$_GET['IdContact'], array('IdContact', 'name', 'email', 'description'));
+	$query=$model['contact']->select($sql_text, array('IdContact', 'name', 'email', 'description'));
 
 	list($idcontact, $name_page, $emailto, $description)=webtsys_fetch_row($query);
 
