@@ -3472,7 +3472,7 @@ function slugify($text, $respect_upper=0, $replace='-')
 
 $cache_template=array();
 
-function load_view($arr_template, $template, $module_theme='')
+function load_view($arr_template, $template, $module_theme='', $load_if_no_cache=0)
 {
 
 	//First see in controller/view/template, if not see in /views/template
@@ -3541,6 +3541,14 @@ function load_view($arr_template, $template, $module_theme='')
 		
 		$cache_template[$template]=basename($template).'View';
 
+	}
+	else 
+	if($load_if_no_cache!=0)
+	{
+			
+		return  '';
+		
+	
 	}
 	
 	ob_start();

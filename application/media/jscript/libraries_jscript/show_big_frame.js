@@ -47,26 +47,10 @@
 			
 			$(html_id).show();
 			
-			/*$('#frame_big_showed').load( function () {
-			
-				//Animate the frame_image
-				
-				width_css=$('#image_big_showed').css('width');
-				height_css=$('#image_big_showed').css('height');
-				
-				$('#frame_image').animate({'width' : width_css, 'height': height_css}, function () {
-				
-					$('#image_big_showed').fadeIn('slow');
-				
-				});
-				
-			
-			});*/
-			
 			return false;
 		
 		});
-	
+		
 	}
 
 })( jQuery );
