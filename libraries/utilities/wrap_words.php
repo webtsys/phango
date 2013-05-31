@@ -13,6 +13,7 @@ function wrap_words($text, $num_words, $text_explain='...')
 	{
 
 		$num_words=$total_num_text;
+		$text_explain='';
 
 	}
 
