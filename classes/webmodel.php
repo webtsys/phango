@@ -24,8 +24,8 @@ $arr_models_loading=array();
 
 define("TODAY", time());
 
-define("TODAY_FIRST", mktime(0, 0, 0));
-define("TODAY_LAST", mktime(23, 59, 59));
+define("TODAY_FIRST", gmmktime(0, 0, 0));
+define("TODAY_LAST", gmmktime(23, 59, 59));
 
 //This variable is used for save general errors. 
 
