@@ -51,7 +51,7 @@ function Browser_list_field()
 					
 					var class_id=$(this).attr('class').replace('select_id select_id_', '');
 					
-					form_modify.val(class_id);
+					form_modify.val(class_id).change();
 					
 					//alert(form_text_modify.attr('id'));
 					
@@ -117,7 +117,7 @@ function ChooseOptionsListModel($url_options, $model_name, $id, $arr_row)
 	
 	$field_ident=slugify($_GET['field']);
 	
-	$arr_options[]='<a href="#" class="select_id select_id_'.$id.'""><span style="display:none;" id="text_field_'.$id.'">'.$arr_row[$field_ident].'</span>'.$lang['common']['select'].'</a>';
+	$arr_options[]='<a href="#" class="select_id select_id_'.$id.'"><span style="display:none;" id="text_field_'.$id.'">'.$arr_row[$field_ident].'</span>'.$lang['common']['select'].'</a>';
 	
 	return $arr_options;
 

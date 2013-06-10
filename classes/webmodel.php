@@ -26,6 +26,7 @@ define("TODAY", time());
 
 define("TODAY_FIRST", gmmktime(0, 0, 0));
 define("TODAY_LAST", gmmktime(23, 59, 59));
+define("TODAY_HOUR", gmmktime(date('H'), 0, 0));
 
 //This variable is used for save general errors. 
 
