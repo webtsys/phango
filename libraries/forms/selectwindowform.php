@@ -13,7 +13,7 @@ function SelectWindowForm($name="", $class='', $value='', $module='', $model_nam
 	{
 	
 		//$value=$lang['common']['no_element_chosen'];
-		return '<span id="select_window_form_'.$name.'"></span><input type="hidden" name="'.$name.'" class="'.$class.'" id="'.$name.'_field_form" value="'.$value.'"/> <a href="#" onclick="window.open(\''.$url_choose_option.'\', \'\', \'width=800,height=600\'); return false;">'.$lang['common']['any_option_chosen'].'</a>';
+		return '<span id="select_window_form_'.$name.'"></span><input type="hidden" name="'.$name.'" class="'.$class.'" id="'.$name.'_field_form" value="'.$value.'"/> <a href="#" onclick="window.open(\''.$url_choose_option.'\', \'\', \'width=800,height=600,scrollbars=yes\'); return false;">'.$lang['common']['any_option_chosen'].'</a>';
 	
 	}
 	else

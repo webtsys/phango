@@ -3,7 +3,7 @@
 function Browser_list_field()
 {
 
-	global $model, $base_path, $base_url, $config_data, $user_data, $lang, $arr_block, $arr_cache_header, $arr_cache_jscript;
+	global $model, $base_path, $base_url, $config_data, $user_data, $lang, $arr_block, $arr_cache_header, $arr_cache_jscript, $arr_module_list_js;
 	
 	settype($_GET['op'], 'integer');
 	
@@ -23,15 +23,53 @@ function Browser_list_field()
 	
 	$headers='';
 	
+	//http://localhost/phangodev/index.php/jscript/show/browser_list_field/browser_list_field/module/descuentos/model/codigos_postales/field/codigo_postal/field_fill/cp_id
+	
 	/*if(check_admin($user_data['IdUser']))
 	{*/
 	
-		$arr_cache_jscript[]='jquery.min.js';
+	$arr_cache_jscript[]='jquery.min.js';
+	
+	$module=slugify($_GET['module']);
+	$model_name=slugify($_GET['model']);
+	$field_ident=slugify($_GET['field']);
+	$field_fill=slugify($_GET['field_fill']);
+	
+	$yes_go=0;
+	
+	if(!check_admin($user_data['IdUser']))
+	{
 		
-		$module=slugify($_GET['module']);
-		$model_name=slugify($_GET['model']);
-		$field_ident=slugify($_GET['field']);
-		$field_fill=slugify($_GET['field_fill']);
+		//Check if permitted...
+		
+		//module/descuentos/model/codigos_postales/field/codigo_postal/field_fill/cp_id
+		
+		if(isset($arr_module_list_js[$module]))
+		{
+			
+			if($arr_module_list_js[$module]['model']==$model_name && $arr_module_list_js[$module]['field']==$field_ident && $arr_module_list_js[$module]['field_fill']==$field_fill)
+			{
+			
+				$yes_go=1;
+			
+			}
+		
+		}
+	
+	}
+	else
+	{
+	
+		$yes_go=1;
+	
+	}
+	
+	if($yes_go==0)
+	{
+	
+		die;
+	
+	}
 	
 		ob_start();
 

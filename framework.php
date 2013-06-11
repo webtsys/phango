@@ -5,6 +5,7 @@ ob_start();
 //Set basic arrays...
 
 $arr_extension_model=array();
+$arr_module_list_js=array();
 
 //Adding config...
 
