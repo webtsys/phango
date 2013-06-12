@@ -140,6 +140,9 @@ function ConfigAdmin()
 	
 	//Type send email
 	
+	$arr_mailer_type=array( $config_data['mailer_type'], $lang['config']['no_mailer'], '');
+	$arr_mailer_check=array('');
+	
 	$dir = opendir( $base_path. '/libraries/mailers/' );
 
 	while ( $script_mailer = readdir( $dir ) )
@@ -149,7 +152,7 @@ function ConfigAdmin()
 
 		$script_mailer=preg_replace('/(.*)\.php/', '$1', $script_mailer);
 
-		$arr_mailer_type[]=$script_mailer;
+		$arr_mailer_type[]=ucfirst($script_mailer);
 		$arr_mailer_type[]=$script_mailer;
 
 		$arr_mailer_check[]=$script_mailer;

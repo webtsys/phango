@@ -14,6 +14,8 @@ $lang['config']['no_textbb']='Sin editor html';
 
 $lang['config']['no_captcha']='Sin captcha';
 
+$lang['config']['no_mailer']='no_mailer';
+
 $lang['config']['dir_theme']='Apariencia de la web';
 
 $lang['config']['portal_name']='Nombre del sitio web';
