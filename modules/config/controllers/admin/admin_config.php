@@ -137,6 +137,29 @@ function ConfigAdmin()
 
 	$model['config_webtsys']->forms['captcha_type']->SetParameters( $arr_captcha_type );
 	$model['config_webtsys']->components['captcha_type']->arr_values=$arr_captcha_check;
+	
+	//Type send email
+	
+	$dir = opendir( $base_path. '/libraries/mailers/' );
+
+	while ( $script_mailer = readdir( $dir ) )
+	{
+	if ( !preg_match('/^\./', $script_mailer) )
+	{
+
+		$script_mailer=preg_replace('/(.*)\.php/', '$1', $script_mailer);
+
+		$arr_mailer_type[]=$script_mailer;
+		$arr_mailer_type[]=$script_mailer;
+
+		$arr_mailer_check[]=$script_mailer;
+		
+	} 
+	} 
+	closedir( $dir );
+
+	$model['config_webtsys']->forms['mailer_type']->SetParameters( $arr_mailer_type );
+	$model['config_webtsys']->components['mailer_type']->arr_values=$arr_mailer_check;
 
 	//Timezone
 	
@@ -184,10 +207,11 @@ function ConfigAdmin()
 	
 	$model['config_webtsys']->forms['timezone']->label=$lang['config']['timezone'];
 	$model['config_webtsys']->forms['captcha_type']->label=$lang['config']['captcha_type'];
+	$model['config_webtsys']->forms['mailer_type']->label=$lang['config']['mailer_type'];
 
 	//Fields strips for now 'ssl_feature', 'cookie_secure', 'censoring', 'surveys'
 
-	$arr_fields=array('dir_theme', 'portal_name', 'portal_email', 'x_avatar', 'y_avatar', 'date_format', 'time_format', 'timezone', 'ampm', 'accept_bbcode_signature', 'name_guest', 'meta_author', 'metatags', 'meta_description', 'foot', 'meta_copyright', 'active_users', 'wait_message', 'index_page', 'user_extra', 'create_user', 'textbb_type', 'captcha_type', 'cond_register');
+	$arr_fields=array('dir_theme', 'portal_name', 'portal_email', 'x_avatar', 'y_avatar', 'date_format', 'time_format', 'timezone', 'ampm', 'accept_bbcode_signature', 'name_guest', 'meta_author', 'metatags', 'meta_description', 'foot', 'meta_copyright', 'active_users', 'wait_message', 'index_page', 'user_extra', 'create_user', 'textbb_type', 'captcha_type', 'mailer_type', 'cond_register');
 
 	/*foreach($model['config_webtsys']->forms as $idfield => $field)
 	{

@@ -42,6 +42,10 @@ $lang['common']['ip']='IP';
 
 $lang['common']['message']='Message';
 
+$lang['common']['redirect']='Redirect';
+
+$lang['common']['press_here_redirecting']='Press here to come back...';
+
 $lang['common']['send']='Send';
 
 $lang['common']['with_*_field_required']='The fields with * are required';
@@ -68,23 +72,21 @@ $lang['common']['register_user']='User registration';
 
 $lang['common']['login']='Login';
 
+$lang['common']['pages']='Pages';
+
+$lang['common']['go_back']='Go Back';
+
 $lang['common']['edit']='Edit';
 
 $lang['common']['delete']='Delete';
 
-$lang['common']['redirect']='Redirect';
+$lang['common']['image']='Image';
 
 $lang['common']['success']='Successful operation';
-
-$lang['common']['press_here_redirecting']='Press here to come back...';
-
-$lang['common']['image']='Image';
 
 $lang['common']['zip_code']='Zip code';
 
 $lang['common']['address']='Adress';
-
-$lang['common']['go_back']='Go Back';
 
 $lang['common']['name']='Name';
 
@@ -183,8 +185,6 @@ $lang['common']['categories']='Categories';
 $lang['common']['any_option']='All options';
 
 $lang['common']['region']='Region';
-
-$lang['common']['pages']='Pages';
 
 $lang['common']['category']='Category';
 

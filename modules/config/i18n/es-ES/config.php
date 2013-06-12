@@ -68,4 +68,6 @@ $lang['config']['timezone']='Zona Horaria';
 
 $lang['config']['captcha_type']='Tipo de protección de posts';
 
+$lang['config']['mailer_type']='mailer_type';
+
 ?>

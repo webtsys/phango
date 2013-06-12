@@ -96,6 +96,9 @@ $model['config_webtsys']->components['textbb_type']->form='SelectForm';
 $model['config_webtsys']->components['captcha_type']=new ChoiceField(150, 'string');
 $model['config_webtsys']->components['captcha_type']->form='SelectForm';
 
+$model['config_webtsys']->components['mailer_type']=new ChoiceField(150, 'string');
+$model['config_webtsys']->components['mailer_type']->form='SelectForm';
+
 $model['config_webtsys']->components['cond_register']=new TextField();
 $model['config_webtsys']->components['cond_register']->form='TextAreaForm';
 
