@@ -111,6 +111,16 @@ function send_mail($email, $subject, $message, $content_type='plain', $bcc='', $
 		
 		$mail_set->setReplyTo(array(SMTP_SENDER));
 		
+		// Optionally add any attachments
+		
+		foreach($attachments as $attachment)
+		{
+		
+			$mail_set->attach(Swift_Attachment::fromPath($attachment));
+			
+		}
+
+		
 		//echo $mailer->send($mail_set);
 		
 		if(!$mailer->send($mail_set))
@@ -125,8 +135,6 @@ function send_mail($email, $subject, $message, $content_type='plain', $bcc='', $
 		// And optionally an alternative body
 		//->addPart('<q>Here is the message itself</q>', 'text/html')
 		
-		/*// Optionally add any attachments
-		->attach(Swift_Attachment::fromPath('my-document.pdf'))*/
 	
 	break;
 	
