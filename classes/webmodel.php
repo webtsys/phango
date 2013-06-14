@@ -1585,6 +1585,17 @@ class TextHTMLField extends PhangoField {
 		global $config_data;
 		
 		//Delete Javascript tags and simple quotes.
+		
+		$txt_without_tags=str_replace('&nbsp;', '', strip_tags($value) );
+		
+		$txt_without_tags=trim(str_replace(' ', '', $txt_without_tags));
+		
+		if($txt_without_tags=='')
+		{
+		
+			return '';
+		
+		}
 
 		if($config_data['textbb_type']=='')
 		{
