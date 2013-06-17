@@ -11,6 +11,7 @@ $arr_parameters, 'func2' => $arr_parameters2), $class->show();, this class is a 
 - Add function for add css to views how javascript.
 - A function for obtain where var.
 - From Forms fill field form parameters.
+- A function for set_components from a array.
 
 Knowed Bugs
 ----------------------------
