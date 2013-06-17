@@ -1388,6 +1388,7 @@ class ChoiceField extends PhangoField {
 	public $std_error='';
 	public $type='integer';
 	public $arr_values=array();
+	public $arr_formatted=array();
 	public $default_value='';
 
 	
@@ -1400,7 +1401,14 @@ class ChoiceField extends PhangoField {
 		$this->type=$type;
 		$this->arr_values=$arr_values;
 		$this->default_value=$default_value;
-
+		
+		foreach($arr_values as $value)
+		{
+		
+			$this->arr_formatted[$value]=$value;
+		
+		}
+	
 	}
 
 	function check($value)
@@ -1462,8 +1470,8 @@ class ChoiceField extends PhangoField {
 
 	function show_formatted($value)
 	{
-
-		return $value;
+		
+		return $this->arr_formatted[$value];
 
 	}
 
