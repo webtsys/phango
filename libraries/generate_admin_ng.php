@@ -423,12 +423,12 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 
 	$num_elements=20;
 	
-	$where_sql_count='';
+	$where_sql_count=$where_sql;
 	
 	if($arr_where_sql!='')
 	{
 	
-		$where_sql_count=' and '.$arr_where_sql;
+		$where_sql_count.=' and '.$arr_where_sql;
 		
 	}
 	
