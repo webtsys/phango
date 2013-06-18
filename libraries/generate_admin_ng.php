@@ -25,7 +25,7 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 		if(count($arr_fields)==0)
 		{
 
-			$arr_fields=array_keys($model[$model_name]->components);
+			$arr_fields=array_keys($model[$model_name]->forms);
 
 		}
 		
