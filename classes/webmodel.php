@@ -1404,7 +1404,7 @@ class ChoiceField extends PhangoField {
 		
 		foreach($arr_values as $value)
 		{
-		
+			
 			$this->arr_formatted[$value]=$value;
 		
 		}
@@ -1485,7 +1485,7 @@ class ChoiceField extends PhangoField {
 			foreach($this->arr_values as $value)
 			{
 
-				$arr_return[]=$value;
+				$arr_return[]=$this->arr_formatted[$value];
 				$arr_return[]=$value;
 
 			}
