@@ -963,6 +963,8 @@ class ModelForm {
 
 		$error=0;
 		
+		$num_form=0;
+		
 		foreach($post as $key_form => $value_form)
 		{
 			
@@ -1003,10 +1005,12 @@ class ModelForm {
 				}
 				
 			}
+			
+			$num_form++;
 
 		}
 
-		if($error==0)
+		if($error==0 && $num_form>0)
 		{
 
 			return $post;
