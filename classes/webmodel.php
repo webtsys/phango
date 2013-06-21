@@ -24,9 +24,9 @@ $arr_models_loading=array();
 
 define("TODAY", time());
 
-define("TODAY_FIRST", gmmktime(0, 0, 0));
-define("TODAY_LAST", gmmktime(23, 59, 59));
-define("TODAY_HOUR", gmmktime(date('H'), 0, 0));
+define("TODAY_FIRST", mktime(0, 0, 0));
+define("TODAY_LAST", mktime(23, 59, 59));
+define("TODAY_HOUR", mktime(date('H'), 0, 0));
 
 //This variable is used for save general errors. 
 
@@ -1826,7 +1826,7 @@ class DateField extends PhangoField {
 		if($this->set_default_time==0)
 		{
 
-			$final_value=time();
+			$final_value=mktime(date('H'), date('i'), date('s'));
 		
 		}
 		
@@ -1839,17 +1839,23 @@ class DateField extends PhangoField {
 			settype($value[3], 'integer');
 			settype($value[4], 'integer');
 			settype($value[5], 'integer');
-		
+			
 			if($value[0]>0 && $value[1]>0 && $value[2]>0)	
 			{
 
-				$substr_time=$user_data['format_time']/3600;
+				/*$substr_time=$user_data['format_time']/3600;
 	
-				$value[3]-=$substr_time;
+				$value[3]-=$substr_time;*/
 
-				$final_value=gmmktime ($value[3], $value[4], $value[5], $value[1], $value[0], $value[2] );
+				$final_value=mktime ($value[3], $value[4], $value[5], $value[1], $value[0], $value[2] );
 	
 			}
+			
+			/*echo date('H-i-s', $final_value);
+			
+			//echo $final_value;
+			
+			die;*/
 
 		}
 		else if(strpos($value, '-')!==false)
@@ -1861,12 +1867,12 @@ class DateField extends PhangoField {
 			settype($arr_time[1], 'integer');
 			settype($arr_time[2], 'integer');
 			
-			$final_value=gmmktime (0, 0, 0, $arr_time[1], $arr_time[0], $arr_time[2] );
+			$final_value=mktime (0, 0, 0, $arr_time[1], $arr_time[0], $arr_time[2] );
 			
 			if($final_value===false)
 			{
 			
-				$final_value=gmmktime (0, 0, 0, $arr_time[1], $arr_time[2], $arr_time[0] );
+				$final_value=mktime (0, 0, 0, $arr_time[1], $arr_time[2], $arr_time[0] );
 			
 			}
 		
@@ -3366,12 +3372,12 @@ function DateForm($field, $class='', $value='', $set_time=1)
 		
 		$value+=$user_data['format_time'];
 		
-		$day=gmdate('j', $value);
-		$month=gmdate('n', $value);
-		$year=gmdate('Y', $value);
-		$hour=gmdate('G', $value);
-		$minute=gmdate('i', $value);
-		$second=gmdate('s', $value);
+		$day=date('j', $value);
+		$month=date('n', $value);
+		$year=date('Y', $value);
+		$hour=date('G', $value);
+		$minute=date('i', $value);
+		$second=date('s', $value);
 	}
 		
 
@@ -3410,7 +3416,7 @@ function DateFormSet($post, $value)
 		settype($value[4], 'integer');
 		settype($value[5], 'integer');
 		
-		$final_value=gmmktime ($value[3], $value[4], $value[5], $value[1], $value[0], $value[2] );
+		$final_value=mktime ($value[3], $value[4], $value[5], $value[1], $value[0], $value[2] );
 
 	}
 	else
