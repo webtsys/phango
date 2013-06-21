@@ -4,7 +4,7 @@ load_libraries(array('generate_forms', 'table_config', 'pages'));
 
 function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 {
-	global $model, $lang, $std_error, $arr_block;
+	global $model, $lang, $std_error, $arr_block, $base_url;
 	//Setting op variable to integer for use in switch
 
 	if(isset($model[$model_name]))
@@ -78,9 +78,12 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 
 					//die(header('Location: '.$url_admin.'/success/1'));
 					
-					ob_end_clean();
+					/*ob_end_clean();
 					load_libraries(array('redirect'));
-					die( redirect_webtsys( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+					die( redirect_webtsys( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );*/
+					
+					load_libraries(array('redirect'));
+					simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
 
 				}
 
@@ -273,9 +276,12 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 		if($func_delete($model_name, $_GET[ $model[$model_name]->idmodel ]))
 		{	
 			//die(header('Location: '.$url_options_delete));
-			ob_end_clean();
+			/*ob_end_clean();
 			load_libraries(array('redirect'));
-			die( redirect_webtsys( $url_options_delete, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+			die( redirect_webtsys( $url_options_delete, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );*/
+			
+			load_libraries(array('redirect'));
+			simple_redirect( $url_options_delete, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
 
 		}
 		else
