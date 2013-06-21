@@ -8,7 +8,7 @@ function search_in_field($model_name, $fields, $phrase_search)
 	//Need fix this function with foreignkeyfields...
 	
 	//Search in the fields in a model
-
+	print_r($fields);
 	$phrase_search=form_text($phrase_search);
 
 	$arr_text=explode(" ",$phrase_search);
@@ -31,6 +31,9 @@ function search_in_field($model_name, $fields, $phrase_search)
 
 		foreach($fields as $field)
 		{
+		
+			//$check_phrase_search=$model[$model_name]->forms[$field]->type->check($phrase_search);
+			
 
 			$arr_loc[]="IF(LOCATE(\"$phrase_search\",".$model_name.".`".$field."`),2,0)";
 

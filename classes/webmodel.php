@@ -930,7 +930,7 @@ class ModelForm {
 
 	function SetForm($value, $form_type_set='')
 	{
-
+		
 		$func_setvalue=$this->form.'Set';
 		
 		$this->parameters[2]=$func_setvalue($this->parameters[2], $value, $form_type_set);
@@ -1032,6 +1032,13 @@ Now, we define components for use in models. I don't use a base model for charfi
 class PhangoField {
 
 	public $indexed=0;
+	
+	function search_field($value)
+	{
+	
+		return $this->check($value);
+	
+	}
 
 }
 
@@ -1844,6 +1851,25 @@ class DateField extends PhangoField {
 	
 			}
 
+		}
+		else if(strpos($value, '-')!==false)
+		{
+		
+			$arr_time=explode('-',trim($value));
+			
+			settype($arr_time[0], 'integer');
+			settype($arr_time[1], 'integer');
+			settype($arr_time[2], 'integer');
+			
+			$final_value=gmmktime (0, 0, 0, $arr_time[1], $arr_time[0], $arr_time[2] );
+			
+			if($final_value===false)
+			{
+			
+				$final_value=gmmktime (0, 0, 0, $arr_time[1], $arr_time[2], $arr_time[0] );
+			
+			}
+		
 		}
 		else
 		if(gettype($value)=='string' || gettype($value)=='integer')

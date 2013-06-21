@@ -428,7 +428,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	if($arr_where_sql!='')
 	{
 	
-		$where_sql_count.=' and '.$arr_where_sql;
+		$where_sql_count.=' '.$arr_where_sql;
 		
 	}
 	
@@ -642,13 +642,26 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 
 	//Query for search_by
 	
-	list($location, $arr_where_sql)=search_in_field($model_name, array($_GET['search_field']), $_GET['search_word']);
+	/*list($location, $arr_where_sql)=search_in_field($model_name, array($_GET['search_field']), $_GET['search_word']);
 	
 	if($location!='')
 	{
 
 		$location=$location.' DESC ,';
 
+	}*/
+	
+	$location='';
+	
+	$arr_where_sql='';
+	
+	if(isset($model[$model_name]->components[$_GET['search_field']]) && $_GET['search_word']!='')
+	{
+	
+		$value_search=$model[$model_name]->components[$_GET['search_field']]->search_field($_GET['search_word']);
+		
+		$arr_where_sql=$model_name.'.'.$_GET['search_field'].' LIKE \'%'.$value_search.'%\'';
+	
 	}
 
 	if($where_sql=='' && $arr_where_sql!='')
