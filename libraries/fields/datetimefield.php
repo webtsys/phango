@@ -12,6 +12,7 @@ class DateTimeField extends DateField
 
 	function check($value)
 	{
+		global $user_data;
 	
 		$timestamp=parent::check($value);
 		
@@ -41,12 +42,14 @@ class DateTimeField extends DateField
 function obtain_timestamp_datefield($value)
 {
 
+	global $user_data;
+
 	$year=substr($value, 0, 4);
-	$month=substr($value, 4, 6);
-	$day=substr($value, 6, 8);
-	$hour=substr($value, 8, 10);
-	$minute=substr($value, 10, 12);
-	$second=substr($value, 12, 14);
+	$month=substr($value, 4, 2);
+	$day=substr($value, 6, 2);
+	$hour=substr($value, 8, 2);
+	$minute=substr($value, 10, 2);
+	$second=substr($value, 12, 2);
 
 	settype($year, 'integer');
 	settype($month, 'integer');
@@ -55,7 +58,7 @@ function obtain_timestamp_datefield($value)
 	settype($minute, 'integer');
 	settype($second, 'integer');
 	
-	$timestamp=gmmktime($hour, $minute, $second, $month, $day, $year);
+	$timestamp=mktime($hour, $minute, $second, $month, $day, $year);
 	
 	return $timestamp;
 	
@@ -73,10 +76,12 @@ function DateTimeForm($field, $class='', $value='', $set_time=1)
 
 function DateTimeFormSet($post, $value)
 {
-
-	$timestamp=obtain_timestamp_datefield($value);
 	
-	return DateFormSet($post, $timestamp);
+	global $user_data;
+	
+	//$value+=$user_data['format_time'];
+	
+	return $value;
 
 }
 

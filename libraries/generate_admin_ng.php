@@ -751,11 +751,14 @@ function GeneratePositionModel($model_name, $field_name, $field_position, $url, 
 				
 			}
 			
-			ob_end_clean();
+			/*ob_end_clean();
 
 			load_libraries(array('redirect'));
 
-			die( redirect_webtsys( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+			die( redirect_webtsys( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );*/
+			
+			load_libraries(array('redirect'));
+			simple_redirect( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
 
 		break;
 
