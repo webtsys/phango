@@ -977,7 +977,7 @@ class ModelForm {
 			
 				$post[$key_form]=$form->type->check($post[$key_form]);
 				
-				if($post[$key_form]=='')
+				if($post[$key_form]=='' && $form->required==1)
 				{
 					
 					if($form->type->std_error!='')
