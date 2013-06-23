@@ -3,14 +3,14 @@
 class DateTimeField extends DateField
 {
 
-	function __construct()
+	public function __construct()
 	{
 
 		$this->form='DateTimeForm';
 
 	}
 
-	function check($value)
+	public function check($value)
 	{
 		global $user_data;
 	
@@ -20,16 +20,25 @@ class DateTimeField extends DateField
 	
 	}
 	
-	function show_formatted($value)
+	public function search_field($value)
+	{
+	
+		$value_check=$this->check($value);
+				
+		return substr($value_check, 0, 8);
+	
+	}
+	
+	public function show_formatted($value)
 	{
 
-		$timestamp=obtain_timestamp_datefield($value);
+		$timestamp=$this->obtain_timestamp_datefield($value);
 		
 		return parent::show_formatted($timestamp);
 
 	}
 
-	function get_type_sql()
+	public function get_type_sql()
 	{
 
 		return 'VARCHAR(14) NOT NULL';
@@ -37,30 +46,30 @@ class DateTimeField extends DateField
 
 	}
 
-}
+	static public function obtain_timestamp_datefield($value)
+	{
 
-function obtain_timestamp_datefield($value)
-{
+		global $user_data;
 
-	global $user_data;
+		$year=substr($value, 0, 4);
+		$month=substr($value, 4, 2);
+		$day=substr($value, 6, 2);
+		$hour=substr($value, 8, 2);
+		$minute=substr($value, 10, 2);
+		$second=substr($value, 12, 2);
 
-	$year=substr($value, 0, 4);
-	$month=substr($value, 4, 2);
-	$day=substr($value, 6, 2);
-	$hour=substr($value, 8, 2);
-	$minute=substr($value, 10, 2);
-	$second=substr($value, 12, 2);
-
-	settype($year, 'integer');
-	settype($month, 'integer');
-	settype($day, 'integer');
-	settype($hour, 'integer');
-	settype($minute, 'integer');
-	settype($second, 'integer');
-	
-	$timestamp=mktime($hour, $minute, $second, $month, $day, $year);
-	
-	return $timestamp;
+		settype($year, 'integer');
+		settype($month, 'integer');
+		settype($day, 'integer');
+		settype($hour, 'integer');
+		settype($minute, 'integer');
+		settype($second, 'integer');
+		
+		$timestamp=mktime($hour, $minute, $second, $month, $day, $year);
+		
+		return $timestamp;
+		
+	}
 	
 }
 
@@ -68,7 +77,7 @@ function obtain_timestamp_datefield($value)
 function DateTimeForm($field, $class='', $value='', $set_time=1)
 {
 
-	$timestamp=obtain_timestamp_datefield($value);
+	$timestamp=DateTimeField::obtain_timestamp_datefield($value);
 	
 	return DateForm($field, $class, $timestamp, $set_time);
 
