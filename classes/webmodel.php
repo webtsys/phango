@@ -22,7 +22,7 @@ $arr_models_loading=array();
 
 //The timestam for this moment...
 
-define("TODAY", time());
+define("TODAY", mktime( date('H'), date('i'), date('s') ) );
 
 define("TODAY_FIRST", mktime(0, 0, 0));
 define("TODAY_LAST", mktime(23, 59, 59));
@@ -3370,7 +3370,7 @@ function DateForm($field, $class='', $value='', $set_time=1)
 	else
 	{
 		
-		$value+=$user_data['format_time'];
+		//$value+=$user_data['format_time'];
 		
 		$day=date('j', $value);
 		$month=date('n', $value);
