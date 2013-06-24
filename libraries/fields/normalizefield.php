@@ -14,6 +14,13 @@ class NormalizeField extends TextField {
 
 	}
 	
+	function search_field($value)
+	{
+	
+		return $this->check_text($value);
+	
+	}
+	
 	static public function check_text($value, $separator='-')
 	{
 	

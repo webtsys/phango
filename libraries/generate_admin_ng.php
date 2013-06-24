@@ -504,7 +504,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	
 	//View table...
 	
-	$total_elements=$model[$model_name]->select_count($where_sql_count, $model[$model_name]->idmodel, 0);
+	$total_elements=$model[$model_name]->select_count($where_sql_count, $model[$model_name]->idmodel, $arr_fields);
 	
 	up_table_config($arr_label_fields, $cell_sizes);
 

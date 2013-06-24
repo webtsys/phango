@@ -437,7 +437,7 @@ class Webmodel {
 
 	//This method count num rows for the sql condition
 
-	public function select_count($conditions, $field, $raw_query=1)
+	public function select_count($conditions, $field, $fields_for_count=array())
 	{
 	
 		global $model;
@@ -445,22 +445,37 @@ class Webmodel {
 		$arr_model=array($this->name);
 		$arr_where=array('1=1');
 		
-		if($raw_query==0)
+		$arr_check_count=array();
+		
+		foreach($fields_for_count as $key_component)
 		{
 		
-			foreach($this->components as $key_component => $component)
+			if(isset($this->components[$key_component]))
 			{
+		
+				$component=$this->components[$key_component];
 			
 				if(get_class($component)=='ForeignKeyField')
 				{
 				
-					$arr_model[]=$component->related_model;
+					$table_name=$component->related_model;
+				
+					if(isset($arr_check_count[$table_name]))
+					{
+				
+						$table_name.='_'.uniqid();
+						
+					}
+				
+					$arr_model[]=$component->related_model.' as '.$table_name;
 			
-					$arr_where[]=$this->name.'.`'.$key_component.'`='.$component->related_model.'.`'.$model[$component->related_model]->idmodel.'`';
+					$arr_where[]=$this->name.'.`'.$key_component.'`='.$table_name.'.`'.$model[$component->related_model]->idmodel.'`';
+					
+					$arr_check_count[$table_name]=1;
 				
 				}
+				
 			}
-		
 		}
 	
 		foreach($this->related_models as $model_name_related => $fields_related)
