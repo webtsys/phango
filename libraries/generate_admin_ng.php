@@ -504,7 +504,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	
 	//View table...
 	
-	$total_elements=$model[$model_name]->select_count($where_sql_count, $model[$model_name]->idmodel);
+	$total_elements=$model[$model_name]->select_count($where_sql_count, $model[$model_name]->idmodel, 0);
 	
 	up_table_config($arr_label_fields, $cell_sizes);
 
@@ -666,7 +666,27 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 	
 		$value_search=$model[$model_name]->components[$_GET['search_field']]->search_field($_GET['search_word']);
 		
-		$arr_where_sql=$model_name.'.'.$_GET['search_field'].' LIKE \'%'.$value_search.'%\'';
+		if(get_class($model[$model_name]->components[$_GET['search_field']])!='ForeignKeyField')
+		{
+		
+			$arr_where_sql=$model_name.'.'.$_GET['search_field'].' LIKE \'%'.$value_search.'%\'';
+			
+		}
+		else
+		{
+		
+			$model_related_name=$model[$model_name]->components[$_GET['search_field']]->related_model;
+			
+			if($model[$model_name]->components[$_GET['search_field']]->name_field_to_field!='')
+			{
+			
+				$field_related_name=$model[$model_name]->components[$_GET['search_field']]->name_field_to_field;
+				
+				$arr_where_sql=$model_related_name.'.'.$field_related_name.' LIKE \'%'.$value_search.'%\'';
+				
+			}
+		
+		}
 	
 	}
 

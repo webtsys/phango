@@ -437,11 +437,31 @@ class Webmodel {
 
 	//This method count num rows for the sql condition
 
-	public function select_count($conditions, $field)
+	public function select_count($conditions, $field, $raw_query=1)
 	{
+	
+		global $model;
 	
 		$arr_model=array($this->name);
 		$arr_where=array('1=1');
+		
+		if($raw_query==0)
+		{
+		
+			foreach($this->components as $key_component => $component)
+			{
+			
+				if(get_class($component)=='ForeignKeyField')
+				{
+				
+					$arr_model[]=$component->related_model;
+			
+					$arr_where[]=$this->name.'.`'.$key_component.'`='.$component->related_model.'.`'.$model[$component->related_model]->idmodel.'`';
+				
+				}
+			}
+		
+		}
 	
 		foreach($this->related_models as $model_name_related => $fields_related)
 		{
@@ -1036,7 +1056,7 @@ class PhangoField {
 	function search_field($value)
 	{
 	
-		return $this->check($value);
+		return form_text($value);
 	
 	}
 
