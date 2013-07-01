@@ -529,6 +529,10 @@ class Webmodel {
 			}
 		
 		}
+		
+		//Delete rows on models with foreignkeyfields to this model...
+		
+		
 
  		return webtsys_query('delete from '.$this->name.' '.$conditions);
 		

@@ -138,6 +138,14 @@ function send_mail($email, $subject, $message, $content_type='plain', $bcc='', $
 	
 	break;
 	
+	case 'custom':
+	
+		require_once $base_path.'libraries/mailers/custom/mailer.php';
+		
+		return set_mailer($email, $subject, $message, $content_type, $bcc, $attachments);
+	
+	break;
+	
 	}
 
 }
