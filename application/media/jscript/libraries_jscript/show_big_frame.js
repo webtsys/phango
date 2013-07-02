@@ -27,6 +27,19 @@
 			
 			});
 			
+			//Use escape button for close window
+			
+			$(document).keyup(function(e) {
+
+				if (e.keyCode == 27) 
+				{ 
+					
+					$('#icon_close_frame').click();
+					
+				}   // esc
+				
+			});
+			
 			//Now generate html for generate the image
 			
 			$('body').prepend('<div id="show_big_frame"></div>');
