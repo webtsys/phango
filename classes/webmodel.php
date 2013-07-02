@@ -74,6 +74,8 @@ class Webmodel {
 	
 	public $related_models=array();
 	
+	public $related_models_delete=array();
+	
 	public $prev_check=0;
 
 	//Construct the model
@@ -518,6 +520,8 @@ class Webmodel {
 	public function delete($conditions="")
 	{
 	
+		global $model;
+	
 		foreach($this->components as $name_field => $component)
 		{
 		
@@ -531,8 +535,30 @@ class Webmodel {
 		}
 		
 		//Delete rows on models with foreignkeyfields to this model...
+		//You need load all models with relationship if you want delete related rows...
 		
-		
+		if(count($this->related_models_delete)>0)
+		{
+			
+			$arr_deleted=$this->select_to_array($conditions, array($this->idmodel), 1);
+			
+			$arr_id=array_keys($arr_deleted);
+			
+			$arr_id[]=0;
+			
+			foreach($this->related_models_delete as $arr_set_model)
+			{
+				
+				if( isset( $model[ $arr_set_model['model'] ]->components[ $arr_set_model['related_field'] ] ) )
+				{
+					
+					$model[ $arr_set_model['model'] ]->delete('where '.$arr_set_model['related_field'].' IN ('.implode(', ', $arr_id).')');
+				
+				}
+			
+			}
+			
+		}
 
  		return webtsys_query('delete from '.$this->name.' '.$conditions);
 		
@@ -803,12 +829,13 @@ class Webmodel {
 	
 		$rc=new ReflectionClass($type);
 		$this->components[$name]=$rc->newInstanceArgs($arguments);
-		
 		//Set first label...
-		
 		$this->components[$name]->label=set_name_default($name);
+		$this->components[$name]->name_model=$this->name;
 		$this->components[$name]->name_component=$name;
 		$this->components[$name]->required=$required;
+		
+		$this->components[$name]->set_relationships();
 	
 	}
 	
@@ -1064,18 +1091,27 @@ class ModelForm {
 
 /*****************************************
 
-Now, we define components for use in models. I don't use a base model for charfields for have more flexibility: more simple(more verbose), more kiss.
+Now, we define components for use in models. Components are fields on a table.
 
 ******************************************/
 
 class PhangoField {
 
 	public $indexed=0;
+	public $name_model='';
+	public $name_component='';
 	
 	function search_field($value)
 	{
 	
 		return form_text($value);
+	
+	}
+	
+	function set_relationships()
+	{
+	
+		
 	
 	}
 
@@ -2415,39 +2451,49 @@ class ImageField extends PhangoField {
 	{
 	
 		global $lang;
-	
+		
 		//die;
 		$query=$model->select($conditions, array($name_field));
 		
 		while(list($image_name)=webtsys_fetch_row($query))
 		{
 		
-			if(unlink($this->path.'/'.$image_name))
+			if( file_exists($this->path.'/'.$image_name) && !is_dir($this->path.'/'.$image_name) )
 			{
-			
-				//Unlink mini_images
-				
-				unset($this->img_width['']);
-				
-				foreach($this->img_width as $key => $value)
+				if(unlink($this->path.'/'.$image_name))
 				{
 				
-					if(!unlink($this->path.'/'.$key.'_'.$image_name))
+					//Unlink mini_images
+					
+					unset($this->img_width['']);
+					
+					foreach($this->img_width as $key => $value)
 					{
+					
+						if(!unlink($this->path.'/'.$key.'_'.$image_name))
+						{
+							
+							$this->std_error.=$lang['common']['cannot_delete_image'].': '.$key.'_'.$image_name;
 						
-						$this->std_error.=$lang['common']['cannot_delete_image'].': '.$key.'_'.$image_name;
+						}
 					
 					}
 				
+					$this->std_error.=$lang['common']['cannot_delete_image'].': '.$image_name;
+				
 				}
-			
-				$this->std_error.=$lang['common']['cannot_delete_image'].': '.$image_name;
-			
+				else
+				{
+				
+					$this->std_error.=$lang['common']['cannot_delete_image'].': '.$image_name;
+				
+				}
+				
 			}
 			else
 			{
 			
-				$this->std_error.=$lang['common']['cannot_delete_image'].': '.$key.'_'.$image_name;
+				$this->std_error.=$lang['common']['cannot_delete_image'].': '.$image_name;
 			
 			}
 		
@@ -2539,8 +2585,20 @@ class ForeignKeyField extends IntegerField{
 		//Representative field for related model...
 		$this->name_field_to_field='';
 		$this->null_relation=$null_relation;
-		
 
+		//$model[$related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
+		
+		//echo get_parent_class();
+
+	}
+	
+	function set_relationships()
+	{
+	
+		global $model;
+		
+		$model[$this->related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
+		
 	}
 
 	function check($value)
