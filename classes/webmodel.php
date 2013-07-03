@@ -46,6 +46,13 @@ define("TODAY_HOUR", mktime(date('H'), 0, 0));
 
 $std_error=''; 
 
+/* property string $name The name of the model.
+* property string $label A identifier used for show the name of model for humans.
+* property string $idmodel The name of key field of the model.
+* property array $components An array where objects of the PhangoField class are saved. This objects are needed for create fields on the table and each of these represents a field on db table.
+* property array $forms An array where objects of the ModelForm class are saved. This objects are needed for create html forms based in the models. 
+* property string $func_update DEPRECATED An string for use on internal tasks of generate automatic admin.*/
+
 //Classes
 
 //Webmodel is the base class for all models
@@ -56,16 +63,15 @@ $std_error='';
 *
 * Webmodel is a class for create objects that represent models. This models are a mirage of SQL tables. You can create fields, add indexes, foreign keys, and more.
 *
-* @property string $name The name of the model.
-* @property string $label A identifier used for show the name of model for humans.
-* @property string $idmodel The name of key field of the model.
-* @property string $components An array where objects of the PhangoField class are saved. This objects are needed for create fields on the table and each of these represents a field on db table.
-* @property string $forms An array where objects of the ModelForm class are saved. This objects are needed for create html forms based in the models. 
 *
 */
 
 class Webmodel {
 
+	/**
+	* The name of the model.
+	*/
+	
 	public $name;
 	
 	public $label;
@@ -111,7 +117,7 @@ class Webmodel {
 	*
 	* Phango is a MVC Framework. The base of a MVC framework are the models. A Model is a representation of a database table and are used for create, update and delete information. With the constructor your initialize variables how the name of model, 
 	*
-	* @param $name_model is the name of the model
+	* @param string $name_model is the name of the model
 	* 
 	* 
 	*/
@@ -131,7 +137,7 @@ class Webmodel {
 	* 
 	* Id Field is the field that in the database is used how basic identifier. By default, this name is Id.ucfirst($this->name) but you can change its name with this method after you have declared a new model instance.
 	*
-	* @param $name_id is the name of the id field.
+	* @param string $name_id is the name of the id field.
 	*/
 
 	public function change_id_default($name_id)
@@ -162,7 +168,7 @@ class Webmodel {
 	* 
 	* On a db, you need insert data. If you have created a model that reflect a sql table struct, with this method you can insert new rows easily without write sql directly.
 	*
-	* @param $post Is an array with data to insert. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
+	* @param array $post Is an array with data to insert. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
 	*/
 
 	public function insert($post)
