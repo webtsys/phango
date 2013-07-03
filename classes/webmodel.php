@@ -56,6 +56,12 @@ $std_error='';
 *
 * Webmodel is a class for create objects that represent models. This models are a mirage of SQL tables. You can create fields, add indexes, foreign keys, and more.
 *
+* @property string $name The name of the model.
+* @property string $label A identifier used for show the name of model for humans.
+* @property string $idmodel The name of key field of the model.
+* @property string $components An array where objects of the PhangoField class are saved. This objects are needed for create fields on the table and each of these represents a field on db table.
+* @property string $forms An array where objects of the ModelForm class are saved. This objects are needed for create html forms based in the models. 
+*
 */
 
 class Webmodel {
@@ -102,9 +108,12 @@ class Webmodel {
 
 	/**
 	* Basic constructor for model class.
+	*
 	* Phango is a MVC Framework. The base of a MVC framework are the models. A Model is a representation of a database table and are used for create, update and delete information. With the constructor your initialize variables how the name of model, 
 	*
 	* @param $name_model is the name of the model
+	* 
+	* 
 	*/
 	
 	public function __construct($name_model)
@@ -225,9 +234,10 @@ class Webmodel {
 	/**
 	* This method update rows from a database using model how mirage of table.
 	* 
-	* On a db, you need insert data. If you have created a model that reflect a sql table struct, with this method you can insert new rows easily without write sql directly.
+	* If you have inserted a row, you'll need update in the future, with this method you can update your row.
 	*
-	* @param $post Is an array with data to insert. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
+	* @param $post Is an array with data to update. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
+	* @param $conditions is a string containing a sql string beginning by "where". Example: where id=1.
 	*/
 	
 	public function update($post, $conditions="")
@@ -306,6 +316,18 @@ class Webmodel {
 	//This method select a row in database using model data
 	//You have use webtsys_fetch_row or alternatives for obtain data
 	//Conditions are sql lang, more simple, more kiss
+	
+	/**
+	* This method is a primitive for select rows from a model that represent a table of a database.
+	* 
+	* If you have inserted a row, you'll need update in the future, with this method you can update your row.
+	*
+	* You can select rows with sql joins if you add a foreignkey field on $arr_select.
+	*
+	* @param $conditions is a string containing a sql string beginning by "where". Example: where id=1.
+	* @param $arr_select is an array contain the selected fields of the model for obtain. If is not set, all fields are selected.
+	* @param $raw_query If set to 0, you obtain fields from table related if you selected a foreignkey field, if set to 1, you obtain an array without any join.
+	*/
 
 	public function select($conditions="", $arr_select=array(), $raw_query=0)
 	{
