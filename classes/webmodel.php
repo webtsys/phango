@@ -1,4 +1,14 @@
 <?php
+/**
+* Base file include where basic function and methods for create MVC applications
+*
+* This file contains principal functions and methods for create models, text formatting, forms creation, definition of basic variables, basic ORM that use on 90% of db searchs, etc...
+*
+* @author  Antonio de la Rosa <webmaster@web-t-sys.com>
+*
+* @package Phango\classes
+*
+*/
 
 //Variables
 
@@ -6,6 +16,10 @@
 
 //Basic variables for phango. 
 //This variables is used for internal functions in phango
+
+/**
+* Basic variables for internal jobs 
+*/
 
 $arr_error_model=array();
 $arr_error_model_text=array();
@@ -37,6 +51,12 @@ $std_error='';
 //Webmodel is the base class for all models
 //This class is the base for construct all models. Models are saved in $models array
 
+/**
+* The most important class for the framework
+*
+* Webmodel is a class for create objects that represent models. This models are a mirage of SQL tables. You can create fields, add indexes, foreign keys, and more.
+*
+*/
 
 class Webmodel {
 
@@ -80,21 +100,30 @@ class Webmodel {
 
 	//Construct the model
 
-	
-	//Basic constructor for model class.
-	//Phango is a MVC Framework. The base of a MVC framework are the models. A Model is a representation of a database table, are used for create, update and delete information. 
-	
-	//@param $name_model is the name of the model
+	/**
+	* Basic constructor for model class.
+	* Phango is a MVC Framework. The base of a MVC framework are the models. A Model is a representation of a database table and are used for create, update and delete information. With the constructor your initialize variables how the name of model, 
+	*
+	* @param $name_model is the name of the model
+	*/
 	
 	public function __construct($name_model)
 	{
-		
+
 		$this->name=$name_model;
 		$this->idmodel='Id'.ucfirst($this->name);
 		$this->components[$this->idmodel]=new PrimaryField();
 		$this->label=$this->name;
 
 	}
+	
+	/**
+	* A method for change the name of the id field.
+	* 
+	* Id Field is the field that in the database is used how basic identifier. By default, this name is Id.ucfirst($this->name) but you can change its name with this method after you have declared a new model instance.
+	*
+	* @param $name_id is the name of the id field.
+	*/
 
 	public function change_id_default($name_id)
 	{
@@ -118,6 +147,14 @@ class Webmodel {
 
 	//Method for create a new row in the model.
 	//@param $post is a array where each key is referred to a model field. 
+	
+	/**
+	* This method insert a row in database using model how mirage of thable.
+	* 
+	* On a db, you need insert data. If you have created a model that reflect a sql table struct, with this method you can insert new rows easily without write sql directly.
+	*
+	* @param $post Is an array with data to insert. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
+	*/
 
 	public function insert($post)
 	{
