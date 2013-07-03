@@ -149,7 +149,7 @@ class Webmodel {
 	//@param $post is a array where each key is referred to a model field. 
 	
 	/**
-	* This method insert a row in database using model how mirage of thable.
+	* This method insert a row in database using model how mirage of table.
 	* 
 	* On a db, you need insert data. If you have created a model that reflect a sql table struct, with this method you can insert new rows easily without write sql directly.
 	*
@@ -221,6 +221,14 @@ class Webmodel {
 	//Method update a row in database using model data
 	//@param $post is a array where each key is referred to a model field. 
 	//@param $conditions is a sql sentence for specific conditions for the query Example: "where id=2"
+	
+	/**
+	* This method update rows from a database using model how mirage of table.
+	* 
+	* On a db, you need insert data. If you have created a model that reflect a sql table struct, with this method you can insert new rows easily without write sql directly.
+	*
+	* @param $post Is an array with data to insert. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
+	*/
 	
 	public function update($post, $conditions="")
 	{
