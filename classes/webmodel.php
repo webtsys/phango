@@ -950,7 +950,15 @@ class Webmodel {
 
 	}
 	
-	//Here, define extension methods with call...
+	/**
+	* API definition for method extensions based in function __call
+	*
+	* This method is used for define an easy format for create extensions for Webmodel class.
+	*
+	* For create una extension, you need create a file called name_method.php on libraries/classes_extensions/ directory.
+	* 
+	* @example 
+	*/
 	
 	public function __call($name_method, $arguments)
 	{
