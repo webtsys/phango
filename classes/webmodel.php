@@ -958,7 +958,7 @@ class Webmodel {
 	* For create una extension, you need create a file called name_extension.php on libraries/classes_extensions/ directory where name_extension is the basic name of new method.
 	* On name_extension.php you must create a function with this name and arguments:
 	* 
-	* @example function name_extension_method_class($class, argument1, $argument2, ...)
+	* Example: function name_extension_method_class($class, argument1, $argument2, ...)
 	*
 	*/
 	
