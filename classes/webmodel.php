@@ -725,6 +725,8 @@ class Webmodel {
 	* Check if components are valid, if not fill $this->std_error
 	*
 	* Check if an array of values for fill a row from a model are valid before insert on database. 
+	*
+	* @param array $post Is an array with data to update. You have a key that represent the name of field to fill with data, and the value that is the data for fill.
 	*/
 
 	public function check_all($post)
@@ -815,7 +817,13 @@ class Webmodel {
 
 	}
 
-	//Helper function for unset components if necessary
+	/**
+	* Simple method for secure if you don't want that a user send values to a fields of a model.
+	*
+	* This method is used if you don't want that the users via POST or GET send values to a field. This method simply delete the fields from the model. With field destroyed is impossible write in it.
+	*
+	* @param array $arr_components Array with fields names that you want delete from model.
+	*/
 
 	public function unset_components($arr_components=array())
 	{
@@ -830,6 +838,14 @@ class Webmodel {
 
 	}
 
+	/**
+	* Method for create an array of forms used for create html forms.
+	*
+	* This method is used for initialize an ModelForm array. This array is used for create a form based on fields of the model.
+	*
+	* @param array $fields_form The values of this array are used for obtain ModelForms from the fields with the same name that array values.
+	*/
+	
 	public function create_form($fields_form=array())
 	{
 
