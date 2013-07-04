@@ -843,7 +843,7 @@ class Webmodel {
 	*
 	* This method is used for initialize an ModelForm array. This array is used for create a form based on fields of the model.
 	*
-	* @param array $fields_form The values of this array are used for obtain ModelForms from the fields with the same name that array values.
+	* @param array $fields_form The values of this array are used for obtain ModelForms from the fields with the same key that array values.
 	*/
 	
 	public function create_form($fields_form=array())
