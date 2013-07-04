@@ -6,7 +6,7 @@
 *
 * @author  Antonio de la Rosa <webmaster@web-t-sys.com>
 *
-* @package Phango\classes
+* @package Phango
 *
 */
 
@@ -74,37 +74,70 @@ class Webmodel {
 	
 	public $name;
 	
+	/**
+	* A identifier used for show the name of model for humans.
+	*/
+	
 	public $label;
+	
+	/**
+	* The name of key field of the model.
+	*/
 	
 	public $idmodel;
 
-	//Components is a array for the fields of this model
+	/**
+	* An array where objects of the PhangoField class are saved. This objects are needed for create fields on the table and each of these represents a field on db table.
+	*/
 
 	public $components;
+	
+	/**
+	*
+	* An array where objects of the ModelForm class are saved. This objects are needed for create html forms based in the models.
+	*
+	*/
+	
 	public $forms;
 
 	//Components is a array for the fields forms of this model
 
 	//This variables define differents functions for use in automatize functions how generate_admin
 	//I prefer this method instead of overloading function methods
+	
+	/**
+	*
+	* An string for use on internal tasks of generate automatic admin.
+	*
+	* @deprecated generate_admin_ng will are removed in a future and replaced by $model->generate_admin
+	*/
 
 	public $func_update='Basic';
 
-	//In this variable is store errors using the model...
-
+	/**
+	* In this variable is store errors using the model...
+	*/
+	
 	public $std_error='';
 
-	//Variable for indicate to forms that this model have enctype...
-
-	public $enctype='';
-
-	//Variable for indicate how many extra fields for foreignkeyfield have created for clean components
-
-	public $arr_trash_components=array();
+	/**
+	* Variable for indicate to forms that this model have enctype...
+	*/
 	
-	//Key is a model name, and the first element of array for the element is the connection.
+	public $enctype='';
+	
+	/**
+	* Array used for inverse foreign keys.
+	*
+	* This array is used when you need access to a model with a foreignkey key related with its. 
+	* @example  array($key1 => array($field_connection, $field1, $field2 ....)) where key is the model name with related foreignkey, and the first element of array for the element is the connection (tipically a foreignkeyfield).
+	*/
 	
 	public $related_models=array();
+	
+	/**
+	* An array
+	*/
 	
 	public $related_models_delete=array();
 	
@@ -175,8 +208,6 @@ class Webmodel {
 	{
 
 		global $lang;
-		
-		$this->clean_extra_fields();
 		
 		//Check if minimal fields are fill and if fields exists in components.Check field's values.
 		
@@ -250,8 +281,6 @@ class Webmodel {
 	{
 
 		global $lang;
-
-		$this->clean_extra_fields();
 
 		//Check if minimal fields are fill and if fields exists in components.
 
@@ -340,9 +369,7 @@ class Webmodel {
 		//Check conditions.., script must check, i can't make all things!, i am not a machine!
 
 		global $model;
-
-		 //$this->clean_extra_fields();
-
+		
 		if(count($arr_select)==0)
 		{
 		
@@ -479,43 +506,29 @@ class Webmodel {
 		
 	}
 
-
-	public function clean_extra_fields()
-	{
-
-		//Clean components...
-
-		foreach($this->arr_trash_components as $clean_field => $arr_related_field)
-		{
-			
-			unset($this->components[$clean_field]);
-
-		}
-
-	}
-
-	public function create_extra_fields()
-	{
-
-		global $model;
-
-		//now create extra components for related models with foreignkeyfields for use in process functions of data...
-		
-		foreach($this->arr_trash_components as $clean_field => $arr_related_field)
-		{
-			
-			$this->components[$clean_field]=&$model[$arr_related_field[0]]->components[ $arr_related_field[1] ];
-
-		}
-
-	}
-
 	//This method count num rows for the sql condition
+	
+	/**
+	* This method is used for count the number of rows from a conditions.
+	*
+	* Using this method you count number of rows affected by $conditions. $conditions use the same sql sintax that $this->select 
+	*
+	* @param string $conditions is a string containing a sql string beginning by "where". Example: where id=1.
+	* @param string $field The field to count, if no is set $field=$this->idmodel.
+	* @param string $fields_for_count Array for fields used for simple counts based on foreignkeyfields.
+	*/
 
-	public function select_count($conditions, $field, $fields_for_count=array())
+	public function select_count($conditions, $field='', $fields_for_count=array())
 	{
 	
 		global $model;
+		
+		if($field=='')
+		{
+		
+			$field=$this->idmodel;
+		
+		}
 	
 		$arr_model=array($this->name);
 		$arr_where=array('1=1');
@@ -588,7 +601,13 @@ class Webmodel {
 
 	}
 
-	//This method delete rows for the sql condition
+	/**
+	* This method delete rows for the sql condition
+	*
+	* This method is used for delete rows based in a sql conditions. If you use $this->set_component method for create new fields for model, $this->delete will delete all rows from model with foreignkeys related with this model.
+	*
+	* @param string $conditions Conditions have same sintax that $conditions from $this->select method
+	*/
 
 	public function delete($conditions="")
 	{
@@ -637,7 +656,11 @@ class Webmodel {
 		
 	}
 
-	//A helper function for obtain names from components
+	/**
+	* A helper function for get fields names of the model from the array $components
+	*
+	* This method is used if you need the fields names from a model for many tasks, for example, filter fields.
+	*/
 
 	public function all_fields()
 	{
@@ -653,6 +676,14 @@ class Webmodel {
 
 	}
 	
+	/**
+	* A helper function for get fields names of the model from the array $components except some fields.
+	*
+	* This method is used if you need the fields names from a model for many tasks, for example, filter fields and you don't want all fields.
+	*
+	* @param array $arr_strip Array with the fields that you don't want on returned array.
+	*/
+	
 	public function stripped_all_fields($arr_strip)
 	{
 	
@@ -662,12 +693,26 @@ class Webmodel {
 
 	}
 	
+	/**
+	* Internal method for check value for a field.
+	*
+	* @param string $key Defines the field used for insert the value
+	* @param mixed $value The value to check
+	*/
+	
 	public function check_element($key, $value)
 	{
 	
 		return $this->components[$key]->check($value);
 	
 	}
+	
+	/**
+	* A dummy function for internal tasks on $this->check_all method
+	*
+	* @param string $key Defines the field used for insert the value
+	* @param mixed $value The value to check
+	*/
 	
 	public function no_check_element($key, $value)
 	{
@@ -676,7 +721,11 @@ class Webmodel {
 	
 	}
 
-	//Check if components are valid, if not fill $this->std_error
+	/**
+	* Check if components are valid, if not fill $this->std_error
+	*
+	* Check if an array of values for fill a row from a model are valid before insert on database. 
+	*/
 
 	public function check_all($post)
 	{
