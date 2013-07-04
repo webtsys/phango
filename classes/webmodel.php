@@ -895,7 +895,12 @@ class Webmodel {
 
 	}
 
-	//Method for obtain an array with all errors in components
+	/**
+	* Method for obtain an array with all errors in components
+	* 
+	* This method is used for obtain errors when a transaction (insert, update) was failed.
+	*
+	*/
 	
 	public function return_error_form()
 	{
@@ -912,9 +917,13 @@ class Webmodel {
 		return $arr_error;
 
 	}
-
-	//Method for reset required fields from components. Use this if you need update a field from a model that you don't want update required fields.
-
+	
+	/**
+	* Method for reset required fields.
+	*
+	* Method for reset required fields from components. Use this if you need update a field from a model but you don't want update other required fields.
+	*/
+	
 	public function reset_require()
 	{
 		
