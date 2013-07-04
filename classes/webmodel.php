@@ -936,6 +936,12 @@ class Webmodel {
 		}
 
 	}
+	
+	/**
+	* Method used by form views for know if the form from this model have FileField...
+	*
+	* Internal method used for set enctype variable, necessary for diverses views for forms.
+	*/
 
 	public function set_enctype_binary()
 	{
