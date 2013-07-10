@@ -2735,8 +2735,9 @@ class ForeignKeyField extends IntegerField{
 	public $container_model='';
 	public $null_relation=1;
 	public $params_loading_mod=array();
+	public $default_id=0;
 
-	function __construct($related_model, $size=11, $null_relation=1)
+	function __construct($related_model, $size=11, $null_relation=1, $default=0)
 	{
 
 		$this->size=$size;
@@ -2748,6 +2749,7 @@ class ForeignKeyField extends IntegerField{
 		//Representative field for related model...
 		$this->name_field_to_field='';
 		$this->null_relation=$null_relation;
+		$this->default_id=$default;
 
 		//$model[$related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
 		
@@ -2799,8 +2801,19 @@ class ForeignKeyField extends IntegerField{
 		}
 		else
 		{
+		
+			if($this->default_id<=0)
+			{
 			
-			return NULL;
+				return NULL;
+				
+			}
+			else
+			{
+			
+				return $this->default_id;
+			
+			}
 
 		}
 		

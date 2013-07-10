@@ -38,7 +38,7 @@ function MPrivate()
 
 				$lang_pages=$lang['user']['pages'];
 
-				$total_elements=$model['mprivate']->select_count('where iduser='.$user_data['IdUser'].' order by read_message DESC, date DESC', 'Id'.ucfirst($model['mprivate']->name));
+				$total_elements=$model['mprivate']->select_count('where mprivate.iduser='.$user_data['IdUser'].' order by read_message DESC, date DESC', 'Id'.ucfirst($model['mprivate']->name));
 				
 				$num_elements=20;
 
@@ -50,7 +50,7 @@ function MPrivate()
 				$arr_read[0]='<span class="new_message"></span>';
 				$arr_read[1]='<span class="message"></span>';
 
-				$query=$model['mprivate']->select('where iduser='.$user_data['IdUser'].' order by read_message ASC, date DESC', array_keys($fields));
+				$query=$model['mprivate']->select('where mprivate.iduser='.$user_data['IdUser'].' order by read_message ASC, date DESC', array_keys($fields));
 
 				unset($fields['iduser_sender']);
 				unset($fields['IdMprivate']);
