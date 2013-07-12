@@ -1993,7 +1993,6 @@ class SerializeField extends PhangoField {
 	function check($value)
 	{
 		
-		
 		$value=$this->recursive_form($value);
 
 		$this->value=$value;
