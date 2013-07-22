@@ -1273,6 +1273,15 @@ class ModelForm {
 		$this->parameters = array($html_field_name, $class='', $parameters);
 
 	}
+	
+	/**
+	*
+	* Method for set third argument of a form function (this is the value argument or default argument)
+	*
+	* @param mixed $value The value passed to the form
+	* @param string $form_type_set Parameter don't used for now.
+	*
+	*/
 
 	function SetForm($value, $form_type_set='')
 	{
