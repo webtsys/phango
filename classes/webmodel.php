@@ -1212,8 +1212,11 @@ class ModelForm {
 	* 
 	* @param string $name_form  The name of the form where is inserted this form element
 	* @param string $name_field The name of this ModelForm 
-	* @param string $form Text that is used on html form for identify the field.
-	* 
+	* @param string $form String with the name of the function for show the form. For example 'TextForm'.
+	* @param string $label Text that is used on html form for identify the field.
+	* @param PhangoField $type PhangoField instance, you need this if you want check the value of the ModelForm.
+	* @param boolean $required Internal boolean that control if the field was filled correctly or not.
+	* @param array $parameters Set first set of parameters for $this->form. This element cover the third argument of a Form function.
 	*
 	*/
 
