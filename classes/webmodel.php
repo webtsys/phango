@@ -1060,10 +1060,13 @@ class Webmodel {
 
 }
 
-//Fill a form with default values 
-//@param $post is an array with values
-//@param $arr_form is an array of ModelForms
-//@param $show_error 
+/**
+* Fill a form with default values 
+* With this method you can set an array made by 
+* @param $post is an array with the values to be inserted on $arr_form
+* @param $arr_form is an array of ModelForms
+* @param $show_error An option for choose if in the form is showed 
+*/
 
 function SetValuesForm($post, $arr_form, $show_error=1)
 {
@@ -1116,25 +1119,71 @@ function SetValuesForm($post, $arr_form, $show_error=1)
 
 }
 
-//$arr_form_public is an array for save the field codified for use in public forms.
+/**
+* Global Internal Array for save the field codified for use in public forms.
+*
+*/
 
 $arr_form_public=array();
 
 //Class ModelForm is the base class for create forms...
 
+/**
+* ModelForm is a class used for create and manipulate forms.
+*
+* ModelForm is a class used for create and manipulate forms. With this, you can create a complete html form, check, fill with values, etc..., when you create a ModelForm, you create a field of a form. If you want a form, create an array with ModelForms and 
+*
+*/
+
 class ModelForm {
 
 
+	/**
+	* The name of the form where is inserted this form element
+	* 
+	*/
+
 	public $name_form;
+	
+	/**
+	* The name of this ModelForm 
+	* 
+	*/
+	
 	public $name;
+	
+	/**
+	* String with the name of the function for show the form. For example 'TextForm'.
+	* 
+	*/
+	
 	public $form;
+	
+	/**
+	* Text that is used on html form for identify the field.
+	* 
+	*/
+	
 	public $label;
+	
+	/**
+	* 
+	* 
+	*/
+	
 	public $set_form;
 	public $std_error;
 	public $txt_error;
 	public $html_field_name='';
 	public $required=0;
 	public $error_flag=0;
+	
+	/**
+	*
+	* 
+	* 
+	*
+	*/
 
 	function __construct($name_form, $name_field, $form, $label, $type, $required=0, $parameters='')
 	{
