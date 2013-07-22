@@ -1167,20 +1167,52 @@ class ModelForm {
 	public $label;
 	
 	/**
-	*  DEPRECATED An string used for 
+	*  DEPRECATED An string used for internal tasks of older versions of generate_admin
 	* 
 	*/
 	
 	public $set_form;
+	
+	/**
+	*  String where the error message from a source is stored
+	* 
+	*/
+	
 	public $std_error;
+	
+	/**
+	*  String where the default error message is stored if you don't use $this->std_error
+	* 
+	*/
+	
 	public $txt_error;
+	
+	/**
+	*  Internal string used for identify fields when name fields protection is used.
+	* 
+	*/
+	
 	public $html_field_name='';
+	
+	/**
+	*  Boolean that defined if this ModelForm is required in the form or not. If is required, set to true or to 1.
+	* 
+	*/
+	
 	public $required=0;
+	
+	/**
+	*  Internal boolean that control if the field was filled correctly or not.
+	* 
+	*/
+	
 	public $error_flag=0;
 	
 	/**
-	*
 	* 
+	* @param string $name_form  The name of the form where is inserted this form element
+	* @param string $name_field The name of this ModelForm 
+	* @param string $form Text that is used on html form for identify the field.
 	* 
 	*
 	*/
