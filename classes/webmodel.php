@@ -1167,7 +1167,7 @@ class ModelForm {
 	public $label;
 	
 	/**
-	* 
+	*  DEPRECATED An string used for 
 	* 
 	*/
 	
