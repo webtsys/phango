@@ -1025,6 +1025,14 @@ class Webmodel {
 	*
 	* A experimental method for insert a form inside of $this->forms array after of a chosen field.
 	*
+	* This method us used for insert a form field inside of $this->forms array after of a chosen field.
+	*
+	* @param string $name_form_after Name of the form inside on $this->forms where you want put the new form after
+	*
+	* @param string $name_form_new Name of the new form after of $name_form_after
+	*
+	* @param string $form_new The new form, created using ModelForm class.
+	*
 	*/
 	
 	public function InsertAfterFieldForm($name_form_after, $name_form_new, $form_new)
