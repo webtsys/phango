@@ -136,10 +136,16 @@ class Webmodel {
 	public $related_models=array();
 	
 	/**
-	* An array
+	* An array where the model save the name of the related models via ForeignKeyField. You need use $this->set_component method for fill this array.
 	*/
 	
 	public $related_models_delete=array();
+	
+	/**
+	*
+	* If you checked the values that you going to save on your model, please, put this value to 1 or true.
+	*
+	*/
 	
 	public $prev_check=0;
 
@@ -604,7 +610,7 @@ class Webmodel {
 	/**
 	* This method delete rows for the sql condition
 	*
-	* This method is used for delete rows based in a sql conditions. If you use $this->set_component method for create new fields for model, $this->delete will delete all rows from model with foreignkeys related with this model.
+	* This method is used for delete rows based in a sql conditions. If you use $this->set_component method for create new fields for model, $this->delete will delete all rows from model with foreignkeys related with this model. This thing is necessary because foreignkeys need to be deleted if you deleted its related model.
 	*
 	* @param string $conditions Conditions have same sintax that $conditions from $this->select method
 	*/
@@ -973,6 +979,12 @@ class Webmodel {
 	
 	}
 	
+	/**
+	* Experimental method for check elements on a where string
+	*
+	* @param array $arr_where An array with values to check
+	*/
+	
 	static public function check_where($arr_where)
 	{
 	
@@ -987,6 +999,13 @@ class Webmodel {
 	
 	}
 	
+	/**
+	* A method for add components or fields (fields of a table on a db) to a model(table of a db).
+	*
+	* This is a method for create new fields for a model. You can create a field on a table with two methods: first, directly using fields or components classes, second, with this method. This method is recommended because give to you more info about your model to your component.
+	*
+	* @param string $name 
+	*/
 	public function set_component($name, $type, $arguments, $required=0)
 	{
 	
