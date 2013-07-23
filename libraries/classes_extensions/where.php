@@ -160,6 +160,7 @@ function set_safe_name_field($class, $field)
 		
 	
 	}*/
+	echo $field.'<p>';
 	if(strpos($field, '.')!=='false')
 	{
 	
