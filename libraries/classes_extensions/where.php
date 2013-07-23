@@ -30,6 +30,7 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 		
 			//Default is and
 			default:
+			case 'AND':
 			
 				foreach($where as $field => $value)
 				{
@@ -55,7 +56,10 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 			
 			break;
 			
-			case 'IN':
+			case 'IN_AND':
+			case 'IN_OR':
+			
+				$arr_in=array();
 			
 				/*foreach($where as $field => $value)
 				{
@@ -79,12 +83,20 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 						$arr_value[$key_value]=$class->components[$field]->check($value);
 					
 					}
+					
+					$arr_in[]='`'.$class->name.'`'.'.'.'`'.$field.'`'.' IN (\''.implode('\', \'', $arr_value).'\')';
 				
 				}
+				
+				$arr_union['IN_AND']='AND';
+				$arr_union['IN_OR']='OR';
+				
+				$initial_sql.=' '.implode($arr_union[$type], $arr_in);
 			
 			break;
 			
-			case 'NOT IN':
+			case 'NOT_IN_AND':
+			case 'NOT_IN_OR':
 			
 				foreach($where as $field => $value)
 				{
