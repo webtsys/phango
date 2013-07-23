@@ -6,7 +6,7 @@
 *
 */
 
-function where_method_class($class, $arr_where, $initial_sql='WHERE')
+function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthesis=0)
 {
 	
 	foreach($arr_where as $type => $where)
@@ -24,6 +24,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 		$arr_sql=array();
 		
 		$sql_string='';
+		
+		$arr_par[0]=array('open' => '', 'close' => '');
+		$arr_par[1]=array('open' => '(', 'close' => ')');
 	
 		switch($type)
 		{
@@ -35,11 +38,11 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]='`'.$class->name.'`'.'.'.'`'.$field.'`'.'=\''.$class->components[$field]->check($value).'\'';
+					$arr_sql[]=$field.'=\''.$class->components[$field]->check($value).'\'';
 				
 				}
 				
-				$initial_sql.=' '.implode(' AND ', $arr_sql);
+				$initial_sql.=' '.$arr_par[$parenthesis]['open'].implode(' AND ', $arr_sql).$arr_par[$parenthesis]['close'];
 			
 			break;
 			
@@ -48,18 +51,25 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]='`'.$class->name.'`'.'.'.'`'.$field.'`'.'=\''.$class->components[$field]->check($value).'\'';
+					$arr_sql[]=$field.'=\''.$class->components[$field]->check($value).'\'';
 				
 				}
 				
-				$initial_sql.=' '.implode(' OR ', $arr_sql);
+				$initial_sql.=' '.$arr_par[$parenthesis]['open'].implode(' OR ', $arr_sql).$arr_par[$parenthesis]['close'];
 			
 			break;
 			
 			case 'IN_AND':
 			case 'IN_OR':
+			case 'NOT_IN_AND':
+			case 'NOT_IN_OR':
 			
 				$arr_in=array();
+				
+				$arr_key_in['IN_AND']='IN';
+				$arr_key_in['IN_OR']='IN';
+				$arr_key_in['NOT_IN_AND']='NOT IN';
+				$arr_key_in['NOT_IN_OR']='NOT IN';
 			
 				/*foreach($where as $field => $value)
 				{
@@ -84,30 +94,16 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 					
 					}
 					
-					$arr_in[]='`'.$class->name.'`'.'.'.'`'.$field.'`'.' IN (\''.implode('\', \'', $arr_value).'\')';
+					$arr_in[]=$field.' '.$arr_key_in[$type].' (\''.implode('\', \'', $arr_value).'\')';
 				
 				}
 				
 				$arr_union['IN_AND']='AND';
 				$arr_union['IN_OR']='OR';
+				$arr_union['NOT_IN_AND']='AND';
+				$arr_union['NOT_IN_OR']='OR';
 				
-				$initial_sql.=' '.implode($arr_union[$type], $arr_in);
-			
-			break;
-			
-			case 'NOT_IN_AND':
-			case 'NOT_IN_OR':
-			
-				foreach($where as $field => $value)
-				{
-				
-					//$arr_sql[]='`'.$class->name.'`'.'.'.'`'.$field.'`'.' IN \''.$class->components[$field]->check($value).'\'';
-					
-					$where[$field]=$class->components[$field]->check($value);
-				
-				}
-				
-				$initial_sql.=' '.'`'.$class->name.'`'.'.'.'`'.$field.'`'.' NOT IN (\''.implode('\', ', $where).'\')';
+				$initial_sql.=' '.$arr_par[$parenthesis]['open'].implode(' '.$arr_union[$type].' ', $arr_in).$arr_par[$parenthesis]['close'];
 			
 			break;
 			
@@ -116,11 +112,11 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]=' '.'`'.$class->name.'`'.'.'.'`'.$field.'`'.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
+					$arr_sql[]=' '.$field.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
 				
 				}
 				
-				$initial_sql.=' '.implode(' OR ', $arr_sql);
+				$initial_sql.=' '.$arr_par[$parenthesis]['open'].implode(' OR ', $arr_sql).$arr_par[$parenthesis]['close'];
 			
 			break;
 			
@@ -129,11 +125,11 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]='`'.$class->name.'`'.'.'.'`'.$field.'`'.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
+					$arr_sql[]=$field.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
 				
 				}
 				
-				$initial_sql.=' '.implode(' AND ', $arr_sql);
+				$initial_sql.=' '.$arr_par[$parenthesis]['open'].implode(' AND ', $arr_sql).$arr_par[$parenthesis]['close'];
 			
 			break;
 		
