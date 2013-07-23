@@ -38,7 +38,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]=$field.'=\''.$class->components[$field]->check($value).'\'';
+					$field_select=set_safe_name_field($class, $field);
+				
+					$arr_sql[]=$field_select.'=\''.$class->components[$field]->check($value).'\'';
 				
 				}
 				
@@ -51,7 +53,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]=$field.'=\''.$class->components[$field]->check($value).'\'';
+					$field_select=set_safe_name_field($class, $field);
+				
+					$arr_sql[]=$field_select.'=\''.$class->components[$field]->check($value).'\'';
 				
 				}
 				
@@ -94,7 +98,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 					
 					}
 					
-					$arr_in[]=$field.' '.$arr_key_in[$type].' (\''.implode('\', \'', $arr_value).'\')';
+					$field_select=set_safe_name_field($class, $field);
+					
+					$arr_in[]=$field_select.' '.$arr_key_in[$type].' (\''.implode('\', \'', $arr_value).'\')';
 				
 				}
 				
@@ -112,7 +118,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]=' '.$field.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
+					$field_select=set_safe_name_field($class, $field);
+				
+					$arr_sql[]=' '.$field_select.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
 				
 				}
 				
@@ -125,7 +133,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$arr_sql[]=$field.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
+					$field_select=set_safe_name_field($class, $field);
+				
+					$arr_sql[]=$field_select.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
 				
 				}
 				
@@ -139,6 +149,32 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 	
 	return $initial_sql;
 	
+}
+
+function set_safe_name_field($class, $field)
+{
+
+	/*if(get_class($class->components[$field])=='ForeignKeyField')
+	{
+	
+		
+	
+	}*/
+	if(strpos($field, '.')!=='false')
+	{
+	
+		$field_select='`'.$class->components[$field]->related_model.'`.`'.$field.'`';
+	
+	}
+	else
+	{
+	
+		$field_select='`'.$class->name.'`.`'.$field.'`';
+		
+	}
+	
+	return $field_select;
+
 }
 
 ?>

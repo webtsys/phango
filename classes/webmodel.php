@@ -1276,7 +1276,7 @@ class ModelForm {
 	
 	/**
 	*
-	* Method for set third argument of a form function (this is the value argument or default argument)
+	* Method for set default value in the form.
 	*
 	* @param mixed $value The value passed to the form
 	* @param string $form_type_set Parameter don't used for now.
@@ -1292,6 +1292,15 @@ class ModelForm {
 		
 	}
 	
+	/**
+	*
+	* An alias for $this->SetForm
+	*
+	* @param mixed $value The value passed to the form
+	* @param string $form_type_set Parameter don't used for now.
+	*
+	*/
+	
 	function SetValueForm($value, $form_type_set='')
 	{
 	
@@ -1299,12 +1308,26 @@ class ModelForm {
 	
 	}
 
+	/**
+	*
+	* Method for set third argument of a form function. Third argument can be mixed type.
+	* @param mixed $parameters Third argument for the chose form function
+	*
+	*/
+	
 	function SetParameters($parameters)
 	{
 		
 		$this->parameters[2]=$parameters;
 		
 	}
+	
+	/**
+	*
+	* Method for set all argumentos of a form function.
+	* @param array $parameters An array with arguments for the form function used for this ModelForm
+	*
+	*/
 	
 	function SetParametersForm($parameters)
 	{
