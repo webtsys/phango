@@ -66,7 +66,21 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE')
 				
 				$initial_sql.=' '.'`'.$class->name.'`'.'.'.'`'.$field.'`'.' IN (\''.implode('\', ', $where).'\')';*/
 				
+				//$where=array( 'IN' => array( 'IdUser' => array(1, 2, 3) ) );
 				
+				foreach($where as $field => $arr_value)
+				{
+					
+					//$where[$field]=$class->components[$field]->check($value);
+					
+					foreach($arr_value as $key_value => $value)
+					{
+					
+						$arr_value[$key_value]=$class->components[$field]->check($value);
+					
+					}
+				
+				}
 			
 			break;
 			
