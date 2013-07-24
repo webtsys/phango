@@ -9,6 +9,8 @@
 function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthesis=0)
 {
 	
+	global $model;
+	
 	foreach($arr_where as $type => $where)
 	{
 	
@@ -17,7 +19,7 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 		foreach($where as $field => $value)
 		{
 		
-			$where[$field]=$class->components[$field]->check($value);
+			$where[$field]=$model[$model_name]->components[$field_name]->check($value);
 		
 		}*/
 		
@@ -38,9 +40,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$field_select=set_safe_name_field($class, $field);
-				
-					$arr_sql[]=$field_select.'=\''.$class->components[$field]->check($value).'\'';
+					list($field_select, $model_name, $field_name)=set_safe_name_field($class, $field);
+					
+					$arr_sql[]=$field_select.'=\''.$model[$model_name]->components[$field_name]->check($value).'\'';
 				
 				}
 				
@@ -53,9 +55,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$field_select=set_safe_name_field($class, $field);
+					list($field_select, $model_name, $field_name)=set_safe_name_field($class, $field);
 				
-					$arr_sql[]=$field_select.'=\''.$class->components[$field]->check($value).'\'';
+					$arr_sql[]=$field_select.'=\''.$model[$model_name]->components[$field_name]->check($value).'\'';
 				
 				}
 				
@@ -78,7 +80,7 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				/*foreach($where as $field => $value)
 				{
 					
-					$where[$field]=$class->components[$field]->check($value);
+					$where[$field]=$model[$model_name]->components[$field_name]->check($value);
 				
 				}
 				
@@ -89,16 +91,14 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $arr_value)
 				{
 					
-					//$where[$field]=$class->components[$field]->check($value);
+					list($field_select, $model_name, $field_name)=set_safe_name_field($class, $field);
 					
 					foreach($arr_value as $key_value => $value)
 					{
 					
-						$arr_value[$key_value]=$class->components[$field]->check($value);
+						$arr_value[$key_value]=$model[$model_name]->components[$field_name]->check($value);
 					
 					}
-					
-					$field_select=set_safe_name_field($class, $field);
 					
 					$arr_in[]=$field_select.' '.$arr_key_in[$type].' (\''.implode('\', \'', $arr_value).'\')';
 				
@@ -118,9 +118,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$field_select=set_safe_name_field($class, $field);
+					list($field_select, $model_name, $field_name)=set_safe_name_field($class, $field);
 				
-					$arr_sql[]=' '.$field_select.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
+					$arr_sql[]=' '.$field_select.' LIKE \'%'.$model[$model_name]->components[$field_name]->check($value).'%\'';
 				
 				}
 				
@@ -133,9 +133,9 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 				foreach($where as $field => $value)
 				{
 				
-					$field_select=set_safe_name_field($class, $field);
+					list($field_select, $model_name, $field_name)=set_safe_name_field($class, $field);
 				
-					$arr_sql[]=$field_select.' LIKE \'%'.$class->components[$field]->check($value).'%\'';
+					$arr_sql[]=$field_select.' LIKE \'%'.$model[$model_name]->components[$field_name]->check($value).'%\'';
 				
 				}
 				
@@ -153,28 +153,36 @@ function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthes
 
 function set_safe_name_field($class, $field)
 {
-
-	/*if(get_class($class->components[$field])=='ForeignKeyField')
+	
+	$pos_dot=strpos($field, '.');
+	
+	$model_name='';
+	$field_name='';
+	
+	if($pos_dot!==false)
 	{
 	
+		//The model need to be loading previously.
 		
-	
-	}*/
-	echo $field.'<p>';
-	if(strpos($field, '.')!=='false')
-	{
-	
-		$field_select='`'.$class->components[$field]->related_model.'`.`'.$field.'`';
+		//substr ( string $string , int $start [, int $length ] )
+		
+		$model_name=substr($field, 0, $pos_dot);
+		$field_name=substr($field, $pos_dot+1);
+		
+		$field_select='`'.$model_name.'`.`'.$field_name.'`';
 	
 	}
 	else
 	{
-	
+		
+		$model_name=$class->name;
+		$field_name=$field;
+		
 		$field_select='`'.$class->name.'`.`'.$field.'`';
 		
 	}
 	
-	return $field_select;
+	return array($field_select, $model_name, $field_name);
 
 }
 
