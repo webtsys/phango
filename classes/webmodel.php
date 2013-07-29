@@ -661,6 +661,32 @@ class Webmodel {
  		return webtsys_query('delete from '.$this->name.' '.$conditions);
 		
 	}
+	
+	/**
+	* A helper function for obtain an array from a result of $this->select
+	*
+	* @param mixed $query The result of an $this->select operation
+	*/
+	
+	public function fetch_row($query)
+	{
+	
+		return webtsys_fetch_row($query);
+	
+	}
+	
+	/**
+	* A helper function for obtain an associative array from a result of $this->select
+	*
+	* @param mixed $query The result of an $this->select operation
+	*/
+	
+	public function fetch_array($query)
+	{
+	
+		return webtsys_fetch_array($query);
+	
+	}
 
 	/**
 	* A helper function for get fields names of the model from the array $components
@@ -1311,6 +1337,7 @@ class ModelForm {
 	/**
 	*
 	* Method for set third argument of a form function. Third argument can be mixed type.
+	*
 	* @param mixed $parameters Third argument for the chose form function
 	*
 	*/
@@ -1325,6 +1352,7 @@ class ModelForm {
 	/**
 	*
 	* Method for set all argumentos of a form function.
+	* 
 	* @param array $parameters An array with arguments for the form function used for this ModelForm
 	*
 	*/
