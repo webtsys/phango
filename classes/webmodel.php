@@ -1091,9 +1091,9 @@ class Webmodel {
 *
 * With this method you can set an array consisting of ModelForm items with the values from $post 
 *
-* @param $post is an array with the values to be inserted on $arr_form. The keys must have the same name that keys from $arr_form
-* @param $arr_form is an array of ModelForms. The key of each item is the name of the ModelForm item.
-* @param $show_error An option for choose if in the form is showed 
+* @param array $post is an array with the values to be inserted on $arr_form. The keys must have the same name that keys from $arr_form
+* @param array $arr_form is an array of ModelForms. The key of each item is the name of the ModelForm item.
+* @param array $show_error An option for choose if in the form is showed 
 */
 
 function SetValuesForm($post, $arr_form, $show_error=1)
