@@ -1087,10 +1087,12 @@ class Webmodel {
 }
 
 /**
-* Fill a form with default values 
-* With this method you can set an array made by 
-* @param $post is an array with the values to be inserted on $arr_form
-* @param $arr_form is an array of ModelForms
+* Fill a ModelForm array with default values 
+*
+* With this method you can set an array consisting of ModelForm items with the values from $post 
+*
+* @param $post is an array with the values to be inserted on $arr_form. The keys must have the same name that keys from $arr_form
+* @param $arr_form is an array of ModelForms. The key of each item is the name of the ModelForm item.
 * @param $show_error An option for choose if in the form is showed 
 */
 
@@ -1363,6 +1365,17 @@ class ModelForm {
 		$this->parameters=$parameters;
 		
 	}
+	
+	/**
+	*
+	* Static method for check an array of ModelForm instances. 
+	*
+	* With this method you can check if the values of an array called $post (tipically $_POST) are valid for the corresponding values of an array $arr_form, consisting of ModelForm items.
+	*
+	* @param array $arr_form Array consisting of ModelForm items, used for check the values. The array need keys with the name of the ModelForm instance.
+	* @param array $post Array consisting of values. The array need that the keys was the same of $arr_form.
+	*
+	*/
 
 	static function check_form($arr_form, $post)
 	{
