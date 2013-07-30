@@ -5,7 +5,7 @@
 * This file contains principal functions and methods for create models, text formatting, forms creation, definition of basic variables, basic ORM that use on 90% of db searchs, etc...
 *
 * @author  Antonio de la Rosa <webmaster@web-t-sys.com>
-*
+* @file
 * @package Phango
 *
 */
@@ -21,28 +21,92 @@
 * Basic variables for internal jobs 
 */
 
+/**
+* Global variable for set errors from models operations
+*/
+
 $arr_error_model=array();
+
+/**
+* Global variable for set errors text from models operations
+*/
+
 $arr_error_model_text=array();
+
+/**
+* Global variable used for padmin and modules module for insert sql sentences when you install or add a new module or model
+*/
+
 $arr_module_sql=array();
+
+/**
+* Global variable used for padmin and modules module for insert a new module on database.
+*/
+
 $arr_module_insert=array();
+
+/**
+* Global variable used for padmin and modules module for remove a module of the database.
+*/
+
 $arr_module_remove=array();
 
+/**
+* Internal variable used for things how cli.php script
+*
+*/
+
 $utility_cli=0;
+
+/**
+* DEPRECATED $yes_entities is a deprecated variable used on internal things for check html entities on functions.
+* @deprecated Deprecated variable used on internal things for check html entities on functions.
+*/
+
 $yes_entities=1;
 
-//This variable is needed for add new fields to models without lost when you execute load_model without extension. Is saved in optional file added_fields.php
+/**
+*This variable is needed for add new fields to models without lost when you execute load_model without extension. Is saved in optional file added_fields.php
+*
+*/
 
 $arr_models_loading=array();
 
-//The timestam for this moment...
+/**
+*
+* Actual timestamp
+*
+*/
 
 define("TODAY", mktime( date('H'), date('i'), date('s') ) );
 
+/**
+*
+* Timestamp today to 00:00:00 hours
+*
+*/
+
 define("TODAY_FIRST", mktime(0, 0, 0));
+
+/**
+*
+* Timestamp today to 23:59:59 hours
+*
+*/
+
 define("TODAY_LAST", mktime(23, 59, 59));
+
+/**
+*
+* Timestamp today in this hour
+*
+*/
+
 define("TODAY_HOUR", mktime(date('H'), 0, 0));
 
-//This variable is used for save general errors. 
+/**
+*This variable is used for save general errors. 
+*/
 
 $std_error=''; 
 
@@ -130,7 +194,7 @@ class Webmodel {
 	* Array used for inverse foreign keys.
 	*
 	* This array is used when you need access to a model with a foreignkey key related with its. 
-	* @example  array($key1 => array($field_connection, $field1, $field2 ....)) where key is the model name with related foreignkey, and the first element of array for the element is the connection (tipically a foreignkeyfield).
+	* Example: array($key1 => array($field_connection, $field1, $field2 ....)) where key is the model name with related foreignkey, and the first element of array for the element is the connection (tipically a foreignkeyfield).
 	*/
 	
 	public $related_models=array();
@@ -1087,9 +1151,10 @@ class Webmodel {
 }
 
 /**
-* Fill a ModelForm array with default values 
 *
-* With this method you can set an array consisting of ModelForm items with the values from $post 
+* Fill a ModelForm array with default values.
+*
+* With this method you can set an array consisting of ModelForm items with the values from $post.
 *
 * @param array $post is an array with the values to be inserted on $arr_form. The keys must have the same name that keys from $arr_form
 * @param array $arr_form is an array of ModelForms. The key of each item is the name of the ModelForm item.
@@ -1196,6 +1261,7 @@ class ModelForm {
 	
 	/**
 	*  DEPRECATED An string used for internal tasks of older versions of generate_admin
+	* *@deprecated Used on older versions of generate_admin
 	* 
 	*/
 	
@@ -3208,11 +3274,11 @@ class EmailField extends PhangoField {
 
 //in older versions of php, get_magic_quotes_gpc function was to add quotes automatically for certain operations, make_slashes is used to prevent this.
 
-if(function_exists('get_magic_quotes_gpc'))
-{
+if(function_exists('get_magic_quotes_gpc')) {
 
 	if ( !get_magic_quotes_gpc() )
 	{
+	
 		function make_slashes( $string )
 		{
 			return addslashes( $string );
@@ -3239,6 +3305,34 @@ if(function_exists('get_magic_quotes_gpc'))
 	}
 
 } 
+else
+{
+
+	/**
+	* Function used for add slashes from _POST and _GET variables.
+	*
+	*
+	* @param string $string String for add slashes
+	*/
+
+	function make_slashes( $string )
+	{
+		return addslashes( $string );
+	} 
+	
+	/**
+	* Function used for strip slashes from _POST and _GET variables.
+	*
+	*
+	* @param string $string String for strip slashes
+	*/
+
+	function unmake_slashes( $string )
+	{
+		return stripslashes( $string );
+	}
+
+}
 
 //this function is used to clean up the text of undesirable elements
 
@@ -3988,7 +4082,22 @@ function slugify($text, $respect_upper=0, $replace='-')
 
 //Load_view is a very important function. Phango is an MVC framework and has separate code and html.
 
+/**
+* An internal variable used for internal cache for load_view.
+*/
+
 $cache_template=array();
+
+/**
+* Very importante function used for load views. Is the V in the MVC paradigm.
+*
+* load_view is used for load the views. Views in Phango are php files with a function that have a special name with "View" suffix. For example, if you create a view file with the name blog.php, inside you need create a php function called BlogView(). The arguments of this function can be that you want, how on any normal php function. The view files need to be saved on a "view" folders inside of a theme folder, or a "views/module_name" folder inside of a module being "module_name" the name of the module.
+*
+* @param array $arr_template Arguments for the view function of the view.
+* @param string $template Name of the view. Tipically views/$template.php or modules/name_module/views/name_module/$template.php
+* @param string $module_theme If the view are on a different theme and you don't want put the view on the theme, use this variable for go to the other theme.
+* @param string $load_if_no_cache Variable used if you want the view wasn't if used a first time.
+*/
 
 function load_view($arr_template, $template, $module_theme='', $load_if_no_cache=0)
 {
@@ -4085,7 +4194,14 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 
 }
 
-//Function for load multiple views for a only source file, useful for functions where you need separated views for the same thing
+/**
+* Function for load multiple views for a only source file.
+* 
+* Useful for functions where you need separated views for use on something, When you use load_view for execute a view function, the names used for views are in $func_views array.
+*
+* @param string $template of the view library. Use the same format for normal views. 
+* @param string The names of templates, used how template_name for call views with load_view.
+*/
 
 function load_libraries_views($template, $func_views=array())
 {
@@ -4157,9 +4273,18 @@ function load_libraries_views($template, $func_views=array())
 
 }
 
-//Checking if a model exists searching in arr_check_table array created in framework.php file.
+/** 
+* Array for check if a model exists searching in arr_check_table array created in framework.php file.
+*
+*/
 
 $arr_check_table=array();
+
+/**
+* Internal function used for check if model is loaded in framework.
+* 
+* @param string $model_name Name of the model.
+*/
 
 function check_model($model_name)
 {
@@ -4192,6 +4317,12 @@ function check_model($model_name)
 	return 0;
 
 }
+
+/**
+* Internal function used for check if models and database are well synchronized.
+* 
+* @param string $model_name Name of the model.
+*/
 
 function check_model_exists()
 {
