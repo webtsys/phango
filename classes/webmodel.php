@@ -1514,11 +1514,36 @@ Now, we define components for use in models. Components are fields on a table.
 
 ******************************************/
 
+/**
+* PhangoField class is the base for make class used on Webmodel::components property.
+*
+*/
+
 class PhangoField {
 
+	/**
+	* Property used for set this field how indexed in the database table.
+	*/
+
 	public $indexed=0;
+	
+	/**
+	* The name of the model where this component or field live
+	*/
+	
 	public $name_model='';
+	
+	/**
+	* Name of the field or component.
+	*/
+	
 	public $name_component='';
+	
+	/**
+	* Method used for internal searchs for format the values.
+	*
+	* 
+	*/
 	
 	function search_field($value)
 	{
@@ -4371,9 +4396,25 @@ function check_model_exists()
 
 //Function for load the models..., if the model_file != models_path.php put model in format path/model_file
 
+/**
+* Internal global variable used for load_model for cache loaded models.
+*/
+
 $cache_model=array();
 
-function load_model()
+/**
+*
+* Function used for load models on controllers (or where you like, ;) ).
+*
+* When you call load_model with a name, or many names, phango look if exists a folder on modules called how $name_model. If find this, try open a file called "models_$name_model.php". If not exists, you obtain a phango exception error. If you want load a model file with other name, you can use this format: module_name/other_model_name being module_name, the name of the module an other_model_name the name of the model.
+*
+* Remember that the models can have a name distinct to the name of the file model.
+*
+* @param $name_model A serie of names of the models. 
+*
+*/
+
+function load_model($name_model='')
 {
 	
 	global $base_path, $model, $lang, $cache_model, $arr_module_insert, $arr_extension_model;
@@ -4446,6 +4487,11 @@ function load_model()
 
 }
 
+/**
+* Internal function used for load_model for load extensions to the models. You can specific your extensions using $arr_extension_model array. The name of an extension file is extension_name.php where name is the name given how $arr_extension_model item.
+*
+*/
+
 function load_extension()
 {
 
@@ -4503,6 +4549,10 @@ function load_extension()
 }
 
 //Load libraries, well, simply a elegant include
+
+/**
+* An array used for control the loaded libraries previously.
+*/
 
 $cache_libraries=array();
 
