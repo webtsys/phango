@@ -4321,7 +4321,6 @@ function check_model($model_name)
 /**
 * Internal function used for check if models and database are well synchronized.
 * 
-* @param string $model_name Name of the model.
 */
 
 function check_model_exists()
