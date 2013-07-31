@@ -319,7 +319,7 @@ class Webmodel {
 			
 			}
 		
-			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES ('.implode(", ",$arr_fields).') ') ) )
+			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES ('.implode(", ",$arr_fields).') ', $this->db_selected) ) )
 			{
 			
 				$this->std_error.=$lang['error_model']['cant_insert'].' ';
@@ -402,7 +402,7 @@ class Webmodel {
 
 			//Create the query..
 		
-			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions)))
+			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions, $this->db_selected) ) )
 			{
 			
 				$this->std_error.=$lang['error_model']['cant_update'].' ';
@@ -582,7 +582,7 @@ class Webmodel {
 		
 		//Make the query...
 		
-		return webtsys_query('select '.$fields.' from '.$selected_models.' '.$conditions);
+		return webtsys_query('select '.$fields.' from '.$selected_models.' '.$conditions, $this->db_selected);
 		
 	}
 

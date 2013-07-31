@@ -12,11 +12,11 @@ if(!function_exists('mysql_query'))
 if(DEBUG==1)
 {
 
-	function print_sql_fail($sql_fail)
+	function print_sql_fail($sql_fail, $server_data='default')
 	{
 		global $connection;
 
-		$error=mysqli_error($connection);
+		$error=mysqli_error($connection[$server_data]);
 
 		if($error!='')
 		{
@@ -39,26 +39,26 @@ else
 }
 
 
-function webtsys_query( $sql_string )
+function webtsys_query( $sql_string , $server_data='default')
 {
 
 	global $connection, $set_query;
 	
-	$query = mysqli_query($connection, $sql_string );
+	$query = mysqli_query($connection[$server_data], $sql_string );
 	
-	print_sql_fail($sql_string);
+	print_sql_fail($sql_string, $server_data);
 
 	$set_query++;
 	
 	return $query;
 } 
 
-function webtsys_affected_rows( $idconnection )
+function webtsys_affected_rows( $idconnection , $server_data='default')
 {
 
 	global $connection;
 
-	$num_rows = mysqli_affected_rows($connection, $idconnection );
+	$num_rows = mysqli_affected_rows($connection[$server_data], $idconnection );
 
 	return $num_rows;
 } 
@@ -90,30 +90,30 @@ function webtsys_fetch_row( $query )
 	return $arr_final;
 } 
 
-function webtsys_get_client_info()
+function webtsys_get_client_info($server_data='default')
 {
 	global $connection;
 
-	$version = mysqli_get_client_info($connection);
+	$version = mysqli_get_client_info($connection[$server_data]);
 
 	return $version;
 } 
 
-function webtsys_get_server_info()
+function webtsys_get_server_info($server_data='default')
 {
 	global $connection;
 
-	$version = mysqli_get_server_info($connection);
+	$version = mysqli_get_server_info($connection[$server_data]);
 
 	return $version;
 } 
 
-function webtsys_insert_id()
+function webtsys_insert_id($server_data='default')
 {
 
 	global $connection;
 
-	$idinsert = mysqli_insert_id($connection);
+	$idinsert = mysqli_insert_id($connection[$server_data]);
 
 	return $idinsert;
 } 
@@ -136,12 +136,12 @@ function webtsys_num_rows( $query )
     return $connection;
 }*/
 
-function webtsys_connect( $host_db, $login_db, $contra_db )
+function webtsys_connect( $host_db, $login_db, $contra_db , $server_data='default')
 {
 
-	$connection=mysqli_init();
+	$connection[$server_data]=mysqli_init();
 	
-	if ( !( mysqli_real_connect($connection, $host_db, $login_db, $contra_db ) ) )
+	if ( !( mysqli_real_connect($connection[$server_data], $host_db, $login_db, $contra_db ) ) )
 	{
 		
 		return false;
@@ -151,10 +151,10 @@ function webtsys_connect( $host_db, $login_db, $contra_db )
 	return $connection;
 } 
 
-function webtsys_pconnect( $host_db, $login_db, $contra_db )
+function webtsys_pconnect( $host_db, $login_db, $contra_db, $server_data='default' )
 {
 
-    if ( !( $connection = @mysql_pconnect( $host_db, $login_db, $contra_db ) ) )
+    if ( !( $connection[$server_data] = @mysql_pconnect( $host_db, $login_db, $contra_db ) ) )
     {
 	return false;
     } 
@@ -162,12 +162,12 @@ function webtsys_pconnect( $host_db, $login_db, $contra_db )
     return $connection;
 } 
 
-function webtsys_select_db( $db )
+function webtsys_select_db( $db , $server_data='default')
 {
 
 	global $set_query, $connection;
 
-	$result_db=mysqli_select_db($connection, $db);
+	$result_db=mysqli_select_db($connection[$server_data], $db);
 	
 	if($result_db==false)
 	{
@@ -179,20 +179,20 @@ function webtsys_select_db( $db )
 	return 1;
 } 
 
-function webtsys_escape_string($sql_string)
+function webtsys_escape_string($sql_string, $server_data='default')
 {
 	global $connection;
 
-	return mysqli_real_escape_string($connection, $sql_string);
+	return mysqli_real_escape_string($connection[$server_data], $sql_string);
 
 }
 
-function webtsys_error()
+function webtsys_error($server_data='default')
 {
 
 	global $connection;
 
-	return mysqli_error($connection);
+	return mysqli_error($connection, $server_data='default');
 
 }
 
