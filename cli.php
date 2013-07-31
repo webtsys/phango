@@ -32,9 +32,9 @@ $cli_controller=@form_text($argv[2]);
 
 $connection='';
 
-$connection=webtsys_connect($host_db, $login_db, $pass_db);
+$connection=webtsys_connect($host_db['default'], $login_db['default'], $pass_db['default']);
 
-if(! (  $connection && webtsys_select_db($db) ) )
+if(! (  $connection && webtsys_select_db($db['default']) ) )
 {
 
 	die("Error: ".webtsys_error()." - I can't connect to database\n");

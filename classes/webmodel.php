@@ -133,6 +133,16 @@ $std_error='';
 class Webmodel {
 
 	/**
+	*
+	* With this property, you can define what is the server connection that you have to use for read the source data.
+	* If you create a phango loader that balancer where you read the data, you can obtain many flexibility.
+	* You can define how table related with a server for example.
+	*
+	*/
+
+	public $db_selected='default';
+	
+	/**
 	* The name of the model.
 	*/
 	

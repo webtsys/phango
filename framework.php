@@ -220,9 +220,9 @@ settype($_GET['begin_page'], 'integer');
 
 $set_query=0;
 
-$connection=@webtsys_connect( $host_db, $login_db, $pass_db );
+$connection=@webtsys_connect( $host_db['default'], $login_db['default'], $pass_db['default'] );
 
-$select_db=@webtsys_select_db( $db );
+$select_db=@webtsys_select_db( $db['default'] );
 
 //Variables
 
