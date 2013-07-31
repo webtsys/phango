@@ -1545,12 +1545,62 @@ class PhangoField {
 	* 
 	*/
 	
+	/**
+	* Required define if this field is required when insert or update a row of this model...
+	*/
+	public $required=0;
+	
+	/** 
+	* $quote_open is used if you need a more flexible sql sentence, 
+	* @warning USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
+	*/
+	public $quot_open='\'';
+	
+	/** 
+	* $quote_close is used if you need a more flexible sql sentence, 
+	* @warning USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
+	*/
+	
+	public $quot_close='\'';
+	
+	/**
+	* $std_error contain error in field if exists...
+	*/
+	
+	public $std_error='';
+	
+	/**
+	* Label is the name of field
+	*/
+	public $label="";
+	
+	/**
+	* Value of field...
+	*/
+	public $value="";
+	
+	/**
+	* Form define the function for use in forms...
+	*/
+	
+	public $form="";
+	
+	/**
+	* Method used for internal tasks related with searchs. You can overwrite this method in your PhangoField object if you need translate the value that the user want search to a real value into the database.
+	*/
+	
 	function search_field($value)
 	{
 	
 		return form_text($value);
 	
 	}
+	
+	/**
+	* Method used for internal tasks related with foreignkeys.
+	*
+	* 
+	*/
 	
 	function set_relationships()
 	{
@@ -1561,47 +1611,47 @@ class PhangoField {
 
 }
 
-//Charfield is a field for short text.
+/**
+* 
+* CharField is a PhangoField that defined a varchar element in the model-table.
+* 
+*/
 
 class CharField extends PhangoField {
 
 	//Basic variables that define the field
 
-	//Size of field in database
+	/**
+	* Size of field in database
+	*/
 	public $size=20;
-	//Label is the name of field
-	public $label="";
-	//Value of field...
-	public $value="";
-
-	//Form define the function for use in forms...
-	public $form="";
+	
+	/**
+	* Form define the function for use in forms...
+	* @deprecated Used on older versions of generate_admin
+	*/
 	public $set_form="";
-	//Required define if this field is required when insert or update a row of this model...
-	public $required=0;
-	//$quote_* is used if you need a more flexible sql sentence, WARNING, USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
-	public $quot_open='\'';
-	public $quot_close='\'';
-	//$std_error contain error in field if exists...
-	public $std_error='';
-	//$multilang is a boolean value that define if this text field is multilingual
-	public $multilang=0;
+	
 
-	//Construct field with basic data...
+	/**
+	* Construct field with basic data...
+	*
+	* @param integer $size The size of the varchar. If you put 250, for example, you will can put strings with 250 characters on this.
+	* @param boolean $multilang Don't use, don't need for nothing.
+	*
+	*/
 
-	function __construct($size=20, $multilang=0)
+	function __construct($size=20)
 	{
 
 		$this->size=$size;
 		$this->form='TextForm';
- 		$this->set_form='list_value';
-		$this->multilang=$multilang;
 
 	}
 
 	//This function is for check if the value for field is valid
 
-	function check($value)
+	public function check($value)
 	{
 
 		//Delete Javascript tags and simple quotes.
@@ -1610,7 +1660,7 @@ class CharField extends PhangoField {
 
 	}
 
-	function show_formatted($value)
+	public function show_formatted($value)
 	{
 
 		return $value;
@@ -1619,14 +1669,14 @@ class CharField extends PhangoField {
 
 	//This functions is used in padmin if you used field in a model...
 
-	function get_type_sql()
+	public function get_type_sql()
 	{
 
 		return 'VARCHAR('.$this->size.') NOT NULL';
 
 	}
 
-	function get_parameters_default()
+	public function get_parameters_default()
 	{
 
 		return '';
