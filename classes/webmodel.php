@@ -1597,7 +1597,7 @@ class PhangoField {
 	}
 	
 	/**
-	* Method used for internal tasks related with foreignkeys.
+	* Method used for internal tasks related with foreignkeys. By default make nothing.
 	*
 	* 
 	*/
@@ -1608,6 +1608,29 @@ class PhangoField {
 		
 	
 	}
+
+	/** 
+	* This method is used for describe the new field in a sql language format.
+	*/
+
+	public function get_type_sql()
+	{
+
+		return 'VARCHAR('.$this->size.') NOT NULL';
+
+	}
+	
+	/** 
+	* This method is used for return a default value for a form.
+	*/
+
+	public function get_parameters_default()
+	{
+
+		return '';
+
+	}
+
 
 }
 
@@ -1648,8 +1671,21 @@ class CharField extends PhangoField {
 		$this->form='TextForm';
 
 	}
+	
+	/**
+	* This function is used for show the value on a human format
+	*/
 
-	//This function is for check if the value for field is valid
+	function show_formatted($value)
+	{
+
+		return $value;
+
+	}
+	
+	/**
+	* This function is for check if the value for field is valid
+	*/
 
 	public function check($value)
 	{
@@ -1657,29 +1693,6 @@ class CharField extends PhangoField {
 		//Delete Javascript tags and simple quotes.
 		$this->value=form_text($value);
 		return form_text($value);
-
-	}
-
-	public function show_formatted($value)
-	{
-
-		return $value;
-
-	}
-
-	//This functions is used in padmin if you used field in a model...
-
-	public function get_type_sql()
-	{
-
-		return 'VARCHAR('.$this->size.') NOT NULL';
-
-	}
-
-	public function get_parameters_default()
-	{
-
-		return '';
 
 	}
 
