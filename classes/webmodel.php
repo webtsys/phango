@@ -222,6 +222,14 @@ class Webmodel {
 	*/
 	
 	public $prev_check=0;
+	
+	/**
+	*
+	* Property for set if the next select query have a DISTINCT sentence.
+	*
+	*/
+	
+	public $distinct=0;
 
 	//Construct the model
 
@@ -582,7 +590,15 @@ class Webmodel {
 		
 		//Make the query...
 		
-		return webtsys_query('select '.$fields.' from '.$selected_models.' '.$conditions, $this->db_selected);
+		$arr_distinct[$this->distinct]='';
+		$arr_distinct[0]='';
+		$arr_distinct[1]=' DISTINCT ';
+		
+		$query=webtsys_query('select '.$arr_distinct[$this->distinct].' '.$fields.' from '.$selected_models.' '.$conditions, $this->db_selected);
+		
+		$this->distinct=0;
+		
+		return $query;
 		
 	}
 
@@ -673,7 +689,7 @@ class Webmodel {
 
 		}
 
-		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions);
+		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions, $this->db_selected);
 		
 		list($count_field)= webtsys_fetch_row($query);
 
@@ -732,7 +748,7 @@ class Webmodel {
 			
 		}
 
- 		return webtsys_query('delete from '.$this->name.' '.$conditions);
+ 		return webtsys_query('delete from '.$this->name.' '.$conditions, $this->db_selected);
 		
 	}
 	
