@@ -139,6 +139,8 @@ function webtsys_num_rows( $query )
 function webtsys_connect( $host_db, $login_db, $contra_db , $server_data='default')
 {
 
+	global $connection;
+
 	$connection[$server_data]=mysqli_init();
 	
 	if ( !( mysqli_real_connect($connection[$server_data], $host_db, $login_db, $contra_db ) ) )
