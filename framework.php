@@ -75,6 +75,8 @@ session_set_cookie_params(0, $cookie_path);
 
 session_start();
 
+settype($_SERVER['HTTP_ACCEPT_LANGUAGE'], 'string');
+
 $arr_default_browser_lang=explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
 $default_browser_lang=trim($arr_default_browser_lang[0]);
