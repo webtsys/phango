@@ -5,7 +5,7 @@
 * This file contains principal functions and methods for create models, text formatting, forms creation, definition of basic variables, basic ORM that use on 90% of db searchs, etc...
 *
 * @author  Antonio de la Rosa <webmaster@web-t-sys.com>
-*
+* @file
 * @package Phango
 *
 */
@@ -21,28 +21,92 @@
 * Basic variables for internal jobs 
 */
 
+/**
+* Global variable for set errors from models operations
+*/
+
 $arr_error_model=array();
+
+/**
+* Global variable for set errors text from models operations
+*/
+
 $arr_error_model_text=array();
+
+/**
+* Global variable used for padmin and modules module for insert sql sentences when you install or add a new module or model
+*/
+
 $arr_module_sql=array();
+
+/**
+* Global variable used for padmin and modules module for insert a new module on database.
+*/
+
 $arr_module_insert=array();
+
+/**
+* Global variable used for padmin and modules module for remove a module of the database.
+*/
+
 $arr_module_remove=array();
 
+/**
+* Internal variable used for things how cli.php script
+*
+*/
+
 $utility_cli=0;
+
+/**
+* DEPRECATED $yes_entities is a deprecated variable used on internal things for check html entities on functions.
+* @deprecated Deprecated variable used on internal things for check html entities on functions.
+*/
+
 $yes_entities=1;
 
-//This variable is needed for add new fields to models without lost when you execute load_model without extension. Is saved in optional file added_fields.php
+/**
+*This variable is needed for add new fields to models without lost when you execute load_model without extension. Is saved in optional file added_fields.php
+*
+*/
 
 $arr_models_loading=array();
 
-//The timestam for this moment...
+/**
+*
+* Actual timestamp
+*
+*/
 
 define("TODAY", mktime( date('H'), date('i'), date('s') ) );
 
+/**
+*
+* Timestamp today to 00:00:00 hours
+*
+*/
+
 define("TODAY_FIRST", mktime(0, 0, 0));
+
+/**
+*
+* Timestamp today to 23:59:59 hours
+*
+*/
+
 define("TODAY_LAST", mktime(23, 59, 59));
+
+/**
+*
+* Timestamp today in this hour
+*
+*/
+
 define("TODAY_HOUR", mktime(date('H'), 0, 0));
 
-//This variable is used for save general errors. 
+/**
+*This variable is used for save general errors. 
+*/
 
 $std_error=''; 
 
@@ -68,6 +132,16 @@ $std_error='';
 
 class Webmodel {
 
+	/**
+	*
+	* With this property, you can define what is the server connection that you have to use for read the source data.
+	* If you create a phango loader that balancer where you read the data, you can obtain many flexibility.
+	* You can define how table related with a server for example.
+	*
+	*/
+
+	public $db_selected='default';
+	
 	/**
 	* The name of the model.
 	*/
@@ -130,7 +204,7 @@ class Webmodel {
 	* Array used for inverse foreign keys.
 	*
 	* This array is used when you need access to a model with a foreignkey key related with its. 
-	* @example  array($key1 => array($field_connection, $field1, $field2 ....)) where key is the model name with related foreignkey, and the first element of array for the element is the connection (tipically a foreignkeyfield).
+	* Example: array($key1 => array($field_connection, $field1, $field2 ....)) where key is the model name with related foreignkey, and the first element of array for the element is the connection (tipically a foreignkeyfield).
 	*/
 	
 	public $related_models=array();
@@ -148,6 +222,14 @@ class Webmodel {
 	*/
 	
 	public $prev_check=0;
+	
+	/**
+	*
+	* Property for set if the next select query have a DISTINCT sentence.
+	*
+	*/
+	
+	public $distinct=0;
 
 	//Construct the model
 
@@ -245,7 +327,7 @@ class Webmodel {
 			
 			}
 		
-			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES ('.implode(", ",$arr_fields).') ') ) )
+			if( !( $query=webtsys_query('insert into '.$this->name.' (`'.implode("`, `", array_keys($fields)).'`) VALUES ('.implode(", ",$arr_fields).') ', $this->db_selected) ) )
 			{
 			
 				$this->std_error.=$lang['error_model']['cant_insert'].' ';
@@ -328,7 +410,7 @@ class Webmodel {
 
 			//Create the query..
 		
-			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions)))
+			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions, $this->db_selected) ) )
 			{
 			
 				$this->std_error.=$lang['error_model']['cant_update'].' ';
@@ -508,7 +590,15 @@ class Webmodel {
 		
 		//Make the query...
 		
-		return webtsys_query('select '.$fields.' from '.$selected_models.' '.$conditions);
+		$arr_distinct[$this->distinct]='';
+		$arr_distinct[0]='';
+		$arr_distinct[1]=' DISTINCT ';
+		
+		$query=webtsys_query('select '.$arr_distinct[$this->distinct].' '.$fields.' from '.$selected_models.' '.$conditions, $this->db_selected);
+		
+		$this->distinct=0;
+		
+		return $query;
 		
 	}
 
@@ -599,7 +689,7 @@ class Webmodel {
 
 		}
 
-		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions);
+		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions, $this->db_selected);
 		
 		list($count_field)= webtsys_fetch_row($query);
 
@@ -658,8 +748,34 @@ class Webmodel {
 			
 		}
 
- 		return webtsys_query('delete from '.$this->name.' '.$conditions);
+ 		return webtsys_query('delete from '.$this->name.' '.$conditions, $this->db_selected);
 		
+	}
+	
+	/**
+	* A helper function for obtain an array from a result of $this->select
+	*
+	* @param mixed $query The result of an $this->select operation
+	*/
+	
+	public function fetch_row($query)
+	{
+	
+		return webtsys_fetch_row($query);
+	
+	}
+	
+	/**
+	* A helper function for obtain an associative array from a result of $this->select
+	*
+	* @param mixed $query The result of an $this->select operation
+	*/
+	
+	public function fetch_array($query)
+	{
+	
+		return webtsys_fetch_array($query);
+	
 	}
 
 	/**
@@ -1061,11 +1177,14 @@ class Webmodel {
 }
 
 /**
-* Fill a form with default values 
-* With this method you can set an array made by 
-* @param $post is an array with the values to be inserted on $arr_form
-* @param $arr_form is an array of ModelForms
-* @param $show_error An option for choose if in the form is showed 
+*
+* Fill a ModelForm array with default values.
+*
+* With this method you can set an array consisting of ModelForm items with the values from $post.
+*
+* @param array $post is an array with the values to be inserted on $arr_form. The keys must have the same name that keys from $arr_form
+* @param array $arr_form is an array of ModelForms. The key of each item is the name of the ModelForm item.
+* @param array $show_error An option for choose if in the form is showed 
 */
 
 function SetValuesForm($post, $arr_form, $show_error=1)
@@ -1168,6 +1287,7 @@ class ModelForm {
 	
 	/**
 	*  DEPRECATED An string used for internal tasks of older versions of generate_admin
+	* *@deprecated Used on older versions of generate_admin
 	* 
 	*/
 	
@@ -1311,6 +1431,7 @@ class ModelForm {
 	/**
 	*
 	* Method for set third argument of a form function. Third argument can be mixed type.
+	*
 	* @param mixed $parameters Third argument for the chose form function
 	*
 	*/
@@ -1325,6 +1446,7 @@ class ModelForm {
 	/**
 	*
 	* Method for set all argumentos of a form function.
+	* 
 	* @param array $parameters An array with arguments for the form function used for this ModelForm
 	*
 	*/
@@ -1335,6 +1457,17 @@ class ModelForm {
 		$this->parameters=$parameters;
 		
 	}
+	
+	/**
+	*
+	* Static method for check an array of ModelForm instances. 
+	*
+	* With this method you can check if the values of an array called $post (tipically $_POST) are valid for the corresponding values of an array $arr_form, consisting of ModelForm items.
+	*
+	* @param array $arr_form Array consisting of ModelForm items, used for check the values. The array need keys with the name of the ModelForm instance.
+	* @param array $post Array consisting of values. The array need that the keys was the same of $arr_form.
+	*
+	*/
 
 	static function check_form($arr_form, $post)
 	{
@@ -1407,11 +1540,80 @@ Now, we define components for use in models. Components are fields on a table.
 
 ******************************************/
 
+/**
+* PhangoField class is the base for make class used on Webmodel::components property.
+*
+*/
+
 class PhangoField {
 
+	/**
+	* Property used for set this field how indexed in the database table.
+	*/
+
 	public $indexed=0;
+	
+	/**
+	* The name of the model where this component or field live
+	*/
+	
 	public $name_model='';
+	
+	/**
+	* Name of the field or component.
+	*/
+	
 	public $name_component='';
+	
+	/**
+	* Method used for internal searchs for format the values.
+	*
+	* 
+	*/
+	
+	/**
+	* Required define if this field is required when insert or update a row of this model...
+	*/
+	public $required=0;
+	
+	/** 
+	* $quote_open is used if you need a more flexible sql sentence, 
+	* @warning USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
+	*/
+	public $quot_open='\'';
+	
+	/** 
+	* $quote_close is used if you need a more flexible sql sentence, 
+	* @warning USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
+	*/
+	
+	public $quot_close='\'';
+	
+	/**
+	* $std_error contain error in field if exists...
+	*/
+	
+	public $std_error='';
+	
+	/**
+	* Label is the name of field
+	*/
+	public $label="";
+	
+	/**
+	* Value of field...
+	*/
+	public $value="";
+	
+	/**
+	* Form define the function for use in forms...
+	*/
+	
+	public $form="";
+	
+	/**
+	* Method used for internal tasks related with searchs. You can overwrite this method in your PhangoField object if you need translate the value that the user want search to a real value into the database.
+	*/
 	
 	function search_field($value)
 	{
@@ -1420,6 +1622,12 @@ class PhangoField {
 	
 	}
 	
+	/**
+	* Method used for internal tasks related with foreignkeys. By default make nothing.
+	*
+	* 
+	*/
+	
 	function set_relationships()
 	{
 	
@@ -1427,56 +1635,72 @@ class PhangoField {
 	
 	}
 
+	/** 
+	* This method is used for describe the new field in a sql language format.
+	*/
+
+	public function get_type_sql()
+	{
+
+		return 'VARCHAR('.$this->size.') NOT NULL';
+
+	}
+	
+	/** 
+	* This method is used for return a default value for a form.
+	*/
+
+	public function get_parameters_default()
+	{
+
+		return '';
+
+	}
+
+
 }
 
-//Charfield is a field for short text.
+/**
+* 
+* CharField is a PhangoField that defined a varchar element in the model-table.
+* 
+*/
 
 class CharField extends PhangoField {
 
 	//Basic variables that define the field
 
-	//Size of field in database
+	/**
+	* Size of field in database
+	*/
 	public $size=20;
-	//Label is the name of field
-	public $label="";
-	//Value of field...
-	public $value="";
-
-	//Form define the function for use in forms...
-	public $form="";
+	
+	/**
+	* Form define the function for use in forms...
+	* @deprecated Used on older versions of generate_admin
+	*/
 	public $set_form="";
-	//Required define if this field is required when insert or update a row of this model...
-	public $required=0;
-	//$quote_* is used if you need a more flexible sql sentence, WARNING, USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
-	public $quot_open='\'';
-	public $quot_close='\'';
-	//$std_error contain error in field if exists...
-	public $std_error='';
-	//$multilang is a boolean value that define if this text field is multilingual
-	public $multilang=0;
+	
 
-	//Construct field with basic data...
+	/**
+	* Construct field with basic data...
+	*
+	* @param integer $size The size of the varchar. If you put 250, for example, you will can put strings with 250 characters on this.
+	* @param boolean $multilang Don't use, don't need for nothing.
+	*
+	*/
 
-	function __construct($size=20, $multilang=0)
+	function __construct($size=20)
 	{
 
 		$this->size=$size;
 		$this->form='TextForm';
- 		$this->set_form='list_value';
-		$this->multilang=$multilang;
 
 	}
-
-	//This function is for check if the value for field is valid
-
-	function check($value)
-	{
-
-		//Delete Javascript tags and simple quotes.
-		$this->value=form_text($value);
-		return form_text($value);
-
-	}
+	
+	/**
+	* This function is used for show the value on a human format
+	*/
 
 	function show_formatted($value)
 	{
@@ -1484,20 +1708,17 @@ class CharField extends PhangoField {
 		return $value;
 
 	}
+	
+	/**
+	* This function is for check if the value for field is valid
+	*/
 
-	//This functions is used in padmin if you used field in a model...
-
-	function get_type_sql()
+	public function check($value)
 	{
 
-		return 'VARCHAR('.$this->size.') NOT NULL';
-
-	}
-
-	function get_parameters_default()
-	{
-
-		return '';
+		//Delete Javascript tags and simple quotes.
+		$this->value=form_text($value);
+		return form_text($value);
 
 	}
 
@@ -3167,11 +3388,11 @@ class EmailField extends PhangoField {
 
 //in older versions of php, get_magic_quotes_gpc function was to add quotes automatically for certain operations, make_slashes is used to prevent this.
 
-if(function_exists('get_magic_quotes_gpc'))
-{
+if(function_exists('get_magic_quotes_gpc')) {
 
 	if ( !get_magic_quotes_gpc() )
 	{
+	
 		function make_slashes( $string )
 		{
 			return addslashes( $string );
@@ -3198,6 +3419,34 @@ if(function_exists('get_magic_quotes_gpc'))
 	}
 
 } 
+else
+{
+
+	/**
+	* Function used for add slashes from _POST and _GET variables.
+	*
+	*
+	* @param string $string String for add slashes
+	*/
+
+	function make_slashes( $string )
+	{
+		return addslashes( $string );
+	} 
+	
+	/**
+	* Function used for strip slashes from _POST and _GET variables.
+	*
+	*
+	* @param string $string String for strip slashes
+	*/
+
+	function unmake_slashes( $string )
+	{
+		return stripslashes( $string );
+	}
+
+}
 
 //this function is used to clean up the text of undesirable elements
 
@@ -3947,7 +4196,22 @@ function slugify($text, $respect_upper=0, $replace='-')
 
 //Load_view is a very important function. Phango is an MVC framework and has separate code and html.
 
+/**
+* An internal variable used for internal cache for load_view.
+*/
+
 $cache_template=array();
+
+/**
+* Very importante function used for load views. Is the V in the MVC paradigm.
+*
+* load_view is used for load the views. Views in Phango are php files with a function that have a special name with "View" suffix. For example, if you create a view file with the name blog.php, inside you need create a php function called BlogView(). The arguments of this function can be that you want, how on any normal php function. The view files need to be saved on a "view" folders inside of a theme folder, or a "views/module_name" folder inside of a module being "module_name" the name of the module.
+*
+* @param array $arr_template Arguments for the view function of the view.
+* @param string $template Name of the view. Tipically views/$template.php or modules/name_module/views/name_module/$template.php
+* @param string $module_theme If the view are on a different theme and you don't want put the view on the theme, use this variable for go to the other theme.
+* @param string $load_if_no_cache Variable used if you want the view wasn't if used a first time.
+*/
 
 function load_view($arr_template, $template, $module_theme='', $load_if_no_cache=0)
 {
@@ -4044,7 +4308,14 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 
 }
 
-//Function for load multiple views for a only source file, useful for functions where you need separated views for the same thing
+/**
+* Function for load multiple views for a only source file.
+* 
+* Useful for functions where you need separated views for use on something, When you use load_view for execute a view function, the names used for views are in $func_views array.
+*
+* @param string $template of the view library. Use the same format for normal views. 
+* @param string The names of templates, used how template_name for call views with load_view.
+*/
 
 function load_libraries_views($template, $func_views=array())
 {
@@ -4116,9 +4387,18 @@ function load_libraries_views($template, $func_views=array())
 
 }
 
-//Checking if a model exists searching in arr_check_table array created in framework.php file.
+/** 
+* Array for check if a model exists searching in arr_check_table array created in framework.php file.
+*
+*/
 
 $arr_check_table=array();
+
+/**
+* Internal function used for check if model is loaded in framework.
+* 
+* @param string $model_name Name of the model.
+*/
 
 function check_model($model_name)
 {
@@ -4151,6 +4431,11 @@ function check_model($model_name)
 	return 0;
 
 }
+
+/**
+* Internal function used for check if models and database are well synchronized.
+* 
+*/
 
 function check_model_exists()
 {
@@ -4200,9 +4485,25 @@ function check_model_exists()
 
 //Function for load the models..., if the model_file != models_path.php put model in format path/model_file
 
+/**
+* Internal global variable used for load_model for cache loaded models.
+*/
+
 $cache_model=array();
 
-function load_model()
+/**
+*
+* Function used for load models on controllers (or where you like, ;) ).
+*
+* When you call load_model with a name, or many names, phango look if exists a folder on modules called how $name_model. If find this, try open a file called "models_$name_model.php". If not exists, you obtain a phango exception error. If you want load a model file with other name, you can use this format: module_name/other_model_name being module_name, the name of the module an other_model_name the name of the model.
+*
+* Remember that the models can have a name distinct to the name of the file model.
+*
+* @param $name_model A serie of names of the models. 
+*
+*/
+
+function load_model($name_model='')
 {
 	
 	global $base_path, $model, $lang, $cache_model, $arr_module_insert, $arr_extension_model;
@@ -4275,6 +4576,11 @@ function load_model()
 
 }
 
+/**
+* Internal function used for load_model for load extensions to the models. You can specific your extensions using $arr_extension_model array. The name of an extension file is extension_name.php where name is the name given how $arr_extension_model item.
+*
+*/
+
 function load_extension()
 {
 
@@ -4332,6 +4638,10 @@ function load_extension()
 }
 
 //Load libraries, well, simply a elegant include
+
+/**
+* An array used for control the loaded libraries previously.
+*/
 
 $cache_libraries=array();
 

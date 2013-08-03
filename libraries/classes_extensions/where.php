@@ -4,6 +4,9 @@
 *
 * A simple extension for create where strings with checking.
 *
+* With this extension, you can create sql strings for use on where parameter of select method from Webmodel.
+*
+* 
 */
 
 function where_method_class($class, $arr_where, $initial_sql='WHERE', $parenthesis=0)

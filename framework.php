@@ -222,9 +222,20 @@ settype($_GET['begin_page'], 'integer');
 
 $set_query=0;
 
-$connection=@webtsys_connect( $host_db, $login_db, $pass_db );
+//Connect to all dbs...
 
-$select_db=@webtsys_select_db( $db );
+$connection=array();
+
+$select_db=array();
+
+foreach($host_db as $key_server => $item_server)
+{
+
+	$connection=@webtsys_connect( $host_db[$key_server], $login_db[$key_server], $pass_db[$key_server] , $key_server);
+
+	$select_db=@webtsys_select_db( $db[$key_server] , $key_server);
+	
+}
 
 //Variables
 
@@ -234,7 +245,7 @@ $select_db=@webtsys_select_db( $db );
 
 //Preparing models for checking in load_model...
 
-if($connection!=false  && $select_db==1) 
+if($connection!==false  && $select_db==1) 
 {
 	
 	$table='';
@@ -295,6 +306,23 @@ if($connection!=false  && $select_db==1)
 
 	}
 	
+}
+else if($connection==false)
+{
+
+	$arr_error_sql[0]='<p>Error: Cannot connect to MySQL db.</p>';    
+	$arr_error_sql[1]='<p>Error: Cannot connect to MySQL db.</p>';
+
+	$output=ob_get_contents();
+
+	$text_error.='<p>Output: '.$output.'</p>';
+
+	ob_clean();
+
+	echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
+	
+	die;
+
 }
 
 //Check for csrf attacks

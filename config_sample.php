@@ -14,18 +14,20 @@ define('PAGE', '1');
 //Db config variables
 
 //Host database. You have to write the domain name for the mysql server, normally localhost.
-$host_db = 'localhost';
+$host_db['default'] = 'localhost';
 
 //Database name. The database that phango use.
-$db = 'phango';
+$db['default'] = 'phango';
 
 //Username for database
-$login_db = 'root';
+$login_db['default'] = 'root';
+
 //Password for database
-$pass_db = '';
+$pass_db['default'] = '';
 
 //Connection type, normally you don't need to change this
-$con_persistente='webtsys_connect';
+$con_persistente['default']='webtsys_connect';
+
 //Type database server, for now, mysql or derivated
 define('TYPE_DB','mysql');
 
