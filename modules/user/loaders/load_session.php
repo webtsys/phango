@@ -115,6 +115,8 @@ else
 		
 
 	}
+	
+	$user_data['timezone']=MY_TIMEZONE;
 
 	$user_data['key_csrf']=$csrf_token;
 

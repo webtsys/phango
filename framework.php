@@ -9,11 +9,15 @@ $arr_module_list_js=array();
 
 //Adding config...
 
-if(!@include("config.php")) 
+if(!include("config.php")) 
 {
 
 	//If no config error message
 	//This site is no configured...
+	
+	$error=ob_get_contents();
+	
+	ob_clean();
 	
 	$base_url='.';
 	
@@ -307,7 +311,7 @@ if($connection!==false  && $select_db==1)
 	}
 	
 }
-else if($connection==false)
+else if(USE_DB==1 && $connection===false)
 {
 
 	$arr_error_sql[0]='<p>Error: Cannot connect to MySQL db.</p>';    

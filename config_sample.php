@@ -31,6 +31,9 @@ $con_persistente['default']='webtsys_connect';
 //Type database server, for now, mysql or derivated
 define('TYPE_DB','mysql');
 
+//Use standard connection db?
+define('USE_DB',0);
+
 #Path variables
 
 //Cookie_path, path of cookie, Example,if your domain is http://www.example.com/mysite, the content in content_path will be '/mysite/'. If your domain is http://www.example.com, you don't need change default $cookie_path

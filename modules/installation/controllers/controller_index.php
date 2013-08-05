@@ -262,13 +262,13 @@ function Index()
 				
 						$file_sample=file_get_contents($base_path.'config_sample.php');
 						
-						$file_sample=str_replace('$host_db = \'localhost\';', '$host_db = \''.$post['host_db'].'\';', $file_sample);
+						$file_sample=str_replace('$host_db[\'default\'] = \'localhost\';', '$host_db[\'default\'] = \''.$post['host_db'].'\';', $file_sample);
 						
-						$file_sample=str_replace('$db = \'phango\';', '$db = \''.$post['db'].'\';', $file_sample);
+						$file_sample=str_replace('$db[\'default\'] = \'phango\';', '$db[\'default\'] = \''.$post['db'].'\';', $file_sample);
 						
-						$file_sample=str_replace('$login_db = \'root\';', '$login_db = \''.$post['login_db'].'\';', $file_sample);
+						$file_sample=str_replace('$login_db[\'default\'] = \'root\';', '$login_db[\'default\'] = \''.$post['login_db'].'\';', $file_sample);
 						
-						$file_sample=str_replace('$pass_db = \'\';', '$pass_db = \''.$post['pass_db'].'\';', $file_sample);
+						$file_sample=str_replace('$pass_db[\'default\'] = \'\';', '$pass_db[\'default\'] = \''.$post['pass_db'].'\';', $file_sample);
 						
 						$file_sample=str_replace('$cookie_path = \'/\';', '$cookie_path = \''.$post['cookie_path'].'\';', $file_sample);
 						
@@ -286,6 +286,10 @@ function Index()
 						
 						$file_sample=str_replace('$activated_controllers = array(\'welcome\', \'installation\', \'jscript\');', 
 						'$activated_controllers = array(\'admin\', \'pages\', \'blog\', \'shop\', \'jscript\', \'user\', \'templates\');', $file_sample);
+						
+						//define('USE_DB',0);
+						
+						$file_sample=str_replace('define(\'USE_DB\',0);', 'define(\'USE_DB\',1);', $file_sample);
 						
 						$rand_prefix=sha1( uniqid(generate_random_password(), true) );
 					
