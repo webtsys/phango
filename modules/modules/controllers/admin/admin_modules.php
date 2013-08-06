@@ -43,14 +43,14 @@ function ModulesAdmin()
 
 				if( is_dir($path_modules.$file) && !preg_match('/^\./', $file) )
 				{
-
+					
 					$models_dir=$path_modules.$file.'/models/';
 
 					//echo $models_dir.'<p>';
 
 					if(is_dir($models_dir))
 					{
-
+						
 						if ($dh_models = opendir($models_dir)) 
 						{
 
@@ -80,7 +80,7 @@ function ModulesAdmin()
 		
 			closedir($dh);
 		}
-
+		
 		$arr_mask_module=array();
 		$arr_final_module=array();
 		$arr_final_module_options=array();

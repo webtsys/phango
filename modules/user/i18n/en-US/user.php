@@ -1,40 +1,84 @@
 <?php
 
-$lang['user']['without_special_rank']='Without special rank';
+$lang['user']['message_send_user']='Other user sent a message to your mailbox';
 
-$lang['user']['choose_avatar']='Choose avatar';
+$lang['user']['see_message_user']='View message';
 
-$lang['user']['see_gallery']='See avatar gallery';
+$lang['user']['text_welcome']='Welcome to our webpage';
 
-$lang['user']['no_gallery']='Galeries don&#39;t availables';
+$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
+
+$lang['user']['thanks']='Thanks.';
+
+$lang['user']['modify_user']='Change user';
+
+$lang['user']['change_data']='Change data';
+
+$lang['user']['private_messages']='Private messages';
+
+$lang['user']['register']='Register';
+
+$lang['user']['push_remember']='Remember password';
+
+$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
+
+$lang['user']['remember_password']='Remember password';
+
+$lang['user']['login']='Login';
+
+$lang['user']['my_account']='My account';
+
+$lang['user']['repeat_password']='Repeat password';
+
+$lang['user']['private_nick']='Private nick';
+
+$lang['user']['admin_users']='Users administration';
+
+$lang['user']['create_user']='Create user';
+
+$lang['user']['activate_users']='Activate users';
+
+$lang['user']['admin_no_fixed_ranks']='Non-fixed ranks depending on the number of messages';
+
+$lang['user']['admin_fixed_ranks']='Fixed ranks';
+
+$lang['user']['num_posts']='Number of messages posted by the user';
+
+$lang['user']['no_message']='Messages size';
+
+$lang['user']['pages']='Pages';
+
+$lang['user']['select_message']='Select message';
+
+$lang['user']['delete_message']='Delete message';
+
+$lang['user']['select_all']='Select all messages';
+
+$lang['user']['search_users_message']='Search user messages';
+
+$lang['user']['forbbiden_access']='Forbbiden access';
+
+$lang['user']['user_zone']='User&#39;s zone';
+
+$lang['user']['re_mprivate']='RE';
+
+$lang['user']['send_message']='Send message';
+
+$lang['user']['need_data']='You need more data';
+
+$lang['user']['data_overloaded_why']='Your mailbox is overloaded';
+
+$lang['user']['data_overloaded_user']='Your mailbox is overloaded, deleted some messages and try again';
+
+$lang['user']['data_overloaded']='Your mailbox is overloaded';
 
 $lang['user']['goback']='Go back';
 
-$lang['user']['choose']='Choose';
+$lang['user']['no_user_profile']='Don&#39;t exists the user profile';
 
-$lang['user']['success_avatar']='You added the new avatar successfully';
+$lang['user']['cannot_change_language']='Cannot change the langage';
 
-$lang['user']['error_avatar']='Error: the avatar could not added successfully';
-
-$lang['user']['comeback']='Go out from Avatars';
-
-$lang['user']['avatar_size_wrong']='Avatar size is wrong';
-
-$lang['user']['error_email_exists']='Error: email exists in database';
-
-$lang['user']['error_username_exists']='Error: username exists in database';
-
-$lang['user']['error_password_neq_repeat_password']='Error: passwords don&#39;t match';
-
-$lang['user']['delete_avatar']='Delete avatar';
-
-$lang['user']['no_avatar_selected']='No avatar selected';
-
-$lang['user']['choose_avatar_out']='Url of an avatar out of the web';
-
-$lang['user']['max_size']='Maximum size';
-
-$lang['user']['choose_avatar_web']='Choose avatar';
+$lang['user']['change_language']='Change language';
 
 $lang['user']['redirect']='Redirection';
 
@@ -42,67 +86,13 @@ $lang['user']['login_success']='Login successful';
 
 $lang['user']['no_redir']='Redirecting';
 
-$lang['user']['error_login']='Error: you cannot login, your email or password is wrong';
+$lang['user']['error_login_update']='Error: I cannot update your profile';
 
 $lang['user']['try_login_again']='Try login again';
 
 $lang['user']['error_login_many_times']='Error: You have tried login many times. You are banned from the website for a few minutes';
 
-$lang['user']['option_date_dmy']='Day-Month-Year';
-
-$lang['user']['option_date_ymd']='Year-Month-Day';
-
-$lang['user']['ampm24']='24 hours';
-
-$lang['user']['ampmAM']='PM-AM';
-
-$lang['user']['repeat_password']='Repeat password';
-
-$lang['user']['automatic_login']='Automatic login';
-
-$lang['user']['private_nick']='Private nick';
-
-$lang['user']['privileges_user']='User privileges';
-
-$lang['user']['show_email']='Show email';
-
-$lang['user']['hidden_status']='Hidden status';
-
-$lang['user']['notify_private_messages']='Notify private messages in your email';
-
-$lang['user']['format_date']='Date format';
-
-$lang['user']['timezone']='Timezone';
-
-$lang['user']['ampm']='AM-PM - 24H';
-
-$lang['user']['yes_list']='Receive messages from the web';
-
-$lang['user']['avatar']='Avatar';
-
-$lang['user']['rank']='Rank';
-
-$lang['user']['signature']='Signature';
-
-$lang['user']['interests']='Interests';
-
-$lang['user']['nif']='ID';
-
-$lang['user']['enterprise_name']='Enterprise name';
-
-$lang['user']['zip_code']='Zip code';
-
-$lang['user']['activated_user']='Activated user';
-
-$lang['user']['no_user_profile']='Don&#39;t exists the user profile';
-
-$lang['user']['user_zone']='User&#39;s zone';
-
-$lang['user']['cannot_change_language']='Cannot change the langage';
-
-$lang['user']['change_language']='Change language';
-
-$lang['user']['error_login_update']='Error: I cannot update your profile';
+$lang['user']['error_login']='Error: you cannot login, your email or password is wrong';
 
 $lang['user']['text_confirm']='Now,you are a registered user';
 
@@ -156,57 +146,89 @@ $lang['user']['change_data_success']='Profile updated successfully';
 
 $lang['user']['exit_login']='Logout';
 
-$lang['user']['admin_users']='Users administration';
-
-$lang['user']['create_user']='Create user';
-
-$lang['user']['activate_users']='Activate users';
-
-$lang['user']['admin_no_fixed_ranks']='Non-fixed ranks depending on the number of messages';
-
-$lang['user']['admin_fixed_ranks']='Fixed ranks';
-
-$lang['user']['num_posts']='Number of messages posted by the user';
-
-$lang['user']['re_mprivate']='RE';
-
-$lang['user']['send_message']='Send message';
-
-$lang['user']['message_send_user']='Other user sent a message to your mailbox';
-
-$lang['user']['see_message_user']='View message';
-
-$lang['user']['need_data']='You need more data';
-
-$lang['user']['data_overloaded_why']='Your mailbox is overloaded';
-
-$lang['user']['data_overloaded_user']='Your mailbox is overloaded, deleted some messages and try again';
-
-$lang['user']['data_overloaded']='Your mailbox is overloaded';
-
-$lang['user']['forbbiden_access']='Forbbiden access';
-
-$lang['user']['no_message']='Messages size';
-
-$lang['user']['pages']='Pages';
-
-$lang['user']['select_message']='Select message';
-
-$lang['user']['delete_message']='Delete message';
-
-$lang['user']['select_all']='Select all messages';
-
-$lang['user']['search_users_message']='Search user messages';
-
 $lang['user']['profiles_list']='Profiles list';
 
 $lang['user']['profiles_list_explain']='In this list will find all registered users of this website';
 
 $lang['user']['see_profile']='See profile';
 
+$lang['user']['automatic_login']='Automatic login';
+
+$lang['user']['privileges_user']='User privileges';
+
+$lang['user']['show_email']='Show email';
+
+$lang['user']['hidden_status']='Hidden status';
+
+$lang['user']['notify_private_messages']='Notify private messages in your email';
+
+$lang['user']['format_date']='Date format';
+
+$lang['user']['timezone']='Timezone';
+
+$lang['user']['ampm']='AM-PM - 24H';
+
+$lang['user']['yes_list']='Receive messages from the web';
+
+$lang['user']['avatar']='Avatar';
+
+$lang['user']['rank']='Rank';
+
+$lang['user']['signature']='Signature';
+
+$lang['user']['interests']='Interests';
+
+$lang['user']['nif']='ID';
+
+$lang['user']['enterprise_name']='Enterprise name';
+
+$lang['user']['zip_code']='Zip code';
+
+$lang['user']['activated_user']='Activated user';
+
 $lang['user']['send_private']='Send private message';
 
 $lang['user']['go_profiles']='Go to profiles';
+
+$lang['user']['option_date_dmy']='Day-Month-Year';
+
+$lang['user']['option_date_ymd']='Year-Month-Day';
+
+$lang['user']['ampm24']='24 hours';
+
+$lang['user']['ampmAM']='PM-AM';
+
+$lang['user']['choose_avatar']='Choose avatar';
+
+$lang['user']['see_gallery']='See avatar gallery';
+
+$lang['user']['no_gallery']='Galeries don&#39;t availables';
+
+$lang['user']['choose']='Choose';
+
+$lang['user']['success_avatar']='You added the new avatar successfully';
+
+$lang['user']['error_avatar']='Error: the avatar could not added successfully';
+
+$lang['user']['comeback']='Go out from Avatars';
+
+$lang['user']['error_email_exists']='Error: email exists in database';
+
+$lang['user']['error_username_exists']='Error: username exists in database';
+
+$lang['user']['error_password_neq_repeat_password']='Error: passwords don&#39;t match';
+
+$lang['user']['delete_avatar']='Delete avatar';
+
+$lang['user']['no_avatar_selected']='No avatar selected';
+
+$lang['user']['choose_avatar_out']='Url of an avatar out of the web';
+
+$lang['user']['max_size']='Maximum size';
+
+$lang['user']['choose_avatar_web']='Choose avatar';
+
+$lang['user']['avatar_size_wrong']='Avatar size is wrong';
 
 $lang['user']['name']='Name';
 
@@ -216,29 +238,7 @@ $lang['user']['email']='Email';
 
 $lang['user']['city']='City';
 
-$lang['user']['login']='Login';
-
-$lang['user']['my_account']='My account';
-
-$lang['user']['modify_user']='Change user';
-
-$lang['user']['change_data']='Change data';
-
-$lang['user']['private_messages']='Private messages';
-
-$lang['user']['text_welcome']='Welcome to our webpage';
-
-$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
-
-$lang['user']['thanks']='Thanks.';
-
-$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
-
-$lang['user']['remember_password']='Remember password';
-
-$lang['user']['register']='Register';
-
-$lang['user']['push_remember']='Remember password';
+$lang['user']['without_special_rank']='Without special rank';
 
 $lang['user']['text_password']='This is your password';
 
