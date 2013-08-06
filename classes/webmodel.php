@@ -2020,6 +2020,7 @@ class ChoiceField extends PhangoField {
 		$this->type=$type;
 		$this->arr_values=$arr_values;
 		$this->default_value=$default_value;
+		$this->arr_formatted['']='';
 		
 		foreach($arr_values as $value)
 		{
@@ -4751,7 +4752,7 @@ function load_lang()
 				
 			}
 			
-			if(!include($base_path.'modules/'.$module_path.'/i18n/'.$language.'/'.$lang_file.'.php'))
+			if(!@include($base_path.'modules/'.$module_path.'/i18n/'.$language.'/'.$lang_file.'.php'))
 			{
 
 				$output_error_lang=ob_get_contents();
