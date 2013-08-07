@@ -1,5 +1,31 @@
 <?php
 
+$lang['common']['send']='Send';
+
+$lang['common']['with_*_field_required']='The fields with * are required';
+
+$lang['common']['order_by']='Order by';
+
+$lang['common']['in_order']='In order';
+
+$lang['common']['search']='Search';
+
+$lang['common']['search_by']='Search by';
+
+$lang['common']['reset']='Reset';
+
+$lang['common']['order_and_search']='Search and order';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Password';
+
+$lang['common']['logout']='Logout';
+
+$lang['common']['register_user']='User registration';
+
+$lang['common']['login']='Login';
+
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
@@ -47,32 +73,6 @@ $lang['common']['redirect']='Redirect';
 $lang['common']['success']='Successful operation';
 
 $lang['common']['press_here_redirecting']='Press here to come back...';
-
-$lang['common']['send']='Send';
-
-$lang['common']['with_*_field_required']='The fields with * are required';
-
-$lang['common']['order_by']='Order by';
-
-$lang['common']['in_order']='In order';
-
-$lang['common']['search']='Search';
-
-$lang['common']['search_by']='Search by';
-
-$lang['common']['reset']='Reset';
-
-$lang['common']['order_and_search']='Search and order';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Password';
-
-$lang['common']['logout']='Logout';
-
-$lang['common']['register_user']='User registration';
-
-$lang['common']['login']='Login';
 
 $lang['common']['pages']='Pages';
 

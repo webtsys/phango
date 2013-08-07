@@ -1,5 +1,31 @@
 <?php
 
+$lang['common']['send']='Enviar';
+
+$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+
+$lang['common']['order_by']='Ordenar por';
+
+$lang['common']['in_order']='En orden';
+
+$lang['common']['search']='Buscar';
+
+$lang['common']['search_by']='Buscar por';
+
+$lang['common']['reset']='Reiniciar';
+
+$lang['common']['order_and_search']='Ordenar y buscar';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Contraseña';
+
+$lang['common']['logout']='Desconectarse';
+
+$lang['common']['register_user']='Registro de usuario';
+
+$lang['common']['login']='Identificarse';
+
 $lang['common']['field_required']='Campo requerido';
 
 $lang['common']['error_in_field']='Error en campo';
@@ -47,32 +73,6 @@ $lang['common']['redirect']='Redireccionar';
 $lang['common']['success']='Éxito en la operación';
 
 $lang['common']['press_here_redirecting']='Pulse aquí para volver';
-
-$lang['common']['send']='Enviar';
-
-$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
-
-$lang['common']['order_by']='Ordenar por';
-
-$lang['common']['in_order']='En orden';
-
-$lang['common']['search']='Buscar';
-
-$lang['common']['search_by']='Buscar por';
-
-$lang['common']['reset']='Reiniciar';
-
-$lang['common']['order_and_search']='Ordenar y buscar';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Contraseña';
-
-$lang['common']['logout']='Desconectarse';
-
-$lang['common']['register_user']='Registro de usuario';
-
-$lang['common']['login']='Identificarse';
 
 $lang['common']['pages']='Páginas';
 

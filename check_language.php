@@ -24,7 +24,7 @@ function slugify($text)
 }
 
 echo "This script create language files...\n";
-echo "Scanning files...\n";
+echo "Scanning files and directories...\n";
 
 $i18n_dir='./i18n/';
 
@@ -40,17 +40,30 @@ if(isset($arr_options['status']))
 	scan_directory_status($base_path);
 	
 }
-else
-if(@$arr_options['f']!='')
+else if(@$arr_options['f']!='')
 {
 
 	//scan_file($argv[1]);
 
 	if(file_exists($arr_options['f']))
 	{
-		echo "Scanning ".$arr_options['f']."...\n";
+	
+		if(is_dir($arr_options['f']))
+		{
 
-		check_i18n_file($arr_options['f']);
+			echo "Scanning ".$arr_options['f']."...\n";
+
+			scan_directory($arr_options['f']);
+			
+			//check_i18n_file($arr_options['f']);
+			
+		}
+		else
+		{
+		
+			echo $arr_options['f']." is not a directory...\n";
+		
+		}
 
 	}
 	else
@@ -84,6 +97,7 @@ function scan_directory($directory)
 		}
 
 	}
+	
 	if( false !== ($handledir=opendir($directory)) ) 
 	{
 
@@ -91,13 +105,13 @@ function scan_directory($directory)
 		{
 			
 			$path_file=$directory.$file;
-
+			
 			if( !preg_match ( '/(.*)\/i18n\/(.*)/' , $path_file ) )
 			{    
 				if(is_dir($path_file) && !preg_match("/^(.*)\.$/", $path_file) && !preg_match("/^\.(.*)$/", $path_file)) 
 				{
 					
-					echo "Checking directory ".$file."...\n";
+					echo "Checking directory ".$path_file.'/'.$file."...\n";
 					scan_directory($path_file.'/');
 					
 				}
@@ -105,7 +119,7 @@ function scan_directory($directory)
 				if(preg_match("/.*\.php$/", $file) && $file!="check_language.php" ) 
 				{
 	
-					echo "Checking file $file...\n";
+					echo "Checking file $path_file/$file...\n";
 
 					//Check file...
 
