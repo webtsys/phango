@@ -4947,6 +4947,21 @@ function load_header_view()
 
 }
 
+$arr_cache_css=array();
+
+function load_css_view()
+{
+
+	global $arr_cache_css, $base_url;
+
+	//Delete repeat scripts...
+
+	$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
+
+	return implode("\n", $arr_cache_css);
+
+}
+
 
 function urlencode_redirect($url)
 {
