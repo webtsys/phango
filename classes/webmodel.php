@@ -4947,18 +4947,39 @@ function load_header_view()
 
 }
 
+/**
+*
+* Global variable that control the css cache
+*
+*/
+
 $arr_cache_css=array();
+
+/**
+*
+* Function for 
+*
+*/
 
 function load_css_view()
 {
 
-	global $arr_cache_css, $base_url;
+	global $arr_cache_css, $base_url, $config_data;
 
 	//Delete repeat scripts...
 
 	$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
 
-	return implode("\n", $arr_cache_css);
+	foreach($arr_cache_css as $idcss => $css)
+	{
+
+		settype($arr_cache_css_gzipped[$idcss], 'integer');
+		
+		$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+
+	}
+
+	return implode("\n", $arr_final_jscript);
 
 }
 
