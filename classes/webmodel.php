@@ -230,6 +230,13 @@ class Webmodel {
 	*/
 	
 	public $distinct=0;
+	
+	/**
+	*
+	*
+	*/
+	
+	public $save_required=array();
 
 	//Construct the model
 
@@ -1069,12 +1076,32 @@ class Webmodel {
 	
 	public function reset_require()
 	{
-		
 
 		foreach($this->components as $component_name => $component)
 		{
 
+			$this->save_required[$component_name]=$this->components[$component_name]->required;
+		
 			$this->components[$component_name]->required=0;
+
+		}
+
+	}
+	
+	/**
+	* Method for load saved required values for the fields...
+	*
+	* Method for load required values fields from components. Use this if you need recovery required values if you reseted them...
+	*
+	*/
+	
+	public function reload_require()
+	{
+		
+		foreach($this->save_required as $field_required => $value_required)
+		{
+		
+			$this->components[$field_required]->required=$this->save_required[$field_required];
 
 		}
 
