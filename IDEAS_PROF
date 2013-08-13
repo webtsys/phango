@@ -2,15 +2,47 @@ Podria ser diccionario de terminos de busqueda. Por defecto se le va añadiendo 
 
 escribo palabras clave con autocompletado:
 
-reparar grifo. 
+se me ha ido la luz -> relacionado con electristas. 
+reparar bombilla -> relacionado con electricistas.
 
-Los profesionales que tengan entre su diccionario esas palabras, junto a las condiciones de distancia. (en un radio de x metros), se les envía el aviso (por ahora a la web).
+Los profesionales que tengan entre su diccionario esas palabras, junto a las condiciones de distancia. (en un radio de x metros), se les envía el aviso (por ahora a la web). Asimismo el profesional puede decir que se el envíen todas las palabras relacionadas con su gremio.
 
-El diccionario se va mejorando 
+En primera instancia los profesionales aceptan todo lo de su profesión, luego pueden ir filtrando por palabras clave.
+
+El diccionario se va mejorando poco a poco.
 
 Una vez escribo reparar grifo, me parecen los precios que esas palabras clave suelen tener conjuntadas, haciendo algún tipo de media y ponemos el hightchart, o un enlace al hightchart.
 
 Registramos la proposición con un token. Toda mierda que no tenga a un usuario registrado se borra a las 12 horas, también puede subir fotos (un limite de 3 y de no muy alta resolución). Una vez se registra el tío, se envía a todos. 
 
+También eligen el tipo de profesional y su reputación. 
+
+Después sería la fecha máxima de entrega y la hora máxima.
+
+Urgente o no urgente. Dependiendo de eso se hace un recálculo de las tarifas.
+
+Finalmente el precio.
+
+Fotos.
+
+Y publicar mi anuncio. 
+
 Los usuarios registrados salen a su panel directamente.
+
+-----------------
+
+En otros servicios se podría poner como relacionado el servicio con algo que ya exista.
+
+Se envia un email cundo se crea algo con un servicio que no existe. Se necesita un captcha anti-spam.
+
+--------------------------
+
+pUNTUACIon basada en:
+
+Puntualidad, trato, presencia, profesionalidad, precio,
+
+------------------
+
+Tabla estudios.
+
 
