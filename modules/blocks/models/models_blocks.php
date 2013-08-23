@@ -32,6 +32,8 @@ $model['blocks']->components['module']=new CharField(40);
 
 $model['blocks']->components['type_block']=new IntegerField(2);
 
+$model['blocks']->components['parent']=new ParentField('blocks', 11);
+
 //$model['blocks']->components['language']=new CharField(40);
 
 #Esto chequea si debe heredar o no los bloques por defecto este modulo...

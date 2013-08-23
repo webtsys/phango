@@ -401,6 +401,8 @@ function LinksAdmin($url_options, $model_name, $id, $field_rows=array())
 	global $lang, $base_url;
 
 	$arr_links=BasicOptionsListModel($url_options, $model_name, $id);
+	
+	$arr_links[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks_children', array('IdModule' => $_GET['IdModule'], 'op' => 0, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'IdBlocks' => $id) ).'">'.$lang['blocks']['add_children_blocks'].'</a>';
 
 	if( preg_match('/^static:\//', $field_rows['url_block']) )
 	{
