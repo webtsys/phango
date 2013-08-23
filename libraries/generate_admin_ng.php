@@ -308,8 +308,14 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 	settype($_GET['op_edit'], 'integer');
 	settype($_GET['op_action'], 'integer');
 	settype($_GET[$model[$model_name]->idmodel], 'integer');
+	
+	load_libraries(array('utilities/menu_barr_hierarchy'));
 
 	$url_admin=add_extra_fancy_url($url_options, array('op_action' => 1));
+	
+	$arr_menu=array( 0 => array($lang['common']['listing_new'].': '.$model[$model_name]->label, $url_options), 1 => array($lang['common']['add_new_item'].': '.$model[$model_name]->label, $url_admin) );
+	
+	echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
 	
 	switch($_GET['op_action'])
 	{

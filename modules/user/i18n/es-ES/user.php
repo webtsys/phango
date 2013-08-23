@@ -1,5 +1,15 @@
 <?php
 
+$lang['user']['without_special_rank']='Sin rango especial';
+
+$lang['user']['login']='Identificarse';
+
+$lang['user']['my_account']='Mi cuenta';
+
+$lang['user']['register']='Registrarse';
+
+$lang['user']['push_remember']='Recordar contraseña';
+
 $lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
 
 $lang['user']['see_message_user']='Ver mensaje';
@@ -12,31 +22,19 @@ $lang['user']['thanks']='Gracias.';
 
 $lang['user']['modify_user']='Modificar usuario';
 
-$lang['user']['change_data']='Cambiar datos';
-
-$lang['user']['private_messages']='Mensajes privados';
-
-$lang['user']['register']='Registrarse';
-
-$lang['user']['push_remember']='Recordar contraseña';
-
 $lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
 
 $lang['user']['remember_password']='Recordar contraseña';
 
-$lang['user']['login']='Identificarse';
+$lang['user']['change_data']='Cambiar datos';
 
-$lang['user']['my_account']='Mi cuenta';
+$lang['user']['private_messages']='Mensajes privados';
 
-$lang['user']['repeat_password']='Repetir contraseña';
+$lang['user']['profiles_list']='Lista de perfiles';
 
-$lang['user']['private_nick']='Nick privado';
+$lang['user']['profiles_list_explain']='En este listado encontrará a todos los usuarios registrados de esta web';
 
-$lang['user']['admin_users']='Administración de usuarios';
-
-$lang['user']['create_user']='Crear usuario';
-
-$lang['user']['activate_users']='Activar usuarios';
+$lang['user']['see_profile']='Ver perfil';
 
 $lang['user']['admin_no_fixed_ranks']='Rangos no fijos que dependen del numero de mensajes';
 
@@ -44,41 +42,11 @@ $lang['user']['admin_fixed_ranks']='Rangos fijos';
 
 $lang['user']['num_posts']='Número de mensajes enviados';
 
-$lang['user']['no_message']='Espacio ocupado por mensajes';
+$lang['user']['admin_users']='Administración de usuarios';
 
-$lang['user']['pages']='Páginas';
+$lang['user']['create_user']='Crear usuario';
 
-$lang['user']['select_message']='Seleccionar mensaje';
-
-$lang['user']['delete_message']='Borrar mensaje';
-
-$lang['user']['select_all']='Seleccionar todos los mensajes';
-
-$lang['user']['search_users_message']='Buscar usuario para enviarle mensaje';
-
-$lang['user']['forbbiden_access']='Acceso prohibido';
-
-$lang['user']['user_zone']='Zona de usuarios';
-
-$lang['user']['re_mprivate']='RE';
-
-$lang['user']['send_message']='Enviar mensaje';
-
-$lang['user']['need_data']='Se necesitan más datos';
-
-$lang['user']['data_overloaded_why']='Hay sobrecarga de datos';
-
-$lang['user']['data_overloaded_user']='En este buzón hay demasiados datos, borre algunos y vuelva a intentarlo';
-
-$lang['user']['data_overloaded']='Sobrecarga de datos';
-
-$lang['user']['goback']='Regresar';
-
-$lang['user']['no_user_profile']='No existe el perfil de usuario';
-
-$lang['user']['cannot_change_language']='No puedo cambiar el lenguaje';
-
-$lang['user']['change_language']='Cambiar lenguaje';
+$lang['user']['activate_users']='Activar usuarios';
 
 $lang['user']['redirect']='Redireccion';
 
@@ -107,6 +75,8 @@ $lang['user']['your_user_need_activated_explain']='Su usuario necesita ser activ
 $lang['user']['user_created']='Usuario creado';
 
 $lang['user']['user_instructions']='Le hemos enviado un correo con los datos de acceso a la página web';
+
+$lang['user']['goback']='Regresar';
 
 $lang['user']['error_captcha']='Error en captcha';
 
@@ -146,49 +116,39 @@ $lang['user']['change_data_success']='Se cambió el perfil con éxito...';
 
 $lang['user']['exit_login']='Desconexión';
 
-$lang['user']['profiles_list']='Lista de perfiles';
+$lang['user']['user_zone']='Zona de usuarios';
 
-$lang['user']['profiles_list_explain']='En este listado encontrará a todos los usuarios registrados de esta web';
+$lang['user']['re_mprivate']='RE';
 
-$lang['user']['see_profile']='Ver perfil';
+$lang['user']['send_message']='Enviar mensaje';
 
-$lang['user']['automatic_login']='Conexión automática';
+$lang['user']['need_data']='Se necesitan más datos';
 
-$lang['user']['privileges_user']='Privilegios de usuario';
+$lang['user']['data_overloaded_why']='Hay sobrecarga de datos';
 
-$lang['user']['show_email']='Mostrar email';
+$lang['user']['data_overloaded_user']='En este buzón hay demasiados datos, borre algunos y vuelva a intentarlo';
 
-$lang['user']['hidden_status']='Estado oculto';
+$lang['user']['data_overloaded']='Sobrecarga de datos';
 
-$lang['user']['notify_private_messages']='Notificar mensajes privados';
+$lang['user']['forbbiden_access']='Acceso prohibido';
 
-$lang['user']['format_date']='Formato de fecha';
+$lang['user']['no_message']='Espacio ocupado por mensajes';
 
-$lang['user']['timezone']='Zona horaria';
+$lang['user']['pages']='Páginas';
 
-$lang['user']['ampm']='AM-PM - 24H';
+$lang['user']['select_message']='Seleccionar mensaje';
 
-$lang['user']['yes_list']='Recibir mensajes de la web';
+$lang['user']['delete_message']='Borrar mensaje';
 
-$lang['user']['avatar']='Avatar';
+$lang['user']['select_all']='Seleccionar todos los mensajes';
 
-$lang['user']['rank']='Rango';
+$lang['user']['search_users_message']='Buscar usuario para enviarle mensaje';
 
-$lang['user']['signature']='Firma';
+$lang['user']['no_user_profile']='No existe el perfil de usuario';
 
-$lang['user']['interests']='Intereses';
+$lang['user']['cannot_change_language']='No puedo cambiar el lenguaje';
 
-$lang['user']['nif']='Número de documento de identificación';
-
-$lang['user']['enterprise_name']='Nombre de empresa';
-
-$lang['user']['zip_code']='Codigo postal';
-
-$lang['user']['activated_user']='Usuario activo';
-
-$lang['user']['send_private']='Enviar mensaje privado';
-
-$lang['user']['go_profiles']='Ir a perfiles';
+$lang['user']['change_language']='Cambiar lenguaje';
 
 $lang['user']['option_date_dmy']='Día-Mes-Año';
 
@@ -230,6 +190,48 @@ $lang['user']['choose_avatar_web']='Elegir avatar';
 
 $lang['user']['avatar_size_wrong']='Tamaño de avatar, incorrecto';
 
+$lang['user']['send_private']='Enviar mensaje privado';
+
+$lang['user']['go_profiles']='Ir a perfiles';
+
+$lang['user']['repeat_password']='Repetir contraseña';
+
+$lang['user']['automatic_login']='Conexión automática';
+
+$lang['user']['private_nick']='Nick privado';
+
+$lang['user']['privileges_user']='Privilegios de usuario';
+
+$lang['user']['show_email']='Mostrar email';
+
+$lang['user']['hidden_status']='Estado oculto';
+
+$lang['user']['notify_private_messages']='Notificar mensajes privados';
+
+$lang['user']['format_date']='Formato de fecha';
+
+$lang['user']['timezone']='Zona horaria';
+
+$lang['user']['ampm']='AM-PM - 24H';
+
+$lang['user']['yes_list']='Recibir mensajes de la web';
+
+$lang['user']['avatar']='Avatar';
+
+$lang['user']['rank']='Rango';
+
+$lang['user']['signature']='Firma';
+
+$lang['user']['interests']='Intereses';
+
+$lang['user']['nif']='Número de documento de identificación';
+
+$lang['user']['enterprise_name']='Nombre de empresa';
+
+$lang['user']['zip_code']='Codigo postal';
+
+$lang['user']['activated_user']='Usuario activo';
+
 $lang['user']['name']='Nombre';
 
 $lang['user']['last_name']='Apellidos';
@@ -237,8 +239,6 @@ $lang['user']['last_name']='Apellidos';
 $lang['user']['email']='Email';
 
 $lang['user']['city']='Ciudad';
-
-$lang['user']['without_special_rank']='Sin rango especial';
 
 $lang['user']['text_password']='Esta es su contraseña';
 
