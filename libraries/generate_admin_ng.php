@@ -315,7 +315,7 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 	
 	$arr_menu=array( 0 => array($lang['common']['listing_new'].': '.$model[$model_name]->label, $url_options), 1 => array($lang['common']['add_new_item'].': '.$model[$model_name]->label, $url_admin) );
 	
-	echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
+	$arr_menu_edit=array( 0 => array($lang['common']['listing_new'].': '.$model[$model_name]->label, $url_options), 1 => array($lang['common']['edit'], '') );
 	
 	switch($_GET['op_action'])
 	{
@@ -354,9 +354,17 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 			
 			if($_GET['op_edit']==0)
 			{
+
+				echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
 			
 				echo '<p class="add_new_item"><a href="'.add_extra_fancy_url($url_options, array('op_action' => 1)).'">'.$lang['common']['add_new_item'].': '.$model[$model_name]->label.'</a></p>';
 				
+			}
+			else
+			{
+			
+				echo '<p>'.menu_barr_hierarchy($arr_menu_edit, 'op_edit', $_GET['op_edit']).'</p>';
+			
 			}
 
 			ListModel($model_name, $arr_fields, $url_options, $options_func, $where_sql, $arr_fields_edit, $type_list);
@@ -364,6 +372,13 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 		break;
 
 		case 1:
+		
+			if($_GET['op_edit']==0)
+			{
+
+				echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
+				
+			}
 			
 			echo '<h3>'.$lang['common']['add_new_item'].': '.$model[$model_name]->label.'</h3>';
 
