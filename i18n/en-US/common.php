@@ -1,21 +1,5 @@
 <?php
 
-$lang['common']['go_back']='Go Back';
-
-$lang['common']['redirect']='Redirect';
-
-$lang['common']['success']='Successful operation';
-
-$lang['common']['press_here_redirecting']='Press here to come back...';
-
-$lang['common']['admin_panel']='Admin panel';
-
-$lang['common']['send']='Send';
-
-$lang['common']['error']='Error';
-
-$lang['common']['more']='More';
-
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
@@ -56,6 +40,14 @@ $lang['common']['edit']='Edit';
 
 $lang['common']['cannot_update_insert_in_model']='I cannot insert or update this element';
 
+$lang['common']['go_back']='Go Back';
+
+$lang['common']['redirect']='Redirect';
+
+$lang['common']['success']='Successful operation';
+
+$lang['common']['press_here_redirecting']='Press here to come back...';
+
 $lang['common']['pages']='Pages';
 
 $lang['common']['no_element_chosen']='Choose option...';
@@ -71,6 +63,8 @@ $lang['common']['options']='Options';
 $lang['common']['ascent']='Up';
 
 $lang['common']['descent']='Falling';
+
+$lang['common']['send']='Send';
 
 $lang['common']['order']='Order';
 
@@ -121,6 +115,8 @@ $lang['common']['subject']='Subject';
 $lang['common']['text']='Text';
 
 $lang['common']['preview']='Preview';
+
+$lang['common']['error']='Error';
 
 $lang['common']['status']='Status';
 
@@ -190,11 +186,15 @@ $lang['common']['ip']='IP';
 
 $lang['common']['user']='User';
 
+$lang['common']['more']='More';
+
 $lang['common']['registered']='Registered';
 
 $lang['common']['messages']='Messages';
 
 $lang['common']['html_allowed']='Allowed html';
+
+$lang['common']['admin_panel']='Admin panel';
 
 $lang['common']['category']='Category';
 

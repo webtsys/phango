@@ -1,7 +1,5 @@
 <?php
 
-$lang['blog']['principal_category']='Categoría principal';
-
 $lang['blog']['inform_comment']='Se ha recibido un comentario en un post al que usted se ha suscrito';
 
 $lang['blog']['comment_made']='Comentario hecho por';
@@ -47,6 +45,8 @@ $lang['blog']['blog_options']='Opciones de blog';
 $lang['blog']['add_tags']='Añadir etiquetas';
 
 $lang['blog']['blog_father']='Blog padre';
+
+$lang['blog']['principal_category']='Categoría principal';
 
 $lang['blog']['num_post']='Número de post que aparecen en la portada de este blog';
 

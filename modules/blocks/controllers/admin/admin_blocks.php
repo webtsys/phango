@@ -212,7 +212,11 @@ function BlocksAdmin()
 			
 			//Obtain parents
 			
-			print_r($model['blocks']->components['parent']->obtain_parent_tree($arr_block_parent['IdBlocks'], 'title_block'));
+			$arr_parent=$model['blocks']->components['parent']->obtain_parent_tree($arr_block_parent['IdBlocks'], 'title_block');
+			
+			array_unshift($arr_parent, array($lang['blocks']['parent_blocks'], ''));
+			
+			echo menu_barr_hierarchy($arr_parent, 'parent', $arr_block_parent['IdBlocks']);
 			
 			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"'.$get_parent_sql, $arr_fields_form=array(), $type_list='Basic');
 

@@ -3390,23 +3390,26 @@ class ParentField extends IntegerField{
 		
 		}
 		
-		$arr_link_parent=$this->obtain_recursive_parent($id, $arr_parent, $arr_link_parent);
-		print_r($arr_link_parent);
-		//return $arr_parent;
+		$arr_link_parent=$this->obtain_recursive_parent($id, $arr_parent, $arr_link_parent, $field_ident);
+		
+		$arr_link_parent=array_reverse($arr_link_parent);
+		
+		return $arr_link_parent;
 	
 	}
 	
-	private function obtain_recursive_parent($id, $arr_parent, $arr_link_parent)
+	private function obtain_recursive_parent($id, $arr_parent, $arr_link_parent, $field_ident)
 	{
 	
 		//$arr_link_parent[]=array('nombre', 'enlace');
+		global $model;
 		
-		$arr_link_parent[]=array($arr_parent[$id][1], 'link'.$id);
+		$arr_link_parent[]=array($model[$this->parent_model]->components[$field_ident]->show_formatted($arr_parent[$id][1]), 'link'.$id);
 		
 		if($arr_parent[$id][0]>0)
 		{
 		
-			$arr_link_parent=$this->obtain_recursive_parent($arr_parent[$id][0], $arr_parent, $arr_link_parent);
+			$arr_link_parent=$this->obtain_recursive_parent($arr_parent[$id][0], $arr_parent, $arr_link_parent, $field_ident);
 	
 		}
 	

@@ -1,7 +1,5 @@
 <?php
 
-$lang['blog']['principal_category']='Main category';
-
 $lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
 
 $lang['blog']['comment_made']='Post by';
@@ -47,6 +45,8 @@ $lang['blog']['blog_options']='Blog options';
 $lang['blog']['add_tags']='Add tags';
 
 $lang['blog']['blog_father']='Father blog';
+
+$lang['blog']['principal_category']='Main category';
 
 $lang['blog']['num_post']='Number of posts on the home of this blog';
 

@@ -28,6 +28,8 @@ $lang['blocks']['url_block']='Url o contenido de la sección';
 
 $lang['blocks']['hierarchy_block']='Posición';
 
+$lang['blocks']['parent_blocks']='parent_blocks';
+
 $lang['blocks']['change_order']='Cambiar orden';
 
 $lang['blocks']['block_module_no_editable']='Sección no editable';

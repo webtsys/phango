@@ -28,6 +28,8 @@ $lang['blocks']['url_block']='Url or block content';
 
 $lang['blocks']['hierarchy_block']='Position';
 
+$lang['blocks']['parent_blocks']='parent_blocks';
+
 $lang['blocks']['change_order']='Change order';
 
 $lang['blocks']['block_module_no_editable']='Block don&#39;t editable';
