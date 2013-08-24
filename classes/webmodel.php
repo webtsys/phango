@@ -3373,11 +3373,44 @@ class ParentField extends IntegerField{
 	
 	}
 	
-	public function return_arr_parent_tree($id)
+	public function obtain_parent_tree($id, $field_ident)
 	{
 	
+		global $model;
 		
+		$arr_parent=array();
+		$arr_link_parent=array();
+		
+		$query=$model[$this->parent_model]->select('', array( $model[$this->parent_model]->idmodel, $this->name_component, $field_ident) );
+		
+		while(list($id_block, $parent, $name)=webtsys_fetch_row($query))
+		{
+		
+			$arr_parent[$id_block]=array($parent, $name);
+		
+		}
+		
+		$arr_link_parent=$this->obtain_recursive_parent($id, $arr_parent, $arr_link_parent);
+		print_r($arr_link_parent);
+		//return $arr_parent;
 	
+	}
+	
+	private function obtain_recursive_parent($id, $arr_parent, $arr_link_parent)
+	{
+	
+		//$arr_link_parent[]=array('nombre', 'enlace');
+		
+		$arr_link_parent[]=array($arr_parent[$id][1], 'link'.$id);
+		
+		if($arr_parent[$id][0]>0)
+		{
+		
+			$arr_link_parent=$this->obtain_recursive_parent($arr_parent[$id][0], $arr_parent, $arr_link_parent);
+	
+		}
+	
+		return $arr_link_parent;
 	}
 
 }

@@ -196,7 +196,7 @@ function BlocksAdmin()
 
 			$arr_fields_edit=array('title_block', 'url_block', 'activation', 'module', 'parent');
 
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
 
 			//?order_field=hierarchy_block&order_desc=0&search_word=&search_field=IdBlocks
 
@@ -207,6 +207,12 @@ function BlocksAdmin()
 				$_GET['order_desc']='0';
 
 			}
+			
+			load_libraries(array('utilities/menu_barr_hierarchy'));
+			
+			//Obtain parents
+			
+			print_r($model['blocks']->components['parent']->obtain_parent_tree($arr_block_parent['IdBlocks'], 'title_block'));
 			
 			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"'.$get_parent_sql, $arr_fields_form=array(), $type_list='Basic');
 
@@ -426,7 +432,7 @@ function LinksAdmin($url_options, $model_name, $id, $field_rows=array())
 
 	$arr_links=BasicOptionsListModel($url_options, $model_name, $id);
 	
-	$arr_links[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks_children', array('IdModule' => $_GET['IdModule'], 'op' => 0, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'IdBlocks' => $id) ).'">'.$lang['blocks']['add_children_blocks'].'</a>';
+	$arr_links[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks_children', array('IdModule' => $_GET['IdModule'], 'op' => 0, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $id) ).'">'.$lang['blocks']['add_children_blocks'].'</a>';
 
 	if( preg_match('/^static:\//', $field_rows['url_block']) )
 	{

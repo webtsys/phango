@@ -32,7 +32,7 @@ $model['blocks']->components['module']=new CharField(40);
 
 $model['blocks']->components['type_block']=new IntegerField(2);
 
-$model['blocks']->components['parent']=new ParentField('blocks', 11);
+$model['blocks']->set_component('parent', 'ParentField', array('blocks', 11) );
 
 //$model['blocks']->components['language']=new CharField(40);
 
