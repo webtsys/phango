@@ -38,6 +38,8 @@ $lang['blocks']['end_block']='Fin de sección';
 
 $lang['blocks']['static_blocks']='Secciones estáticas';
 
+$lang['blocks']['add_children_blocks']='add_children_blocks';
+
 $lang['blocks']['edit_module_if_exists']='Editar módulo si existe';
 
 $lang['blocks']['edit_html_block']='Editar bloque html';

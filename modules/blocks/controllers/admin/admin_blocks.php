@@ -152,13 +152,36 @@ function BlocksAdmin()
 	{
 
 		default:
+		
+			settype($_GET['parent'], 'integer');
+			
+			$arr_block_parent=array();
+			
+			if($_GET['parent']>0)
+			{
+			
+				$arr_block_parent=$model['blocks']->select_a_row($_GET['parent']);
+			
+			}
+			
+			settype($arr_block_parent['IdBlocks'], 'integer');
+			
+			$get_parent_sql='';
+			
+			if($arr_block_parent['IdBlocks']>0)
+			{
+			
+				$get_parent_sql=' and parent='.$arr_block_parent['IdBlocks'];
+			
+			}
 
 			$model['blocks']->func_update='Blocks';
 
 			$model['blocks']->components['url_block']->form='BlockLinks';
 			$model['blocks']->components['activation']->form='HiddenForm';
 			$model['blocks']->components['module']->form='HiddenForm';
-
+			$model['blocks']->components['parent']->form='HiddenForm';
+			
 			$model['blocks']->create_form();
 
 			$model['blocks']->forms['title_block']->label=$lang['blocks']['title_block'];
@@ -167,10 +190,11 @@ function BlocksAdmin()
 
 			$model['blocks']->forms['activation']->SetForm($_GET['activation']);
 			$model['blocks']->forms['module']->SetForm($_GET['module']);
-
+			$model['blocks']->forms['parent']->SetForm($arr_block_parent['IdBlocks']);
+			
 			$arr_fields=array('title_block', 'url_block', 'hierarchy_block');
 
-			$arr_fields_edit=array('title_block', 'url_block', 'activation', 'module');
+			$arr_fields_edit=array('title_block', 'url_block', 'activation', 'module', 'parent');
 
 			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
 
@@ -184,7 +208,7 @@ function BlocksAdmin()
 
 			}
 			
-			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"', $arr_fields_form=array(), $type_list='Basic');
+			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"'.$get_parent_sql, $arr_fields_form=array(), $type_list='Basic');
 
 			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
 		

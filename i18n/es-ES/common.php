@@ -1,5 +1,21 @@
 <?php
 
+$lang['common']['go_back']='Volver atrás';
+
+$lang['common']['redirect']='Redireccionar';
+
+$lang['common']['success']='Éxito en la operación';
+
+$lang['common']['press_here_redirecting']='Pulse aquí para volver';
+
+$lang['common']['admin_panel']='Panel de administración';
+
+$lang['common']['send']='Enviar';
+
+$lang['common']['error']='Error';
+
+$lang['common']['more']='Más';
+
 $lang['common']['field_required']='Campo requerido';
 
 $lang['common']['error_in_field']='Error en campo';
@@ -40,14 +56,6 @@ $lang['common']['edit']='Editar';
 
 $lang['common']['cannot_update_insert_in_model']='No puedo actualizar o insertar nuevo elemento';
 
-$lang['common']['go_back']='Volver atrás';
-
-$lang['common']['redirect']='Redireccionar';
-
-$lang['common']['success']='Éxito en la operación';
-
-$lang['common']['press_here_redirecting']='Pulse aquí para volver';
-
 $lang['common']['pages']='Páginas';
 
 $lang['common']['no_element_chosen']='Elija opción...';
@@ -63,8 +71,6 @@ $lang['common']['options']='Opciones';
 $lang['common']['ascent']='Ascendente';
 
 $lang['common']['descent']='Descendente';
-
-$lang['common']['send']='Enviar';
 
 $lang['common']['order']='Orden';
 
@@ -115,8 +121,6 @@ $lang['common']['subject']='Asunto';
 $lang['common']['text']='Texto';
 
 $lang['common']['preview']='Vista previa';
-
-$lang['common']['error']='Error';
 
 $lang['common']['status']='Estado';
 
@@ -186,15 +190,11 @@ $lang['common']['ip']='IP';
 
 $lang['common']['user']='Usuario';
 
-$lang['common']['more']='Más';
-
 $lang['common']['registered']='Registrado';
 
 $lang['common']['messages']='Mensajes';
 
 $lang['common']['html_allowed']='Html permitido';
-
-$lang['common']['admin_panel']='Panel de administración';
 
 $lang['common']['category']='Categoría';
 
