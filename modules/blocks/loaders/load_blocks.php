@@ -10,6 +10,12 @@ $block_urls=array();
 $block_type=array();
 $block_id=array();
 
+$block_children_title=array();
+$block_children_content=array();
+$block_children_urls=array();
+$block_children_type=array();
+$block_children_id=array();
+
 function getblock($module, $order_mods='DESC')
 {
 	
@@ -18,6 +24,12 @@ function getblock($module, $order_mods='DESC')
 	global $block_urls;
 	global $block_type;
 	global $block_id;
+	
+	global $block_children_title;
+	global $block_children_content;
+	global $block_children_urls;
+	global $block_children_type;
+	global $block_children_id;
 
 	global $model;
 	global $user_data;
@@ -100,7 +112,7 @@ function getblock($module, $order_mods='DESC')
 			
 			$module=array($last_module);
 			$no_herency[0]=1;
-			$where[0]=$last_module.' and activation="0"';
+			$where[0]=$last_module.' and activation="0" and parent=0';
 
 		}
 		
@@ -109,7 +121,7 @@ function getblock($module, $order_mods='DESC')
 
 			$module=array($last_module);
 			$no_herency[1]=1;
-			$where[1]=$last_module.' and activation="1"';
+			$where[1]=$last_module.' and activation="1" and parent=0';
 
 		}
 
@@ -123,6 +135,8 @@ function getblock($module, $order_mods='DESC')
 		}
 
 	}
+	
+	$arr_parent=array();
 	
 	$query=$model['blocks']->select('where '.implode(' or ', $where).'  and parent=0 order by module '.$order_mods.', hierarchy_block ASC');
 
@@ -178,10 +192,11 @@ function getblock($module, $order_mods='DESC')
 	
 		$block_id[$arr_check[ $result['activation'] ]][]=$result['IdBlocks'];
 		$arr_enable[$arr_check[ $result['activation'] ]]=1;
-			
+		
+		$arr_parent[]=$result['IdBlocks'];
 	}
 	
-
+	
 	if($user_data['privileges_user']==2)
 	{
 	
@@ -189,6 +204,12 @@ function getblock($module, $order_mods='DESC')
 		$block_urls['barr'][]=make_fancy_url($base_url, 'admin', 'index', 'admin_zone', $arr_data=array());;
 
 	}
+	
+	//Now child
+	
+	/*$query=$model['blocks']->select('where parent IN (\''.implode('\', \'', $arr_parent).'\')');
+	
+	while*/
 	
 	return $arr_enable['left'].$arr_enable['right'].$arr_enable['barr'];
 
