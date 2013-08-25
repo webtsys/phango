@@ -3373,7 +3373,7 @@ class ParentField extends IntegerField{
 	
 	}
 	
-	public function obtain_parent_tree($id, $field_ident)
+	public function obtain_parent_tree($id, $field_ident, $url_op)
 	{
 	
 		global $model;
@@ -3390,27 +3390,34 @@ class ParentField extends IntegerField{
 		
 		}
 		
-		$arr_link_parent=$this->obtain_recursive_parent($id, $arr_parent, $arr_link_parent, $field_ident);
+		$arr_link_parent=$this->obtain_recursive_parent($id, $arr_parent, $arr_link_parent, $field_ident, $url_op);
 		
-		$arr_link_parent=array_reverse($arr_link_parent);
+		$arr_link_parent=array_reverse($arr_link_parent, true);
 		
 		return $arr_link_parent;
 	
 	}
 	
-	private function obtain_recursive_parent($id, $arr_parent, $arr_link_parent, $field_ident)
+	private function obtain_recursive_parent($id, $arr_parent, $arr_link_parent, $field_ident, $url_op)
 	{
 	
 		//$arr_link_parent[]=array('nombre', 'enlace');
 		global $model;
 		
-		$arr_link_parent[]=array($model[$this->parent_model]->components[$field_ident]->show_formatted($arr_parent[$id][1]), 'link'.$id);
+		//$arr_link_parent=array();
 		
-		if($arr_parent[$id][0]>0)
+		if($id>0)
 		{
+			
+			$arr_link_parent[$id]=array($model[$this->parent_model]->components[$field_ident]->show_formatted($arr_parent[$id][1]), add_extra_fancy_url($url_op, array($this->name_component => $id) ) );
+			
+			if($arr_parent[$id][0]>0)
+			{
+			
+				$arr_link_parent=$this->obtain_recursive_parent($arr_parent[$id][0], $arr_parent, $arr_link_parent, $field_ident, $url_op);
 		
-			$arr_link_parent=$this->obtain_recursive_parent($arr_parent[$id][0], $arr_parent, $arr_link_parent, $field_ident);
-	
+			}
+		
 		}
 	
 		return $arr_link_parent;
