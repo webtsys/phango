@@ -166,7 +166,7 @@ function BlocksAdmin()
 			
 			settype($arr_block_parent['IdBlocks'], 'integer');
 			
-			$get_parent_sql='';
+			$get_parent_sql=' and parent=0';
 			
 			if($arr_block_parent['IdBlocks']>0)
 			{

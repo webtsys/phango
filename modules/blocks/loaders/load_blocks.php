@@ -95,7 +95,7 @@ function getblock($module, $order_mods='DESC')
 	foreach($module as $last_module)
 	{
 			
-		if($model['blocks']->select_count('where '.$last_module.' and activation=0', 'IdBlocks')>0 && $no_herency[0]==0)
+		if($model['blocks']->select_count('where '.$last_module.' and activation=0 and parent=0', 'IdBlocks')>0 && $no_herency[0]==0)
 		{
 			
 			$module=array($last_module);
@@ -104,7 +104,7 @@ function getblock($module, $order_mods='DESC')
 
 		}
 		
-		if($model['blocks']->select_count('where '.$last_module.' and activation=1', 'IdBlocks')>0  && $no_herency[1]==0)
+		if($model['blocks']->select_count('where '.$last_module.' and activation=1 and parent=0', 'IdBlocks')>0  && $no_herency[1]==0)
 		{
 
 			$module=array($last_module);
@@ -113,18 +113,18 @@ function getblock($module, $order_mods='DESC')
 
 		}
 
-		if($model['blocks']->select_count('where '.$last_module.' and activation=2', 'IdBlocks')>0 && $no_herency[2]==0)
+		if($model['blocks']->select_count('where '.$last_module.' and activation=2 and parent=0', 'IdBlocks')>0 && $no_herency[2]==0)
 		{
 
 			$module=array($last_module);
 			$no_herency[2]=1;
-			$where[2]=$last_module.' and activation="2"';
+			$where[2]=$last_module.' and activation="2" and parent=0';
 
 		}
 
 	}
 	
-	$query=$model['blocks']->select('where '.implode(' or ', $where).' order by module '.$order_mods.', hierarchy_block ASC');
+	$query=$model['blocks']->select('where '.implode(' or ', $where).'  and parent=0 order by module '.$order_mods.', hierarchy_block ASC');
 
 	$result_q=array();
 	
