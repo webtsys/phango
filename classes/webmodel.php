@@ -5087,6 +5087,7 @@ function load_css_view()
 	//Delete repeat scripts...
 
 	$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
+	$arr_final_jscript=array();
 
 	foreach($arr_cache_css as $idcss => $css)
 	{
