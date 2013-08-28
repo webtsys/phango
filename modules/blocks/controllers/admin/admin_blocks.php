@@ -233,15 +233,17 @@ function BlocksAdmin()
 			
 			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"'.$get_parent_sql, $arr_fields_form=array(), $type_list='Basic');
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
+			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
 		
 		break;
 
 		case 2:
+		
+			settype($_GET['parent'], 'integer');
 
 			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
 
-			GeneratePositionModel('blocks', 'title_block', 'hierarchy_block', $url, 'where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"');
+			GeneratePositionModel('blocks', 'title_block', 'hierarchy_block', $url, 'where activation='.$_GET['activation'].' and module="'.$_GET['module'].'" and parent='.$_GET['parent']);
 
 			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
