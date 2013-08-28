@@ -50,4 +50,6 @@ $lang['blocks']['html_code']='Código html';
 
 $lang['blocks']['choose_lang']='Elegir lenguaje';
 
+$lang['blocks']['block']='Sección';
+
 ?>

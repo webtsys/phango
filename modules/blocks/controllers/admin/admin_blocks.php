@@ -171,6 +171,8 @@ function BlocksAdmin()
 			
 			}
 			
+			$model['blocks']->label=$lang['blocks']['block'];
+			
 			settype($arr_block_parent['IdBlocks'], 'integer');
 			
 			$get_parent_sql=' and parent=0';
