@@ -40,7 +40,7 @@ $lang['blocks']['end_block']='End block';
 
 $lang['blocks']['static_blocks']='Static blocks';
 
-$lang['blocks']['add_children_blocks']='add_children_blocks';
+$lang['blocks']['add_children_blocks']='Add children blocks';
 
 $lang['blocks']['edit_module_if_exists']='Edit module if exists';
 
