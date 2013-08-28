@@ -241,7 +241,7 @@ function BlocksAdmin()
 		
 			settype($_GET['parent'], 'integer');
 
-			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $_GET['parent']) );
 
 			GeneratePositionModel('blocks', 'title_block', 'hierarchy_block', $url, 'where activation='.$_GET['activation'].' and module="'.$_GET['module'].'" and parent='.$_GET['parent']);
 

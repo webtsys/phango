@@ -737,7 +737,7 @@ function GeneratePositionModel($model_name, $field_name, $field_position, $url, 
 	global $base_path, $arr_block, $lang, $model;
 
 	settype($_GET['action_field'], 'integer');
-
+	
 	$num_order=$model[$model_name]->select_count($where, $model[$model_name]->idmodel );
 
 	if($num_order>0)

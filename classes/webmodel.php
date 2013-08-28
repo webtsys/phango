@@ -417,12 +417,15 @@ class Webmodel {
 			
 			//Load method for checks the values on database directly. PhangoFields how ParentField, need this for don't create circular dependencies.
 		
-			foreach($this->components as $name_field => $component)
+			/*foreach($this->components as $name_field => $component)
+			{*/
+			
+			foreach($fields as $name_field => $val_field)
 			{
 			
 				if(method_exists($component,  'process_update_field'))
 				{
-				
+					
 					if(!$component->process_update_field($this, $name_field, $conditions, $fields[$name_field]))
 					{
 					
