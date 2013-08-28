@@ -28,7 +28,7 @@ $lang['blocks']['url_block']='Url or block content';
 
 $lang['blocks']['hierarchy_block']='Position';
 
-$lang['blocks']['parent_blocks']='parent_blocks';
+$lang['blocks']['parent_blocks']='Parent blocks';
 
 $lang['blocks']['change_order']='Change order';
 

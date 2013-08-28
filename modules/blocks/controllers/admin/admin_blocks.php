@@ -22,10 +22,17 @@ function BlocksAdmin()
 	<?php
 	
 	set_csrf_key();
+	
+	if($_GET['module']=='')
+	{
+	
+		$_GET['module']='none';
+	
+	}
 
 	$query=$model['module']->select('where app_index=1', array('IdModule', 'name'));
 
-	$arr_modules=array($_GET['module'], $lang['blocks']['module_no'], '');
+	$arr_modules=array($_GET['module'], $lang['blocks']['module_no'], 'none');
 	$arr_check=array();
 	
 	while(list($idmodule, $module_name)=webtsys_fetch_row($query))
