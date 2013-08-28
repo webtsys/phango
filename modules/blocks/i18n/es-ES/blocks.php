@@ -40,7 +40,7 @@ $lang['blocks']['end_block']='Fin de sección';
 
 $lang['blocks']['static_blocks']='Secciones estáticas';
 
-$lang['blocks']['add_children_blocks']='add_children_blocks';
+$lang['blocks']['add_children_blocks']='Añadir sección hija';
 
 $lang['blocks']['edit_module_if_exists']='Editar módulo si existe';
 
