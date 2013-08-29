@@ -171,8 +171,6 @@ function BlocksAdmin()
 			
 			}
 			
-			$model['blocks']->label=$lang['blocks']['block'];
-			
 			settype($arr_block_parent['IdBlocks'], 'integer');
 			
 			$get_parent_sql=' and parent=0';
@@ -183,6 +181,8 @@ function BlocksAdmin()
 				$get_parent_sql=' and parent='.$arr_block_parent['IdBlocks'];
 			
 			}
+			
+			$model['blocks']->label=$lang['blocks']['block'];
 
 			$model['blocks']->func_update='Blocks';
 
@@ -240,6 +240,33 @@ function BlocksAdmin()
 		case 2:
 		
 			settype($_GET['parent'], 'integer');
+			
+			$arr_block_parent=array();
+			
+			if($_GET['parent']>0)
+			{
+			
+				$arr_block_parent=$model['blocks']->select_a_row($_GET['parent']);
+			
+			}
+			
+			settype($arr_block_parent['IdBlocks'], 'integer');
+			
+			$url_options_base=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			
+			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
+			
+			//Obtain parents
+			
+			$arr_parent=$model['blocks']->components['parent']->obtain_parent_tree($arr_block_parent['IdBlocks'], 'title_block', $url_options_base);
+			
+			//array_unshift($arr_parent, array($lang['blocks']['parent_blocks'], ''));
+			
+			$arr_final_parent=array(0 => array($lang['blocks']['parent_blocks'], $url_options_base))+$arr_parent;
+			
+			load_libraries(array('utilities/menu_barr_hierarchy'));
+			
+			echo menu_barr_hierarchy($arr_final_parent, 'parent', $arr_block_parent['IdBlocks'], 1);
 
 			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $_GET['parent']) );
 
