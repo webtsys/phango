@@ -1,8 +1,8 @@
 <?php
 
-$lang['common']['send']='Enviar';
+$lang['common']['logout']='Desconectarse';
 
-$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+$lang['common']['send']='Enviar';
 
 $lang['common']['order_by']='Ordenar por';
 
@@ -16,11 +16,11 @@ $lang['common']['reset']='Reiniciar';
 
 $lang['common']['order_and_search']='Ordenar y buscar';
 
+$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+
 $lang['common']['email']='Email';
 
 $lang['common']['password']='Contraseña';
-
-$lang['common']['logout']='Desconectarse';
 
 $lang['common']['register_user']='Registro de usuario';
 

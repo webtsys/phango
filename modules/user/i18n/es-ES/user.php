@@ -1,14 +1,8 @@
 <?php
 
-$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
+$lang['user']['login']='Identificarse';
 
-$lang['user']['see_message_user']='Ver mensaje';
-
-$lang['user']['text_welcome']='Bienvenido a nuestra página web';
-
-$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
-
-$lang['user']['thanks']='Gracias.';
+$lang['user']['my_account']='Mi cuenta';
 
 $lang['user']['modify_user']='Modificar usuario';
 
@@ -16,17 +10,23 @@ $lang['user']['change_data']='Cambiar datos';
 
 $lang['user']['private_messages']='Mensajes privados';
 
-$lang['user']['register']='Registrarse';
+$lang['user']['text_welcome']='Bienvenido a nuestra página web';
 
-$lang['user']['push_remember']='Recordar contraseña';
+$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
+
+$lang['user']['thanks']='Gracias.';
+
+$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
+
+$lang['user']['see_message_user']='Ver mensaje';
 
 $lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
 
 $lang['user']['remember_password']='Recordar contraseña';
 
-$lang['user']['login']='Identificarse';
+$lang['user']['register']='Registrarse';
 
-$lang['user']['my_account']='Mi cuenta';
+$lang['user']['push_remember']='Recordar contraseña';
 
 $lang['user']['without_special_rank']='Sin rango especial';
 

@@ -1,14 +1,8 @@
 <?php
 
-$lang['user']['message_send_user']='Other user sent a message to your mailbox';
+$lang['user']['login']='Login';
 
-$lang['user']['see_message_user']='View message';
-
-$lang['user']['text_welcome']='Welcome to our webpage';
-
-$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
-
-$lang['user']['thanks']='Thanks.';
+$lang['user']['my_account']='My account';
 
 $lang['user']['modify_user']='Change user';
 
@@ -16,17 +10,23 @@ $lang['user']['change_data']='Change data';
 
 $lang['user']['private_messages']='Private messages';
 
-$lang['user']['register']='Register';
+$lang['user']['text_welcome']='Welcome to our webpage';
 
-$lang['user']['push_remember']='Remember password';
+$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
+
+$lang['user']['thanks']='Thanks.';
+
+$lang['user']['message_send_user']='Other user sent a message to your mailbox';
+
+$lang['user']['see_message_user']='View message';
 
 $lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
 
 $lang['user']['remember_password']='Remember password';
 
-$lang['user']['login']='Login';
+$lang['user']['register']='Register';
 
-$lang['user']['my_account']='My account';
+$lang['user']['push_remember']='Remember password';
 
 $lang['user']['without_special_rank']='Without special rank';
 
