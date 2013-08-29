@@ -1,15 +1,5 @@
 <?php
 
-$lang['user']['without_special_rank']='Sin rango especial';
-
-$lang['user']['login']='Identificarse';
-
-$lang['user']['my_account']='Mi cuenta';
-
-$lang['user']['register']='Registrarse';
-
-$lang['user']['push_remember']='Recordar contraseña';
-
 $lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
 
 $lang['user']['see_message_user']='Ver mensaje';
@@ -22,13 +12,23 @@ $lang['user']['thanks']='Gracias.';
 
 $lang['user']['modify_user']='Modificar usuario';
 
+$lang['user']['change_data']='Cambiar datos';
+
+$lang['user']['private_messages']='Mensajes privados';
+
+$lang['user']['register']='Registrarse';
+
+$lang['user']['push_remember']='Recordar contraseña';
+
 $lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
 
 $lang['user']['remember_password']='Recordar contraseña';
 
-$lang['user']['change_data']='Cambiar datos';
+$lang['user']['login']='Identificarse';
 
-$lang['user']['private_messages']='Mensajes privados';
+$lang['user']['my_account']='Mi cuenta';
+
+$lang['user']['without_special_rank']='Sin rango especial';
 
 $lang['user']['profiles_list']='Lista de perfiles';
 

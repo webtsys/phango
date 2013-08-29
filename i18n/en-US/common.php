@@ -1,5 +1,31 @@
 <?php
 
+$lang['common']['send']='Send';
+
+$lang['common']['with_*_field_required']='The fields with * are required';
+
+$lang['common']['order_by']='Order by';
+
+$lang['common']['in_order']='In order';
+
+$lang['common']['search']='Search';
+
+$lang['common']['search_by']='Search by';
+
+$lang['common']['reset']='Reset';
+
+$lang['common']['order_and_search']='Search and order';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Password';
+
+$lang['common']['logout']='Logout';
+
+$lang['common']['register_user']='User registration';
+
+$lang['common']['login']='Login';
+
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
@@ -64,8 +90,6 @@ $lang['common']['ascent']='Up';
 
 $lang['common']['descent']='Falling';
 
-$lang['common']['send']='Send';
-
 $lang['common']['order']='Order';
 
 $lang['common']['no_exists_elements_to_order']='There are no items to order';
@@ -77,30 +101,6 @@ $lang['common']['cannot_load_jquery']='Not loaded jquery, required for this meth
 $lang['common']['the_value_can_not_be_greater_than_100']='The value can not be greater than 100 or less than zero';
 
 $lang['common']['home']='Home';
-
-$lang['common']['logout']='Logout';
-
-$lang['common']['login']='Login';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Password';
-
-$lang['common']['register_user']='User registration';
-
-$lang['common']['with_*_field_required']='The fields with * are required';
-
-$lang['common']['order_by']='Order by';
-
-$lang['common']['in_order']='In order';
-
-$lang['common']['search']='Search';
-
-$lang['common']['search_by']='Search by';
-
-$lang['common']['reset']='Reset';
-
-$lang['common']['order_and_search']='Search and order';
 
 $lang['common']['name']='Name';
 

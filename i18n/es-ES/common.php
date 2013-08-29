@@ -1,5 +1,31 @@
 <?php
 
+$lang['common']['send']='Enviar';
+
+$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+
+$lang['common']['order_by']='Ordenar por';
+
+$lang['common']['in_order']='En orden';
+
+$lang['common']['search']='Buscar';
+
+$lang['common']['search_by']='Buscar por';
+
+$lang['common']['reset']='Reiniciar';
+
+$lang['common']['order_and_search']='Ordenar y buscar';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Contraseña';
+
+$lang['common']['logout']='Desconectarse';
+
+$lang['common']['register_user']='Registro de usuario';
+
+$lang['common']['login']='Identificarse';
+
 $lang['common']['field_required']='Campo requerido';
 
 $lang['common']['error_in_field']='Error en campo';
@@ -64,8 +90,6 @@ $lang['common']['ascent']='Ascendente';
 
 $lang['common']['descent']='Descendente';
 
-$lang['common']['send']='Enviar';
-
 $lang['common']['order']='Orden';
 
 $lang['common']['no_exists_elements_to_order']='No existen elementos a ordenar';
@@ -77,30 +101,6 @@ $lang['common']['cannot_load_jquery']='No se ha cargado jquery, necesario para q
 $lang['common']['the_value_can_not_be_greater_than_100']='El valor no puede ser más grande de 100 ni menor que 0';
 
 $lang['common']['home']='Inicio';
-
-$lang['common']['logout']='Desconectarse';
-
-$lang['common']['login']='Identificarse';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Contraseña';
-
-$lang['common']['register_user']='Registro de usuario';
-
-$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
-
-$lang['common']['order_by']='Ordenar por';
-
-$lang['common']['in_order']='En orden';
-
-$lang['common']['search']='Buscar';
-
-$lang['common']['search_by']='Buscar por';
-
-$lang['common']['reset']='Reiniciar';
-
-$lang['common']['order_and_search']='Ordenar y buscar';
 
 $lang['common']['name']='Nombre';
 

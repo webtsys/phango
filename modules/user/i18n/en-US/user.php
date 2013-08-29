@@ -1,15 +1,5 @@
 <?php
 
-$lang['user']['without_special_rank']='Without special rank';
-
-$lang['user']['login']='Login';
-
-$lang['user']['my_account']='My account';
-
-$lang['user']['register']='Register';
-
-$lang['user']['push_remember']='Remember password';
-
 $lang['user']['message_send_user']='Other user sent a message to your mailbox';
 
 $lang['user']['see_message_user']='View message';
@@ -22,13 +12,23 @@ $lang['user']['thanks']='Thanks.';
 
 $lang['user']['modify_user']='Change user';
 
+$lang['user']['change_data']='Change data';
+
+$lang['user']['private_messages']='Private messages';
+
+$lang['user']['register']='Register';
+
+$lang['user']['push_remember']='Remember password';
+
 $lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
 
 $lang['user']['remember_password']='Remember password';
 
-$lang['user']['change_data']='Change data';
+$lang['user']['login']='Login';
 
-$lang['user']['private_messages']='Private messages';
+$lang['user']['my_account']='My account';
+
+$lang['user']['without_special_rank']='Without special rank';
 
 $lang['user']['profiles_list']='Profiles list';
 
