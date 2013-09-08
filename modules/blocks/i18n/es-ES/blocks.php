@@ -1,5 +1,9 @@
 <?php
 
+$lang['blocks']['edit_html_block']='Editar bloque html';
+
+$lang['blocks']['html_code']='Código html';
+
 $lang['blocks']['edit_blocks']='Editar secciones';
 
 $lang['blocks']['edit_blocks_module']='Editar secciones del módulo elegido';
@@ -21,6 +25,8 @@ $lang['blocks']['blocks_left']='Secciones de columna izquierda';
 $lang['blocks']['blocks_right']='Secciones de columna derecha';
 
 $lang['blocks']['activate_barr']='Barra superior';
+
+$lang['blocks']['block']='Sección';
 
 $lang['blocks']['title_block']='Titulo de la sección';
 
@@ -44,12 +50,6 @@ $lang['blocks']['add_children_blocks']='Añadir sección hija';
 
 $lang['blocks']['edit_module_if_exists']='Editar módulo si existe';
 
-$lang['blocks']['edit_html_block']='Editar bloque html';
-
-$lang['blocks']['html_code']='Código html';
-
 $lang['blocks']['choose_lang']='Elegir lenguaje';
-
-$lang['blocks']['block']='Sección';
 
 ?>
