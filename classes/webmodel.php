@@ -4225,6 +4225,47 @@ function DateFormSet($post, $value)
 
 }
 
+function RadioIntForm($name="", $class='', $value=array(), $more_options='')
+{
+	$select='';
+
+	list($key, $default)= each($value);
+
+	$arr_selected=array();
+
+	$arr_selected[$default]="checked";
+
+	//Check if array is safe. 
+
+	$z=count($value);
+	
+	for($x=1;$x<$z;$x+=2)
+	{
+	
+		$val=$value[$x+1];
+		
+		settype($arr_selected[$val], "string");
+	
+		$select.= $value[$x].' <input type="radio" name="'.$name.'" value="'.$val.'" '.$arr_selected[$val].' />'."\n";
+		
+	}
+
+	return $select;
+
+}
+
+//Prepare the value for the select
+
+function RadioIntFormSet($post, $value)
+{
+	
+	settype($value, 'integer');
+
+	$post[0]=$value;
+	
+	return $post;
+
+}
 //Function for make pretty urls...
 
 //If active fancy urls...
