@@ -1,12 +1,12 @@
 <?php
 
-$lang['blog']['principal_category']='Main category';
-
 $lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
 
 $lang['blog']['comment_made']='Post by';
 
 $lang['blog']['down_article']='Unsubscribe';
+
+$lang['blog']['principal_category']='Main category';
 
 $lang['blog']['edit_son_blogs']='Edit son blogs';
 

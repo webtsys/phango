@@ -1,5 +1,35 @@
 <?php
 
+$lang['common']['no']='No';
+
+$lang['common']['yes']='Yes';
+
+$lang['common']['send']='Send';
+
+$lang['common']['with_*_field_required']='The fields with * are required';
+
+$lang['common']['order_by']='Order by';
+
+$lang['common']['in_order']='In order';
+
+$lang['common']['search']='Search';
+
+$lang['common']['search_by']='Search by';
+
+$lang['common']['reset']='Reset';
+
+$lang['common']['order_and_search']='Search and order';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Password';
+
+$lang['common']['logout']='Logout';
+
+$lang['common']['register_user']='User registration';
+
+$lang['common']['login']='Login';
+
 $lang['common']['no_element_chosen']='Choose option...';
 
 $lang['common']['any_option_chosen']='Choose any option...';
@@ -32,8 +62,6 @@ $lang['common']['ascent']='Up';
 
 $lang['common']['descent']='Falling';
 
-$lang['common']['send']='Send';
-
 $lang['common']['order']='Order';
 
 $lang['common']['no_exists_elements_to_order']='There are no items to order';
@@ -49,10 +77,6 @@ $lang['common']['cannot_load_jquery']='Not loaded jquery, required for this meth
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
-
-$lang['common']['no']='No';
-
-$lang['common']['yes']='Yes';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error: cannot upload this file to the server';
 
@@ -101,10 +125,6 @@ $lang['common']['unlimited']='Unlimited';
 $lang['common']['width']='Width';
 
 $lang['common']['height']='Height';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Password';
 
 $lang['common']['error_email_format']='Error in mail format';
 
@@ -173,26 +193,6 @@ $lang['common']['rank_name']='Rank';
 $lang['common']['interests']='Interests';
 
 $lang['common']['signature']='Signature';
-
-$lang['common']['logout']='Logout';
-
-$lang['common']['order_by']='Order by';
-
-$lang['common']['in_order']='In order';
-
-$lang['common']['search']='Search';
-
-$lang['common']['search_by']='Search by';
-
-$lang['common']['reset']='Reset';
-
-$lang['common']['order_and_search']='Search and order';
-
-$lang['common']['with_*_field_required']='The fields with * are required';
-
-$lang['common']['register_user']='User registration';
-
-$lang['common']['login']='Login';
 
 $lang['common']['select']='Select';
 

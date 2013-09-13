@@ -1,5 +1,35 @@
 <?php
 
+$lang['common']['no']='No';
+
+$lang['common']['yes']='Sí';
+
+$lang['common']['send']='Enviar';
+
+$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+
+$lang['common']['order_by']='Ordenar por';
+
+$lang['common']['in_order']='En orden';
+
+$lang['common']['search']='Buscar';
+
+$lang['common']['search_by']='Buscar por';
+
+$lang['common']['reset']='Reiniciar';
+
+$lang['common']['order_and_search']='Ordenar y buscar';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Contraseña';
+
+$lang['common']['logout']='Desconectarse';
+
+$lang['common']['register_user']='Registro de usuario';
+
+$lang['common']['login']='Identificarse';
+
 $lang['common']['no_element_chosen']='Elija opción...';
 
 $lang['common']['any_option_chosen']='Elija cualquier opción...';
@@ -32,8 +62,6 @@ $lang['common']['ascent']='Ascendente';
 
 $lang['common']['descent']='Descendente';
 
-$lang['common']['send']='Enviar';
-
 $lang['common']['order']='Orden';
 
 $lang['common']['no_exists_elements_to_order']='No existen elementos a ordenar';
@@ -49,10 +77,6 @@ $lang['common']['cannot_load_jquery']='No se ha cargado jquery, necesario para q
 $lang['common']['field_required']='Campo requerido';
 
 $lang['common']['error_in_field']='Error en campo';
-
-$lang['common']['no']='No';
-
-$lang['common']['yes']='Sí';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error, no puedo subir este fichero al servidor. ¿Hay permisos para ello?';
 
@@ -101,10 +125,6 @@ $lang['common']['unlimited']='Ilimitado';
 $lang['common']['width']='Anchura';
 
 $lang['common']['height']='Altura';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Contraseña';
 
 $lang['common']['error_email_format']='Error en el formato de email';
 
@@ -173,26 +193,6 @@ $lang['common']['rank_name']='Rango';
 $lang['common']['interests']='Intereses';
 
 $lang['common']['signature']='Firma';
-
-$lang['common']['logout']='Desconectarse';
-
-$lang['common']['order_by']='Ordenar por';
-
-$lang['common']['in_order']='En orden';
-
-$lang['common']['search']='Buscar';
-
-$lang['common']['search_by']='Buscar por';
-
-$lang['common']['reset']='Reiniciar';
-
-$lang['common']['order_and_search']='Ordenar y buscar';
-
-$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
-
-$lang['common']['register_user']='Registro de usuario';
-
-$lang['common']['login']='Identificarse';
 
 $lang['common']['select']='Seleccionar';
 

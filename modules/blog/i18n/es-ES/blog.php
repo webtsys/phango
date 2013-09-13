@@ -1,12 +1,12 @@
 <?php
 
-$lang['blog']['principal_category']='Categoría principal';
-
 $lang['blog']['inform_comment']='Se ha recibido un comentario en un post al que usted se ha suscrito';
 
 $lang['blog']['comment_made']='Comentario hecho por';
 
 $lang['blog']['down_article']='Dar de baja';
+
+$lang['blog']['principal_category']='Categoría principal';
 
 $lang['blog']['edit_son_blogs']='Editar blogs hijos';
 

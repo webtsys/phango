@@ -1027,6 +1027,8 @@ class Webmodel {
 				//Create form from model's components
 
 				$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
+				
+				$this->forms[$component_name]->label=$this->components[$component_name]->label;
 
 				//Set parameters to default
 				$parameters='';

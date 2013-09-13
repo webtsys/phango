@@ -1,5 +1,33 @@
 <?php
 
+$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
+
+$lang['user']['see_message_user']='Ver mensaje';
+
+$lang['user']['text_welcome']='Bienvenido a nuestra página web';
+
+$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
+
+$lang['user']['thanks']='Gracias.';
+
+$lang['user']['modify_user']='Modificar usuario';
+
+$lang['user']['change_data']='Cambiar datos';
+
+$lang['user']['private_messages']='Mensajes privados';
+
+$lang['user']['register']='Registrarse';
+
+$lang['user']['push_remember']='Recordar contraseña';
+
+$lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
+
+$lang['user']['remember_password']='Recordar contraseña';
+
+$lang['user']['login']='Identificarse';
+
+$lang['user']['my_account']='Mi cuenta';
+
 $lang['user']['without_special_rank']='Sin rango especial';
 
 $lang['user']['choose_avatar']='Elegir avatar';
@@ -172,10 +200,6 @@ $lang['user']['re_mprivate']='RE';
 
 $lang['user']['send_message']='Enviar mensaje';
 
-$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
-
-$lang['user']['see_message_user']='Ver mensaje';
-
 $lang['user']['need_data']='Se necesitan más datos';
 
 $lang['user']['data_overloaded_why']='Hay sobrecarga de datos';
@@ -207,30 +231,6 @@ $lang['user']['see_profile']='Ver perfil';
 $lang['user']['send_private']='Enviar mensaje privado';
 
 $lang['user']['go_profiles']='Ir a perfiles';
-
-$lang['user']['login']='Identificarse';
-
-$lang['user']['my_account']='Mi cuenta';
-
-$lang['user']['modify_user']='Modificar usuario';
-
-$lang['user']['change_data']='Cambiar datos';
-
-$lang['user']['private_messages']='Mensajes privados';
-
-$lang['user']['text_welcome']='Bienvenido a nuestra página web';
-
-$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
-
-$lang['user']['thanks']='Gracias.';
-
-$lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
-
-$lang['user']['remember_password']='Recordar contraseña';
-
-$lang['user']['register']='Registrarse';
-
-$lang['user']['push_remember']='Recordar contraseña';
 
 $lang['user']['name']='Nombre';
 
