@@ -312,6 +312,7 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 		if($model['user']->update($post, 'where IdUser='.$result['IdUser']))
 		{
 			
+			
 			setcookie(COOKIE_NAME, $id, $arr_pconnect[$automatic_login], $cookie_path);
 			
 			//$_SESSION['webtsys_id']=$id;
