@@ -1027,6 +1027,8 @@ class Webmodel {
 				//Create form from model's components
 
 				$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
+				
+				$this->forms[$component_name]->label=$this->components[$component_name]->label;
 
 				//Set parameters to default
 				$parameters='';
@@ -4143,11 +4145,11 @@ function SelectManyFormSet($post, $value)
 
 //A special form for dates in format day/month/year
 
-function DateForm($field, $class='', $value='', $set_time=1)
+function DateForm($field, $class='', $value='', $set_time=1, $see_title=1)
 {
 
 	global $lang, $user_data;
-
+	
 	if($value==0)
 	{
 
@@ -4171,21 +4173,42 @@ function DateForm($field, $class='', $value='', $set_time=1)
 		$minute=date('i', $value);
 		$second=date('s', $value);
 	}
-		
-
-	$date='<span id="'.$field.'_field_form"><input type="text" name="'.$field.'[]" value="'.$day.'" size="2"/>'."\n";
-	$date.='<input type="text" name="'.$field.'[]" value="'.$month.'" size="2"/>'."\n";
-	$date.='<input type="text" name="'.$field.'[]" value="'.$year.'" size="4"/>'."\n&nbsp;&nbsp;&nbsp;</span>";
 	
-	if($set_time==1)
+	$date='<span id="'.$field.'_field_form" class="'.$class.'">';
+	
+	if($set_time<=1)
 	{
 
-		$date.=$lang['common']['hour'].' <input type="text" name="'.$field.'[]" value="'.$hour.'" size="2"/>'."\n";
-		$date.=$lang['common']['minute'].' <input type="text" name="'.$field.'[]" value="'.$minute.'" size="2"/>'."\n";
-		$date.=$lang['common']['second'].' <input type="text" name="'.$field.'[]" value="'.$second.'" size="2"/>'."\n";
+		$date.='<input type="text" name="'.$field.'[]" value="'.$day.'" size="2" maxlength="2"/>'."\n";
+		$date.='<input type="text" name="'.$field.'[]" value="'.$month.'" size="2" maxlength="2"/>'."\n";
+		$date.='<input type="text" name="'.$field.'[]" value="'.$year.'" size="4" maxlength="4"/>'."\n&nbsp;&nbsp;&nbsp;";
+		
+	}
+	
+	if($set_time>0)
+	{
+	
+		$hour_txt=$lang['common']['hour'];
+		$minute_txt=$lang['common']['minute'];
+		$second_txt=$lang['common']['second'];
+		
+		if($see_title==0)
+		{
+		
+			$hour_txt='';
+			$minute_txt='';
+			$second_txt='';
+		
+		}
+
+		$date.=$hour_txt.' <input type="text" name="'.$field.'[]" value="'.$hour.'" size="2" maxlength="2" />'."\n";
+		$date.=$minute_txt.' <input type="text" name="'.$field.'[]" value="'.$minute.'" size="2" maxlength="2" />'."\n";
+		$date.=$second_txt.' <input type="text" name="'.$field.'[]" value="'.$second.'" size="2" maxlength="2" />'."\n";
 		
 	}
 
+	echo '</span>';
+	
 	return $date;
 
 }
@@ -4225,6 +4248,47 @@ function DateFormSet($post, $value)
 
 }
 
+function RadioIntForm($name="", $class='', $value=array(), $more_options='')
+{
+	$select='';
+
+	list($key, $default)= each($value);
+
+	$arr_selected=array();
+
+	$arr_selected[$default]="checked";
+
+	//Check if array is safe. 
+
+	$z=count($value);
+	
+	for($x=1;$x<$z;$x+=2)
+	{
+	
+		$val=$value[$x+1];
+		
+		settype($arr_selected[$val], "string");
+	
+		$select.= $value[$x].' <input type="radio" name="'.$name.'" value="'.$val.'" '.$arr_selected[$val].' />'."\n";
+		
+	}
+
+	return $select;
+
+}
+
+//Prepare the value for the select
+
+function RadioIntFormSet($post, $value)
+{
+	
+	settype($value, 'integer');
+
+	$post[0]=$value;
+	
+	return $post;
+
+}
 //Function for make pretty urls...
 
 //If active fancy urls...

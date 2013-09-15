@@ -6,7 +6,25 @@ $lang['blog']['comment_made']='Comentario hecho por';
 
 $lang['blog']['down_article']='Dar de baja';
 
-$lang['blog']['search_results']='Resultados de la busqueda';
+$lang['blog']['principal_category']='Categoría principal';
+
+$lang['blog']['edit_son_blogs']='Editar blogs hijos';
+
+$lang['blog']['edit_moderators']='Editar moderadores';
+
+$lang['blog']['edit_articles']='Editar artículos';
+
+$lang['blog']['add_tags']='Añadir etiquetas';
+
+$lang['blog']['subscript_post']='Suscribir a artículo';
+
+$lang['blog']['save_data']='Guardar datos';
+
+$lang['blog']['error_captcha']='Error en captcha';
+
+$lang['blog']['author']='Autor';
+
+$lang['blog']['search_tags_results']='Resultados de busqueda de etiquetas';
 
 $lang['blog']['no_tags']='Sin etiquetas';
 
@@ -16,7 +34,7 @@ $lang['blog']['no_contents']='Sin contenidos';
 
 $lang['blog']['no_search']='No hay resultados';
 
-$lang['blog']['search_blog']='Buscar en blog';
+$lang['blog']['search_tags']='Busqueda en etiquetas';
 
 $lang['blog']['goback_admin_blog']='Volver a administrador';
 
@@ -25,8 +43,6 @@ $lang['blog']['tree_category']='Arbol de categorías';
 $lang['blog']['choose_the_blog_and_edit']='Elija el blog y editelo';
 
 $lang['blog']['entrance']='Entradilla';
-
-$lang['blog']['author']='Autor';
 
 $lang['blog']['accept_comment']='Aceptar comentarios';
 
@@ -40,13 +56,11 @@ $lang['blog']['do_you_want_delete_post']='¿Quieres eliminar este comentario?';
 
 $lang['blog']['moderate_blogs']='Moderar blogs';
 
+$lang['blog']['wait_admin']='Espere a que algún administrador incluya algún contenido';
+
 $lang['blog']['blog_options']='Opciones de blog';
 
-$lang['blog']['add_tags']='Añadir etiquetas';
-
 $lang['blog']['blog_father']='Blog padre';
-
-$lang['blog']['principal_category']='Categoría principal';
 
 $lang['blog']['num_post']='Número de post que aparecen en la portada de este blog';
 
@@ -56,13 +70,19 @@ $lang['blog']['add_moderators_blog']='Editar moderadores de este blog';
 
 $lang['blog']['go_back_index_blog']='Volver a página principal de blog';
 
-$lang['blog']['wait_admin']='Espere a que algún administrador incluya algún contenido';
+$lang['blog']['search_results']='Resultados de la busqueda';
 
-$lang['blog']['search_tags_results']='Resultados de busqueda de etiquetas';
+$lang['blog']['search_blog']='Buscar en blog';
 
-$lang['blog']['search_tags']='Busqueda en etiquetas';
+$lang['blog']['edit_comment']='Editar comentario';
 
-$lang['blog']['please_wait_a_seconds_for_send_a_new_message']='Por favor, espera unos segundos antes de enviar un nuevo mensaje';
+$lang['blog']['delete_comment']='Borrar comentario';
+
+$lang['blog']['read_more']='Leer más';
+
+$lang['blog']['permalink']='Enlace permanente';
+
+$lang['blog']['comments']='Comentarios';
 
 $lang['blog']['send_post']='Enviar respuesta';
 
@@ -96,27 +116,7 @@ $lang['blog']['you_unsubscribe_from_posts_explain']='Por favor, elija alguna de 
 
 $lang['blog']['down_email_in_article']='Dar de baja en este artículo';
 
-$lang['blog']['edit_comment']='Editar comentario';
-
-$lang['blog']['delete_comment']='Borrar comentario';
-
-$lang['blog']['read_more']='Leer más';
-
-$lang['blog']['permalink']='Enlace permanente';
-
-$lang['blog']['comments']='Comentarios';
-
-$lang['blog']['edit_son_blogs']='Editar blogs hijos';
-
-$lang['blog']['edit_moderators']='Editar moderadores';
-
-$lang['blog']['edit_articles']='Editar artículos';
-
-$lang['blog']['subscript_post']='Suscribir a artículo';
-
-$lang['blog']['save_data']='Guardar datos';
-
-$lang['blog']['error_captcha']='Error en captcha';
+$lang['blog']['please_wait_a_seconds_for_send_a_new_message']='Por favor, espera unos segundos antes de enviar un nuevo mensaje';
 
 $lang['blog']['posted_by']='Enviado por';
 

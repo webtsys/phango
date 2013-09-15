@@ -79,9 +79,9 @@ else
 {
 	
 	
-	$query=$model['anonymous']->select('WHERE key_connection="'.$webtsys_id.'"', array('IdAnonymous', 'write_message', 'key_csrf', 'language'));
+	$query=$model['anonymous']->select('WHERE key_connection="'.$webtsys_id.'"', array('IdAnonymous', 'write_message', 'key_csrf', 'language', 'key_connection'));
 	
-	list($num_user, $user_data['write_message'], $csrf_token, $language_anom)=webtsys_fetch_row($query);
+	list($num_user, $user_data['write_message'], $csrf_token, $language_anom, $user_data['key_connection'])=webtsys_fetch_row($query);
 	
 	settype($num_user, 'integer');
 	
