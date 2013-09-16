@@ -7,6 +7,13 @@ function generate_paginator_method_class($class, $where, $arr_fields, $arr_extra
 	
 	load_libraries(array('table_config', 'pages', 'generate_admin_ng'));
 	
+	if(count($class->forms)==0)
+	{
+	
+		$class->create_form();
+	
+	}
+	
 	if(!in_array($class->idmodel, $arr_fields['fields']))
 	{
 	
