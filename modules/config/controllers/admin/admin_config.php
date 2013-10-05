@@ -22,7 +22,7 @@ function ConfigAdmin()
 
 	while ( $appearance = readdir( $dir ) )
 	{
-	if ( $appearance != "." && $appearance != "..")
+	if ( $appearance != "." && $appearance != ".." && !preg_match('/^\./', $appearance) )
 	{
 
 		if( file_exists($base_path."views/".$appearance."/.info_theme") )
