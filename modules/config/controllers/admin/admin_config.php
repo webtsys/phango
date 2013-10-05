@@ -22,19 +22,19 @@ function ConfigAdmin()
 
 	while ( $appearance = readdir( $dir ) )
 	{
-	if ( $appearance != "." && $appearance != ".." && !preg_match('/^\./', $appearance) )
-	{
-
-		if( file_exists($base_path."views/".$appearance."/.info_theme") )
+		if ( $appearance != "." && $appearance != ".." && !preg_match('/^\./', $appearance) )
 		{
 
-			settype($appearance, "string");
-			$arr_theme[]=ucwords( strtolower( $appearance ) );
-			$arr_theme[count($arr_theme)]=$appearance;
+			if( file_exists($base_path."views/".$appearance."/.info_theme") )
+			{
 
-		}
-		
-	} 
+				settype($appearance, "string");
+				$arr_theme[]=ucwords( strtolower( $appearance ) );
+				$arr_theme[count($arr_theme)]=$appearance;
+
+			}
+			
+		} 
 	} 
 	closedir( $dir );
 
