@@ -694,7 +694,7 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 		if(get_class($model[$model_name]->components[$_GET['search_field']])!='ForeignKeyField')
 		{
 		
-			$arr_where_sql=$model_name.'.'.$_GET['search_field'].' LIKE \'%'.$value_search.'%\'';
+			$arr_where_sql='`'.$model_name.'`.`'.$_GET['search_field'].'` LIKE \'%'.$value_search.'%\'';
 			
 		}
 		else
@@ -707,7 +707,7 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 			
 				$field_related_name=$model[$model_name]->components[$_GET['search_field']]->name_field_to_field;
 				
-				$arr_where_sql=$model_related_name.'.'.$field_related_name.' LIKE \'%'.$value_search.'%\'';
+				$arr_where_sql='`'.$model_related_name.'`.`'.$field_related_name.'` LIKE \'%'.$value_search.'%\'';
 				
 			}
 		
