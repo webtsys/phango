@@ -3185,8 +3185,12 @@ class ForeignKeyField extends IntegerField{
 	
 		global $model;
 		
-		$model[$this->related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
+		//We need the model loaded...
 		
+		if(isset($model[$this->related_model]))
+		{
+			$model[$this->related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
+		}
 	}
 
 	function check($value)

@@ -7,7 +7,7 @@ function update_table($model)
 	
 	$arr_sql_index=array();
 	$arr_sql_set_index=array();
-
+	
 	foreach($model as $key => $thing)
 	
 	{
