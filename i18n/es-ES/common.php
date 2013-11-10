@@ -1,82 +1,12 @@
 <?php
 
-$lang['common']['no']='No';
-
-$lang['common']['yes']='Sí';
-
-$lang['common']['send']='Enviar';
-
-$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
-
-$lang['common']['order_by']='Ordenar por';
-
-$lang['common']['in_order']='En orden';
-
-$lang['common']['search']='Buscar';
-
-$lang['common']['search_by']='Buscar por';
-
-$lang['common']['reset']='Reiniciar';
-
-$lang['common']['order_and_search']='Ordenar y buscar';
-
-$lang['common']['email']='Email';
-
-$lang['common']['password']='Contraseña';
-
-$lang['common']['logout']='Desconectarse';
-
-$lang['common']['register_user']='Registro de usuario';
-
-$lang['common']['login']='Identificarse';
-
-$lang['common']['no_element_chosen']='Elija opción...';
-
-$lang['common']['any_option_chosen']='Elija cualquier opción...';
-
-$lang['common']['pages']='Páginas';
-
-$lang['common']['edit']='Editar';
-
-$lang['common']['cannot_update_insert_in_model']='No puedo actualizar o insertar nuevo elemento';
-
-$lang['common']['success']='Éxito en la operación';
-
-$lang['common']['redirect']='Redireccionar';
-
-$lang['common']['press_here_redirecting']='Pulse aquí para volver';
-
-$lang['common']['go_back']='Volver atrás';
-
-$lang['common']['listing_new']='Listado de';
-
-$lang['common']['add_new_item']='Añadir nuevo elemento';
-
-$lang['common']['delete_model']='Eliminar elemento';
-
-$lang['common']['delete']='Borrar';
-
-$lang['common']['options']='Opciones';
-
-$lang['common']['ascent']='Ascendente';
-
-$lang['common']['descent']='Descendente';
-
-$lang['common']['order']='Orden';
-
-$lang['common']['no_exists_elements_to_order']='No existen elementos a ordenar';
-
-$lang['common']['home']='Inicio';
-
-$lang['common']['the_value_can_not_be_greater_than_100']='El valor no puede ser más grande de 100 ni menor que 0';
-
-$lang['common']['error_you_need_this_language_field']='Error: necesitas obligatoriamente rellenar el campo de lenguaje';
-
-$lang['common']['cannot_load_jquery']='No se ha cargado jquery, necesario para que funcione este método';
-
 $lang['common']['field_required']='Campo requerido';
 
 $lang['common']['error_in_field']='Error en campo';
+
+$lang['common']['no']='No';
+
+$lang['common']['yes']='Sí';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error, no puedo subir este fichero al servidor. ¿Hay permisos para ello?';
 
@@ -92,6 +22,8 @@ $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: no puedo
 
 $lang['common']['cannot_delete_image']='No puedo borrar la imagen, ¿existe en el disco?.';
 
+$lang['common']['any_option_chosen']='Elija cualquier opción...';
+
 $lang['common']['delete_file']='Borrar archivo';
 
 $lang['common']['delete_image']='Borrar imagen';
@@ -102,75 +34,89 @@ $lang['common']['minute']='Minuto';
 
 $lang['common']['second']='Segundo';
 
-$lang['common']['user']='Usuario';
+$lang['common']['add_new_item']='Añadir nuevo elemento';
 
-$lang['common']['description']='Descripción';
+$lang['common']['edit']='Editar';
 
-$lang['common']['ip']='IP';
+$lang['common']['cannot_update_insert_in_model']='No puedo actualizar o insertar nuevo elemento';
 
-$lang['common']['message']='Mensaje';
+$lang['common']['go_back']='Volver atrás';
 
-$lang['common']['title']='Título';
+$lang['common']['redirect']='Redireccionar';
 
-$lang['common']['text']='Texto';
+$lang['common']['success']='Éxito en la operación';
 
-$lang['common']['more']='Más';
+$lang['common']['press_here_redirecting']='Pulse aquí para volver';
 
-$lang['common']['error']='Error';
+$lang['common']['pages']='Páginas';
 
-$lang['common']['admin_panel']='Panel de administración';
+$lang['common']['no_element_chosen']='Elija opción...';
 
-$lang['common']['unlimited']='Ilimitado';
+$lang['common']['listing_new']='Listado de';
 
-$lang['common']['width']='Anchura';
+$lang['common']['delete_model']='Eliminar elemento';
 
-$lang['common']['height']='Altura';
+$lang['common']['delete']='Borrar';
 
-$lang['common']['error_email_format']='Error en el formato de email';
+$lang['common']['options']='Opciones';
 
-$lang['common']['without_privileges']='Sin privilegios';
+$lang['common']['ascent']='Ascendente';
 
-$lang['common']['moderator']='Moderador';
+$lang['common']['descent']='Descendente';
 
-$lang['common']['administrator']='Administrador';
+$lang['common']['send']='Enviar';
 
-$lang['common']['language']='Lengua';
+$lang['common']['order']='Orden';
 
-$lang['common']['website']='Sitio web';
+$lang['common']['no_exists_elements_to_order']='No existen elementos a ordenar';
+
+$lang['common']['error_you_need_this_language_field']='Error: necesitas obligatoriamente rellenar el campo de lenguaje';
+
+$lang['common']['cannot_load_jquery']='No se ha cargado jquery, necesario para que funcione este método';
+
+$lang['common']['the_value_can_not_be_greater_than_100']='El valor no puede ser más grande de 100 ni menor que 0';
+
+$lang['common']['home']='Inicio';
+
+$lang['common']['logout']='Desconectarse';
+
+$lang['common']['login']='Identificarse';
+
+$lang['common']['email']='Email';
+
+$lang['common']['password']='Contraseña';
+
+$lang['common']['register_user']='Registro de usuario';
+
+$lang['common']['with_*_field_required']='Los campos con * son requeridos.';
+
+$lang['common']['order_by']='Ordenar por';
+
+$lang['common']['in_order']='En orden';
+
+$lang['common']['search']='Buscar';
+
+$lang['common']['search_by']='Buscar por';
+
+$lang['common']['reset']='Reiniciar';
+
+$lang['common']['order_and_search']='Ordenar y buscar';
 
 $lang['common']['name']='Nombre';
 
-$lang['common']['last_name']='Apellidos';
-
-$lang['common']['address']='Dirección';
-
-$lang['common']['city']='Ciudad';
-
-$lang['common']['country']='País';
-
-$lang['common']['phone']='Teléfono';
-
-$lang['common']['fax']='Fax';
-
-$lang['common']['hidden']='Oculto';
-
-$lang['common']['email_symbol']='Símbolo de email';
-
-$lang['common']['offline']='Desconectado';
-
-$lang['common']['connected']='Conectado';
-
-$lang['common']['profile']='Perfil';
+$lang['common']['image']='Imagen';
 
 $lang['common']['captcha']='Captcha';
 
 $lang['common']['thanks']='Gracias';
 
-$lang['common']['image']='Imagen';
-
 $lang['common']['subject']='Asunto';
 
+$lang['common']['text']='Texto';
+
 $lang['common']['preview']='Vista previa';
+
+$lang['common']['error']='Error';
 
 $lang['common']['status']='Estado';
 
@@ -184,25 +130,79 @@ $lang['common']['date_register']='Fecha de registro';
 
 $lang['common']['num_messages']='Número de mensajes';
 
+$lang['common']['offline']='Desconectado';
+
+$lang['common']['hidden']='Oculto';
+
+$lang['common']['connected']='Conectado';
+
 $lang['common']['quote']='Cita';
+
+$lang['common']['email_symbol']='Símbolo de email';
+
+$lang['common']['profile']='Perfil';
+
+$lang['common']['unlimited']='Ilimitado';
+
+$lang['common']['width']='Anchura';
+
+$lang['common']['height']='Altura';
 
 $lang['common']['avatar']='Avatar';
 
 $lang['common']['rank_name']='Rango';
 
+$lang['common']['website']='Sitio web';
+
 $lang['common']['interests']='Intereses';
 
 $lang['common']['signature']='Firma';
 
-$lang['common']['select']='Seleccionar';
+$lang['common']['error_email_format']='Error en el formato de email';
 
-$lang['common']['required']='Requerido';
+$lang['common']['without_privileges']='Sin privilegios';
 
-$lang['common']['html_allowed']='Html permitido';
+$lang['common']['moderator']='Moderador';
+
+$lang['common']['administrator']='Administrador';
+
+$lang['common']['language']='Lengua';
+
+$lang['common']['last_name']='Apellidos';
+
+$lang['common']['address']='Dirección';
+
+$lang['common']['city']='Ciudad';
+
+$lang['common']['country']='País';
+
+$lang['common']['phone']='Teléfono';
+
+$lang['common']['fax']='Fax';
+
+$lang['common']['title']='Título';
+
+$lang['common']['ip']='IP';
+
+$lang['common']['user']='Usuario';
+
+$lang['common']['more']='Más';
 
 $lang['common']['registered']='Registrado';
 
 $lang['common']['messages']='Mensajes';
+
+$lang['common']['html_allowed']='Html permitido';
+
+$lang['common']['admin_panel']='Panel de administración';
+
+$lang['common']['select']='Seleccionar';
+
+$lang['common']['description']='Descripción';
+
+$lang['common']['message']='Mensaje';
+
+$lang['common']['required']='Requerido';
 
 $lang['common']['category']='Categoría';
 

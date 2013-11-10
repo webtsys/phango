@@ -7,15 +7,22 @@ class GenerateAdminClass {
 	function __construct($model_name)
 	{
 	
-		$this->class=$model_name;
+		$this->model_name=$model_name;
 		$this->arr_fields=array(); 
 		$this->arr_fields_edit=array();
 		$this->url_options;
 		$this->options_func='BasicOptionsListModel';
-		$where_sql='';
-		$arr_fields_form=array();
-		$type_list='Basic';
+		$this->where_sql='';
+		$this->arr_fields_form=array();
+		$this->type_list='Basic';
 		
+	}
+	
+	function initial_order()
+	{
+	
+		
+	  
 	}
 	
 	function show()
@@ -23,7 +30,7 @@ class GenerateAdminClass {
 	
 		global $model;
 	
-		$model[$model_name]->generate_admin($this->arr_fields, $this->arr_fields_edit, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_form, $this->type_list);
+		$model[$this->model_name]->generate_admin($this->arr_fields, $this->arr_fields_edit, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_form, $this->type_list);
 		
 	
 	}
