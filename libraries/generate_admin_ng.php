@@ -694,7 +694,7 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 		if(get_class($model[$model_name]->components[$_GET['search_field']])!='ForeignKeyField')
 		{
 		
-			$arr_where_sql=$model_name.'.'.$_GET['search_field'].' LIKE \'%'.$value_search.'%\'';
+			$arr_where_sql='`'.$model_name.'`.`'.$_GET['search_field'].'` LIKE \'%'.$value_search.'%\'';
 			
 		}
 		else
@@ -707,7 +707,7 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 			
 				$field_related_name=$model[$model_name]->components[$_GET['search_field']]->name_field_to_field;
 				
-				$arr_where_sql=$model_related_name.'.'.$field_related_name.' LIKE \'%'.$value_search.'%\'';
+				$arr_where_sql='`'.$model_related_name.'`.`'.$field_related_name.'` LIKE \'%'.$value_search.'%\'';
 				
 			}
 		
@@ -737,7 +737,7 @@ function GeneratePositionModel($model_name, $field_name, $field_position, $url, 
 	global $base_path, $arr_block, $lang, $model;
 
 	settype($_GET['action_field'], 'integer');
-
+	
 	$num_order=$model[$model_name]->select_count($where, $model[$model_name]->idmodel );
 
 	if($num_order>0)
@@ -796,14 +796,14 @@ function GeneratePositionModel($model_name, $field_name, $field_position, $url, 
 				
 			}
 			
-			/*ob_end_clean();
+			ob_end_clean();
 
 			load_libraries(array('redirect'));
 
-			die( redirect_webtsys( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );*/
+			die( redirect_webtsys( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
 			
-			load_libraries(array('redirect'));
-			simple_redirect( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
+			/*load_libraries(array('redirect'));
+			simple_redirect( $url, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);*/
 
 		break;
 

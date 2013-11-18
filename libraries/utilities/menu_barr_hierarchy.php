@@ -45,7 +45,7 @@ function obtain_fathers($arr_father, $arr_menu, $father)
 
 // $arr_menu[0]=array(0 => menu1, 1 => menu2)
 
-function menu_barr_hierarchy($arr_menu, $name_get, $value_get)
+function menu_barr_hierarchy($arr_menu, $name_get, $value_get, $yes_last_link=0)
 {
 
 	settype($_GET[$name_get], 'integer');
@@ -54,7 +54,7 @@ function menu_barr_hierarchy($arr_menu, $name_get, $value_get)
 
 	foreach($arr_menu as $key_menu => $menu)
 	{
-		if($_GET[$name_get]==$key_menu)
+		if($_GET[$name_get]==$key_menu && $yes_last_link==0)
 		{
 			
 			$arr_final_menu[]=$menu[0];

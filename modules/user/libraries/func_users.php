@@ -243,7 +243,7 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 	
 	$result['IdUser']=0;
 	
-	$query=$model['user']->select('where email="'.$email.'" and password="'.$sha1_password.'" and activated_user=1');
+	$query=$model['user']->select('where email="'.$email.'" and password="'.$sha1_password.'" and activated_user=1', array(), 1);
 	
 	$result=webtsys_fetch_array($query);
 	
@@ -311,6 +311,7 @@ function setlogin($email, $password, $register_page, $automatic_login, $redirect
 		
 		if($model['user']->update($post, 'where IdUser='.$result['IdUser']))
 		{
+			
 			
 			setcookie(COOKIE_NAME, $id, $arr_pconnect[$automatic_login], $cookie_path);
 			

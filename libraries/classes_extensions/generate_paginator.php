@@ -7,12 +7,26 @@ function generate_paginator_method_class($class, $where, $arr_fields, $arr_extra
 	
 	load_libraries(array('table_config', 'pages', 'generate_admin_ng'));
 	
+	if(count($class->forms)==0)
+	{
+	
+		$class->create_form();
+	
+	}
+	
+	if(!in_array($class->idmodel, $arr_fields['fields']))
+	{
+	
+		array_unshift($arr_fields['fields'], $class->idmodel);
+	
+	}
+	
 	$arr_heads=array();
 	
 	foreach($arr_fields['fields'] as $field)
 	{
 		
-		$arr_heads[]=$class->components[$field]->label;
+		$arr_heads[]=$class->forms[$field]->label;
 	
 	}
 	
@@ -27,7 +41,7 @@ function generate_paginator_method_class($class, $where, $arr_fields, $arr_extra
 	
 	$total_elements=$class->select_count($where, $class->idmodel);
 	
-	$query=$class->select($where, array(), $raw_query);
+	$query=$class->select($where, $arr_fields['fields'], $raw_query);
 	
 	while($arr_content=webtsys_fetch_array($query))
 	{

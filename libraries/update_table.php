@@ -7,7 +7,7 @@ function update_table($model)
 	
 	$arr_sql_index=array();
 	$arr_sql_set_index=array();
-
+	
 	foreach($model as $key => $thing)
 	
 	{
@@ -388,7 +388,7 @@ function update_models_from_module($arr_modules)
 
 				if( is_file($path_modules.$file) && !preg_match('/^\./', $file) && preg_match('/\.php$/', $file) )
 				{
-					$my_model=preg_replace( '/^models_([aA-zZ]+)\.php/' , '$1', $file);
+					$my_model=preg_replace( '/^models_([aA0-zZ9]+)\.php/' , '$1', $file);
 
 					settype($arr_padmin_mod[$module], 'array');
 

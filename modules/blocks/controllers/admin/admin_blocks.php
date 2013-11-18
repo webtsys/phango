@@ -22,10 +22,17 @@ function BlocksAdmin()
 	<?php
 	
 	set_csrf_key();
+	
+	if($_GET['module']=='')
+	{
+	
+		$_GET['module']='none';
+	
+	}
 
 	$query=$model['module']->select('where app_index=1', array('IdModule', 'name'));
 
-	$arr_modules=array($_GET['module'], $lang['blocks']['module_no'], '');
+	$arr_modules=array($_GET['module'], $lang['blocks']['module_no'], 'none');
 	$arr_check=array();
 	
 	while(list($idmodule, $module_name)=webtsys_fetch_row($query))
@@ -174,6 +181,8 @@ function BlocksAdmin()
 				$get_parent_sql=' and parent='.$arr_block_parent['IdBlocks'];
 			
 			}
+			
+			$model['blocks']->label=$lang['blocks']['block'];
 
 			$model['blocks']->func_update='Blocks';
 
@@ -224,17 +233,46 @@ function BlocksAdmin()
 			
 			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"'.$get_parent_sql, $arr_fields_form=array(), $type_list='Basic');
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
+			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
 		
 		break;
 
 		case 2:
+		
+			settype($_GET['parent'], 'integer');
+			
+			$arr_block_parent=array();
+			
+			if($_GET['parent']>0)
+			{
+			
+				$arr_block_parent=$model['blocks']->select_a_row($_GET['parent']);
+			
+			}
+			
+			settype($arr_block_parent['IdBlocks'], 'integer');
+			
+			$url_options_base=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			
+			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
+			
+			//Obtain parents
+			
+			$arr_parent=$model['blocks']->components['parent']->obtain_parent_tree($arr_block_parent['IdBlocks'], 'title_block', $url_options_base);
+			
+			//array_unshift($arr_parent, array($lang['blocks']['parent_blocks'], ''));
+			
+			$arr_final_parent=array(0 => array($lang['blocks']['parent_blocks'], $url_options_base))+$arr_parent;
+			
+			load_libraries(array('utilities/menu_barr_hierarchy'));
+			
+			echo menu_barr_hierarchy($arr_final_parent, 'parent', $arr_block_parent['IdBlocks'], 1);
 
-			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $_GET['parent']) );
 
-			GeneratePositionModel('blocks', 'title_block', 'hierarchy_block', $url, 'where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"');
+			GeneratePositionModel('blocks', 'title_block', 'hierarchy_block', $url, 'where activation='.$_GET['activation'].' and module="'.$_GET['module'].'" and parent='.$_GET['parent']);
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['common']['go_back'].'</a></p>';
+			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
 		break;
 

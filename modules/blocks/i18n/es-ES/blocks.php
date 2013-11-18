@@ -22,13 +22,15 @@ $lang['blocks']['blocks_right']='Secciones de columna derecha';
 
 $lang['blocks']['activate_barr']='Barra superior';
 
+$lang['blocks']['block']='Sección';
+
 $lang['blocks']['title_block']='Titulo de la sección';
 
 $lang['blocks']['url_block']='Url o contenido de la sección';
 
 $lang['blocks']['hierarchy_block']='Posición';
 
-$lang['blocks']['parent_blocks']='parent_blocks';
+$lang['blocks']['parent_blocks']='Bloques padre';
 
 $lang['blocks']['change_order']='Cambiar orden';
 
@@ -40,7 +42,7 @@ $lang['blocks']['end_block']='Fin de sección';
 
 $lang['blocks']['static_blocks']='Secciones estáticas';
 
-$lang['blocks']['add_children_blocks']='add_children_blocks';
+$lang['blocks']['add_children_blocks']='Añadir sección hija';
 
 $lang['blocks']['edit_module_if_exists']='Editar módulo si existe';
 
