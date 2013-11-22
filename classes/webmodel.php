@@ -1247,48 +1247,51 @@ function SetValuesForm($post, $arr_form, $show_error=1)
 	
 	//Foreach to $post values
 	
-	foreach($post as $name_field => $value)
+	if(gettype($post)=='array')
 	{
-		
-		//If exists a ModelForm into $arr_form with the same name to $name_field check if have a $component field how "type" and set error if exists
-
-		if(isset($arr_form[$name_field]))
-		{	
+		foreach($post as $name_field => $value)
+		{
 			
-			if($arr_form[$name_field]->type->std_error!='' && $show_error==1)
-			{
+			//If exists a ModelForm into $arr_form with the same name to $name_field check if have a $component field how "type" and set error if exists
+
+			if(isset($arr_form[$name_field]))
+			{	
 				
-				/*if($arr_form[$name_field]->std_error!='')
+				if($arr_form[$name_field]->type->std_error!='' && $show_error==1)
 				{
 					
-					$arr_form[$name_field]->std_error=$arr_form[$name_field]->txt_error;
-					
+					/*if($arr_form[$name_field]->std_error!='')
+					{
+						
+						$arr_form[$name_field]->std_error=$arr_form[$name_field]->txt_error;
+						
+
+					}
+					else*/
+					if($arr_form[$name_field]->std_error=='')
+					{
+						
+						$arr_form[$name_field]->std_error=$arr_form[$name_field]->type->std_error;
+
+					}
 
 				}
-				else*/
-				if($arr_form[$name_field]->std_error=='')
-				{
-					
-					$arr_form[$name_field]->std_error=$arr_form[$name_field]->type->std_error;
 
-				}
+				//Set value for ModelForm to $value
+				
+				$arr_form[$name_field]->SetForm($value);
+		
+			}
+			else
+			{
+
+				unset($post[$name_field]);
 
 			}
-
-			//Set value for ModelForm to $value
-			
-			$arr_form[$name_field]->SetForm($value);
-	
-		}
-		else
-		{
-
-			unset($post[$name_field]);
 
 		}
 
 	}
-
 }
 
 /**
