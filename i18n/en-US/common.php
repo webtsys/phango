@@ -1,12 +1,32 @@
 <?php
 
-$lang['common']['field_required']='Field required';
+$lang['common']['email']='Email';
 
-$lang['common']['error_in_field']='Error in field';
+$lang['common']['list']='list';
+
+$lang['common']['send']='Send';
+
+$lang['common']['registered_users']='Registered users';
+
+$lang['common']['name']='Name';
 
 $lang['common']['no']='No';
 
 $lang['common']['yes']='Yes';
+
+$lang['common']['title']='Title';
+
+$lang['common']['text']='Text';
+
+$lang['common']['html']='Html';
+
+$lang['common']['go_back']='Go Back';
+
+$lang['common']['error']='Error';
+
+$lang['common']['field_required']='Field required';
+
+$lang['common']['error_in_field']='Error in field';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error: cannot upload this file to the server';
 
@@ -40,8 +60,6 @@ $lang['common']['edit']='Edit';
 
 $lang['common']['cannot_update_insert_in_model']='I cannot insert or update this element';
 
-$lang['common']['go_back']='Go Back';
-
 $lang['common']['redirect']='Redirect';
 
 $lang['common']['success']='Successful operation';
@@ -64,8 +82,6 @@ $lang['common']['ascent']='Up';
 
 $lang['common']['descent']='Falling';
 
-$lang['common']['send']='Send';
-
 $lang['common']['order']='Order';
 
 $lang['common']['no_exists_elements_to_order']='There are no items to order';
@@ -81,8 +97,6 @@ $lang['common']['home']='Home';
 $lang['common']['logout']='Logout';
 
 $lang['common']['login']='Login';
-
-$lang['common']['email']='Email';
 
 $lang['common']['password']='Password';
 
@@ -102,8 +116,6 @@ $lang['common']['reset']='Reset';
 
 $lang['common']['order_and_search']='Search and order';
 
-$lang['common']['name']='Name';
-
 $lang['common']['image']='Image';
 
 $lang['common']['captcha']='Captcha';
@@ -112,11 +124,7 @@ $lang['common']['thanks']='Thanks';
 
 $lang['common']['subject']='Subject';
 
-$lang['common']['text']='Text';
-
 $lang['common']['preview']='Preview';
-
-$lang['common']['error']='Error';
 
 $lang['common']['status']='Status';
 
@@ -180,8 +188,6 @@ $lang['common']['phone']='Phone';
 
 $lang['common']['fax']='Fax';
 
-$lang['common']['title']='Title';
-
 $lang['common']['ip']='IP';
 
 $lang['common']['user']='User';
@@ -207,12 +213,6 @@ $lang['common']['description']='Description';
 $lang['common']['region']='Region';
 
 $lang['common']['zip_code']='Zip code';
-
-$lang['common']['list']='list';
-
-$lang['common']['registered_users']='Registered users';
-
-$lang['common']['html']='Html';
 
 $lang['common']['select']='Select';
 
