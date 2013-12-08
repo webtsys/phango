@@ -210,7 +210,7 @@ function ConfigDeleteModel($model_name, $id)
 
 }
 
-function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic')
+function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false)
 {
 
 	global $model, $lang, $std_error, $arr_block;
@@ -229,9 +229,15 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 
 		$arr_label_fields=array();
 		$cell_sizes=array();
+		$where_sql='';
+		$arr_where_sql=array();
+		$location='';
+		$arr_order=array();
 
-		list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options);
-		
+		if($no_search==false)
+		{
+			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options);
+		}
 		//Num elements in page
 		
 		if(!function_exists($model[$model_name]->func_update.'List'))
@@ -301,7 +307,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 
 }
 
-function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic')
+function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false)
 {
 	global $model, $arr_cache_header, $arr_cache_jscript, $lang;
 
