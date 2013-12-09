@@ -16,7 +16,7 @@ class GenerateAdminClass {
 		$this->where_sql='';
 		$this->arr_fields_form=array();
 		$this->type_list='Basic';
-		
+		$this->show_id=0;
 	}
 	
 	function initial_order()
@@ -29,10 +29,62 @@ class GenerateAdminClass {
 	function show()
 	{
 	
-		global $model;
-	
-		$model[$this->model_name]->generate_admin($this->arr_fields, $this->arr_fields_edit, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_form, $this->type_list, $this->no_search);
+		//$model[$this->model_name]->generate_admin($this->arr_fields, $this->arr_fields_edit, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_form, $this->type_list, $this->no_search);
 		
+		global $model, $arr_cache_header, $arr_cache_jscript, $lang;
+
+		settype($_GET['op_edit'], 'integer');
+		settype($_GET['op_action'], 'integer');
+		settype($_GET[$model[$this->model_name]->idmodel], 'integer');
+		
+		load_libraries(array('generate_admin_ng', 'utilities/menu_barr_hierarchy'));
+
+		$url_admin=add_extra_fancy_url($this->url_options, array('op_action' => 1));
+		
+		$arr_menu=array( 0 => array($lang['common']['listing_new'].': '.$model[$this->model_name]->label, $this->url_options), 1 => array($lang['common']['add_new_item'].': '.$model[$this->model_name]->label, $url_admin) );
+		
+		$arr_menu_edit=array( 0 => array($lang['common']['listing_new'].': '.$model[$this->model_name]->label, $this->url_options), 1 => array($lang['common']['edit'], '') );
+		
+		switch($_GET['op_action'])
+		{
+
+			default:
+				
+				if($_GET['op_edit']==0)
+				{
+
+					echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
+				
+					echo '<p class="add_new_item"><a href="'.add_extra_fancy_url($this->url_options, array('op_action' => 1)).'">'.$lang['common']['add_new_item'].': '.$model[$this->model_name]->label.'</a></p>';
+					
+				}
+				else
+				{
+				
+					echo '<p>'.menu_barr_hierarchy($arr_menu_edit, 'op_edit', $_GET['op_edit']).'</p>';
+				
+				}
+
+				ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search);
+
+			break;
+
+			case 1:
+			
+				if($_GET['op_edit']==0)
+				{
+
+					echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
+					
+				}
+				
+				echo '<h3>'.$lang['common']['add_new_item'].': '.$model[$this->model_name]->label.'</h3>';
+
+				InsertModelForm($this->model_name, $this->url_admin, $this->url_options, $this->arr_fields_edit, $id=0);
+
+			break;
+
+		}
 	
 	}
 	

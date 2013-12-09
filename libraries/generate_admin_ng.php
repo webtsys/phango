@@ -230,14 +230,22 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 		$arr_label_fields=array();
 		$cell_sizes=array();
 		$where_sql='';
-		$arr_where_sql=array();
+		$arr_where_sql='';
 		$location='';
 		$arr_order=array();
-
-		if($no_search==false)
+		$show_form=1;
+		
+		if($no_search==true)
 		{
-			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options);
+		
+			$show_form=0;
+		
 		}
+		
+		/*if($no_search==false)
+		{*/
+			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id=1, $show_form);
+		//}
 		//Num elements in page
 		
 		if(!function_exists($model[$model_name]->func_update.'List'))
@@ -373,7 +381,7 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 			
 			}
 
-			ListModel($model_name, $arr_fields, $url_options, $options_func, $where_sql, $arr_fields_edit, $type_list);
+			ListModel($model_name, $arr_fields, $url_options, $options_func, $where_sql, $arr_fields_edit, $type_list, $no_search);
 
 		break;
 
@@ -673,8 +681,10 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 
 	}
 	
-	echo load_view(array($arr_search_field, $arr_order_field, $arr_order_select, $url_options), 'common/forms/searchform');
-
+	if($show_form==1)
+	{
+		echo load_view(array($arr_search_field, $arr_order_field, $arr_order_select, $url_options), 'common/forms/searchform');
+	}
 	//Query for order
 
 	//Query for search_by

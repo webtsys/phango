@@ -24,6 +24,8 @@ $lang['common']['go_back']='Go Back';
 
 $lang['common']['error']='Error';
 
+$lang['common']['user']='User';
+
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
@@ -189,8 +191,6 @@ $lang['common']['phone']='Phone';
 $lang['common']['fax']='Fax';
 
 $lang['common']['ip']='IP';
-
-$lang['common']['user']='User';
 
 $lang['common']['more']='More';
 
