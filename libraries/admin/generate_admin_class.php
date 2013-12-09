@@ -16,7 +16,9 @@ class GenerateAdminClass {
 		$this->where_sql='';
 		$this->arr_fields_form=array();
 		$this->type_list='Basic';
-		$this->show_id=0;
+		$this->show_id=1;
+		$this->yes_options=1;
+		$this->extra_fields=array();
 	}
 	
 	function initial_order()
@@ -32,7 +34,7 @@ class GenerateAdminClass {
 		//$model[$this->model_name]->generate_admin($this->arr_fields, $this->arr_fields_edit, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_form, $this->type_list, $this->no_search);
 		
 		global $model, $arr_cache_header, $arr_cache_jscript, $lang;
-
+		
 		settype($_GET['op_edit'], 'integer');
 		settype($_GET['op_action'], 'integer');
 		settype($_GET[$model[$this->model_name]->idmodel], 'integer');
@@ -64,8 +66,8 @@ class GenerateAdminClass {
 					echo '<p>'.menu_barr_hierarchy($arr_menu_edit, 'op_edit', $_GET['op_edit']).'</p>';
 				
 				}
-
-				ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search);
+				
+				ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields);
 
 			break;
 

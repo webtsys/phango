@@ -210,7 +210,7 @@ function ConfigDeleteModel($model_name, $id)
 
 }
 
-function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false)
+function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array())
 {
 
 	global $model, $lang, $std_error, $arr_block;
@@ -221,7 +221,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 	{	
 		$model[$model_name]->create_form();
 	}
-
+	
 	switch($_GET['op_edit'])
 	{
 
@@ -229,7 +229,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 
 		$arr_label_fields=array();
 		$cell_sizes=array();
-		$where_sql='';
+		/*$where_sql='';*/
 		$arr_where_sql='';
 		$location='';
 		$arr_order=array();
@@ -244,22 +244,22 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 		
 		/*if($no_search==false)
 		{*/
-			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id=1, $show_form);
+			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
 		//}
 		//Num elements in page
 		
 		if(!function_exists($model[$model_name]->func_update.'List'))
 		{
-	
-			BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options);
+			
+			BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields);
 
 		}
 		else
 		{
-
+			
 			$func_list=$model[$model_name]->func_update.'List';
 
-			$func_list($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options);
+			$func_list($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields);
 
 		}
 
