@@ -2,10 +2,12 @@
 
 class GenerateAdminClass {
 
-	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search;
+	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item;
 
 	function __construct($model_name)
 	{
+	
+		global $model, $lang;
 	
 		$this->model_name=$model_name;
 		$this->arr_fields=array(); 
@@ -19,6 +21,10 @@ class GenerateAdminClass {
 		$this->show_id=1;
 		$this->yes_options=1;
 		$this->extra_fields=array();
+		$this->txt_list_new=$lang['common']['listing_new'].': '.$model[$this->model_name]->label;
+		$this->txt_add_new_item=$lang['common']['add_new_item'].': '.$model[$this->model_name]->label;
+		$this->txt_edit_item=$lang['common']['edit'];
+		
 	}
 	
 	function initial_order()
@@ -43,9 +49,9 @@ class GenerateAdminClass {
 
 		$url_admin=add_extra_fancy_url($this->url_options, array('op_action' => 1));
 		
-		$arr_menu=array( 0 => array($lang['common']['listing_new'].': '.$model[$this->model_name]->label, $this->url_options), 1 => array($lang['common']['add_new_item'].': '.$model[$this->model_name]->label, $url_admin) );
+		$arr_menu=array( 0 => array($this->txt_list_new, $this->url_options), 1 => array($this->txt_add_new_item, $url_admin) );
 		
-		$arr_menu_edit=array( 0 => array($lang['common']['listing_new'].': '.$model[$this->model_name]->label, $this->url_options), 1 => array($lang['common']['edit'], '') );
+		$arr_menu_edit=array( 0 => array($this->txt_list_new, $this->url_options), 1 => array($this->txt_edit_item, '') );
 		
 		switch($_GET['op_action'])
 		{
