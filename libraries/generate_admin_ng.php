@@ -79,12 +79,12 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 					//die(header('Location: '.$url_admin.'/success/1'));
 					
 					
-					$text_ouput=$lang['common']['success'];
+					$text_output=$lang['common']['success'];
 					
 					ob_end_clean();
 					
 					load_libraries(array('redirect'));
-					die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_ouput, $lang['common']['press_here_redirecting'] , $arr_block) );
+					die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_output, $lang['common']['press_here_redirecting'] , $arr_block) );
 					
 					/*load_libraries(array('redirect'));
 					simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);*/

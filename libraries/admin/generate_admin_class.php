@@ -63,7 +63,7 @@ class GenerateAdminClass {
 
 					echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
 				
-					echo '<p class="add_new_item"><a href="'.add_extra_fancy_url($this->url_options, array('op_action' => 1)).'">'.$lang['common']['add_new_item'].': '.$model[$this->model_name]->label.'</a></p>';
+					echo '<p class="add_new_item"><a href="'.add_extra_fancy_url($this->url_options, array('op_action' => 1)).'">'.$this->txt_add_new_item.'</a></p>';
 					
 				}
 				else
@@ -86,9 +86,9 @@ class GenerateAdminClass {
 					
 				}
 				
-				echo '<h3>'.$lang['common']['add_new_item'].': '.$model[$this->model_name]->label.'</h3>';
+				echo '<h3>'.$this->txt_add_new_item.'</h3>';
 
-				InsertModelForm($this->model_name, $this->url_admin, $this->url_options, $this->arr_fields_edit, $id=0);
+				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0);
 
 			break;
 
