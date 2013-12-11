@@ -2,7 +2,7 @@
 
 load_libraries(array('generate_forms', 'table_config', 'pages'));
 
-function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
+function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1, $simple_redirect=0)
 {
 	global $model, $lang, $std_error, $arr_block, $base_url;
 	//Setting op variable to integer for use in switch
@@ -83,12 +83,20 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 					
 					ob_end_clean();
 					
-					load_libraries(array('redirect'));
-					die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_output, $lang['common']['press_here_redirecting'] , $arr_block) );
+					if($simple_redirect==0)
+					{
 					
-					/*load_libraries(array('redirect'));
-					simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);*/
+						load_libraries(array('redirect'));
+						die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_output, $lang['common']['press_here_redirecting'] , $arr_block) );
+					}
+					else
+					{
+					
+						load_libraries(array('redirect'));
+						simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
 
+					}
+					
 				}
 
 			break;

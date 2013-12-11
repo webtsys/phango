@@ -2,7 +2,7 @@
 
 class GenerateAdminClass {
 
-	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item;
+	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect;
 
 	function __construct($model_name)
 	{
@@ -24,6 +24,7 @@ class GenerateAdminClass {
 		$this->txt_list_new=$lang['common']['listing_new'].': '.$model[$this->model_name]->label;
 		$this->txt_add_new_item=$lang['common']['add_new_item'].': '.$model[$this->model_name]->label;
 		$this->txt_edit_item=$lang['common']['edit'];
+		$this->simple_redirect=0;
 		
 	}
 	
@@ -79,6 +80,8 @@ class GenerateAdminClass {
 
 			case 1:
 			
+				$arr_block='none';
+			
 				if($_GET['op_edit']==0)
 				{
 
@@ -88,7 +91,7 @@ class GenerateAdminClass {
 				
 				echo '<h3>'.$this->txt_add_new_item.'</h3>';
 
-				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0);
+				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $goback=1, $this->simple_redirect);
 
 			break;
 
