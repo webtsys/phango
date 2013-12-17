@@ -2,7 +2,7 @@
 
 class GenerateAdminClass {
 
-	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect;
+	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt;
 
 	function __construct($model_name)
 	{
@@ -25,7 +25,8 @@ class GenerateAdminClass {
 		$this->txt_add_new_item=$lang['common']['add_new_item'].': '.$model[$this->model_name]->label;
 		$this->txt_edit_item=$lang['common']['edit'];
 		$this->simple_redirect=0;
-		
+		$this->class_add='';
+		$this->separator_element_opt='<br />';
 	}
 	
 	function initial_order()
@@ -64,7 +65,7 @@ class GenerateAdminClass {
 
 					echo '<p>'.menu_barr_hierarchy($arr_menu, 'op_action', $_GET['op_action']).'</p>';
 				
-					echo '<p class="add_new_item"><a href="'.add_extra_fancy_url($this->url_options, array('op_action' => 1)).'">'.$this->txt_add_new_item.'</a></p>';
+					echo '<p class="add_new_item"><a class="'.$this->class_add.'" href="'.add_extra_fancy_url($this->url_options, array('op_action' => 1)).'">'.$this->txt_add_new_item.'</a></p>';
 					
 				}
 				else
@@ -74,7 +75,7 @@ class GenerateAdminClass {
 				
 				}
 				
-				ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields);
+				ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 
 			break;
 

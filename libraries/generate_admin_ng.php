@@ -218,7 +218,7 @@ function ConfigDeleteModel($model_name, $id)
 
 }
 
-function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array())
+function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />')
 {
 
 	global $model, $lang, $std_error, $arr_block;
@@ -259,7 +259,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 		if(!function_exists($model[$model_name]->func_update.'List'))
 		{
 			
-			BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields);
+			BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields, $separator_element);
 
 		}
 		else
@@ -267,7 +267,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 			
 			$func_list=$model[$model_name]->func_update.'List';
 
-			$func_list($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields);
+			$func_list($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields, $separator_element);
 
 		}
 
@@ -442,11 +442,11 @@ function BasicOptionsListModel($url_options, $model_name, $id)
 
 }
 
-function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id=1, $yes_options=1, $extra_fields=array())
+function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />')
 {
 
 	global $model, $lang;
-
+	
 	if(!in_array($model[$model_name]->idmodel, $arr_fields))
 	{
 
@@ -520,16 +520,16 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 		}
 
 	}
-
+	
 	if($yes_options==1)
 	{
 
 		$arr_label_fields[]=$lang['common']['options'];
 
-		function add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel)
+		function add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
 		{
 
-			$arr_row[]=implode('<br />', $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
+			$arr_row[]=implode($separator_element, $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
 
 			return $arr_row;
 
@@ -540,7 +540,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	{
 
 
-		function add_options($arr_row, $url_options, $model_name, $model_idmodel)
+		function add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
 		{
 
 			return $arr_row;
@@ -570,7 +570,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 			/*if(isset($model[$model_name]->components[$key_row]))
 			{*/
 			
-			$arr_row[$key_row]=$model[$model_name]->components[$key_row]->show_formatted($value_row);
+			$arr_row[$key_row]=$model[$model_name]->components[$key_row]->show_formatted($value_row, $arr_row[$model[$model_name]->idmodel]);
 
 		}
 		
@@ -581,7 +581,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 
 		}
 		
-		$arr_row=add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $arr_row[$model[$model_name]->idmodel]);
+		$arr_row=add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $arr_row[$model[$model_name]->idmodel], $separator_element);
 
 		$arr_row=remove_idrow($arr_row, $model[$model_name]->idmodel);
 
