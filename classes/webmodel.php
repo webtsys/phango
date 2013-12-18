@@ -1758,7 +1758,7 @@ class CharField extends PhangoField {
 	* This function is used for show the value on a human format
 	*/
 
-	function show_formatted($value, $id)
+	function show_formatted($value)
 	{
 
 		return $value;
