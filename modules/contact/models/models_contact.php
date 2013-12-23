@@ -52,6 +52,8 @@ $model['contact']->components['description']=new I18nField(new TextHTMLField());
 $model['contact']->components['email']=new EmailField();
 $model['contact']->components['email']->required=1;
 
+$model['contact']->set_component('template', 'CharField', array(255));
+
 $model['contact_field']=new Webmodel('contact_field');
 
 $arr_options_fields=array('TextField', 'TextHTMLField');
