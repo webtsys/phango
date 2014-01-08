@@ -2,7 +2,7 @@
 
 load_libraries(array('generate_forms', 'table_config', 'pages'));
 
-function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
+function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1, $simple_redirect=0)
 {
 	global $model, $lang, $std_error, $arr_block, $base_url;
 	//Setting op variable to integer for use in switch
@@ -79,16 +79,24 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 					//die(header('Location: '.$url_admin.'/success/1'));
 					
 					
-					$text_ouput=$lang['common']['success'];
+					$text_output=$lang['common']['success'];
 					
 					ob_end_clean();
 					
-					load_libraries(array('redirect'));
-					die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_ouput, $lang['common']['press_here_redirecting'] , $arr_block) );
+					if($simple_redirect==0)
+					{
 					
-					/*load_libraries(array('redirect'));
-					simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);*/
+						load_libraries(array('redirect'));
+						die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_output, $lang['common']['press_here_redirecting'] , $arr_block) );
+					}
+					else
+					{
+					
+						load_libraries(array('redirect'));
+						simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
 
+					}
+					
 				}
 
 			break;
@@ -210,7 +218,7 @@ function ConfigDeleteModel($model_name, $id)
 
 }
 
-function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic')
+function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />', $simple_redirect=0)
 {
 
 	global $model, $lang, $std_error, $arr_block;
@@ -221,7 +229,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 	{	
 		$model[$model_name]->create_form();
 	}
-
+	
 	switch($_GET['op_edit'])
 	{
 
@@ -229,23 +237,37 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 
 		$arr_label_fields=array();
 		$cell_sizes=array();
-
-		list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options);
+		/*$where_sql='';*/
+		$arr_where_sql='';
+		$location='';
+		$arr_order=array();
+		$show_form=1;
 		
+		if($no_search==true)
+		{
+		
+			$show_form=0;
+		
+		}
+		
+		/*if($no_search==false)
+		{*/
+			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
+		//}
 		//Num elements in page
 		
 		if(!function_exists($model[$model_name]->func_update.'List'))
 		{
-	
-			BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options);
+			
+			BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields, $separator_element);
 
 		}
 		else
 		{
-
+			
 			$func_list=$model[$model_name]->func_update.'List';
 
-			$func_list($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options);
+			$func_list($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id, $yes_options, $extra_fields, $separator_element);
 
 		}
 
@@ -301,7 +323,7 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 
 }
 
-function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic')
+function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false)
 {
 	global $model, $arr_cache_header, $arr_cache_jscript, $lang;
 
@@ -367,7 +389,7 @@ function generate_admin_model_ng($model_name, $arr_fields, $arr_fields_edit, $ur
 			
 			}
 
-			ListModel($model_name, $arr_fields, $url_options, $options_func, $where_sql, $arr_fields_edit, $type_list);
+			ListModel($model_name, $arr_fields, $url_options, $options_func, $where_sql, $arr_fields_edit, $type_list, $no_search);
 
 		break;
 
@@ -420,11 +442,11 @@ function BasicOptionsListModel($url_options, $model_name, $id)
 
 }
 
-function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id=1, $yes_options=1, $extra_fields=array())
+function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_order, $arr_fields, $cell_sizes, $options_func, $url_options, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />')
 {
 
 	global $model, $lang;
-
+	
 	if(!in_array($model[$model_name]->idmodel, $arr_fields))
 	{
 
@@ -498,16 +520,16 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 		}
 
 	}
-
+	
 	if($yes_options==1)
 	{
 
 		$arr_label_fields[]=$lang['common']['options'];
 
-		function add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel)
+		function add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
 		{
 
-			$arr_row[]=implode('<br />', $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
+			$arr_row[]=implode($separator_element, $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
 
 			return $arr_row;
 
@@ -518,7 +540,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	{
 
 
-		function add_options($arr_row, $url_options, $model_name, $model_idmodel)
+		function add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
 		{
 
 			return $arr_row;
@@ -548,7 +570,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 			/*if(isset($model[$model_name]->components[$key_row]))
 			{*/
 			
-			$arr_row[$key_row]=$model[$model_name]->components[$key_row]->show_formatted($value_row);
+			$arr_row[$key_row]=$model[$model_name]->components[$key_row]->show_formatted($value_row, $arr_row[$model[$model_name]->idmodel]);
 
 		}
 		
@@ -559,7 +581,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 
 		}
 		
-		$arr_row=add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $arr_row[$model[$model_name]->idmodel]);
+		$arr_row=add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $arr_row[$model[$model_name]->idmodel], $separator_element);
 
 		$arr_row=remove_idrow($arr_row, $model[$model_name]->idmodel);
 
@@ -667,8 +689,10 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 
 	}
 	
-	echo load_view(array($arr_search_field, $arr_order_field, $arr_order_select, $url_options), 'common/forms/searchform');
-
+	if($show_form==1)
+	{
+		echo load_view(array($arr_search_field, $arr_order_field, $arr_order_select, $url_options), 'common/forms/searchform');
+	}
 	//Query for order
 
 	//Query for search_by

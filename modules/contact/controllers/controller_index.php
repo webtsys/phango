@@ -29,14 +29,21 @@ function Index()
 	
 	}
 
-	$query=$model['contact']->select($sql_text, array('IdContact', 'name', 'email', 'description'));
+	$query=$model['contact']->select($sql_text, array('IdContact', 'name', 'email', 'description', 'template'));
 
-	list($idcontact, $name_page, $emailto, $description)=webtsys_fetch_row($query);
+	list($idcontact, $name_page, $emailto, $description, $template)=webtsys_fetch_row($query);
 
 	settype($idcontact, 'integer');
 
 	if($idcontact>0)
 	{
+	
+		if($template=='')
+		{
+		
+			$template='contact';
+		
+		}
 
 		$form_contact=array();
 
@@ -79,7 +86,7 @@ function Index()
 				//echo load_view(array($form_contact, array(), $url_send_mail, ''), 'common/forms/updatemodelform');
 				//ContactView($description_contact, $form_contact, $url_send_mail)
 				
-				echo load_view(array($description, $form_contact, $url_send_mail), 'contact/contact');
+				echo load_view(array($description, $form_contact, $url_send_mail), 'contact/'.$template);
 
 				$form_result=ob_get_contents();
 
@@ -158,7 +165,7 @@ function Index()
 
 					//echo load_view(array($form_contact, array(), $url_send_mail, ''), 'common/forms/updatemodelform');
 					
-					echo load_view(array($description, $form_contact, $url_send_mail), 'contact/contact');
+					echo load_view(array($description, $form_contact, $url_send_mail), 'contact/'.$template);
 
 					$form_result=ob_get_contents();
 

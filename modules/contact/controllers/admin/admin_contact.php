@@ -31,7 +31,7 @@ function ContactAdmin()
 		$model['contact']->forms['description']->parameters=array('description', '', '', 'TextAreaBBForm');
 
 		$arr_fields=array('name');
-		$arr_fields_edit=array('name', 'email', 'description');
+		$arr_fields_edit=array('name', 'email', 'description', 'template');
 
 		generate_admin_model_ng('contact', $arr_fields, $arr_fields_edit, $url_options_default, $options_func='ContactOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
