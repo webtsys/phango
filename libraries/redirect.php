@@ -23,14 +23,14 @@ function redirect_webtsys($direction,$l_text,$text,$ifno, $arr_block)
 
 }
 
-function simple_redirect($url_return, $l_text,$text,$ifno)
+function simple_redirect($url_return, $l_text, $text, $ifno, $content_view='content')
 {
 
 	global $config_data, $arr_cache_header;
 	
 	$arr_cache_header[]="<meta http-equiv=\"refresh\" content=\"2;URL=$url_return\">";
 	
-	echo load_view(array($config_data['portal_name'].' / '.$l_text,'<p>'.$text.'<br><a href="'. $url_return.'">'.$ifno.'</a>'), 'content');
+	echo load_view(array($config_data['portal_name'].' / '.$l_text,'<p>'.$text.'<br><a href="'. $url_return.'">'.$ifno.'</a>'), $content_view);
 
 }
 
