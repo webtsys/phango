@@ -252,7 +252,11 @@ function ListModel($model_name, $arr_fields, $url_options, $options_func='BasicO
 		
 		/*if($no_search==false)
 		{*/
-			list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
+			$search=new SearchInFieldClass($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
+		
+			list($where_sql, $arr_where_sql, $location, $arr_order)=$search->search();
+		
+			//list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
 		//}
 		//Num elements in page
 		
@@ -755,6 +759,8 @@ function SearchInField($model_name, $arr_fields_order, $arr_fields_search, $wher
 	return array($where_sql, $arr_where_sql, $location, $arr_order);
 
 }
+
+
 
 function GeneratePositionModel($model_name, $field_name, $field_position, $url, $where='')
 {
