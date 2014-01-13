@@ -1923,6 +1923,7 @@ class BooleanField extends PhangoField {
 	public $quot_open='\'';
 	public $quot_close='\'';
 	public $std_error='';
+	public $default_value=0;
 
 	function __construct()
 	{
@@ -1988,7 +1989,7 @@ class BooleanField extends PhangoField {
 
 		global $lang;
 
-		return array(0, $lang['common']['no'], 0, $lang['common']['yes'], 1);
+		return array($this->default_value, $lang['common']['no'], 0, $lang['common']['yes'], 1);
 
 	}
 
