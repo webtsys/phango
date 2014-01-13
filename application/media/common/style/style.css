@@ -438,6 +438,24 @@ a:hover.no_choose_flag
 	
 }
 
+#center_body input[type="button"]
+{
+	
+	font-family: verdana,arial,sans;
+	font-size:12px;
+	height:25px;
+	border-radius:25px;
+	background: #eee;
+	
+}
+
+#center_body input:hover[type="button"]
+{
+	
+	background: #fff;
+	
+}
+
 #center_body textarea {
 
 	border: solid #bcbcbc;
