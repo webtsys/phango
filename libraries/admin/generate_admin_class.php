@@ -194,6 +194,9 @@ class ListModelClass {
 			/*if($no_search==false)
 			{*/
 				$search=new SearchInFieldClass($this->model_name, $this->arr_fields, $this->arr_fields, $this->where_sql, $this->url_options, $this->yes_id, $show_form);
+				
+				$search->lang_asc=$this->search_asc;
+				$search->lang_desc=$this->search_desc;
 			
 				list($where_sql, $arr_where_sql, $location, $arr_order)=$search->search();
 			
