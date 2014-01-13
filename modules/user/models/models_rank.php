@@ -50,4 +50,3 @@ $arr_module_insert['rank']=array('name' => 'rank', 'admin' => 1, 'admin_script' 
 $arr_module_sql['rank']='rank.sql';
 
 ?>
-

@@ -261,4 +261,3 @@ $arr_module_insert['user']=array('name' => 'user', 'admin' => 1, 'admin_script' 
 $arr_module_sql['user']='user.sql';
 
 ?>
-
