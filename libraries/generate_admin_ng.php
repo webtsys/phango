@@ -1,6 +1,6 @@
 <?php
 
-load_libraries(array('generate_forms', 'table_config', 'pages'));
+load_libraries(array('generate_forms', 'table_config', 'pages', 'admin/generate_admin_class'));
 
 function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1, $simple_redirect=0)
 {

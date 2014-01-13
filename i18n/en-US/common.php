@@ -1,6 +1,32 @@
 <?php
 
+$lang['common']['name']='Name';
+
+$lang['common']['email']='Email';
+
+$lang['common']['registered_users']='Registered users';
+
+$lang['common']['no']='No';
+
+$lang['common']['yes']='Yes';
+
+$lang['common']['title']='Title';
+
+$lang['common']['text']='Text';
+
+$lang['common']['html']='Html';
+
+$lang['common']['go_back']='Go Back';
+
+$lang['common']['error']='Error';
+
 $lang['common']['user']='User';
+
+$lang['common']['list']='list';
+
+$lang['common']['send']='Send';
+
+$lang['common']['subject']='Subject';
 
 $lang['common']['description']='Description';
 
@@ -13,8 +39,6 @@ $lang['common']['redirect']='Redirect';
 $lang['common']['success']='Successful operation';
 
 $lang['common']['press_here_redirecting']='Press here to come back...';
-
-$lang['common']['send']='Send';
 
 $lang['common']['with_*_field_required']='The fields with * are required';
 
@@ -30,8 +54,6 @@ $lang['common']['reset']='Reset';
 
 $lang['common']['order_and_search']='Search and order';
 
-$lang['common']['email']='Email';
-
 $lang['common']['password']='Password';
 
 $lang['common']['logout']='Logout';
@@ -41,8 +63,6 @@ $lang['common']['register_user']='User registration';
 $lang['common']['login']='Login';
 
 $lang['common']['pages']='Pages';
-
-$lang['common']['go_back']='Go Back';
 
 $lang['common']['edit']='Edit';
 
@@ -56,29 +76,11 @@ $lang['common']['address']='Adress';
 
 $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
 
-$lang['common']['name']='Name';
-
 $lang['common']['required']='Required';
 
 $lang['common']['options']='Options';
 
 $lang['common']['moderator']='Moderator';
-
-$lang['common']['yes']='Yes';
-
-$lang['common']['no']='No';
-
-$lang['common']['title']='Title';
-
-$lang['common']['text']='Text';
-
-$lang['common']['registered_users']='Registered users';
-
-$lang['common']['html']='Html';
-
-$lang['common']['error']='Error';
-
-$lang['common']['list']='list';
 
 $lang['common']['order']='Order';
 
@@ -109,8 +111,6 @@ $lang['common']['select']='Select';
 $lang['common']['status']='Status';
 
 $lang['common']['author']='Author';
-
-$lang['common']['subject']='Subject';
 
 $lang['common']['more_options']='More options';
 
