@@ -384,12 +384,12 @@ class Webmodel {
 		//Unset the id field from the model for security
 		
 		unset($post[$this->idmodel]);
-
+		
 		//Checking and sanitizing data from $post array for use in the query
 		
 		if( $fields=$this->check_all($post) )
 		{
-		
+			
 			//Foreach for create the query that comes from the $post array
 			
 			foreach($this->components as $key => $component)
@@ -428,7 +428,7 @@ class Webmodel {
 					
 					if(!$component->process_update_field($this, $name_field, $conditions, $fields[$name_field]))
 					{
-					
+						
 						$this->std_error.=$lang['error_model']['cant_update'].' ';
 
 						return 0;
@@ -443,7 +443,7 @@ class Webmodel {
 		
 			if(!($query=webtsys_query('update '.$this->name.' set '.implode(', ' , $arr_fields).' '.$conditions, $this->db_selected) ) )
 			{
-			
+				
 				$this->std_error.=$lang['error_model']['cant_update'].' ';
 				return 0;
 			
@@ -5210,6 +5210,15 @@ function set_name_default($name)
 {
 
 	return ucfirst(str_replace('_', ' ', $name));
+
+}
+
+function get_token()
+{
+
+	$rand_prefix=generate_random_password();
+	
+	return sha1( uniqid($rand_prefix, true) );
 
 }
 

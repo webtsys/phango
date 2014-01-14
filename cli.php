@@ -27,9 +27,9 @@ if($argc<3)
 
 }
 
-$module=@form_text($argv[1]);
+$module=@form_text(basename($argv[1]));
 
-$cli_controller=@form_text($argv[2]);
+$cli_controller=@form_text(basename($argv[2]));
 
 //Connect to database
 
