@@ -19,17 +19,22 @@ $model=array();
 
 //Check arguments
 
-if($argc<3)
+$opts='m:c:';
+
+$longopts=array();
+
+$options = getopt($opts, $longopts);
+
+if(!isset($options['m']) && !isset($options['c']))
 {
 
-
-	die("Use: php cli.php module cli_controller\n");
+	die("Use: php cli.php -m=module -c=cli_controller\n");
 
 }
 
-$module=@form_text(basename($argv[1]));
+$module=@form_text(basename($options['m']));
 
-$cli_controller=@form_text(basename($argv[2]));
+$cli_controller=@form_text(basename($options['c']));
 
 //Connect to database
 
