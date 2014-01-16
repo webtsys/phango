@@ -19,16 +19,16 @@ $model=array();
 
 //Check arguments
 
-$opts='m:c:';
+define('OPTS', 'm:c:');
 
 $longopts=array();
 
-$options = getopt($opts, $longopts);
+$options = getopt(OPTS, $longopts);
 
 if(!isset($options['m']) && !isset($options['c']))
 {
 
-	die("Use: php cli.php -m=module -c=cli_controller\n");
+	die("Use: php cli.php -m=module -c=cli_controller [more arguments for daemon]\n");
 
 }
 
@@ -79,6 +79,13 @@ else
 {
 
 	die("Error: Don't exists the controller for cli statement...\n");
+
+}
+
+function get_opts_cli($my_opts, $arr_opts=array())
+{
+
+	return getopt(OPTS.$my_opts, $arr_opts);
 
 }
 
