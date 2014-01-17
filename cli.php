@@ -60,6 +60,10 @@ while(list($table)=webtsys_fetch_row($query))
 
 }
 
+load_model('config');
+
+$config_data=$model['config_webtsys']->select_a_row_where('');
+
 //Include cli_controller
 
 if(include($base_path.'modules/'.$module.'/cli/controller_'.$cli_controller.'.php'))
