@@ -33,6 +33,7 @@ class GenerateAdminClass {
 		$this->extra_menu_create='';
 		$this->search_asc=$lang['common']['ascent'];
 		$this->search_desc=$lang['common']['descent'];
+		$this->show_goback=1;
 	}
 	
 	function initial_order()
@@ -85,8 +86,11 @@ class GenerateAdminClass {
 				
 				$listmodel=new ListModelClass($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 				
+				$listmodel->simple_redirect=$this->simple_redirect;
+				
 				$listmodel->search_asc=$this->search_asc;
 				$listmodel->search_desc=$this->search_desc;
+				$listmodel->show_goback=$this->show_goback;
 				
 				$listmodel->show();
 
@@ -105,7 +109,7 @@ class GenerateAdminClass {
 				
 				echo '<h3>'.$this->txt_add_new_item.'</h3>';
 
-				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $goback=1, $this->simple_redirect);
+				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
 
 			break;
 
@@ -122,7 +126,7 @@ class GenerateAdminClass {
 
 		//nsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 		
-		InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $goback=1);
+		InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
 	
 	}
 
@@ -156,6 +160,7 @@ class ListModelClass {
 		$this->simple_redirect=$simple_redirect;
 		$this->search_asc=$lang['common']['ascent'];
 		$this->search_desc=$lang['common']['descent'];
+		$this->show_goback=1;
 	
 	}
 	
@@ -235,7 +240,7 @@ class ListModelClass {
 			
 			$url_options_edit=add_extra_fancy_url($this->url_options, array('op_edit' =>1, $model[$this->model_name]->idmodel => $_GET[$model[$this->model_name]->idmodel]) );
 			
-			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel]);
+			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $go_back=1, $this->simple_redirect);
 			
 		break;
 
@@ -245,7 +250,7 @@ class ListModelClass {
 
 			$func_delete=$model[$this->model_name]->func_update.'DeleteModel';
 			
-			$url_options_delete=add_extra_fancy_url($url_options, array('success_delete' => 1) );
+			$url_options_delete=add_extra_fancy_url($this->url_options, array('success_delete' => 1) );
 
 			if($func_delete($this->model_name, $_GET[ $model[$this->model_name]->idmodel ]))
 			{	

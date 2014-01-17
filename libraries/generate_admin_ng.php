@@ -85,7 +85,7 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 					
 					if($simple_redirect==0)
 					{
-					
+						
 						load_libraries(array('redirect'));
 						die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_output, $lang['common']['press_here_redirecting'] , $arr_block) );
 					}
