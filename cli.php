@@ -69,6 +69,8 @@ $config_data=$model['config_webtsys']->select_a_row_where('');
 if(include($base_path.'modules/'.$module.'/cli/controller_'.$cli_controller.'.php'))
 {
 
+	$script_base_controller=$module;
+
 	$function_cli=$cli_controller.'Cli';
 
 	if( function_exists($function_cli) )
