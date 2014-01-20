@@ -582,7 +582,7 @@ function BasicList($model_name, $where_sql, $arr_where_sql, $location, $arr_orde
 	$query=$model[$model_name]->select($where_sql, $arr_fields);
 
 	while($arr_row=webtsys_fetch_array($query))
-	{
+	{	
 
 		//Process function...
 		
