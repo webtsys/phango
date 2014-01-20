@@ -423,7 +423,7 @@ class Webmodel {
 			foreach($fields as $name_field => $val_field)
 			{
 			
-				if(method_exists($component,  'process_update_field'))
+				if(method_exists($this->components[$name_field],  'process_update_field'))
 				{
 					
 					if(!$component->process_update_field($this, $name_field, $conditions, $fields[$name_field]))
@@ -692,7 +692,7 @@ class Webmodel {
 				
 			}
 		}
-	
+		
 		foreach($this->related_models as $model_name_related => $fields_related)
 		{
 			
@@ -719,7 +719,7 @@ class Webmodel {
 			$conditions='WHERE '.$where.' '.$conditions;
 
 		}
-
+		
 		$query=webtsys_query('select count('.$this->name.'.`'.$field.'`) from '.implode(', ', $arr_model).' '.$conditions, $this->db_selected);
 		
 		list($count_field)= webtsys_fetch_row($query);
