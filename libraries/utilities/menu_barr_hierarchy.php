@@ -75,4 +75,91 @@ function menu_barr_hierarchy($arr_menu, $name_get, $value_get, $yes_last_link=0)
 
 }
 
+//$arr_menu[0]=array('module' => 'module', 'controller' => 'controller', 'text' => 'text', 'name_op' => , 'params' => array())
+
+//$arr_menu[1]=array(0 => array('module' => 'module', 'controller' => 'controller', 'name_op' => name_op, 'text' => 'text', 'params' => array()), 1 => array('module' => 'module', 'controller' => 'controller', 'op' => op, 'text' => 'text', 'params' => array()) );
+
+function menu_barr_hierarchy_control($arr_menus)
+{
+
+	//Begin process
+	global $base_url;
+	
+	$arr_final_menu=array();
+	
+	foreach($arr_menus as $pos_menu => $arr_menu)
+	{
+	
+		if(!isset($arr_menu[0]))
+		{
+		
+			list($arr_final_menu, $return_break)=check_arr_menu($arr_menu, $arr_final_menu);
+			
+			if($return_break==1)
+			{
+			
+				break;
+			
+			}
+			
+		}
+		else
+		{
+		
+			foreach($arr_menu as $menu)
+			{
+			
+				list($arr_final_menu, $return_break)=check_arr_menu($arr_menu, $arr_final_menu);
+				
+				if($return_break==1)
+				{
+				
+					break;
+				
+				}
+			
+			}
+		
+		}
+		
+		if($return_break==1)
+		{
+		
+			break;
+		
+		}
+		
+		
+		
+	}
+	
+	return implode(' &gt;&gt; ', $arr_final_menu);
+
+}
+
+function check_arr_menu($arr_menu, $arr_final_menu)
+{
+
+	global $base_url;
+
+	$return_break=0;
+
+	if($arr_menu['module']==PHANGO_SCRIPT_BASE_CONTROLLER && $arr_menu['controller']==PHANGO_SCRIPT_FUNC_NAME && $arr_menu['params'][$arr_menu['name_op']]==$_GET[$arr_menu['name_op']])
+	{
+	
+		$arr_final_menu[]=$arr_menu['text'];
+		$return_break=1;
+	
+	}
+	else
+	{
+	
+		$arr_final_menu[]='<a href="'.make_fancy_url($base_url, $arr_menu['module'], $arr_menu['controller'], $arr_menu['text'], $arr_menu['params']).'">'.$arr_menu['text'].'</a>';
+	
+	}
+	
+	return array($arr_final_menu, $return_break);
+
+}
+
 ?>

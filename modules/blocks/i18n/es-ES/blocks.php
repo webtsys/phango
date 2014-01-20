@@ -1,5 +1,9 @@
 <?php
 
+$lang['blocks']['edit_html_block']='Editar bloque html';
+
+$lang['blocks']['html_code']='Código html';
+
 $lang['blocks']['edit_blocks']='Editar secciones';
 
 $lang['blocks']['edit_blocks_module']='Editar secciones del módulo elegido';
@@ -45,10 +49,6 @@ $lang['blocks']['static_blocks']='Secciones estáticas';
 $lang['blocks']['add_children_blocks']='Añadir sección hija';
 
 $lang['blocks']['edit_module_if_exists']='Editar módulo si existe';
-
-$lang['blocks']['edit_html_block']='Editar bloque html';
-
-$lang['blocks']['html_code']='Código html';
 
 $lang['blocks']['choose_lang']='Elegir lenguaje';
 
