@@ -1,16 +1,12 @@
 <?php
 
-$lang['common']['email']='Email';
-
-$lang['common']['name']='Name';
-
 $lang['common']['registered_users']='Registered users';
 
 $lang['common']['no']='No';
 
 $lang['common']['yes']='Yes';
 
-$lang['common']['title']='Title';
+$lang['common']['subject']='Subject';
 
 $lang['common']['text']='Text';
 
@@ -20,13 +16,17 @@ $lang['common']['go_back']='Go Back';
 
 $lang['common']['error']='Error';
 
-$lang['common']['user']='User';
+$lang['common']['email']='Email';
 
 $lang['common']['list']='list';
 
 $lang['common']['send']='Send';
 
-$lang['common']['subject']='Subject';
+$lang['common']['name']='Name';
+
+$lang['common']['title']='Title';
+
+$lang['common']['user']='User';
 
 $lang['common']['description']='Description';
 
