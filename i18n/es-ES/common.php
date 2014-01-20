@@ -1,8 +1,8 @@
 <?php
 
-$lang['common']['email']='Email';
-
 $lang['common']['name']='Nombre';
+
+$lang['common']['email']='Email';
 
 $lang['common']['registered_users']='Usuarios registrados';
 
