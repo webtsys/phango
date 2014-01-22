@@ -2445,6 +2445,27 @@ class SerializeField extends PhangoField {
 		return implode(', ', $return_value);
 
 	}
+	
+	function unserialize($value)
+	{
+	
+		global $lang;
+
+		$real_value=unserialize($value);
+		
+		if($real_value!=false)
+		{
+			return $real_value;
+		}
+		else
+		{
+		
+			//$this->std_error='';
+			return '';
+		
+		}
+
+	}
 
 	function get_parameters_default()
 	{
