@@ -11,7 +11,7 @@ function ShowMedia()
 	
 	settype($_GET['decoded'], 'integer');
 	
-	if($_GET['decoded']==1)
+	if($_GET['encoded']==1)
 	{
 	
 		$_GET['images']=urldecode_redirect($_GET['images']);

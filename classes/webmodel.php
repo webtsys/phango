@@ -5180,14 +5180,14 @@ $arr_cache_css=array();
 if(defined('THEME_MODULE'))
 {
 
-	function get_url_image($img_name)
+	function get_url_image($img_name, $set_encode=0)
 	{
 	
 		global $base_url; 
 	
 		//Redirect to php
 		
-		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('images' => $img_name));
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('images' => $img_name, 'encoded' => $set_encode));
 	
 	}
 	
@@ -5220,7 +5220,7 @@ if(defined('THEME_MODULE'))
 else
 {
 
-	function get_url_image($img_name)
+	function get_url_image($img_name, $set_encode=0)
 	{
 	
 		global $config_data, $base_url;
