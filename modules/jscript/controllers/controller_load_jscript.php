@@ -44,6 +44,19 @@ function Load_Jscript()
 	{
 
 		$jscript_source=$base_path.'application/media/jscript/libraries_jscript/'.$_GET['input_script'];
+		
+		if(!file_exists($jscript_source))
+		{
+		
+			//Check on theme
+			
+			$jscript_source=$base_path.$config_data['module_theme'].'media/jscript/libraries_jscript/'.$_GET['input_script'];
+			
+			//Always compressed if jscript is in theme.
+			
+			$_GET['no_compression']=0;
+		
+		}
 
 	}
 

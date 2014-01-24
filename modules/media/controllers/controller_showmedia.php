@@ -11,6 +11,10 @@ function ShowMedia()
 	$_GET['images']=basename(form_text($_GET['images']));
 	$_GET['css']=basename(form_text($_GET['css']));
 	
+	$cont_error=ob_get_contents();
+	
+	ob_clean();
+	
 	//Accept .gif, .png o .jpg
 	
 	if($_GET['images']!='')
@@ -33,6 +37,8 @@ function ShowMedia()
 			}
 			
 		}
+		
+		ob_end_flush();
 		
 		die;
 	
@@ -58,6 +64,8 @@ function ShowMedia()
 			}
 			
 		}
+		
+		ob_end_flush();
 		
 		die;
 	
