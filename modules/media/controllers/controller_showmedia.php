@@ -8,6 +8,16 @@ function ShowMedia()
 	settype($_GET['images'], 'string');
 	settype($_GET['css'], 'string');
 	
+	
+	settype($_GET['decoded'], 'integer');
+	
+	if($_GET['decoded']==1)
+	{
+	
+		$_GET['images']=urldecode_redirect($_GET['images']);
+	
+	}
+	
 	$_GET['images']=str_replace('./', '', form_text($_GET['images']));
 	$_GET['css']==str_replace('./', '', form_text($_GET['css']));
 	
@@ -19,7 +29,7 @@ function ShowMedia()
 	
 	if($_GET['images']!='')
 	{
-	
+		
 		$ext_info=pathinfo($_GET['images']);
 		
 		if($ext_info['extension']=='gif' || $ext_info['extension']=='jpg' || $ext_info['extension']=='png')
