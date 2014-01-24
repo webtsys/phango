@@ -5177,26 +5177,82 @@ $arr_cache_css=array();
 *
 */
 
-function load_css_view()
+if(defined('THEME_MODULE'))
 {
 
-	global $arr_cache_css, $base_url, $config_data;
-
-	//Delete repeat scripts...
-
-	$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
-	$arr_final_jscript=array();
-
-	foreach($arr_cache_css as $idcss => $css)
+	function get_url_image($img_name)
+	{
+	
+		global $base_url; 
+	
+		//Redirect to php
+		
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('images' => $img_name));
+	
+	}
+	
+	function load_css_view()
 	{
 
-		settype($arr_cache_css_gzipped[$idcss], 'integer');
-		
-		$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+		global $arr_cache_css, $base_url, $config_data;
+
+		//Delete repeat scripts...
+
+		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
+		$arr_final_jscript=array();
+
+		foreach($arr_cache_css as $idcss => $css)
+		{
+
+			settype($arr_cache_css_gzipped[$idcss], 'integer');
+
+			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+			
+			$arr_final_jscript[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
+
+		}
+
+		return implode("\n", $arr_final_jscript);
 
 	}
 
-	return implode("\n", $arr_final_jscript);
+}
+else
+{
+
+	function get_url_image($img_name)
+	{
+	
+		global $config_data, $base_url;
+	
+		//Redirect to image
+		
+		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$img_name;
+	
+	}
+	
+	function load_css_view()
+	{
+
+		global $arr_cache_css, $base_url, $config_data;
+
+		//Delete repeat scripts...
+
+		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
+		$arr_final_jscript=array();
+
+		foreach($arr_cache_css as $idcss => $css)
+		{
+
+			settype($arr_cache_css_gzipped[$idcss], 'integer');
+			
+			$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+
+		}
+
+		return implode("\n", $arr_final_jscript);
+
+	}
 
 }
 
