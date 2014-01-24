@@ -8,8 +8,8 @@ function ShowMedia()
 	settype($_GET['images'], 'string');
 	settype($_GET['css'], 'string');
 	
-	$_GET['images']=basename(form_text($_GET['images']));
-	$_GET['css']=basename(form_text($_GET['css']));
+	$_GET['images']=str_replace('./', '', form_text($_GET['images']));
+	$_GET['css']==str_replace('./', '', form_text($_GET['css']));
 	
 	$cont_error=ob_get_contents();
 	
