@@ -4437,6 +4437,8 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 	
 	$theme=$config_data['dir_theme'];
 	
+	$container_theme=$config_data['module_theme'];
+	
 	$view='';
 	
 	if(!isset($cache_template[$template])) 
@@ -4448,7 +4450,7 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 		
 		//Load view from theme...
 		
-		if(!include($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
+		if(!include($base_path.$container_theme.'views/'.$theme.'/'.strtolower($template).'.php')) 
 		{
 
 			$output_error_view=ob_get_contents();

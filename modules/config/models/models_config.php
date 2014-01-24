@@ -19,6 +19,8 @@ $model['config_webtsys']->components['dir_theme']=new CharField(255);
 $model['config_webtsys']->components['dir_theme']->form='SelectForm';
 $model['config_webtsys']->components['dir_theme']->required=1;
 
+$model['config_webtsys']->set_component('module_theme', 'CharField', array(255));
+
 $model['config_webtsys']->components['portal_name']=new CharField(255);
 $model['config_webtsys']->components['portal_name']->required=1;
 

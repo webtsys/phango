@@ -16,8 +16,17 @@ function ConfigAdmin()
 	$model['config_webtsys']->forms['portal_name']->SetForm($config_data['portal_name']);
 	$model['config_webtsys']->forms['portal_email']->SetForm($config_data['portal_email']);
 
-	$arr_theme=array($original_theme);
-
+	$theme_check=$original_theme;
+	
+	if($config_data['module_theme']!='')
+	{
+	
+		$theme_check=basename($config_data['module_theme']).'/'.$original_theme;
+	
+	}
+	
+	$arr_theme=array($theme_check);
+	
 	$dir = opendir( $base_path."views" );
 
 	while ( $appearance = readdir( $dir ) )
@@ -36,6 +45,29 @@ function ConfigAdmin()
 			
 		} 
 	} 
+	closedir( $dir );
+	
+	//Check modules for see if theme views exists.
+	
+	$dir = opendir( $base_path."modules" );
+	
+	while ( $appearance = readdir( $dir ) )
+	{
+		if ( $appearance != "." && $appearance != ".." && !preg_match('/^\./', $appearance) )
+		{
+			
+			if( file_exists($base_path."modules/".$appearance."/views/".$appearance."/.info_theme") )
+			{
+				
+				settype($appearance, "string");
+				$arr_theme[]=ucwords( strtolower( $appearance ) );
+				$arr_theme[count($arr_theme)]=$appearance.'/'.$appearance;
+
+			}
+			
+		} 
+	} 
+	
 	closedir( $dir );
 
 	$model['config_webtsys']->forms['dir_theme']->SetParameters($arr_theme);
@@ -179,7 +211,26 @@ function ConfigAdmin()
 		$_POST['time_format']=obtain_timestamp_zone($_POST['timezone']);
 
 	}
-
+	
+	//Check themes.
+	
+	if(isset($_POST['dir_theme']))
+	{
+		$arr_theme=explode('/', $_POST['dir_theme']);
+		
+		settype($arr_theme[1], 'string');
+		
+		$_POST['dir_theme']=$arr_theme[0];
+		
+		$_POST['module_theme']='';
+		
+		if($arr_theme[1]!='')
+		{
+			$_POST['module_theme']='modules/'.basename($arr_theme[1]).'/';
+		}
+		
+	}
+	
 	//Labels
 
 	$model['config_webtsys']->forms['dir_theme']->label=$lang['config']['dir_theme'];
