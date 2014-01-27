@@ -2446,12 +2446,12 @@ class SerializeField extends PhangoField {
 
 	}
 	
-	function unserialize($value)
+	static function unserialize($value)
 	{
 	
 		global $lang;
 
-		$real_value=unserialize($value);
+		$real_value=@unserialize($value);
 		
 		if($real_value!=false)
 		{
@@ -2461,7 +2461,7 @@ class SerializeField extends PhangoField {
 		{
 		
 			//$this->std_error='';
-			return '';
+			return false;
 		
 		}
 
