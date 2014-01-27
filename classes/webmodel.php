@@ -4437,6 +4437,8 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 	
 	$theme=$config_data['dir_theme'];
 	
+	$container_theme=$config_data['module_theme'];
+	
 	$view='';
 	
 	if(!isset($cache_template[$template])) 
@@ -4448,7 +4450,7 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 		
 		//Load view from theme...
 		
-		if(!include($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
+		if(!include($base_path.$container_theme.'views/'.$theme.'/'.strtolower($template).'.php')) 
 		{
 
 			$output_error_view=ob_get_contents();
@@ -5175,26 +5177,82 @@ $arr_cache_css=array();
 *
 */
 
-function load_css_view()
+if(defined('THEME_MODULE'))
 {
 
-	global $arr_cache_css, $base_url, $config_data;
-
-	//Delete repeat scripts...
-
-	$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
-	$arr_final_jscript=array();
-
-	foreach($arr_cache_css as $idcss => $css)
+	function get_url_image($img_name, $set_encode=0)
+	{
+	
+		global $base_url; 
+	
+		//Redirect to php
+		
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('images' => $img_name, 'encoded' => $set_encode));
+	
+	}
+	
+	function load_css_view()
 	{
 
-		settype($arr_cache_css_gzipped[$idcss], 'integer');
-		
-		$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+		global $arr_cache_css, $base_url, $config_data;
+
+		//Delete repeat scripts...
+
+		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
+		$arr_final_jscript=array();
+
+		foreach($arr_cache_css as $idcss => $css)
+		{
+
+			settype($arr_cache_css_gzipped[$idcss], 'integer');
+
+			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+			
+			$arr_final_jscript[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
+
+		}
+
+		return implode("\n", $arr_final_jscript);
 
 	}
 
-	return implode("\n", $arr_final_jscript);
+}
+else
+{
+
+	function get_url_image($img_name, $set_encode=0)
+	{
+	
+		global $config_data, $base_url;
+	
+		//Redirect to image
+		
+		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$img_name;
+	
+	}
+	
+	function load_css_view()
+	{
+
+		global $arr_cache_css, $base_url, $config_data;
+
+		//Delete repeat scripts...
+
+		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
+		$arr_final_jscript=array();
+
+		foreach($arr_cache_css as $idcss => $css)
+		{
+
+			settype($arr_cache_css_gzipped[$idcss], 'integer');
+			
+			$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+
+		}
+
+		return implode("\n", $arr_final_jscript);
+
+	}
 
 }
 
