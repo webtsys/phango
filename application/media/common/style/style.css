@@ -159,7 +159,7 @@ h1
 
 }
 
-.content 
+.content_admin 
 {
 
 	margin:auto;
@@ -174,6 +174,22 @@ h1
 
 }
 
+.contents
+{
+	float:right;
+	width:79%;
+	padding:0px 0px 15px 0px;
+}
+
+.content
+{
+	
+	/*border: solid #000 0px;
+	float:right;
+	width:80%;*/
+	
+}
+
 .title
 {
 
@@ -182,7 +198,14 @@ h1
 	font-family:arial, sans;
 	text-decoration:none;
 	color:#000000;
-
+	padding:5px;
+	background-image:url('../images/background_title.png');
+	background-position:top;
+	background-repeat: repeat-x;
+	background-color: #fcf7fd;
+	border-radius: 8px 8px 0px 0px;
+	border:solid #cccccc;
+	border-width:1px 1px 1px 1px;
 }
 
 #inform {
@@ -291,13 +314,7 @@ margin-right:auto;
 
 }
 
-.cont
-{
-	float:left;
-	
-}
-
-.cont_text
+.cont_text, .cont
 {
 
 	margin:auto;

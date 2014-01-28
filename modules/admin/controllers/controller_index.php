@@ -16,7 +16,7 @@ function Index()
 
 	$original_theme=$config_data['dir_theme'];
 
-	$config_data['dir_theme']=$original_theme.'/admin';
+	$config_data['dir_theme']=$original_theme;
 
 	$arr_block='admin_none';
 	
@@ -175,7 +175,7 @@ function Index()
 	
 		ob_end_clean();
 		
-		echo load_view(array('header' => $header, 'title' => $lang['admin']['admin_zone'], 'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin');
+		echo load_view(array('header' => $header, 'title' => $lang['admin']['admin_zone'], 'content' => $content, 'name_modules' => $name_modules, 'urls' => $urls , 'extra_data' => $extra_data), 'admin/admin');
 
 	}
 	else

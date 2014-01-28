@@ -43,7 +43,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
 
 		<div id="center_body">
 			<div id="header"><span id="title_phango">Phango</span> <span id="title_framework">Framework!</span> <?php echo $title; ?></div>
-			<div class="content">
+			<div class="content_admin">
 				<div id="menu">
 					<div class="menu_title"><?php echo $lang['admin']['applications']; ?></div>
 					<?php
@@ -72,7 +72,7 @@ function AdminView($header, $title, $content, $name_modules, $url_modules, $extr
 
 					?>
 				</div>
-				<div class="cont right_cont">
+				<div class="contents">
 					<?php echo $content; ?>
 				</div>
 			</div>
