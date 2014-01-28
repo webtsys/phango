@@ -32,10 +32,10 @@ function ShowMedia()
 		
 		$ext_info=pathinfo($_GET['images']);
 		
+		$file_path=$base_path.$config_data['module_theme'].'/media/images/'.$_GET['images'];
+		
 		if($ext_info['extension']=='gif' || $ext_info['extension']=='jpg' || $ext_info['extension']=='png')
 		{
-		
-			$file_path=$base_path.$config_data['module_theme'].'/media/images/'.$_GET['images'];
 			
 			if(file_exists($file_path))
 			{
@@ -43,6 +43,12 @@ function ShowMedia()
 				header('Content-Type: image/'.$ext_info['extension']);
 			
 				readfile($file_path);
+			
+			}
+			else
+			{
+			
+				show_error('Don\'t exists the image', 'Don\'t exists the image with path: '.$file_path, $output_external='');
 			
 			}
 			
