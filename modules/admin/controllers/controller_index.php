@@ -18,7 +18,7 @@ function Index()
 
 	$config_data['dir_theme']=$original_theme;
 
-	$arr_block='admin_none';
+	$arr_block='admin/admin_none';
 	
 	$extra_urls=array();
 
