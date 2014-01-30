@@ -4,6 +4,8 @@ $lang['common']['name']='Nombre';
 
 $lang['common']['email']='Email';
 
+$lang['common']['subject']='Asunto';
+
 $lang['common']['registered_users']='Usuarios registrados';
 
 $lang['common']['no']='No';
@@ -25,8 +27,6 @@ $lang['common']['user']='Usuario';
 $lang['common']['list']='list';
 
 $lang['common']['send']='Enviar';
-
-$lang['common']['subject']='Asunto';
 
 $lang['common']['no_element_chosen']='Elija opción...';
 
