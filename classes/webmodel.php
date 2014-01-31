@@ -886,6 +886,8 @@ class Webmodel {
 	{
 
 		global $lang;
+		
+		load_lang('error_model');
 	
 		//array where sanitized values are stored...
 		
