@@ -20,6 +20,7 @@ function ShowMedia()
 	
 	$_GET['images']=str_replace('./', '', form_text($_GET['images']));
 	$_GET['css']==str_replace('./', '', form_text($_GET['css']));
+	$_GET['css']==str_replace('./', '', form_text($_GET['font']));
 	
 	$cont_error=ob_get_contents();
 	
@@ -87,6 +88,33 @@ function ShowMedia()
 	
 	}
 	
+	
+	if($_GET['font']!='')
+	{
+		
+		$ext_info=pathinfo($_GET['font']);
+		
+		if($ext_info['extension']=='ttf')
+		{
+			
+			$file_path=$base_path.$config_data['module_theme'].'/media/fonts/'.$_GET['font'];
+			
+			if(file_exists($file_path))
+			{
+				
+				header('Content-Type: application/x-font-woff');
+			
+				readfile($file_path);
+			
+			}
+			
+		}
+		
+		ob_end_flush();
+		
+		die;
+	
+	}
 	
 
 }
