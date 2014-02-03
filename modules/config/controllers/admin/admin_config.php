@@ -53,7 +53,7 @@ function ConfigAdmin()
 	
 	while ( $appearance = readdir( $dir ) )
 	{
-		if ( $appearance != "." && $appearance != ".." && !preg_match('/^\./', $appearance) && is_dir($base_path."views/".$appearance))
+		if ( $appearance != "." && $appearance != ".." && !preg_match('/^\./', $appearance) && is_dir($base_path."modules/".$appearance."/views/".$appearance."/"))
 		{
 			
 			if( file_exists($base_path."modules/".$appearance."/views/".$appearance."/.info_theme") )
