@@ -148,8 +148,6 @@ if($script_base_controller=='.')
 
 }
 
-define('PHANGO_SCRIPT_BASE_CONTROLLER', $script_controller);
-
 $arr_url=@explode('/', $arr_get_url[1]);
 
 $script_file=@form_text(slugify($arr_url[0]));
@@ -164,6 +162,8 @@ if($script_controller=='')
 	$script_controller=$app_index;
 	$script_base_controller=$app_index;
 }
+
+define('PHANGO_SCRIPT_BASE_CONTROLLER', $script_controller);
 
 if($script_file=='') 
 {
