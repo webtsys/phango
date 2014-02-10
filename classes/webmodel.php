@@ -5196,7 +5196,7 @@ if(defined('THEME_MODULE'))
 			
 		}
 		
-		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('images' => $img_name, 'encoded' => $set_encode));
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('encoded' => $set_encode, 'images' => $img_name));
 	
 	}
 	
