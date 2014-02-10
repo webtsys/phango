@@ -5229,14 +5229,14 @@ if(defined('THEME_MODULE'))
 else
 {
 
-	function get_url_image($img_name)
+	function get_url_image($img_name, $set_encode=0, $directory_encode='', $respect_upper=0)
 	{
 	
 		global $config_data, $base_url;
 	
 		//Redirect to image
 		
-		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$img_name;
+		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$directory_encode.'/'.$img_name;
 	
 	}
 	
