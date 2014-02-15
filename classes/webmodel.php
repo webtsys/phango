@@ -5207,7 +5207,7 @@ function load_css_local_view()
 		
 		}
 		
-		$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
+		$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
 
 	}
 
