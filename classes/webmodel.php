@@ -5172,12 +5172,48 @@ function load_header_view()
 */
 
 $arr_cache_css=array();
+$arr_cache_local_css=array();
 
 /**
 *
-* Function for 
+* Functions for load css
 *
 */
+
+function load_css_local_view()
+{
+
+	global $arr_cache_local_css, $base_url, $config_data;
+
+	//Delete repeat scripts...
+
+	$arr_cache_local_css=array_unique($arr_cache_local_css, SORT_STRING);
+	$arr_final_css=array();
+
+	foreach($arr_cache_local_css as $idcss => $css)
+	{
+
+		settype($arr_cache_css_gzipped[$idcss], 'integer');
+		
+		if(file_exists($base_path.'application/media/css/'.$css))
+		{
+			//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+			$url=$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css;
+		}
+		else
+		{
+		
+			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+		
+		}
+		
+		$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
+
+	}
+
+	return implode("\n", $arr_final_css);
+
+}
 
 if(defined('THEME_MODULE'))
 {

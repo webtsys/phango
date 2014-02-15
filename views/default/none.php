@@ -4,7 +4,7 @@ function NoneView($title, $content, $block_title, $block_content, $block_urls,
 $block_type, $block_id, $config_data, $headers='')
 {
 
-global $base_url, $base_path, $arr_i18n, $language, $lang, $user_data, $arr_cache_jscript, $arr_check_table;
+global $base_url, $base_path, $arr_i18n, $language, $lang, $user_data, $arr_cache_jscript, $arr_cache_local_css, $arr_check_table;
 
 settype($_COOKIE['webtsys_shop'], 'string');
 
@@ -17,6 +17,11 @@ $token=$_COOKIE['webtsys_shop'];
 	<head>
 	<title><?php echo $config_data['portal_name'].' - '.$title; ?></title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="<?php echo $config_data['metatags']; ?>" />
+	<link href="<?php echo $base_url; ?>/media/default/style.css" rel="stylesheet" type="text/css" />
+	<?php
+		echo load_css_local_view();
+	?>
 	<?php 
 		$arr_cache_jscript[]='jquery.min.js';
 		echo load_jscript_view(); 
@@ -26,8 +31,6 @@ $token=$_COOKIE['webtsys_shop'];
 		obtain_data_cart();
 	</script>
 	<?php echo $headers; ?>
-	<meta name="keywords" content="<?php echo $config_data['metatags']; ?>" />
-	<link href="<?php echo $base_url; ?>/media/default/style.css" rel="stylesheet" type="text/css" />
 	
 	</head>
 <body>
