@@ -291,6 +291,7 @@ class SimpleList
 	public $options_func='BasicOptionsListModel';
 	public $url_options='';
 	public $separator_element='<br />';
+	public $limit_rows=10;
 	
 	function __construct($model_name)
 	{
@@ -331,12 +332,20 @@ class SimpleList
 		
 		}
 		
-		$options_method='yes_add_options';
+		$options_method='no_add_options';
 		
 		if($this->yes_options)
 		{
 		
 			$arr_fields_show[]=$lang['common']['options'];
+			$options_method='yes_add_options';
+		
+		}
+		
+		if($this->limit_rows>0)
+		{
+		
+			$this->where_sql=$this->where_sql.' limit '.$this->limit_rows;
 		
 		}
 		
@@ -368,9 +377,9 @@ class SimpleList
 	
 	private function yes_add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
 	{
-
+		
 		$arr_row[]=implode($separator_element, $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
-
+		
 		return $arr_row;
 
 	}
