@@ -1030,6 +1030,13 @@ class Webmodel {
 
 				$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
 				
+				if($this->components[$component_name]->label=='')
+				{
+				
+					$this->components[$component_name]->label=ucfirst($component_name);
+				
+				}
+				
 				$this->forms[$component_name]->label=$this->components[$component_name]->label;
 
 				//Set parameters to default
@@ -2770,6 +2777,7 @@ class ImageField extends PhangoField {
 	public $std_error='';
 	public $quality_jpeg=75;
 	public $min_size=array(0, 0);
+	public $prefix_id=1;
 
 	function __construct($name_file, $path, $url_path, $type, $thumb=0, $img_width=array('mini' => 150), $quality_jpeg=85)
 	{
@@ -2826,10 +2834,20 @@ class ImageField extends PhangoField {
 		{
 				
 			if($_FILES[$file]['tmp_name']!='')
-			{
+			{	
+			
+			
 				$arr_image=getimagesize($_FILES[$file]['tmp_name']);
 				
 				$_FILES[$file]['name']=form_text($_FILES[$file]['name']);
+				
+				if($this->prefix_id==1)
+				{
+				
+					$_FILES[$file]['name']=get_token().'_'.$_FILES[$file]['name'];
+				
+				}
+				
 				$this->value=$_FILES[$file]['name'];
 				
 				//Check size
