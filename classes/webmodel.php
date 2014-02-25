@@ -3218,6 +3218,14 @@ class ForeignKeyField extends IntegerField{
 		{
 			$model[$this->related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
 		}
+		else
+		{
+		
+			show_error('You need load class before set relantionship', 'You need load class '.$this->related_model.' before set relantionship with ForeignKeyField', $output_external='');
+			
+			die;
+		
+		}
 	}
 
 	function check($value)
