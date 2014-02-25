@@ -278,5 +278,122 @@ class ListModelClass {
 
 }
 
+class SimpleList
+{
+
+	public $arr_options=array();
+	public $yes_options=1;
+	public $arr_fields=array();
+	public $arr_fields_no_showed=array();
+	public $arr_cell_sizes=array();
+	public $model_name;
+	public $where_sql='';
+	public $options_func='BasicOptionsListModel';
+	public $url_options='';
+	public $separator_element='<br />';
+	public $limit_rows=10;
+	
+	function __construct($model_name)
+	{
+	
+		global $model;
+	
+		$this->model_name=$model_name;
+		
+		if( count($model[$this->model_name]->forms)==0)
+		{	
+			$model[$this->model_name]->create_form();
+		}
+	
+	}
+	
+	public function show()
+	{
+	
+		global $model, $lang;
+		
+		load_libraries(array('table_config'));
+		
+		$arr_fields_show=array();
+		
+		if(count($this->arr_fields)==0)
+		{
+			
+			$this->arr_fields=array_keys($model[$this->model_name]->components);
+		
+		}
+		
+		$arr_fields_showed=array_diff($this->arr_fields, $this->arr_fields_no_showed);
+		
+		foreach($arr_fields_showed as $field)
+		{
+		
+			$arr_fields_show[$field]=$model[$this->model_name]->components[$field]->label;
+		
+		}
+		
+		$options_method='no_add_options';
+		
+		if($this->yes_options)
+		{
+		
+			$arr_fields_show[]=$lang['common']['options'];
+			$options_method='yes_add_options';
+		
+		}
+		
+		if($this->limit_rows>0)
+		{
+		
+			$this->where_sql=$this->where_sql.' limit '.$this->limit_rows;
+		
+		}
+		
+		up_table_config($arr_fields_show, $this->arr_cell_sizes);
+		
+		$query=$model[$this->model_name]->select($this->where_sql, $this->arr_fields);
+		
+		while($arr_row=webtsys_fetch_array($query))
+		{
+		
+			$arr_row_final=array();
+		
+			foreach($arr_fields_showed as $field)
+			{
+			
+				$arr_row_final[$field]=$model[$this->model_name]->components[$field]->show_formatted($arr_row[$field]);
+			
+			}
+			
+			$arr_row_final=$this->$options_method($arr_row_final, $arr_row, $this->options_func, $this->url_options, $this->model_name, $model[$this->model_name]->idmodel, $this->separator_element);
+		
+			middle_table_config($arr_row_final, $cell_sizes=array());
+		
+		}
+		
+		down_table_config();
+	
+	}
+	
+	private function yes_add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
+	{
+		
+		$arr_row[]=implode($separator_element, $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
+		
+		return $arr_row;
+
+	}
+
+
+
+	private function no_add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
+	{
+
+		return $arr_row;
+
+	}
+
+
+}
 
 ?>

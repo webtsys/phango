@@ -28,7 +28,9 @@ global $base_url, $arr_cache_jscript;
 	<div id="center_body">
 		<div id="header"><span id="title_phango">Phango</span> <span id="title_framework">Framework!</span></div>
 		<div class="content big_content">
-			<?php echo $content; ?>
+			<div class="cont">
+				<?php echo $content; ?>
+			</div>
 		</div>
 	</div>
 

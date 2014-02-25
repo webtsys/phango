@@ -1030,6 +1030,13 @@ class Webmodel {
 
 				$this->forms[$component_name]=new ModelForm($this->name, $component_name, $component->form, set_name_default($component_name), $component, $component->required, '');
 				
+				if($this->components[$component_name]->label=='')
+				{
+				
+					$this->components[$component_name]->label=ucfirst($component_name);
+				
+				}
+				
 				$this->forms[$component_name]->label=$this->components[$component_name]->label;
 
 				//Set parameters to default
@@ -2770,6 +2777,7 @@ class ImageField extends PhangoField {
 	public $std_error='';
 	public $quality_jpeg=75;
 	public $min_size=array(0, 0);
+	public $prefix_id=1;
 
 	function __construct($name_file, $path, $url_path, $type, $thumb=0, $img_width=array('mini' => 150), $quality_jpeg=85)
 	{
@@ -2826,10 +2834,20 @@ class ImageField extends PhangoField {
 		{
 				
 			if($_FILES[$file]['tmp_name']!='')
-			{
+			{	
+			
+			
 				$arr_image=getimagesize($_FILES[$file]['tmp_name']);
 				
 				$_FILES[$file]['name']=form_text($_FILES[$file]['name']);
+				
+				if($this->prefix_id==1)
+				{
+				
+					$_FILES[$file]['name']=get_token().'_'.$_FILES[$file]['name'];
+				
+				}
+				
 				$this->value=$_FILES[$file]['name'];
 				
 				//Check size
@@ -5180,24 +5198,67 @@ function load_header_view()
 */
 
 $arr_cache_css=array();
+$arr_cache_local_css=array();
 
 /**
 *
-* Function for 
+* Functions for load css
 *
 */
+
+function load_css_local_view()
+{
+
+	global $arr_cache_local_css, $base_url, $config_data;
+
+	//Delete repeat scripts...
+
+	$arr_cache_local_css=array_unique($arr_cache_local_css, SORT_STRING);
+	$arr_final_css=array();
+
+	foreach($arr_cache_local_css as $idcss => $css)
+	{
+
+		settype($arr_cache_css_gzipped[$idcss], 'integer');
+		
+		if(file_exists($base_path.'application/media/css/'.$css))
+		{
+			//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+			$url=$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css;
+		}
+		else
+		{
+		
+			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+		
+		}
+		
+		$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+
+	}
+
+	return implode("\n", $arr_final_css);
+
+}
 
 if(defined('THEME_MODULE'))
 {
 
-	function get_url_image($img_name, $set_encode=0)
+	function get_url_image($img_name, $set_encode=0, $directory_encode='', $respect_upper=0)
 	{
 	
 		global $base_url; 
 	
 		//Redirect to php
 		
-		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('images' => $img_name, 'encoded' => $set_encode));
+		if($set_encode==1)
+		{
+		
+			$img_name=urlencode_redirect($directory_encode.'/'.slugify($img_name, $respect_upper));
+			
+		}
+		
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('encoded' => $set_encode, 'images' => $img_name));
 	
 	}
 	
@@ -5230,14 +5291,14 @@ if(defined('THEME_MODULE'))
 else
 {
 
-	function get_url_image($img_name, $set_encode=0)
+	function get_url_image($img_name, $set_encode=0, $directory_encode='', $respect_upper=0)
 	{
 	
 		global $config_data, $base_url;
 	
 		//Redirect to image
 		
-		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$img_name;
+		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$directory_encode.'/'.$img_name;
 	
 	}
 	
