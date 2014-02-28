@@ -5186,6 +5186,8 @@ function load_header_view()
 	//Delete repeat scripts...
 
 	$arr_cache_header=array_unique($arr_cache_header, SORT_STRING);
+	
+	ksort($arr_cache_header);
 
 	return implode("\n", $arr_cache_header);
 
