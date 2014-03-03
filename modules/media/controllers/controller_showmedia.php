@@ -7,7 +7,16 @@ function ShowMedia()
 
 	settype($_GET['images'], 'string');
 	settype($_GET['css'], 'string');
+	settype($_GET['module'], 'string');
 	
+	if($_GET['module']!='')
+	{
+	
+		$_GET['module']=slugify(basename($_GET['module']));
+		
+		$config_data['module_theme']='modules/'.$_GET['module'];
+	
+	}
 	
 	settype($_GET['decoded'], 'integer');
 	
@@ -77,6 +86,12 @@ function ShowMedia()
 				header('Content-Type: text/css');
 			
 				readfile($file_path);
+			
+			}
+			else
+			{
+			
+				show_error('Don\'t exists the css file', 'Don\'t exists the css file with path: '.$file_path, $output_external='');
 			
 			}
 			

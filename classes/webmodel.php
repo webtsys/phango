@@ -5208,7 +5208,7 @@ $arr_cache_local_css=array();
 *
 */
 
-function load_css_local_view()
+function load_css_local_view($module='')
 {
 
 	global $arr_cache_local_css, $base_url, $config_data;
@@ -5223,7 +5223,7 @@ function load_css_local_view()
 
 		settype($arr_cache_css_gzipped[$idcss], 'integer');
 		
-		if(file_exists($base_path.'application/media/css/'.$css))
+		if(file_exists($base_path.'application/media'.$config_data['dir_theme'].'/css/'.$css))
 		{
 			//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
 			$url=$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css;
@@ -5231,7 +5231,7 @@ function load_css_local_view()
 		else
 		{
 		
-			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css, 'module' => $module));
 		
 		}
 		
