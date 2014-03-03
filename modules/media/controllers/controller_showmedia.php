@@ -9,27 +9,74 @@ function ShowMedia()
 	settype($_GET['css'], 'string');
 	settype($_GET['module'], 'string');
 	
+	$module_theme_loaded=$config_data['module_theme'];
+	
 	if($_GET['module']!='')
 	{
 	
-		$_GET['module']=slugify(basename($_GET['module']));
+		$_GET['module']=slugify(basename($_GET['module']), 1);
 		
-		$config_data['module_theme']='modules/'.$_GET['module'];
+		$module_theme_loaded='modules/'.$_GET['module'].'/';
 	
 	}
 	
-	settype($_GET['decoded'], 'integer');
+	/*settype($_GET['decoded'], 'integer');
 	
 	if($_GET['encoded']==1)
+	{*/
+	
+	$img_final=urldecode_redirect($_GET['images']);
+	
+	if(!$img_final)
 	{
 	
-		$_GET['images']=urldecode_redirect($_GET['images']);
+		$_GET['images']=slugify($_GET['images'], 1);
+		
+	}
+	else
+	{
+	
+		$_GET['images']=$img_final;
 	
 	}
+	
+	
+	$css_final=urldecode_redirect($_GET['css']);
+	
+	if(!$css_final)
+	{
+	
+		$_GET['css']=slugify($_GET['css'], 1);
+		
+	}
+	else
+	{
+	
+		$_GET['css']=$css_final;
+	
+	}
+	
+	$font_final=urldecode_redirect($_GET['font']);
+	
+	if(!$font_final)
+	{
+	
+		$_GET['font']=slugify($_GET['font'], 1);
+		
+	}
+	else
+	{
+	
+		$_GET['font']=$font_final;
+	
+	}
+	
+	
+	/*}*/
 	
 	$_GET['images']=str_replace('./', '', form_text($_GET['images']));
 	$_GET['css']==str_replace('./', '', form_text($_GET['css']));
-	$_GET['css']==str_replace('./', '', form_text($_GET['font']));
+	$_GET['font']==str_replace('./', '', form_text($_GET['font']));
 	
 	$cont_error=ob_get_contents();
 	
@@ -42,7 +89,9 @@ function ShowMedia()
 		
 		$ext_info=pathinfo($_GET['images']);
 		
-		$file_path=$base_path.$config_data['module_theme'].'/media/images/'.$_GET['images'];
+		$_GET['images']=check_path($_GET['images']);
+		
+		$file_path=$base_path.$module_theme_loaded.'/media/images/'.$_GET['images'];
 		
 		if($ext_info['extension']=='gif' || $ext_info['extension']=='jpg' || $ext_info['extension']=='png')
 		{
@@ -78,7 +127,9 @@ function ShowMedia()
 		if($ext_info['extension']=='css')
 		{
 		
-			$file_path=$base_path.$config_data['module_theme'].'/media/css/'.$_GET['css'];
+			$_GET['css']=check_path($_GET['css']);
+		
+			$file_path=$base_path.$module_theme_loaded.'/media/css/'.$_GET['css'];
 			
 			if(file_exists($file_path))
 			{
@@ -112,7 +163,7 @@ function ShowMedia()
 		if($ext_info['extension']=='ttf')
 		{
 			
-			$file_path=$base_path.$config_data['module_theme'].'/media/fonts/'.$_GET['font'];
+			$file_path=$base_path.$module_theme_loaded.'/media/fonts/'.$_GET['font'];
 			
 			if(file_exists($file_path))
 			{
@@ -131,6 +182,23 @@ function ShowMedia()
 	
 	}
 	
+
+}
+
+function check_path($file)
+{
+
+	$arr_file=explode('/', $file);
+	$arr_file_final=array();
+	
+	foreach($arr_file as $file_part)
+	{
+	
+		$arr_file_final[]=slugify(basename($file_part), 1);
+	
+	}
+	
+	return implode('/', $arr_file_final);
 
 }
 

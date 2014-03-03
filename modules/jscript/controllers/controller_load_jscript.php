@@ -11,7 +11,19 @@ function Load_Jscript()
 
 	settype($_GET['input_script'], 'string');
 	settype($_GET['no_compression'], 'integer');
-
+	settype($_GET['module'], 'string');
+	
+	$module_theme_base=$config_data['module_theme'];
+	
+	if($_GET['module']!='')
+	{
+		
+		$_GET['module']=slugify(basename($_GET['module']));
+		
+		$module_theme_base='modules/'.$_GET['module'].'/';
+	
+	}
+	
 	//$_GET['input_script']=form_text($_GET['input_script']);
 	//$_GET['input_script']=str_replace('--', '/', $_GET['input_script']);
 
@@ -50,7 +62,7 @@ function Load_Jscript()
 		
 			//Check on theme
 			
-			$jscript_source=$base_path.$config_data['module_theme'].'media/jscript/libraries_jscript/'.$_GET['input_script'];
+			$jscript_source=$base_path.$module_theme_base.'media/jscript/libraries_jscript/'.$_GET['input_script'];
 			
 			//Always compressed if jscript is in theme.
 			
