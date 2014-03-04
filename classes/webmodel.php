@@ -4500,7 +4500,7 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 				{
 
 					//No exists view, see error from phango framework
-
+					
 					$output=ob_get_contents();
 
 					ob_clean();
@@ -4569,6 +4569,8 @@ function load_libraries_views($template, $func_views=array())
 	
 	$theme=$config_data['dir_theme'];
 
+	$container_theme=$config_data['module_theme'];
+	
 	$view='';
 
 	//Load views from a source file...
@@ -4592,7 +4594,7 @@ function load_libraries_views($template, $func_views=array())
 	
 	if($no_loaded==0)
 	{	
-		if(!include_once($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
+		if(!include_once($base_path.$container_theme.'views/'.$theme.'/'.strtolower($template).'.php')) 
 		{
 			
 			$output_error_view=ob_get_contents();
