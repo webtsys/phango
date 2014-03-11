@@ -16,6 +16,7 @@ function Browser_image()
 	$original_theme=$config_data['dir_theme'];
 
 	$config_data['dir_theme']=$original_theme.'/admin';
+	
 
 	$arr_block='admin_none';
 	
@@ -160,6 +161,8 @@ function Browser_image()
 				
 				$error=0;
 				
+				$c_arr_form=count($arr_form);
+				
 				foreach($arr_form as $img_form)
 				{
 					
@@ -178,8 +181,8 @@ function Browser_image()
 					}
 				
 				}
-				
-				if($error==0)
+				echo $error.'!='.$c_arr_form;
+				if($error!=$c_arr_form)
 				{
 				
 					ob_end_clean();
