@@ -5267,7 +5267,9 @@ function load_css_local_view()
 function get_url_local_image($img_name, $module, $respect_upper=0)
 {
 
-	if(!file_exists($base_path.$config_data['module_theme'].'media/images/'.$module.'/'.$css))
+	global $base_url, $base_path, $config_data;
+
+	if(!file_exists($base_path.$config_data['module_theme'].'media/images/'.$module.'/'.$img_name))
 	{
 
 		if(file_exists($base_path.'application/media/'.$module.'/images/'.$img_name))
