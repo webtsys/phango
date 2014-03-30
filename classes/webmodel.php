@@ -5290,7 +5290,7 @@ else
 	
 		//Redirect to image
 		
-		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$directory_encode.'/'.$img_name;
+		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$directory_encode.'/'.slugify($img_name, $respect_upper);
 	
 	}
 	
