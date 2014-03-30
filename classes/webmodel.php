@@ -3236,6 +3236,14 @@ class ForeignKeyField extends IntegerField{
 		{
 			$model[$this->related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
 		}
+		else
+		{
+		
+			show_error('You need load class before set relantionship', 'You need load class '.$this->related_model.' before set relantionship with ForeignKeyField', $output_external='');
+			
+			die;
+		
+		}
 	}
 
 	function check($value)
@@ -4492,7 +4500,7 @@ function load_view($arr_template, $template, $module_theme='', $load_if_no_cache
 				{
 
 					//No exists view, see error from phango framework
-
+					
 					$output=ob_get_contents();
 
 					ob_clean();
@@ -4561,6 +4569,8 @@ function load_libraries_views($template, $func_views=array())
 	
 	$theme=$config_data['dir_theme'];
 
+	$container_theme=$config_data['module_theme'];
+	
 	$view='';
 
 	//Load views from a source file...
@@ -4584,7 +4594,7 @@ function load_libraries_views($template, $func_views=array())
 	
 	if($no_loaded==0)
 	{	
-		if(!include_once($base_path.'views/'.$theme.'/'.strtolower($template).'.php')) 
+		if(!include_once($base_path.$container_theme.'views/'.$theme.'/'.strtolower($template).'.php')) 
 		{
 			
 			$output_error_view=ob_get_contents();
@@ -5143,12 +5153,13 @@ function show_error($txt_error_normal, $txt_error_debug, $output_external='')
 
 $arr_cache_jscript=array();
 $arr_cache_jscript_gzipped=array();
+$arr_cache_jscript_module=array();
 
 function load_jscript_view()
 {
 
-	global $arr_cache_jscript, $arr_cache_jscript_gzipped, $base_url;
-
+	global $arr_cache_jscript, $arr_cache_jscript_module, $arr_cache_jscript_gzipped, $base_url;
+	
 	//Delete repeat scripts...
 
 	$arr_cache_jscript=array_unique($arr_cache_jscript, SORT_STRING);
@@ -5159,8 +5170,9 @@ function load_jscript_view()
 	{
 
 		settype($arr_cache_jscript_gzipped[$idscript], 'integer');
-
-		$arr_final_jscript[]='<script type="text/javascript" src="'.make_fancy_url($base_url, 'jscript', 'load_jscript', 'script', array('no_compression' => $arr_cache_jscript_gzipped[$idscript], 'input_script' => $jscript)).'"></script>'."\n";
+		settype($arr_cache_jscript_module[$idscript], 'string');
+		
+		$arr_final_jscript[]='<script type="text/javascript" src="'.make_fancy_url($base_url, 'jscript', 'load_jscript', 'script', array('no_compression' => $arr_cache_jscript_gzipped[$idscript], 'module' => $arr_cache_jscript_module[$idscript], 'input_script' => $jscript)).'"></script>'."\n";
 
 	}
 
@@ -5178,6 +5190,8 @@ function load_header_view()
 	//Delete repeat scripts...
 
 	$arr_cache_header=array_unique($arr_cache_header, SORT_STRING);
+	
+	ksort($arr_cache_header);
 
 	return implode("\n", $arr_cache_header);
 
@@ -5201,54 +5215,104 @@ $arr_cache_local_css=array();
 function load_css_local_view()
 {
 
-	global $arr_cache_local_css, $base_url, $config_data;
+	global $arr_cache_local_css, $arr_cache_css, $base_url, $base_path, $config_data;
 
 	//Delete repeat scripts...
 
 	$arr_cache_local_css=array_unique($arr_cache_local_css, SORT_STRING);
 	$arr_final_css=array();
 
-	foreach($arr_cache_local_css as $idcss => $css)
+	//First on media folder, after on module, finally, i put the theme
+	
+	foreach($arr_cache_local_css as $module_css => $arr_css)
 	{
-
-		settype($arr_cache_css_gzipped[$idcss], 'integer');
-		
-		if(file_exists($base_path.'application/media/css/'.$css))
+	
+		foreach($arr_css as $css)
 		{
-			//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
-			$url=$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css;
-		}
-		else
-		{
-		
-			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
-		
-		}
-		
-		$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+			if(!file_exists($base_path.$config_data['module_theme'].'media/css/'.$module_css.'/'.$css))
+			{
+			
+				//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css, 'module' => $module_css));
+				if(file_exists($base_path.'application/media/'.$module_css.'/css/'.$css))
+				{
+					//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+					$url=$base_url.'/media/'.$module_css.'/css/'.$css;
+					$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
 
+				}
+				else
+				{
+					
+					$css=urlencode_redirect($css);
+					
+					$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
+					$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+
+					
+				}
+			}
+			else
+			{
+			
+				$arr_cache_css[]=$css;
+			
+			}
+		}
 	}
 
 	return implode("\n", $arr_final_css);
 
 }
 
+function get_url_local_image($img_name, $module, $respect_upper=0)
+{
+
+	global $base_url, $base_path, $config_data;
+
+	if(!file_exists($base_path.$config_data['module_theme'].'media/images/'.$module.'/'.$img_name))
+	{
+
+		if(file_exists($base_path.'application/media/'.$module.'/images/'.$img_name))
+		{
+		
+			$url=$base_url.'/media/'.$module.'/images/'.$img_name;
+		
+		}
+		else
+		{
+		
+			$img_name=urlencode_redirect(slugify($img_name, $respect_upper));
+		
+			return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module, 'images' => $img_name));
+			
+		}
+
+	}
+	else
+	{
+	
+		return get_url_image($img_name, $set_encode=1, $directory_encode='', $respect_upper=1);
+	
+	}
+		
+}
+
 if(defined('THEME_MODULE'))
 {
 
-	function get_url_image($img_name, $set_encode=0, $directory_encode='', $respect_upper=0)
+	function get_url_image($img_name, $set_encode=0)
 	{
 	
 		global $base_url; 
 	
 		//Redirect to php
 		
-		if($set_encode==1)
-		{
+		/*if($set_encode==1)
+		{*/
 		
-			$img_name=urlencode_redirect($directory_encode.'/'.slugify($img_name, $respect_upper));
-			
-		}
+		$img_name=urlencode_redirect($img_name, 1);
+		
+		//}
 		
 		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('encoded' => $set_encode, 'images' => $img_name));
 	
@@ -5266,8 +5330,8 @@ if(defined('THEME_MODULE'))
 
 		foreach($arr_cache_css as $idcss => $css)
 		{
-
-			settype($arr_cache_css_gzipped[$idcss], 'integer');
+		
+			$css=base64_encode(slugify($css, 1));
 
 			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
 			
@@ -5283,14 +5347,14 @@ if(defined('THEME_MODULE'))
 else
 {
 
-	function get_url_image($img_name, $set_encode=0, $directory_encode='', $respect_upper=0)
+	function get_url_image($img_name, $set_encode=0)
 	{
 	
 		global $config_data, $base_url;
 	
 		//Redirect to image
 		
-		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$directory_encode.'/'.slugify($img_name, $respect_upper);
+		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$img_name;
 	
 	}
 	
@@ -5306,8 +5370,6 @@ else
 
 		foreach($arr_cache_css as $idcss => $css)
 		{
-
-			settype($arr_cache_css_gzipped[$idcss], 'integer');
 			
 			$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
 

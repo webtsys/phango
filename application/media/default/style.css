@@ -4,7 +4,7 @@ body
 {
 
  	margin:0px; 
-	background-color:#fff;
+	background:url('images/background.png') repeat-y center #e0e5e6;
 
 }
 
@@ -133,7 +133,7 @@ img {
 	padding-left:5px;
 	color: #676767;
 	text-align:middle;
-	height:110px;
+	height:120px;
 	margin-bottom:4px;
 	line-height: 35px;
 
@@ -436,23 +436,22 @@ a:hover.no_choose_flag
 	font-weight:bold;
 	font-family:verdana, verdana;
 	text-decoration:none;
-	color: #ddd;
-	border:solid #ffff12;
-	border-width:1px 1px 1px 1px;
-	padding:5px 5px 5px 15px;
+	color: #232323;
+	border:solid #cbcbcb;
+	border-width:1px;
+	padding:10px;
 	margin-bottom:5px;
 	background-color:#1ca34f;
-	background-image:url('images/title_bg.png');
+	background-image:url('images/background_barr.png');
 	background-repeat:repeat-x;
-	height:40px;
 	border-radius:8px;
-	line-height:40px;
+	text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
 
 }
 
 .cont {
 
-	border:solid #ffffff;
+	border:solid #dbdbdb;
 	border-width:1px 1px 1px 1px;
 	padding:10px 20px 10px 20px;
 	margin-bottom:5px;
@@ -685,6 +684,7 @@ background-position:center;
 	background-image:url('images/background_foot.png');
 	background-repeat:repeat-x;
 	background-position:bottom;
+	background-color: #fff;
 	
 	
 }
