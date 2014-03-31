@@ -63,7 +63,7 @@ function ModulesAdmin()
 									$my_model=preg_replace( '/^models_([aA-zZ]+)\.php/' , '$1', $file_model);
 									
 									include_once($models_dir.$file_model);
-
+									
 								}
 
 							}
