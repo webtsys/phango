@@ -127,6 +127,13 @@ class LoginClass {
 	
 	}
 	
+	public function recovery_password_form()
+	{
+	
+		
+	
+	}
+	
 	public function recovery_password()
 	{
 	
@@ -134,23 +141,35 @@ class LoginClass {
 	
 	}
 	
-	public function create_account()
+	public function create_account_form()
 	{
 	
-		//obtain from facebook or twitter also.
 		
-		settype($_GET['op_create'], 'integer');
+	
+		echo load_view(array('model' => $model[$this->model_login], 'login_model' => $this), $this->create_account_view);
+	
+	}
+	
+	public function create_account()
+	{
 		
-		switch($_GET['op_create'])
+		global $model;
+			
+		$post=filter_fields_array($this->arr_user_insert, $_POST);
+	
+		if(ModelForm::check_form($model[$this->model_login], $post))
 		{
 		
-			default:
+			if($model[$this->model_login]->insert($post))
+			{
 			
-				
+				return true;
 			
-			break;
+			}
 		
 		}
+	
+		
 	
 	}
 	
