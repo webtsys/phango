@@ -139,7 +139,18 @@ class LoginClass {
 	
 		//obtain from facebook or twitter also.
 		
+		settype($_GET['op_create'], 'integer');
 		
+		switch($_GET['op_create'])
+		{
+		
+			default:
+			
+				
+			
+			break;
+		
+		}
 	
 	}
 	
