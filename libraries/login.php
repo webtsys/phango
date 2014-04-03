@@ -2,8 +2,6 @@
 
 class LoginClass {
 
-	
-
 	public $model_login;
 	public $field_user;
 	public $field_password;
@@ -11,6 +9,8 @@ class LoginClass {
 	public $arr_user_insert;
 	public $key_field;
 	public $session;
+	public $url_login='';
+	public $login_view;
 	
 	public function __construct($model_login, $field_user, $field_password, $key_field, $arr_user_session=array(), $arr_user_insert=array())
 	{
@@ -20,6 +20,7 @@ class LoginClass {
 		$this->field_password=$field_password;
 		$this->arr_user_session=$arr_user_session;
 		$this->key_field=$key_field;
+		$this->login_view='';
 		
 		if(count($this->arr_user_session)>0)
 		{
@@ -121,8 +122,8 @@ class LoginClass {
 	
 	public function login_form()
 	{
-	
 		
+		echo load_view(array('model' => $model[$this->model_login]), $this->login_view);
 	
 	}
 	

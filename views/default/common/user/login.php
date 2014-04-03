@@ -1,6 +1,6 @@
 <?php
 
-function LoginView($arr_fields, $register_page_final)
+function LoginView($arr_fields, $register_page_final, $field_user='email')
 {
 
 	global $config_data, $base_url, $lang;
@@ -10,7 +10,8 @@ function LoginView($arr_fields, $register_page_final)
 		<form method="post" action="<?php echo make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 1)); ?>">
 		<?php
 			set_csrf_key();
-			echo generate_form($arr_fields, array('email', 'password', 'automatic_login'), 'common/forms/modelform');
+			
+			echo generate_form($arr_fields, array($field_user, 'password', 'automatic_login'), 'common/forms/modelform');
 
 			?>
 			<input type="hidden" name="register_page" value="<?php echo $register_page_final; ?>">
