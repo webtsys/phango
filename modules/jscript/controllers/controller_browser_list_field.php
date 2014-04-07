@@ -13,7 +13,7 @@ function Browser_list_field()
 	
 	load_model('jscript');
 	
-	load_libraries(array('check_admin', 'generate_admin_ng'));
+	load_libraries(array('check_admin', 'generate_admin_ng', 'forms/selectmodelformbyorder'));
 	
 	$original_theme=$config_data['dir_theme'];
 
@@ -30,10 +30,11 @@ function Browser_list_field()
 	
 	$arr_cache_jscript[]='jquery.min.js';
 	
-	$module=slugify($_GET['module']);
-	$model_name=slugify($_GET['model']);
-	$field_ident=slugify($_GET['field']);
-	$field_fill=slugify($_GET['field_fill']);
+	$module=@slugify($_GET['module']);
+	$model_name=@slugify($_GET['model']);
+	$field_ident=@slugify($_GET['field']);
+	$field_fill=@slugify($_GET['field_fill']);
+	$category_model=@slugify($_GET['category']);
 	
 	$yes_go=0;
 	
@@ -133,7 +134,16 @@ function Browser_list_field()
 			
 			$url_options=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field_ident, 'field_fill' => $field_fill));
 			
-			ListModel($model_name, $arr_fields, $url_options, $options_func='ChooseOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+			$where_sql='';
+			
+			if($category_model!='')
+			{
+			
+				echo '<p>'.$lang['common']['filter_by_category'].'</p>';
+			
+			}
+			
+			ListModel($model_name, $arr_fields, $url_options, $options_func='ChooseOptionsListModel', $where_sql, $arr_fields_form=array(), $type_list='Basic');
 		
 		}
 		
