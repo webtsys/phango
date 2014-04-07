@@ -175,7 +175,7 @@ function BasicDeleteModel($model_name, $id)
 
 }
 
-function ConfigInsertModel($model_name, $arr_fields, $post)
+function ConfigInsertModel($model_name, $arr_fields, $post, $where_sql='')
 {
 
 	global $model;
@@ -191,7 +191,7 @@ function ConfigInsertModel($model_name, $arr_fields, $post)
 
 	}
 	
-	if($model[$model_name]->$func_update($post, 'limit 1'))
+	if($model[$model_name]->$func_update($post, $where_sql.' limit 1'))
 	{
 		
 		return 1;

@@ -130,7 +130,7 @@ function Browser_list_field()
 		
 		if(isset($model[$model_name]) && isset($model[$model_name]->components[$field_ident]))
 		{
-		
+			
 				
 			$arr_fields=array($field_ident);
 			$arr_fields_edit=array();
@@ -166,6 +166,12 @@ function Browser_list_field()
 			}
 			
 			ListModel($model_name, $arr_fields, $url_options, $options_func='ChooseOptionsListModel', $where_sql, $arr_fields_form=array(), $type_list='Basic');
+		
+		}
+		else
+		{
+		
+			echo 'Check that <strong>'.$model_name.' model </strong> and <strong> field '.$field_ident.'</strong> is loaded';
 		
 		}
 		
