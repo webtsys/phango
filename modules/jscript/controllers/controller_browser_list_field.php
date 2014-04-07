@@ -13,7 +13,7 @@ function Browser_list_field()
 	
 	load_model('jscript');
 	
-	load_libraries(array('check_admin', 'generate_admin_ng', 'forms/selectmodelformbyorder'));
+	load_libraries(array('check_admin', 'generate_admin_ng', 'forms/selectmodelformbyorder', 'forms/selectmodelform'));
 	
 	$original_theme=$config_data['dir_theme'];
 
@@ -34,7 +34,10 @@ function Browser_list_field()
 	$model_name=@slugify($_GET['model']);
 	$field_ident=@slugify($_GET['field']);
 	$field_fill=@slugify($_GET['field_fill']);
-	$category_model=@slugify($_GET['category']);
+	$category_model=@slugify($_GET['category_model']);
+	$category_model_field=@slugify($_GET['category_model_field']);
+	$category_field=@slugify($_GET['category_field']);
+	$field_parent_category=@slugify($_GET['field_parent_category']);
 	
 	$yes_go=0;
 	
@@ -132,14 +135,31 @@ function Browser_list_field()
 			$arr_fields=array($field_ident);
 			$arr_fields_edit=array();
 			
-			$url_options=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field_ident, 'field_fill' => $field_fill));
+			$url_options=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field_ident, 'field_fill' => $field_fill, 'category_model' => $category_model, 'category_model_field' => $category_model_field, 'category_field' => $category_field));
 			
 			$where_sql='';
 			
-			if($category_model!='')
+			if($category_model!='' && isset($model[$category_model]) && isset($model[$category_model]->components[$category_model_field]) && isset($model[$model_name]->components[$category_field]) )
 			{
-			
-				echo '<p>'.$lang['common']['filter_by_category'].'</p>';
+				
+				settype($_GET['category_id'], 'integer');
+				
+				/*if(isset($model[$model_name]->components[$field_parent_category]))
+				{
+					echo load_view(array('title' => $lang['common']['filter_by_category'], SelectModelFormByOrder('category_id', '', $_GET['category_id'], $model_name, $category_model, $field_parent_category, $where='', $null_yes=1) ), 'content');
+				}
+				else
+				{*/
+					
+				
+				$form_html='<form method="get" action="'.$url_options.'/">'.SelectModelForm('category_id', '', $_GET['category_id'], $category_model, $category_model_field, '').'<input type="submit" value="'.$lang['common']['send'].'"/></form>';
+				
+				echo load_view(array('title' => $lang['common']['filter_by_category'],  $form_html), 'content');
+				
+				$where_sql='where '.$category_field.'="'.$_GET['category_id'].'"';
+				
+				
+				//}
 			
 			}
 			
