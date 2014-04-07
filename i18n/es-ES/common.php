@@ -96,7 +96,7 @@ $lang['common']['html_allowed']='Html permitido';
 
 $lang['common']['image']='Imagen';
 
-$lang['common']['filter_by_category']='filter_by_category';
+$lang['common']['filter_by_category']='Filtrar por categoría';
 
 $lang['common']['select']='Seleccionar';
 

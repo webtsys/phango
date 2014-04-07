@@ -1,13 +1,13 @@
 <?php
 
-function SelectWindowForm($name="", $class='', $value='', $module='', $model_name='', $field='')
+function SelectWindowForm($name="", $class='', $value='', $module='', $model_name='', $field='', $category_field='', $category_model='', $category_model_field='')
 {
 
 	global $model, $lang, $base_url;
 	
 	settype($value, 'integer');
 	
-	$url_choose_option=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field, 'field_fill' => $name));
+	$url_choose_option=make_fancy_url($base_url, 'jscript', 'browser_list_field', 'browser_list_field', array('module' => $module, 'model' => $model_name, 'field' => $field, 'field_fill' => $name, 'category_field' => $category_field, 'category_model' => $category_model, 'category_model_field' => $category_model_field ));
 
 	if($value==0)
 	{

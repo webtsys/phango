@@ -156,8 +156,10 @@ function Browser_list_field()
 				
 				echo load_view(array('title' => $lang['common']['filter_by_category'],  $form_html), 'content');
 				
-				$where_sql='where '.$category_field.'="'.$_GET['category_id'].'"';
-				
+				if($_GET['category_id']>0)
+				{
+					$where_sql='where '.$category_field.'="'.$_GET['category_id'].'"';
+				}
 				
 				//}
 			
