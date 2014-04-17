@@ -6,7 +6,7 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 {
 	global $model, $lang, $std_error, $arr_block, $base_url;
 	//Setting op variable to integer for use in switch
-
+	
 	if(isset($model[$model_name]))
 	{
 
@@ -175,7 +175,7 @@ function BasicDeleteModel($model_name, $id)
 
 }
 
-function ConfigInsertModel($model_name, $arr_fields, $post, $where_sql='')
+function ConfigInsertModel($model_name, $arr_fields, $post, $id)
 {
 
 	global $model;
@@ -191,7 +191,7 @@ function ConfigInsertModel($model_name, $arr_fields, $post, $where_sql='')
 
 	}
 	
-	if($model[$model_name]->$func_update($post, $where_sql.' limit 1'))
+	if($model[$model_name]->$func_update($post, ' limit 1'))
 	{
 		
 		return 1;

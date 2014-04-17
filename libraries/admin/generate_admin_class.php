@@ -18,6 +18,7 @@ class GenerateAdminClass {
 		$this->arr_fields=array(); 
 		$this->arr_fields_edit=array();
 		$this->url_options;
+		$this->url_back='';
 		$this->no_search=false;
 		$this->options_func='BasicOptionsListModel';
 		$this->where_sql='';
