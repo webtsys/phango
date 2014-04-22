@@ -75,8 +75,8 @@ function ShowMedia()
 	/*}*/
 	
 	$_GET['images']=str_replace('./', '', form_text($_GET['images']));
-	$_GET['css']==str_replace('./', '', form_text($_GET['css']));
-	$_GET['font']==str_replace('./', '', form_text($_GET['font']));
+	$_GET['css']=str_replace('./', '', form_text($_GET['css']));
+	$_GET['font']=str_replace('./', '', form_text($_GET['font']));
 	
 	$cont_error=ob_get_contents();
 	
@@ -153,7 +153,6 @@ function ShowMedia()
 		die;
 	
 	}
-	
 	
 	if($_GET['font']!='')
 	{
