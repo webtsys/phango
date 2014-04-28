@@ -282,6 +282,28 @@ $model['page_tag_blog']->components['idpage_blog']=new ForeignKeyField('page_blo
 
 $model['page_tag_blog']->components['idpage_blog']->form='HiddenForm';
 
+//Comments class
+
+class CommentClass {
+
+	public $idpage_blog;
+
+	function __construct($idpage_blog)
+	{
+	
+		$idpage_blog=$this->idpage_blog;
+	
+	}
+	
+	function show_comments()
+	{
+	
+		
+	
+	}
+
+}
+
 
 $arr_module_insert['blog']=array('name' => 'blog', 'admin' => 1, 'admin_script' => array('blog', 'blog'), 'load_module' => '', 'order_module' => 0, 'required' => 0, 'app_index' => 1);
 
