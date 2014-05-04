@@ -150,7 +150,7 @@ function Post()
 		
 		if($result['accept_comment']==1)
 		{
-	
+		/*
 			//Comments...
 			?>
 			<a name="comments"></a>
@@ -260,7 +260,7 @@ function Post()
 			$cont_index.=ob_get_contents();
 			
 			ob_clean(); 
-
+		*/
 		}
 
 	}

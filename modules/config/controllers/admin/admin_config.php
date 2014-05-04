@@ -7,7 +7,7 @@ function ConfigAdmin()
 
 	load_lang('config');
 
-	load_libraries(array('generate_admin_ng', 'timestamp_zone', 'forms/textareabb'));
+	load_libraries(array('generate_admin_ng', 'admin/generate_admin_class', 'timestamp_zone', 'forms/textareabb'));
 
 	$yes_entities=0;
 
@@ -278,8 +278,18 @@ function ConfigAdmin()
 
 	$model['config_webtsys']->func_update='Config';
 
-	InsertModelForm('config_webtsys', make_fancy_url($base_url, 'admin', 'index', 'change_config', array('IdModule' => $_GET['IdModule']) ), make_fancy_url($base_url, 'admin', 'index', 'user', array('IdModule' => $_GET['IdModule']) ), $arr_fields, $id=0, $goback=1);
+	//InsertModelForm('config_webtsys', make_fancy_url($base_url, 'admin', 'index', 'change_config', array('IdModule' => $_GET['IdModule']) ), make_fancy_url($base_url, 'admin', 'index', 'user', array('IdModule' => $_GET['IdModule']) ), $arr_fields, $id=0, $goback=1);
 
+	$admin=new GenerateAdminClass('config_webtsys');
+	
+	$admin->url_options=make_fancy_url($base_url, 'admin', 'index', 'change_config', array('IdModule' => $_GET['IdModule']) );
+	
+	$admin->url_back=$admin->url_options;
+	
+	$admin->arr_fields_edit=$arr_fields;
+	
+	$admin->show_config_mode();
+	
 }
 
 ?>
