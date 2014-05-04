@@ -314,13 +314,13 @@ if($connection!==false  && $select_db==1)
 else if(USE_DB==1 && $connection===false)
 {
 
-	$arr_error_sql[0]='<p>Error: Cannot connect to MySQL db.</p>';    
-	$arr_error_sql[1]='<p>Error: Cannot connect to MySQL db.</p>';
-
 	$output=ob_get_contents();
 
 	$text_error.='<p>Output: '.$output.'</p>';
 
+	$arr_error_sql[0]='<p>Error: Cannot connect to MySQL db.</p>';    
+	$arr_error_sql[1]='<p>Error: Cannot connect to MySQL db.'.$text_error.'</p>';
+	
 	ob_clean();
 
 	echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
