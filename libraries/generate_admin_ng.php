@@ -2,7 +2,7 @@
 
 load_libraries(array('generate_forms', 'table_config', 'pages'));
 
-function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1, $simple_redirect=0)
+function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1, $simple_redirect=0, $where_sql='')
 {
 	global $model, $lang, $std_error, $arr_block, $base_url;
 	//Setting op variable to integer for use in switch
@@ -53,7 +53,7 @@ function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array()
 
 				$func_update=$arr_update[$id];
 				
-				if(!$func_update($model_name, $arr_fields, $_POST, $id))
+				if(!$func_update($model_name, $arr_fields, $_POST, $id, $where_sql))
 				{
 
 					ob_start();
@@ -175,13 +175,13 @@ function BasicDeleteModel($model_name, $id)
 
 }
 
-function ConfigInsertModel($model_name, $arr_fields, $post, $id)
+function ConfigInsertModel($model_name, $arr_fields, $post, $id, $where_sql='')
 {
 
 	global $model;
 
-	$num_insert=$model[$model_name]->select_count('', $model[$model_name]->idmodel);
-
+	$num_insert=$model[$model_name]->select_count($where_sql, $model[$model_name]->idmodel);
+	
 	$func_update='insert';
 
 	if($num_insert>0)
@@ -191,7 +191,7 @@ function ConfigInsertModel($model_name, $arr_fields, $post, $id)
 
 	}
 	
-	if($model[$model_name]->$func_update($post, ' limit 1'))
+	if($model[$model_name]->$func_update($post, $where_sql.' limit 1'))
 	{
 		
 		return 1;
