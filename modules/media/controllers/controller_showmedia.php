@@ -95,9 +95,32 @@ function ShowMedia()
 		
 		if($ext_info['extension']=='gif' || $ext_info['extension']=='jpg' || $ext_info['extension']=='png')
 		{
+		
+			$check_file=0;
 			
-			if(file_exists($file_path))
+			if(!file_exists($file_path))
 			{
+			
+				$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/images/'.$_GET['images'];
+			
+				if(file_exists($file_path))
+				{
+				
+					$check_file=1;
+				
+				}
+			
+			}
+			else
+			{
+			
+				$check_file=1;
+			
+			}
+			
+			if($check_file==1)
+			{
+			
 			
 				header('Content-Type: image/'.$ext_info['extension']);
 			
