@@ -243,7 +243,44 @@ function ShowMedia()
 			
 			$file_path=$base_path.$module_theme_loaded.'/media/fonts/'.$_GET['font'];
 			
-			if(file_exists($file_path))
+			if(!file_exists($file_path))
+			{
+			
+				//Second on normal theme.
+			
+				$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/fonts/'.$_GET['font'];
+			
+				if(!file_exists($file_path))
+				{
+				
+					//Thirst on view of actually module.
+				
+					if(file_exists($base_path.'modules/'.$script_base_controller.'/media/fonts/'.$_GET['font'])) 
+					{
+					
+						$check_file=1;
+				
+					}
+				
+				
+				}
+				else
+				{
+				
+					$check_file=1;
+				
+				}
+				
+			
+			}
+			else
+			{
+			
+				$check_file=1;
+			
+			}
+			
+			if($check_file==1)
 			{
 				
 				header('Content-Type: application/x-font-woff');
