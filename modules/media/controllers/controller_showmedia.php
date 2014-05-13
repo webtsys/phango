@@ -3,7 +3,7 @@
 function ShowMedia()
 {
 
-	global $base_path, $config_data;
+	global $base_path, $config_data, $script_base_controller;
 
 	settype($_GET['images'], 'string');
 	settype($_GET['css'], 'string');
@@ -98,17 +98,36 @@ function ShowMedia()
 		
 			$check_file=0;
 			
+			//First on module theme.
+			
 			if(!file_exists($file_path))
 			{
 			
+				//Second on normal theme.
+			
 				$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/images/'.$_GET['images'];
 			
-				if(file_exists($file_path))
+				if(!file_exists($file_path))
+				{
+				
+					//Thirst on view of actually module.
+				
+					if(file_exists($base_path.'modules/'.$script_base_controller.'/media/images/'.$_GET['images'])) 
+					{
+					
+						$check_file=1;
+				
+					}
+				
+				
+				}
+				else
 				{
 				
 					$check_file=1;
 				
 				}
+				
 			
 			}
 			else
