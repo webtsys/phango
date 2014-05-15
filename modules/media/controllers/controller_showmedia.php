@@ -87,6 +87,8 @@ function ShowMedia()
 	if($_GET['images']!='')
 	{
 		
+		$check_file=0;
+		
 		$ext_info=pathinfo($_GET['images']);
 		
 		$_GET['images']=check_path($_GET['images']);
@@ -168,6 +170,7 @@ function ShowMedia()
 		
 		if($ext_info['extension']=='css')
 		{
+			$check_file=0;
 		
 			$_GET['css']=check_path($_GET['css']);
 		
@@ -240,6 +243,7 @@ function ShowMedia()
 		
 		if($ext_info['extension']=='ttf')
 		{
+			$check_file=0;
 			
 			$file_path=$base_path.$module_theme_loaded.'/media/fonts/'.$_GET['font'];
 			
