@@ -5331,7 +5331,7 @@ if(defined('THEME_MODULE'))
 		foreach($arr_cache_css as $idcss => $css)
 		{
 		
-			$css=base64_encode(slugify($css, 1));
+			$css=slugify(base64_encode($css), 1);
 
 			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
 			
