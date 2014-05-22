@@ -287,6 +287,8 @@ class SimpleList
 	public $yes_options=1;
 	public $arr_fields=array();
 	public $arr_fields_no_showed=array();
+	public $arr_extra_fields=array();
+	public $arr_extra_fields_func=array();
 	public $arr_cell_sizes=array();
 	public $model_name;
 	public $where_sql='';
@@ -294,6 +296,7 @@ class SimpleList
 	public $url_options='';
 	public $separator_element='<br />';
 	public $limit_rows=10;
+	public $raw_query=1;
 	
 	function __construct($model_name)
 	{
@@ -334,6 +337,15 @@ class SimpleList
 		
 		}
 		
+		//Extra fields name_field
+		
+		foreach($this->arr_extra_fields as $extra_key => $name_field)
+		{
+		
+			$arr_fields_show[$extra_key]=$name_field;
+		
+		}
+		
 		$options_method='no_add_options';
 		
 		if($this->yes_options)
@@ -353,7 +365,7 @@ class SimpleList
 		
 		up_table_config($arr_fields_show, $this->arr_cell_sizes);
 		
-		$query=$model[$this->model_name]->select($this->where_sql, $this->arr_fields);
+		$query=$model[$this->model_name]->select($this->where_sql, $this->arr_fields, $this->raw_query);
 		
 		while($arr_row=webtsys_fetch_array($query))
 		{
@@ -365,6 +377,15 @@ class SimpleList
 			
 				$arr_row_final[$field]=$model[$this->model_name]->components[$field]->show_formatted($arr_row[$field]);
 			
+			}
+			
+			//Extra arr_extra_fields
+			
+			foreach($this->arr_extra_fields_func as $name_func)
+			{
+				
+				$arr_row_final[]=$name_func($arr_row);
+				
 			}
 			
 			$arr_row_final=$this->$options_method($arr_row_final, $arr_row, $this->options_func, $this->url_options, $this->model_name, $model[$this->model_name]->idmodel, $this->separator_element);
@@ -380,7 +401,7 @@ class SimpleList
 	private function yes_add_options($arr_row, $arr_row_raw, $options_func, $url_options, $model_name, $model_idmodel, $separator_element)
 	{
 		
-		$arr_row[]=implode($separator_element, $options_func($url_options, $model_name, $model_idmodel, $arr_row_raw) );
+		$arr_row[]=implode($separator_element, $options_func($url_options, $model_name, $arr_row_raw[$model_idmodel], $arr_row_raw) );
 		
 		return $arr_row;
 

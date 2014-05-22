@@ -1,5 +1,11 @@
 <?php
 
+$lang['blog']['inform_comment']='Se ha recibido un comentario en un post al que usted se ha suscrito';
+
+$lang['blog']['comment_made']='Comentario hecho por';
+
+$lang['blog']['down_article']='Dar de baja';
+
 $lang['blog']['edit_in_page_blog']='Edición de propiedad blog en pagina';
 
 $lang['blog']['choose_blog_to_show']='Elegir blog para mostar sus últimos post';
@@ -39,12 +45,6 @@ $lang['blog']['please_wait_a_seconds_for_send_a_new_message']='Por favor, espera
 $lang['blog']['send_post']='Enviar respuesta';
 
 $lang['blog']['no_exist_post']='No existen contenidos';
-
-$lang['blog']['inform_comment']='Se ha recibido un comentario en un post al que usted se ha suscrito';
-
-$lang['blog']['comment_made']='Comentario hecho por';
-
-$lang['blog']['down_article']='Dar de baja';
 
 $lang['blog']['search_tags_results']='Resultados de busqueda de etiquetas';
 

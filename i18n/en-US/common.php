@@ -1,5 +1,53 @@
 <?php
 
+$lang['common']['image']='Image';
+
+$lang['common']['zip_code']='Zip code';
+
+$lang['common']['address']='Adress';
+
+$lang['common']['email']='Email';
+
+$lang['common']['redirect']='Redirect';
+
+$lang['common']['success']='Successful operation';
+
+$lang['common']['press_here_redirecting']='Press here to come back...';
+
+$lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
+
+$lang['common']['go_back']='Go Back';
+
+$lang['common']['send']='Send';
+
+$lang['common']['logout']='Logout';
+
+$lang['common']['with_*_field_required']='The fields with * are required';
+
+$lang['common']['login']='Login';
+
+$lang['common']['password']='Password';
+
+$lang['common']['register_user']='User registration';
+
+$lang['common']['order_by']='Order by';
+
+$lang['common']['in_order']='In order';
+
+$lang['common']['search']='Search';
+
+$lang['common']['search_by']='Search by';
+
+$lang['common']['reset']='Reset';
+
+$lang['common']['order_and_search']='Search and order';
+
+$lang['common']['pages']='Pages';
+
+$lang['common']['edit']='Edit';
+
+$lang['common']['delete']='Delete';
+
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
@@ -17,8 +65,6 @@ $lang['common']['image_size_is_not_correct']='image_size_is_not_correct';
 $lang['common']['min_size']='min_size';
 
 $lang['common']['a_image_with_same_name_exists']='A image with same name exists in the server';
-
-$lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
 
 $lang['common']['cannot_delete_image']='Cannot delete image. Image exists?.';
 
@@ -48,27 +94,15 @@ $lang['common']['required']='Required';
 
 $lang['common']['options']='Options';
 
-$lang['common']['go_back']='Go Back';
-
 $lang['common']['moderator']='Moderator';
 
 $lang['common']['title']='Title';
 
 $lang['common']['text']='Text';
 
-$lang['common']['email']='Email';
-
 $lang['common']['order']='Order';
 
 $lang['common']['captcha']='Captcha';
-
-$lang['common']['edit']='Edit';
-
-$lang['common']['redirect']='Redirect';
-
-$lang['common']['success']='Successful operation';
-
-$lang['common']['press_here_redirecting']='Press here to come back...';
 
 $lang['common']['more']='More';
 
@@ -82,8 +116,6 @@ $lang['common']['hidden']='Hidden';
 
 $lang['common']['connected']='Connected';
 
-$lang['common']['send']='Send';
-
 $lang['common']['error']='Error';
 
 $lang['common']['error_email_format']='Error in mail format';
@@ -93,8 +125,6 @@ $lang['common']['date']='Date';
 $lang['common']['website']='Website';
 
 $lang['common']['html_allowed']='Allowed html';
-
-$lang['common']['image']='Image';
 
 $lang['common']['filter_by_category']='filter_by_category';
 
@@ -122,8 +152,6 @@ $lang['common']['profile']='Profile';
 
 $lang['common']['thanks']='Thanks';
 
-$lang['common']['password']='Password';
-
 $lang['common']['without_privileges']='Unprivileged';
 
 $lang['common']['administrator']='Admin';
@@ -131,8 +159,6 @@ $lang['common']['administrator']='Admin';
 $lang['common']['language']='Language';
 
 $lang['common']['last_name']='Last name';
-
-$lang['common']['address']='Adress';
 
 $lang['common']['city']='City';
 
@@ -158,28 +184,6 @@ $lang['common']['height']='Height';
 
 $lang['common']['admin_panel']='Admin panel';
 
-$lang['common']['with_*_field_required']='The fields with * are required';
-
-$lang['common']['order_by']='Order by';
-
-$lang['common']['in_order']='In order';
-
-$lang['common']['search']='Search';
-
-$lang['common']['search_by']='Search by';
-
-$lang['common']['reset']='Reset';
-
-$lang['common']['order_and_search']='Search and order';
-
-$lang['common']['logout']='Logout';
-
-$lang['common']['register_user']='User registration';
-
-$lang['common']['login']='Login';
-
-$lang['common']['pages']='Pages';
-
 $lang['common']['add_new_item']='Add new item';
 
 $lang['common']['cannot_update_insert_in_model']='I cannot insert or update this element';
@@ -202,8 +206,6 @@ $lang['common']['cannot_load_jquery']='Not loaded jquery, required for this meth
 
 $lang['common']['delete_model']='Delete element';
 
-$lang['common']['delete']='Delete';
-
 $lang['common']['no_exists_elements_to_order']='There are no items to order';
 
 $lang['common']['registered_users']='Registered users';
@@ -215,8 +217,6 @@ $lang['common']['list']='list';
 $lang['common']['category']='Category';
 
 $lang['common']['region']='Region';
-
-$lang['common']['zip_code']='Zip code';
 
 $lang['common']['any_option']='All options';
 

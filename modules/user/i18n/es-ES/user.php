@@ -1,5 +1,35 @@
 <?php
 
+$lang['user']['login']='Identificarse';
+
+$lang['user']['my_account']='Mi cuenta';
+
+$lang['user']['register']='Registrarse';
+
+$lang['user']['push_remember']='Recordar contraseña';
+
+$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
+
+$lang['user']['see_message_user']='Ver mensaje';
+
+$lang['user']['text_welcome']='Bienvenido a nuestra página web';
+
+$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
+
+$lang['user']['thanks']='Gracias.';
+
+$lang['user']['modify_user']='Modificar usuario';
+
+$lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
+
+$lang['user']['remember_password']='Recordar contraseña';
+
+$lang['user']['change_data']='Cambiar datos';
+
+$lang['user']['private_messages']='Mensajes privados';
+
+$lang['user']['repeat_password']='Repetir contraseña';
+
 $lang['user']['private_nick']='Nick privado';
 
 $lang['user']['admin_users']='Administración de usuarios';
@@ -33,10 +63,6 @@ $lang['user']['user_zone']='Zona de usuarios';
 $lang['user']['re_mprivate']='RE';
 
 $lang['user']['send_message']='Enviar mensaje';
-
-$lang['user']['message_send_user']='Se le envió un mensaje a su buzón en nuesta web';
-
-$lang['user']['see_message_user']='Ver mensaje';
 
 $lang['user']['need_data']='Se necesitan más datos';
 
@@ -126,8 +152,6 @@ $lang['user']['profiles_list_explain']='En este listado encontrará a todos los 
 
 $lang['user']['see_profile']='Ver perfil';
 
-$lang['user']['repeat_password']='Repetir contraseña';
-
 $lang['user']['automatic_login']='Conexión automática';
 
 $lang['user']['privileges_user']='Privilegios de usuario';
@@ -205,30 +229,6 @@ $lang['user']['max_size']='Tamaño máximo';
 $lang['user']['choose_avatar_web']='Elegir avatar';
 
 $lang['user']['avatar_size_wrong']='Tamaño de avatar, incorrecto';
-
-$lang['user']['text_welcome']='Bienvenido a nuestra página web';
-
-$lang['user']['text_answer']='Esto es la contraseña con la que podrá identificarse en la web. Recuerde que su nombre de usuario corresponde al email con que se registró.';
-
-$lang['user']['thanks']='Gracias.';
-
-$lang['user']['modify_user']='Modificar usuario';
-
-$lang['user']['change_data']='Cambiar datos';
-
-$lang['user']['private_messages']='Mensajes privados';
-
-$lang['user']['register']='Registrarse';
-
-$lang['user']['push_remember']='Recordar contraseña';
-
-$lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
-
-$lang['user']['remember_password']='Recordar contraseña';
-
-$lang['user']['login']='Identificarse';
-
-$lang['user']['my_account']='Mi cuenta';
 
 $lang['user']['without_special_rank']='Sin rango especial';
 

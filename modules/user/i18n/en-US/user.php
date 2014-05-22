@@ -1,5 +1,35 @@
 <?php
 
+$lang['user']['login']='Login';
+
+$lang['user']['my_account']='My account';
+
+$lang['user']['register']='Register';
+
+$lang['user']['push_remember']='Remember password';
+
+$lang['user']['message_send_user']='Other user sent a message to your mailbox';
+
+$lang['user']['see_message_user']='View message';
+
+$lang['user']['text_welcome']='Welcome to our webpage';
+
+$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
+
+$lang['user']['thanks']='Thanks.';
+
+$lang['user']['modify_user']='Change user';
+
+$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
+
+$lang['user']['remember_password']='Remember password';
+
+$lang['user']['change_data']='Change data';
+
+$lang['user']['private_messages']='Private messages';
+
+$lang['user']['repeat_password']='Repeat password';
+
 $lang['user']['private_nick']='Private nick';
 
 $lang['user']['admin_users']='Users administration';
@@ -33,10 +63,6 @@ $lang['user']['user_zone']='User&#39;s zone';
 $lang['user']['re_mprivate']='RE';
 
 $lang['user']['send_message']='Send message';
-
-$lang['user']['message_send_user']='Other user sent a message to your mailbox';
-
-$lang['user']['see_message_user']='View message';
 
 $lang['user']['need_data']='You need more data';
 
@@ -126,8 +152,6 @@ $lang['user']['profiles_list_explain']='In this list will find all registered us
 
 $lang['user']['see_profile']='See profile';
 
-$lang['user']['repeat_password']='Repeat password';
-
 $lang['user']['automatic_login']='Automatic login';
 
 $lang['user']['privileges_user']='User privileges';
@@ -205,30 +229,6 @@ $lang['user']['max_size']='Maximum size';
 $lang['user']['choose_avatar_web']='Choose avatar';
 
 $lang['user']['avatar_size_wrong']='Avatar size is wrong';
-
-$lang['user']['text_welcome']='Welcome to our webpage';
-
-$lang['user']['text_answer']='This is the password with which you can log on the web. Remember that your username is the email with which you registered';
-
-$lang['user']['thanks']='Thanks.';
-
-$lang['user']['modify_user']='Change user';
-
-$lang['user']['change_data']='Change data';
-
-$lang['user']['private_messages']='Private messages';
-
-$lang['user']['register']='Register';
-
-$lang['user']['push_remember']='Remember password';
-
-$lang['user']['remember_password_explain']='Please enter the email address you registered on the website, which is where you receive your new password';
-
-$lang['user']['remember_password']='Remember password';
-
-$lang['user']['login']='Login';
-
-$lang['user']['my_account']='My account';
 
 $lang['user']['without_special_rank']='Without special rank';
 
