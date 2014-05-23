@@ -2778,6 +2778,8 @@ class ImageField extends PhangoField {
 	public $quality_jpeg=75;
 	public $min_size=array(0, 0);
 	public $prefix_id=1;
+	public $img_minimal_height=array();
+	public $func_token='get_token';
 
 	function __construct($name_file, $path, $url_path, $type, $thumb=0, $img_width=array('mini' => 150), $quality_jpeg=85)
 	{
@@ -2844,7 +2846,9 @@ class ImageField extends PhangoField {
 				if($this->prefix_id==1)
 				{
 				
-					$_FILES[$file]['name']=get_token().'_'.$_FILES[$file]['name'];
+					$func_token=$this->func_token;
+				
+					$_FILES[$file]['name']=$func_token().'_'.$_FILES[$file]['name'];
 				
 				}
 				
@@ -2982,6 +2986,26 @@ class ImageField extends PhangoField {
 							
 								$ratio = ($arr_image[0] / $width);
 								$height = round($arr_image[1] / $ratio);
+								
+								if(isset($this->img_minimal_height[$name_width]))
+								{
+									
+									if($height<$this->img_minimal_height[$name_width])
+									{
+											
+										//Need recalculate the adecuate width and height.
+										
+										$height=$this->img_minimal_height[$name_width];
+										
+										$ratio=($arr_image[1] / $height);
+										
+										$width=round($arr_image[0]/$ratio);
+										
+										//$width=
+									
+									}
+								
+								}
 							
 								$thumb = imagecreatetruecolor($width, $height);
 								
