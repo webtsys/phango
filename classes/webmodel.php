@@ -2806,7 +2806,7 @@ class ImageField extends PhangoField {
 		$image=basename($image);
 
 		settype($_POST['delete_'.$file], 'integer');
-
+		
 		if($_POST['delete_'.$file]==1)
 		{
 
@@ -3020,6 +3020,35 @@ class ImageField extends PhangoField {
 						}
 						
 						//unlink($_FILES[$file]['tmp_name']);
+						
+						//Unlink if exists image
+						
+						if(isset($_POST[$file]))
+						{
+						
+							if($_POST[$file]!='')
+							{
+								$image_file=form_text($_POST[$file]);
+
+								if($image_file!='')
+								{
+
+									@unlink($this->path.'/'.$image_file);
+									
+									foreach($this->img_width as $key => $value)
+									{
+
+										@unlink($this->path.'/'.$key.'_'.$image_file);
+									
+									}
+
+									$image='';
+
+								}
+						
+							}
+						
+						}
 						
 						return $_FILES[$file]['name'];
 
