@@ -23,7 +23,10 @@ function BlogAdmin()
 
 			?>
 			<h2><?php echo $lang['blog']['blog_options']; ?></h2>
-			<p><a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2)); ?>"><?php echo $lang['blog']['add_tags']; ?></a></p>
+			<p>
+				<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>"><?php echo $lang['blog']['config']; ?></a>
+				<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2)); ?>"><?php echo $lang['blog']['add_tags']; ?></a>
+			</p>
 			<?php
 
 			$where_sql='where blog_father='.$_GET['IdBlog'];
