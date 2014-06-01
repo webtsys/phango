@@ -26,6 +26,8 @@ function Post()
 	$query=webtsys_query('select page_blog.*, user.private_nick from page_blog, user where user.Iduser=page_blog.author and page_blog.date<='.TODAY.' and page_blog.IdPage_blog='.$_GET['IdPage_blog']);
 
 	$result=webtsys_fetch_array($query);
+	
+	$arr_config=$model['config_blog']->select_a_row_where('limit 1');
 
 	settype($result['idblog'], 'integer');
 
@@ -148,119 +150,129 @@ function Post()
 			
 		ob_clean(); 
 		
-		if($result['accept_comment']==1)
+		if($arr_config['comments']==1)
 		{
-		/*
-			//Comments...
-			?>
-			<a name="comments"></a>
-			<h1><?php echo $lang['blog']['comments']; ?></h1>
-			<?php
-			
-			$z=0;
-			$n_comment=$_GET['begin_page']+1;
-			
-			$num_comment=20;
-
-			$query=webtsys_query('select comment_blog.*, user.avatar, user.date_register, user.hidden_status, user.num_messages, user.last_connection, user.signature, rank.name as rank_name, rank.image as rank_image from comment_blog, user, rank where comment_blog.idpage_blog='.$result['IdPage_blog'].' and comment_blog.idauthor=user.IdUser and user.rank=rank.IdRank order by comment_blog.date_comment ASC limit '.$_GET['begin_page'].', '.$num_comment);
-
-			while($result_c=webtsys_fetch_array($query))
-			{
-			
-				$result_c['date_comment']=form_date( $result_c['date_comment'], $user_data['format_date'] , $user_data['format_time']).' '.form_time( $result_c['date_comment'], $user_data['format_time'], $user_data['ampm'] );
-
-				$hidden_status='';
-
-				if($result_c['idauthor']>0)
-				{
-					
-					$result_c['author']='<a href="'.make_fancy_url($base_url, 'user', 'profile', $result_c['author'], array('IdUser'=> $result_c['idauthor']) ).'">'.$result_c['author'].'</a>';
-
-					if($result_c['avatar']!='')
-					{
-
-						$result_c['avatar']='<img src="'.$result_c['avatar'].'" />';
-
-					}
-
-					$result_c['date_register']=$lang['common']['registered'].': '.form_date( $result_c['date_register'], $user_data['format_date'] , $user_data['format_time']);
-					
-
-					$result_c['num_messages']=$lang['common']['messages'].': '.$result_c['num_messages'];
-
-					if($config_data['accept_bbcode_signature']==0)
-					{
-
-						$result_c['signature']=$result_c['signature'];
-				
-					}
-
-					$arr_status[0]=$lang['common']['offline'];
-					$arr_status[1]=$lang['common']['hidden'];
-					$time_check=time()-350;
-
-					if($result_c['last_connection']>$time_check)
-						{
-							
-							$arr_status[0]=$lang['common']['connected'];
-				
-						}
-				
-					$result_c['hidden_status']=$arr_status[$result_c['hidden_status']];
-
-					if($result_c['rank_image']!='')
-					{
-
-						$result_c['rank_name'].='<br /><img src="'.$result_c['rank_image'].'" />';
-
-					}
-
-				}
-				else
-				{
-
-					$result_c['date_register']='';
-					$result_c['hidden_status']='';
-					$result_c['num_messages']='';
-
-				}
-
-				$comment_url=make_fancy_url($base_url, 'blog', 'post', $result['title'], array('IdPage_blog' => $_GET['IdPage_blog'], 'begin_page' => $_GET['begin_page'].'#comment'.$result_c['IdComment_blog']) );
-
-				echo load_view(array($result_c['author'], options_email($result_c['email']), $result_c['avatar'], $result_c['date_register'], $result_c['website'], $result_c['num_messages'], $n_comment, $result_c['subject'], $result_c['text'], $result_c['signature'], $result_c['date_comment'], $result_c['idauthor'], $result_c['hidden_status'], options_admin( $result['IdPage_blog'], $result_c['IdComment_blog']), $comment_url, $result_c['IdComment_blog'], options_ip($result_c['ip']), $result_c['rank_name']), 'post/comment');
-
-				// CommentView($author, $email, $avatar, $date_register, $website, $num_messages, $x, $subject, $text, $signature, $posted, $iduser, $status, $options, $url, $num_comment, $ip, $rank)
-			
-				$z++;
-				$n_comment++;
-			
-			}
-			
-			
-			$total_comment=$model['comment_blog']->select_count('where idpage_blog='.$result['IdPage_blog'], 'IdComment_blog');
-
-			$url_page=make_fancy_url($base_url, 'blog', 'post', $result['title'], array('IdPage_blog' => $_GET['IdPage_blog']) );
-			
-			$post_pages=pages( $_GET['begin_page'], $total_comment, $num_comment, $url_page, 20, 'begin_page', '#comments');
-			
-			echo '<p class="navigation">'.$lang['blog']['more'].': '.$post_pages.'</p>';
-
-			$cont_index.=ob_get_contents();
-			
-			ob_clean(); 
-
-			//Form for post
-				
-			$cont_form=form_comment();
-
-			ob_clean();
-
-			echo load_view(array($lang['blog']['send_post'], $cont_form), 'content');
 		
-			$cont_index.=ob_get_contents();
+			if($result['accept_comment']==1)
+			{
+				//Comments...
+				?>
+				<a name="comments"></a>
+				<h1><?php echo $lang['blog']['comments']; ?></h1>
+				<?php
+				
+				$z=0;
+				$n_comment=$_GET['begin_page']+1;
+				
+				$num_comment=20;
+
+				$query=webtsys_query('select comment_blog.*, user.avatar, user.date_register, user.hidden_status, user.num_messages, user.last_connection, user.signature, rank.name as rank_name, rank.image as rank_image from comment_blog, user, rank where comment_blog.idpage_blog='.$result['IdPage_blog'].' and comment_blog.idauthor=user.IdUser and user.rank=rank.IdRank order by comment_blog.date_comment ASC limit '.$_GET['begin_page'].', '.$num_comment);
+
+				while($result_c=webtsys_fetch_array($query))
+				{
+				
+					$result_c['date_comment']=form_date( $result_c['date_comment'], $user_data['format_date'] , $user_data['format_time']).' '.form_time( $result_c['date_comment'], $user_data['format_time'], $user_data['ampm'] );
+
+					$hidden_status='';
+
+					if($result_c['idauthor']>0)
+					{
+						
+						$result_c['author']='<a href="'.make_fancy_url($base_url, 'user', 'profile', $result_c['author'], array('IdUser'=> $result_c['idauthor']) ).'">'.$result_c['author'].'</a>';
+
+						if($result_c['avatar']!='')
+						{
+
+							$result_c['avatar']='<img src="'.$result_c['avatar'].'" />';
+
+						}
+
+						$result_c['date_register']=$lang['common']['registered'].': '.form_date( $result_c['date_register'], $user_data['format_date'] , $user_data['format_time']);
+						
+
+						$result_c['num_messages']=$lang['common']['messages'].': '.$result_c['num_messages'];
+
+						if($config_data['accept_bbcode_signature']==0)
+						{
+
+							$result_c['signature']=$result_c['signature'];
+					
+						}
+
+						$arr_status[0]=$lang['common']['offline'];
+						$arr_status[1]=$lang['common']['hidden'];
+						$time_check=time()-350;
+
+						if($result_c['last_connection']>$time_check)
+							{
+								
+								$arr_status[0]=$lang['common']['connected'];
+					
+							}
+					
+						$result_c['hidden_status']=$arr_status[$result_c['hidden_status']];
+
+						if($result_c['rank_image']!='')
+						{
+
+							$result_c['rank_name'].='<br /><img src="'.$result_c['rank_image'].'" />';
+
+						}
+
+					}
+					else
+					{
+
+						$result_c['date_register']='';
+						$result_c['hidden_status']='';
+						$result_c['num_messages']='';
+
+					}
+
+					$comment_url=make_fancy_url($base_url, 'blog', 'post', $result['title'], array('IdPage_blog' => $_GET['IdPage_blog'], 'begin_page' => $_GET['begin_page'].'#comment'.$result_c['IdComment_blog']) );
+
+					echo load_view(array($result_c['author'], options_email($result_c['email']), $result_c['avatar'], $result_c['date_register'], $result_c['website'], $result_c['num_messages'], $n_comment, $result_c['subject'], $result_c['text'], $result_c['signature'], $result_c['date_comment'], $result_c['idauthor'], $result_c['hidden_status'], options_admin( $result['IdPage_blog'], $result_c['IdComment_blog']), $comment_url, $result_c['IdComment_blog'], options_ip($result_c['ip']), $result_c['rank_name']), 'post/comment');
+
+					// CommentView($author, $email, $avatar, $date_register, $website, $num_messages, $x, $subject, $text, $signature, $posted, $iduser, $status, $options, $url, $num_comment, $ip, $rank)
+				
+					$z++;
+					$n_comment++;
+				
+				}
+				
+				
+				$total_comment=$model['comment_blog']->select_count('where idpage_blog='.$result['IdPage_blog'], 'IdComment_blog');
+
+				$url_page=make_fancy_url($base_url, 'blog', 'post', $result['title'], array('IdPage_blog' => $_GET['IdPage_blog']) );
+				
+				$post_pages=pages( $_GET['begin_page'], $total_comment, $num_comment, $url_page, 20, 'begin_page', '#comments');
+				
+				echo '<p class="navigation">'.$lang['blog']['more'].': '.$post_pages.'</p>';
+
+				$cont_index.=ob_get_contents();
+				
+				ob_clean(); 
+
+				//Form for post
+					
+				$cont_form=form_comment();
+
+				ob_clean();
+
+				echo load_view(array($lang['blog']['send_post'], $cont_form), 'content');
 			
-			ob_clean(); 
-		*/
+				$cont_index.=ob_get_contents();
+				
+				ob_clean(); 
+			}
+	
+		}
+		else
+		{
+		
+			//Load comments view for other system...
+			
+			echo load_view(array('IdPage_blog' => $result['IdPage_blog']), 'blog/customcomments');			
 		}
 
 	}

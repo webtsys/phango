@@ -7,27 +7,42 @@ function BlogAdmin()
 
 	settype($_GET['op'], 'integer');
 
-	load_libraries(array('generate_admin_ng'));
+	load_libraries(array('generate_admin_ng', 'admin/generate_admin_class', 'utilities/menu_selected'));
 	load_libraries(array('blog_functions'),$base_path.'modules/blog/libraries/');
 	load_model('blog');
 	load_lang('blog');
 
 	settype($_GET['IdBlog'], 'integer');
 
+	?>
+	<h2><?php echo $lang['blog']['blog_options']; ?></h2>
+	<?php
+	
+	/*
+	<p>
+		<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 0)); ?>"><?php echo $lang['common']['home']; ?></a> -
+		<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>"><?php echo $lang['blog']['config']; ?></a> - 
+		<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2)); ?>"><?php echo $lang['blog']['add_tags']; ?></a>
+	</p>
+	*/
+	
+	$arr_op[0]['link']=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 0));
+	$arr_op[0]['text']=$lang['common']['home'];
+	
+	$arr_op[3]['link']=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3));
+	$arr_op[3]['text']=$lang['blog']['config'];
+	
+	$arr_op[2]['link']=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2));
+	$arr_op[2]['text']=$lang['blog']['add_tags'];
+		
+	menu_selected($_GET['op'], $arr_op, $type=1);
+	
 	switch($_GET['op'])
 	{
 
 		default:
 
 			//More options...
-
-			?>
-			<h2><?php echo $lang['blog']['blog_options']; ?></h2>
-			<p>
-				<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>"><?php echo $lang['blog']['config']; ?></a>
-				<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2)); ?>"><?php echo $lang['blog']['add_tags']; ?></a>
-			</p>
-			<?php
 
 			$where_sql='where blog_father='.$_GET['IdBlog'];
 
@@ -150,6 +165,22 @@ function BlogAdmin()
 
 			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['go_back_index_blog'].'</a></p>';
 
+		break;
+		
+		case 3:
+		
+			echo '<h3>'.$lang['blog']['config'].'</h3>';
+		
+			$admin=new GenerateAdminClass('config_blog');
+			
+			$admin->url_options=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3));
+			
+			$admin->url_back=$admin->url_options;
+			
+			$admin->show_goback=0;
+			
+			$admin->show_config_mode();
+		
 		break;
 
 	}

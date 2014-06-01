@@ -15,6 +15,8 @@ function Moderate()
 	settype($_GET['op'], 'integer');
 	settype($_GET['IdBlog'], 'integer');
 
+	$arr_config=$model['config_blog']->select_a_row_where('limit 1');
+	
 	$original_theme=$config_data['dir_theme'];
 	$config_data['dir_theme']=$original_theme.'/admin';
 	$arr_block='admin_none';
@@ -143,7 +145,15 @@ function Moderate()
 
 				$arr_fields=array('title', 'date');
 				//'subtitles'
-				$arr_fields_edit=array('idblog', 'title', 'text', 'entrance', 'author', 'date', 'accept_comment');
+				$arr_fields_edit=array('idblog', 'title', 'text', 'entrance', 'author', 'date');
+				
+				if($arr_config['comments']==1)
+				{
+				
+					$arr_fields_edit[]='accept_comment';
+				
+				}
+				
 				$url_options=make_fancy_url($base_url, 'blog', 'moderate', 'edit_blogs', array('IdBlog' => $_GET['IdBlog']) );
 
 				$model['page_blog']->create_form();

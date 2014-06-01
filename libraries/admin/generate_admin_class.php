@@ -125,6 +125,18 @@ class GenerateAdminClass {
 	
 		$model[$this->model_name]->func_update='Config';
 
+		if(count($model[$this->model_name]->forms)==0)
+		{
+		
+			$model[$this->model_name]->create_form();
+		
+		}
+		//Obtain data
+		
+		$post=$model[$this->model_name]->select_a_row_where($this->where_sql, $this->arr_fields_edit, 1);
+		
+		SetValuesForm($post, $model[$this->model_name]->forms, 0);
+		
 		//nsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 		
 		InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);

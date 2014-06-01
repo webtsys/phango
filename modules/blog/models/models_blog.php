@@ -20,6 +20,10 @@ $model['category_blog']->components['title']->required=1;
 $model['category_blog']->components['idfather']=new IntegerField(11);
 $model['category_blog']->components['idfather']->form='SelectForm';*/
 
+$model['config_blog']=new Webmodel('config_blog');
+
+$model['config_blog']->set_component('comments', 'BooleanField', array(), 0);
+
 class blog extends Webmodel {
 
 	function __construct()

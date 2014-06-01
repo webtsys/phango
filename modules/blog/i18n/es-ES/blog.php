@@ -42,7 +42,7 @@ $lang['blog']['moderate_blogs']='Moderar blogs';
 
 $lang['blog']['blog_options']='Opciones de blog';
 
-$lang['blog']['config']='config';
+$lang['blog']['config']='Configuración';
 
 $lang['blog']['add_tags']='Añadir etiquetas';
 
