@@ -272,7 +272,7 @@ function Post()
 		
 			//Load comments view for other system...
 			
-			echo load_view(array('IdPage_blog' => $result['IdPage_blog']), 'blog/customcomments');			
+			echo load_view(array('IdPage_blog' => $result['IdPage_blog']), 'blog/customcomments');
 		}
 
 	}

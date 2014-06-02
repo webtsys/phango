@@ -309,6 +309,11 @@ class SimpleList
 	public $separator_element='<br />';
 	public $limit_rows=10;
 	public $raw_query=1;
+	public $yes_pagination=1;
+	public $num_by_page=20;
+	public $begin_page=0;
+	public $initial_num_pages=20;
+	public $variable_page='begin_page';
 	
 	function __construct($model_name)
 	{
@@ -316,6 +321,8 @@ class SimpleList
 		global $model;
 	
 		$this->model_name=$model_name;
+		
+		$this->begin_page=$_GET['begin_page'];
 		
 		if( count($model[$this->model_name]->forms)==0)
 		{	
@@ -407,6 +414,17 @@ class SimpleList
 		}
 		
 		down_table_config();
+		
+		if($this->yes_pagination==1)
+		{
+		
+			load_libraries(array('pages'));
+			
+			$total_elements=$model[$this->model_name]->select_count($this->where_sql);
+			
+			echo '<p>'.$lang['common']['pages'].': '.pages( $this->begin_page, $total_elements, $this->num_by_page, $this->url_options ,$this->initial_num_pages, $this->variable_page, $label='', $func_jscript='').'</p>';
+		
+		}
 	
 	}
 	

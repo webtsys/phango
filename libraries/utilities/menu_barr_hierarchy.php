@@ -79,6 +79,8 @@ function menu_barr_hierarchy($arr_menu, $name_get, $value_get, $yes_last_link=0)
 
 //$arr_menu[1]=array(0 => array('module' => 'module', 'controller' => 'controller', 'name_op' => name_op, 'text' => 'text', 'params' => array()), 1 => array('module' => 'module', 'controller' => 'controller', 'op' => op, 'text' => 'text', 'params' => array()) );
 
+//With the hope that write a function that create a menu_barr_hierarchy automatically
+
 function menu_barr_hierarchy_control($arr_menus)
 {
 

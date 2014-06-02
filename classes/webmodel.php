@@ -1649,7 +1649,7 @@ class PhangoField {
 	
 	/** 
 	* $quote_close is used if you need a more flexible sql sentence, 
-	* @warning USE THIS FUNCTION IF YOU KNOW WHAT YOU ARE DOING
+	* @warning USE THIS PROPERTY IF YOU KNOW WHAT YOU ARE DOING
 	*/
 	
 	public $quot_close='\'';
