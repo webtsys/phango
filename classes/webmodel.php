@@ -1144,6 +1144,9 @@ class Webmodel {
 	* 
 	* Example: function name_extension_method_class($class, argument1, $argument2, ...)
 	*
+	*
+	* @param string $name_method Name of the new method
+	* @param array $arguments An array with the arguments used in the new method
 	*/
 	
 	public function __call($name_method, $arguments)
@@ -1394,6 +1397,7 @@ class ModelForm {
 	public $error_flag=0;
 	
 	/**
+	* Constructor for create a new ModelForm. ModelForm are used for create forms easily.
 	* 
 	* @param string $name_form  The name of the form where is inserted this form element
 	* @param string $name_field The name of this ModelForm 
@@ -1794,16 +1798,44 @@ class CharField extends PhangoField {
 
 class PrimaryField extends PhangoField {
 	
+	/**
+	* Initial value for the field.
+	*/
+	
 	public $value=0;
+	
+	/**
+	* Initial label for the field. The label is used for create forms from a PhangoField.
+	*/
+	
 	public $label="";
+	
+	/**
+	* Boolean value that is used for check if the field is required for fill a row in the db model.
+	*/
+	
 	public $required=0;
+	
+	/**
+	* By default, the form used for this field is HiddenForm.
+	*/
+	
 	public $form="HiddenForm";
+	
+	/**
+	* @deprecated Value used on older versions for created admins on phango.
+	*
+	*/
+	
 	public $set_form="list_value";
-	public $quot_open='\'';
-	public $quot_close='\'';
-	public $std_error='';
 
-	function check($value)
+	/**
+	* Check function that convert the value on a PrimaryField value.
+	*
+	* @param string $value The value to convert on a PrimaryField value.
+	*/
+	
+	public function check($value)
 	{
 
 		$this->value=form_text($value);
@@ -1811,22 +1843,30 @@ class PrimaryField extends PhangoField {
 		return $value;
 
 	}
-
-	function get_type_sql()
+	
+	/**
+	* Method for return the sql type for this PhangoField
+	*/
+	
+	public function get_type_sql()
 	{
 
 		return 'INT PRIMARY KEY AUTO_INCREMENT';
 
 	}
+	
+	/**
+	* Method for return a formatted value readable for humans.
+	*/
 
-	function show_formatted($value)
+	public function show_formatted($value)
 	{
 
 		return $value;
 
 	}
 
-	function get_parameters_default()
+	public function get_parameters_default()
 	{
 
 		return '';
@@ -1843,11 +1883,6 @@ class IntegerField extends PhangoField {
 	public $value=0;
 	public $label="";
 	public $required=0;
-	public $form="";
-	public $set_form='';
-	public $quot_open='\'';
-	public $quot_close='\'';
-	public $std_error='';
 	public $only_positive=false;
 	public $min_num=0;
 	public $max_num=0;

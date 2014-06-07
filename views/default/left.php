@@ -19,7 +19,10 @@ $token=$_COOKIE['webtsys_shop'];
 	<title><?php echo $title.' - '.$config_data['portal_name']; ?></title>
 	<?php 
 		$arr_cache_jscript[]='jquery.min.js';
-		echo load_jscript_view(); 
+		echo load_jscript_view();
+		echo load_css_local_view();
+		echo load_css_view();
+		echo load_header_view();
 	?>
 	<script language="Javascript" src="<?php echo make_fancy_url($base_url, 'shop/ajax', 'functions_jscript', 'functions_jscript', array()); ?>"></script>
 	<script language="Javascript">
