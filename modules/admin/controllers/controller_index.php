@@ -86,7 +86,7 @@ function Index()
 
 			}
 
-			$urls[$name_module]=make_fancy_url($base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
+			$urls[$name_module]=set_admin_link($name_module, array('IdModule' => $idmodule)); //($base_url, 'admin', 'index', $name_module, array('IdModule' => $idmodule));
 
 			$module_admin[$idmodule]=$name_module;
 			
@@ -180,7 +180,7 @@ function Index()
 	}
 	else
 	{
-		$url_admin=make_fancy_url($base_url, 'admin', 'index', 'admin', array('IdModule' => $_GET['IdModule']));
+		$url_admin=set_admin_link('home', array());
 		
 		die(header('Location: '.make_fancy_url($base_url, 'user', 'index', 'login', array('register_page' => urlencode_redirect($url_admin)), true ) ));
 		
@@ -191,10 +191,13 @@ function Index()
 function set_admin_link($text_admin, $parameters)
 {
 	global $base_url;
-
-	$parameters['IdModule']=$_GET['IdModule'];
-
-	return make_fancy_url($base_url, 'admin', 'index', $text_admin, $parameters);
+	
+	if(!isset($parameters['IdModule']))
+	{
+		$parameters['IdModule']=$_GET['IdModule'];
+	}
+	
+	return make_fancy_url($base_url, ADMIN_FOLDER, 'index', $text_admin, $parameters);
 
 }
 

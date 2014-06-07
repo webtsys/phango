@@ -73,6 +73,10 @@ $app_index = 'welcome';
 
 $activated_controllers = array('welcome', 'installation', 'jscript');
 
+//Constant for the admin section
+
+define('ADMIN_FOLDER', 'admin');
+
 //Theme by default, neccesary if you don't use utilities for phango, Please, don't delete this variabl, if you don't know what are you doing.
 
 $config_data['dir_theme'] = 'default';
