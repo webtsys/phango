@@ -201,7 +201,7 @@ function getblock($module, $order_mods='DESC')
 	{
 	
 		$block_content['barr'][]=$lang['common']['admin_panel'];
-		$block_urls['barr'][]=make_fancy_url($base_url, 'admin', 'index', 'admin_zone', $arr_data=array());;
+		$block_urls['barr'][]=set_admin_link( 'admin_zone', $arr_data=array());;
 
 	}
 	

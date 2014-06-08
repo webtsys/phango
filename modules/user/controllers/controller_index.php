@@ -337,7 +337,7 @@ function Index()
 								if($config_data['active_users']==1)
 								{
 
-									send_mail($config_data['portal_email'], $lang['user']['new_user_is_registered'], $lang['user']['new_user_is_registered_explain']."\n\n".make_fancy_url($base_url, 'admin', 'index', 'admin', array()) );
+									send_mail($config_data['portal_email'], $lang['user']['new_user_is_registered'], $lang['user']['new_user_is_registered_explain']."\n\n".set_admin_link( 'admin', array()) );
 
 									$active_users_explain='<p><strong>'.$lang['user']['your_user_need_activated_explain'].'</strong></p>';
 

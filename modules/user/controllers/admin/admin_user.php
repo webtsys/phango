@@ -42,7 +42,7 @@ function UserAdmin()
 			{
 				
 				?>
-					<p><a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 1) ); ?>"><?php echo $lang['user']['create_user']; ?></a> - <a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 2) ); ?>"><?php echo $lang['user']['activate_users']; ?></a>
+					<p><a href="<?php echo set_admin_link( 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 1) ); ?>"><?php echo $lang['user']['create_user']; ?></a> - <a href="<?php echo set_admin_link( 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 2) ); ?>"><?php echo $lang['user']['activate_users']; ?></a>
 					</p>
 					
 				<?php 
@@ -53,7 +53,7 @@ function UserAdmin()
 			$model['user']->forms['password']->required=0;
 			$model['user']->forms['repeat_password']->required=0;
 			
-			ListModel('user', array('private_nick', 'activated_user'), make_fancy_url($base_url, 'admin', 'index', 'edit_user', array('IdModule' => $_GET['IdModule']) ) , 'BasicOptionsListModel', 'where IdUser>0 and activated_user=1', $arr_fields_form);
+			ListModel('user', array('private_nick', 'activated_user'), set_admin_link( 'edit_user', array('IdModule' => $_GET['IdModule']) ) , 'BasicOptionsListModel', 'where IdUser>0 and activated_user=1', $arr_fields_form);
 			
 
 		break;
@@ -69,9 +69,9 @@ function UserAdmin()
 				$model['user']->forms['timezone']->SetForm(MY_TIMEZONE);
 				$model['user']->forms['activated_user']->SetForm(1);
 			
-				InsertModelForm('user', make_fancy_url($base_url, 'admin', 'index', 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 1) ), make_fancy_url($base_url, 'admin', 'index', 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 1) ) , $arr_fields_form, 0, $lang['user']['create_user']);
+				InsertModelForm('user', set_admin_link( 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 1) ), set_admin_link( 'edit_users', array('IdModule' => $_GET['IdModule'], 'op' => 1) ) , $arr_fields_form, 0, $lang['user']['create_user']);
 
-				echo '<a href="'.make_fancy_url($base_url, 'admin', 'index', 'goback', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['common']['go_back'].'</a>';
+				echo '<a href="'.set_admin_link( 'goback', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['common']['go_back'].'</a>';
 
 		break;
 
@@ -85,9 +85,9 @@ function UserAdmin()
 			$model['user']->forms['password']->required=0;
 			$model['user']->forms['repeat_password']->required=0;
 			
-			ListModel('user', array('private_nick', 'activated_user'), make_fancy_url($base_url, 'admin', 'index', 'edit_user', array('IdModule' => $_GET['IdModule']) ) , 'BasicOptionsListModel', 'where IdUser>0 and activated_user=0', $arr_fields_form);
+			ListModel('user', array('private_nick', 'activated_user'), set_admin_link( 'edit_user', array('IdModule' => $_GET['IdModule']) ) , 'BasicOptionsListModel', 'where IdUser>0 and activated_user=0', $arr_fields_form);
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'goback', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['common']['go_back'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'goback', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
 		break;
 

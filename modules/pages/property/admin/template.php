@@ -46,7 +46,7 @@ switch($_GET['action'])
 	}
 	
 
-	$url_action=make_fancy_url($base_url, 'admin', 'index', 'edit_templates_prop', array('IdModule' => $_GET['IdModule'], 'IdPage' => $_GET['IdPage'], 'op' => '2', 'IdProperty_page' => $_GET['IdProperty_page'], 'action' => '1') );
+	$url_action=set_admin_link( 'edit_templates_prop', array('IdModule' => $_GET['IdModule'], 'IdPage' => $_GET['IdPage'], 'op' => '2', 'IdProperty_page' => $_GET['IdProperty_page'], 'action' => '1') );
 
 	?>
 	<p>Elija la template que desea que aparezca</p>	
@@ -76,14 +76,14 @@ switch($_GET['action'])
 
 		$model['property_page']->update(array('options' => array('idtemplate' => $_POST['idtemplate']) ), 'where IdProperty_page='.$_GET['IdProperty_page']);
 
-		$url_action=make_fancy_url($base_url, 'admin', 'index', 'edit_templates_prop', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage'], 'op' => '2', 'IdProperty_page' => 1, 'action' => '1') );
+		$url_action=set_admin_link( 'edit_templates_prop', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage'], 'op' => '2', 'IdProperty_page' => 1, 'action' => '1') );
 
 		ob_end_clean();
 		ob_end_clean();
 
 		load_libraries(array('redirect'));
 
-		die( redirect_webtsys( make_fancy_url($base_url, 'admin', 'index', 'edit_templates_prop', array('IdModule' => $_GET['IdModule'], 'IdPage' => $_GET['IdPage'], 'op' => '2', 'IdProperty_page' => $_GET['IdProperty_page']) ), $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
+		die( redirect_webtsys( set_admin_link( 'edit_templates_prop', array('IdModule' => $_GET['IdModule'], 'IdPage' => $_GET['IdPage'], 'op' => '2', 'IdProperty_page' => $_GET['IdProperty_page']) ), $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , $arr_block) );
 		
 
 	break;

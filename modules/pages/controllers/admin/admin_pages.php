@@ -30,7 +30,7 @@ function PagesAdmin()
 			$model['page']->forms['text']->parameters=array('text', $class='', $arr_values=array(), $type_form='TextAreaBBForm');
 			$arr_fields=array('name');
 			$arr_fields_edit=array('name', 'text');
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule']));
+			$url_options=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule']));
 
 			generate_admin_model_ng('page', $arr_fields, $arr_fields_edit, $url_options, $options_func='PagesOptions', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
@@ -96,7 +96,7 @@ function PagesAdmin()
 
 			$arr_fields=array('name', 'order_page');
 			$arr_fields_edit=array('name', 'property', 'idpage');
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage']));
+			$url_options=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage']));
 
 			$model['property_page']->forms['property']->SetParameters($arr_prop);
 
@@ -108,11 +108,11 @@ function PagesAdmin()
 			
 			generate_admin_model_ng('property_page', $arr_fields, $arr_fields_edit, $url_options, $options_func='PagesOptionsProp', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
-			$url_change_order_prop=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 3, 'IdPage' => $_GET['IdPage']));
+			$url_change_order_prop=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 3, 'IdPage' => $_GET['IdPage']));
 
 			echo '<p><a href="'.$url_change_order_prop.'">'.$lang['pages']['change_order_prop'].'</a>';
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['pages']['go_back_index_pages'].'</a>';
+			echo '<p><a href="'.set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['pages']['go_back_index_pages'].'</a>';
 
 		break;
 
@@ -148,7 +148,7 @@ function PagesAdmin()
 			else
 			{
 
-				$url_back=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage']));
+				$url_back=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage']));
 
 				echo '<p><a href="'.$url_back.'">'.$lang['common']['go_back'].'</a>';
 
@@ -160,9 +160,9 @@ function PagesAdmin()
 
 			//Order property
 
-			$url_back=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage']));
+			$url_back=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdPage' => $_GET['IdPage']));
 			
-			$url_post=make_fancy_url($base_url, 'admin', 'index', 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 3, 'IdPage' => $_GET['IdPage']));
+			$url_post=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule'], 'op' => 3, 'IdPage' => $_GET['IdPage']));
 
 			GeneratePositionModel('property_page', 'name', 'order_page', $url_post, $where='where idpage='.$_GET['IdPage']);
 

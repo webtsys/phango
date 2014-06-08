@@ -49,7 +49,7 @@ switch($_GET['action'])
 	
 	?>
 	<p><?php echo $lang['blog']['choose_blog_to_show']; ?></p>	
-	<form method="post" action="<?php echo make_fancy_url($base_url, 'admin', 'index', 'change_property_page', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'action' => 1, 'IdPage' => $_GET['IdPage'], 'IdProperty_page' => $_GET['IdProperty_page'])); ?>">
+	<form method="post" action="<?php echo set_admin_link( 'change_property_page', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'action' => 1, 'IdPage' => $_GET['IdPage'], 'IdProperty_page' => $_GET['IdProperty_page'])); ?>">
 	<?php
 	set_csrf_key();
 	echo SelectForm('idblog', '', $arr_blog);
@@ -81,7 +81,7 @@ switch($_GET['action'])
 		
 		load_libraries( array("redirect") );
 
-		$url_redirect= make_fancy_url($base_url, 'admin', 'index', 'change_property_page', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'IdPage' => $_GET['IdPage'], 'IdProperty_page' => $_GET['IdProperty_page']));
+		$url_redirect= set_admin_link( 'change_property_page', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'IdPage' => $_GET['IdPage'], 'IdProperty_page' => $_GET['IdProperty_page']));
 			
 		die( redirect_webtsys( $url_redirect, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting'] , 'admin') );
 		

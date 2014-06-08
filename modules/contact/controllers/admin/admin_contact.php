@@ -15,7 +15,7 @@ function ContactAdmin()
 
 	load_lang('contact');
 
-	$url_options_default=make_fancy_url($base_url, 'admin', 'index', 'contact', array('IdModule' => $_GET['IdModule']));
+	$url_options_default=set_admin_link( 'contact', array('IdModule' => $_GET['IdModule']));
 
 	switch($_GET['op'])
 	{
@@ -53,11 +53,11 @@ function ContactAdmin()
 		$model['contact_field']->forms['required']->label=$lang['common']['required'];
 		$model['contact_field']->forms['order']->label=$lang['common']['order'];
 
-		$url_options=make_fancy_url($base_url, 'admin', 'index', 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdContact' => $_GET['IdContact']));
+		$url_options=set_admin_link( 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdContact' => $_GET['IdContact']));
 
 		generate_admin_model_ng('contact_field', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='where idcontact='.$_GET['IdContact'], $arr_fields_form=array(), $type_list='Basic');
 
-		$url_options_order=make_fancy_url($base_url, 'admin', 'index', 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'IdContact' => $_GET['IdContact']));
+		$url_options_order=set_admin_link( 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'IdContact' => $_GET['IdContact']));
 
 		echo '<p><a href="'.$url_options_order.'">'.$lang['contact']['order_fields'].'</a>';
 
@@ -69,8 +69,8 @@ function ContactAdmin()
 
 		echo '<h3>'.$lang['contact']['order_fields'].'</h3>';
 
-		$url=make_fancy_url($base_url, 'admin', 'index', 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'IdContact' => $_GET['IdContact']));
-		$url_options_fields=make_fancy_url($base_url, 'admin', 'index', 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdContact' => $_GET['IdContact']));
+		$url=set_admin_link( 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'IdContact' => $_GET['IdContact']));
+		$url_options_fields=set_admin_link( 'contact', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'IdContact' => $_GET['IdContact']));
 
 		GeneratePositionModel('contact_field', 'name', 'order', $url, $where='where idcontact='.$_GET['IdContact']);
 
@@ -89,7 +89,7 @@ function ContactOptionsListModel($url_options, $model_name, $id, $row)
 
 	$arr_options=BasicOptionsListModel($url_options, $model_name, $id);
 
-	$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'contact', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdContact' => $id) ).'">'.$lang['contact']['add_contact_fields'].'</a>';
+	$arr_options[]='<a href="'.set_admin_link( 'contact', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdContact' => $id) ).'">'.$lang['contact']['add_contact_fields'].'</a>';
 
 	$arr_options[]='<a target="_blank" href="'.make_fancy_url($base_url, 'contact', 'index', $model['contact']->components['name']->show_formatted($row['name']), array('IdContact' => $id) ).'">'.$lang['contact']['preview_contact'].'</a>';
 

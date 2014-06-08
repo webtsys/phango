@@ -9,8 +9,8 @@ function BlogOptionsListModel($url_options, $model_name, $id)
 
 	$arr_options=BasicOptionsListModel($url_options, $model_name, $id);
 
-	$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $id)).'">'.$lang['blog']['edit_son_blogs'].'</a>';
-	$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $id, 'op' => 1)).'">'.$lang['blog']['edit_moderators'].'</a>';
+	$arr_options[]='<a href="'.set_admin_link( 'edit_son_blogs', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $id)).'">'.$lang['blog']['edit_son_blogs'].'</a>';
+	$arr_options[]='<a href="'.set_admin_link( 'edit_son_blogs', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $id, 'op' => 1)).'">'.$lang['blog']['edit_moderators'].'</a>';
 	$arr_options[]='<a href="'.make_fancy_url($base_url, 'blog', 'moderate', 'edit_blogs', array('IdBlog' => $id)).'">'.$lang['blog']['edit_articles'].'</a>';
 	
 	return $arr_options;

@@ -24,7 +24,7 @@ function ModulesAdmin()
 
 		$arr_fields=array('name', 'required');
 		$arr_fields_edit=array();
-		$url_options=make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array());
+		$url_options=set_admin_link( 'edit_modules', $arr_data=array());
 
 		//generate_admin_model_ng('module', $arr_fields, $arr_fields_edit, $url_options, $options_func='OptionsModulesModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
@@ -102,7 +102,7 @@ function ModulesAdmin()
 
 				$arr_final_module=array();
 
-				$url_edit_mod=$url_options=make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 1, 'module' => $module));
+				$url_edit_mod=$url_options=set_admin_link( 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 1, 'module' => $module));
 
 				$arr_final_module[]=$module;
 				$arr_final_module[]='<a href="'.$url_edit_mod.'">'.$lang['modules']['enable_module'].'</a>';
@@ -275,15 +275,15 @@ function OptionsModulesModel($url_options, $model_name, $id, $arr_row)
 	if($arr_row['required']==0)
 	{
 
-		$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'module' => $arr_row['name'], 'idmodule' => $id)).'">'.$lang['modules']['add_moderator_to_module'].'</a>';
-		$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 2, 'module' => $arr_row['name'])).'">'.$lang['modules']['disable_module'].'</a>';
+		$arr_options[]='<a href="'.set_admin_link( 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'module' => $arr_row['name'], 'idmodule' => $id)).'">'.$lang['modules']['add_moderator_to_module'].'</a>';
+		$arr_options[]='<a href="'.set_admin_link( 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 2, 'module' => $arr_row['name'])).'">'.$lang['modules']['disable_module'].'</a>';
 
 	}
 	else
 	{
 
 		//$arr_options[]=$lang['modules']['no_options_module'];
-		$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'module' => $arr_row['name'], 'idmodule' => $id)).'">'.$lang['modules']['add_moderator_to_module'].'</a>';
+		$arr_options[]='<a href="'.set_admin_link( 'edit_modules', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3, 'module' => $arr_row['name'], 'idmodule' => $id)).'">'.$lang['modules']['add_moderator_to_module'].'</a>';
 
 	}
 

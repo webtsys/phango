@@ -13,9 +13,9 @@ function RankAdmin()
 
 	settype($_GET['op'], 'integer');
 
-	$url_options_no_fixed=make_fancy_url($base_url, 'admin', 'index', 'admin_ranks', array('IdModule' => $_GET['IdModule'], 'op' => 1));
+	$url_options_no_fixed=set_admin_link( 'admin_ranks', array('IdModule' => $_GET['IdModule'], 'op' => 1));
 
-	$url_options_fixed=make_fancy_url($base_url, 'admin', 'index', 'admin_ranks', array('IdModule' => $_GET['IdModule'], 'op' => 2));
+	$url_options_fixed=set_admin_link( 'admin_ranks', array('IdModule' => $_GET['IdModule'], 'op' => 2));
 	
 	?>
 	<p><a href="<?php echo $url_options_no_fixed; ?>"><?php echo $lang['user']['admin_no_fixed_ranks']; ?></a> - <a href="<?php echo $url_options_fixed; ?>"><?php echo $lang['user']['admin_fixed_ranks']; ?></a>

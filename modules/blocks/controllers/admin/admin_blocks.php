@@ -18,7 +18,7 @@ function BlocksAdmin()
 
 	?>
 	<h3><?php echo $lang['blocks']['edit_blocks_module']; ?></h3>
-	<form method="get" action="<?php echo make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', $arr_data=array('IdModule' => $_GET['IdModule'])); ?>" name="form_block">
+	<form method="get" action="<?php echo set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'])); ?>" name="form_block">
 	<?php
 	
 	set_csrf_key();
@@ -89,7 +89,7 @@ function BlocksAdmin()
 	if($yes_module!='')
 	{
 		?>
-		<form method="get" action="<?php echo make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>" name="form_block">
+		<form method="get" action="<?php echo set_admin_link( 'modify_blocks', $arr_data=array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>" name="form_block">
 		<?php echo set_csrf_key(); ?>
 		<input type="hidden" name="module" value="<?php echo $_GET['module']; ?>" />
 		<input type="hidden" name="op" value="3" />
@@ -120,22 +120,22 @@ function BlocksAdmin()
 
 	}
 
-	$url_blocks[0]['link']=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 0, 'module' => $_GET['module']));
+	$url_blocks[0]['link']=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 0, 'module' => $_GET['module']));
 	$url_blocks[0]['text']= $lang['blocks']['blocks_left'];
 
-	$url_blocks[1]['link']=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 1, 'module' => $_GET['module']));
+	$url_blocks[1]['link']=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 1, 'module' => $_GET['module']));
 	$url_blocks[1]['text']= $lang['blocks']['blocks_right'];
 
-	$url_blocks[2]['link']=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 2, 'module' => $_GET['module']));
+	$url_blocks[2]['link']=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 2, 'module' => $_GET['module']));
 	$url_blocks[2]['text']= $lang['blocks']['activate_barr'];
 
 	menu_selected($_GET['activation'], $url_blocks, true);
 
-	/*$url_blocks_left=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 0, 'module' => $_GET['module']));
+	/*$url_blocks_left=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 0, 'module' => $_GET['module']));
 
-	$url_blocks_right=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 1, 'module' => $_GET['module']));
+	$url_blocks_right=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 1, 'module' => $_GET['module']));
 
-	$url_blocks_barr=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 2, 'module' => $_GET['module']));
+	$url_blocks_barr=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => 2, 'module' => $_GET['module']));
 	
 	$arr_select_left[$_GET['activation']]=link_block($url_blocks_left, $lang['blocks']['blocks_left']);
 	$arr_select_left[0]=select_block($url_blocks_left, $lang['blocks']['blocks_left']);
@@ -205,9 +205,9 @@ function BlocksAdmin()
 
 			$arr_fields_edit=array('title_block', 'url_block', 'activation', 'module', 'parent');
 
-			$url_options_base=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			$url_options_base=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
 			
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
+			$url_options=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
 
 			//?order_field=hierarchy_block&order_desc=0&search_word=&search_field=IdBlocks
 
@@ -233,7 +233,7 @@ function BlocksAdmin()
 			
 			generate_admin_model_ng('blocks', $arr_fields, $arr_fields_edit, $url_options, $options_func='LinksAdmin', $where_sql='where activation='.$_GET['activation'].' and module="'.$_GET['module'].'"'.$get_parent_sql, $arr_fields_form=array(), $type_list='Basic');
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['blocks']['change_order'].'</a></p>';
 		
 		break;
 
@@ -252,9 +252,9 @@ function BlocksAdmin()
 			
 			settype($arr_block_parent['IdBlocks'], 'integer');
 			
-			$url_options_base=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
+			$url_options_base=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module']) );
 			
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
+			$url_options=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) );
 			
 			//Obtain parents
 			
@@ -268,17 +268,17 @@ function BlocksAdmin()
 			
 			echo menu_barr_hierarchy($arr_final_parent, 'parent', $arr_block_parent['IdBlocks'], 1);
 
-			$url=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $_GET['parent']) );
+			$url=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 2, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $_GET['parent']) );
 
 			GeneratePositionModel('blocks', 'title_block', 'hierarchy_block', $url, 'where activation='.$_GET['activation'].' and module="'.$_GET['module'].'" and parent='.$_GET['parent']);
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['common']['go_back'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module'], 'parent' => $arr_block_parent['IdBlocks']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
 		break;
 
 		case 3:
 
-			$url_action=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'activation' => $_GET['activation'],  'module' => $_GET['module']) );
+			$url_action=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'activation' => $_GET['activation'],  'module' => $_GET['module']) );
 
 			$c=$model['inheritance_blocks']->select_count('where module="'.$_GET['module'].'"', 'IdInheritance_blocks' );
 
@@ -324,7 +324,7 @@ function BlocksAdmin()
 
 						include($base_path.'modules/blocks/html/admin/'.$code_block);
 
-						$url_update=make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 4, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'IdBlocks' => $_GET['IdBlocks']) );
+						$url_update=set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 4, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'IdBlocks' => $_GET['IdBlocks']) );
 
 						update_block($url_update);
 
@@ -336,7 +336,7 @@ function BlocksAdmin()
 
 					}
 
-					echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['common']['go_back'].'</a></p>';
+					echo '<p><a href="'.set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 1, 'activation' => $_GET['activation'],  'module' => $_GET['module']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
 				}
 		break;
@@ -478,12 +478,12 @@ function LinksAdmin($url_options, $model_name, $id, $field_rows=array())
 
 	$arr_links=BasicOptionsListModel($url_options, $model_name, $id);
 	
-	$arr_links[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks_children', array('IdModule' => $_GET['IdModule'], 'op' => 0, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $id) ).'">'.$lang['blocks']['add_children_blocks'].'</a>';
+	$arr_links[]='<a href="'.set_admin_link( 'modify_blocks_children', array('IdModule' => $_GET['IdModule'], 'op' => 0, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'parent' => $id) ).'">'.$lang['blocks']['add_children_blocks'].'</a>';
 
 	if( preg_match('/^static:\//', $field_rows['url_block']) )
 	{
 
-		$arr_links[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 4, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'IdBlocks' => $id) ).'">'.$lang['blocks']['edit_module_if_exists'].'</a>';
+		$arr_links[]='<a href="'.set_admin_link( 'modify_blocks', array('IdModule' => $_GET['IdModule'], 'op' => 4, 'activation' => $_GET['activation'], 'module' => $_GET['module'], 'IdBlocks' => $id) ).'">'.$lang['blocks']['edit_module_if_exists'].'</a>';
 
 	}
 

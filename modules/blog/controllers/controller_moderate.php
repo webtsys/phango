@@ -8,7 +8,7 @@ function Moderate()
 	$content='';
 	
 	load_lang('blog');
-	load_libraries(array('check_admin', 'generate_admin_ng', 'forms/textareabb', 'forms/textbbpost'));
+	load_libraries(array('check_admin', 'generate_admin_ng', 'forms/textareabb', 'forms/textbbpost', 'utilities/set_admin_link'));
 	load_libraries(array('blog_functions'),$base_path.'modules/blog/libraries/');
 	load_model('blog'); 
 	
@@ -71,7 +71,7 @@ function Moderate()
 
 		settype($idmodule, 'integer');
 
-		echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_blog', array('IdModule' => $idmodule)).'">'.$lang['blog']['goback_admin_blog'].'</a></p>';
+		echo '<p><a href="'.set_admin_link( 'admin_blog', array('IdModule' => $idmodule)).'">'.$lang['blog']['goback_admin_blog'].'</a></p>';
 
 	}
 	else if($num_mod>0)

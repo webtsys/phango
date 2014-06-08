@@ -11,7 +11,7 @@ function BannersAdmin()
 	
 	$arr_fields=array('title');
 	$arr_fields_edit=array('title', 'content', 'position_banner');
-	$url_options=set_admin_link('admin_banners', array());//make_fancy_url($base_url, 'admin', 'index', 'admin_banners', array('IdModule' => $_GET['IdModule']));
+	$url_options=set_admin_link('admin_banners', array());//set_admin_link( 'admin_banners', array('IdModule' => $_GET['IdModule']));
 	
 	$model['banners']->create_form();
 	

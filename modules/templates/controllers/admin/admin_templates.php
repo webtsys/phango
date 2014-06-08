@@ -23,7 +23,7 @@ function TemplatesAdmin()
 			$arr_fields=array('name');
 			$arr_fields_edit=array();
 
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule']) );
+			$url_options=set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule']) );
 
 			$arr_prop=array('', $lang['templates']['no_template'], '');
 			$arr_choice_prop=array();
@@ -66,7 +66,7 @@ function TemplatesAdmin()
 			$arr_fields=array('name', 'position');
 			$arr_fields_edit=array('name', 'text', 'idtemplate');
 
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $_GET['IdTemplate']) );
+			$url_options=set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $_GET['IdTemplate']) );
 
 			$model['template_content']->create_form();
 			
@@ -84,9 +84,9 @@ function TemplatesAdmin()
 
 			generate_admin_model_ng('template_content', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='where idtemplate='.$_GET['IdTemplate'], $arr_fields_form=array(), $type_list='Basic');
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '2', 'IdTemplate' => $_GET['IdTemplate']) ).'">'.$lang['templates']['go_to_order_template_content'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '2', 'IdTemplate' => $_GET['IdTemplate']) ).'">'.$lang['templates']['go_to_order_template_content'].'</a></p>';
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['templates']['go_back_index_templates'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule']) ).'">'.$lang['templates']['go_back_index_templates'].'</a></p>';
 
 		break;
 
@@ -96,13 +96,13 @@ function TemplatesAdmin()
 
 			list($name_template)=webtsys_fetch_row($query);
 
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '2', 'IdTemplate' => $_GET['IdTemplate']) );
+			$url_options=set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '2', 'IdTemplate' => $_GET['IdTemplate']) );
 
 			echo '<h3>'.$lang['templates']['order_content_template_for'].' '.I18nField::show_formatted($name_template).'</h3>';
 
 			GeneratePositionModel('template_content', 'name', 'position', $url_options, $where_sql='where idtemplate='.$_GET['IdTemplate']);
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $_GET['IdTemplate']) ).'">'.$lang['common']['go_back'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $_GET['IdTemplate']) ).'">'.$lang['common']['go_back'].'</a></p>';
 
 		break;
 
@@ -117,7 +117,7 @@ function TemplateOptionsListModel($url_options, $model_name, $id, $row_template)
 
 	$arr_options=BasicOptionsListModel($url_options, $model_name, $id);
 
-	$arr_options[]='<a href="'.make_fancy_url($base_url, 'admin', 'index', 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $id) ).'">'.$lang['templates']['add_content'].'</a>';
+	$arr_options[]='<a href="'.set_admin_link( 'admin_templates', array('IdModule' => $_GET['IdModule'], 'op' => '1', 'IdTemplate' => $id) ).'">'.$lang['templates']['add_content'].'</a>';
 
 	$arr_options[]='<a target="_blank" href="'.make_fancy_url($base_url, 'templates', 'index', I18nField::show_formatted($row_template['name']), array('IdTemplate' => $id) ).'">'.$lang['templates']['view_template'].'</a>';
 

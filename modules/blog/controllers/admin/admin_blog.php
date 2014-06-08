@@ -20,19 +20,19 @@ function BlogAdmin()
 	
 	/*
 	<p>
-		<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 0)); ?>"><?php echo $lang['common']['home']; ?></a> -
-		<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>"><?php echo $lang['blog']['config']; ?></a> - 
-		<a href="<?php echo make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2)); ?>"><?php echo $lang['blog']['add_tags']; ?></a>
+		<a href="<?php echo set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 0)); ?>"><?php echo $lang['common']['home']; ?></a> -
+		<a href="<?php echo set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3)); ?>"><?php echo $lang['blog']['config']; ?></a> - 
+		<a href="<?php echo set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2)); ?>"><?php echo $lang['blog']['add_tags']; ?></a>
 	</p>
 	*/
 	
-	$arr_op[0]['link']=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 0));
+	$arr_op[0]['link']=set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 0));
 	$arr_op[0]['text']=$lang['common']['home'];
 	
-	$arr_op[3]['link']=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3));
+	$arr_op[3]['link']=set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3));
 	$arr_op[3]['text']=$lang['blog']['config'];
 	
-	$arr_op[2]['link']=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2));
+	$arr_op[2]['link']=set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2));
 	$arr_op[2]['text']=$lang['blog']['add_tags'];
 		
 	menu_selected($_GET['op'], $arr_op, $type=1);
@@ -70,7 +70,7 @@ function BlogAdmin()
 
 			//Arbol de categorías
 			
-			/*$first_url[$_GET['IdBlog']]='<ul><li><a href="'.make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['principal_category'].'</a><ul>';
+			/*$first_url[$_GET['IdBlog']]='<ul><li><a href="'.set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['principal_category'].'</a><ul>';
 			$first_url[0]='<ul><li><strong>'.$lang['blog']['principal_category'].'</strong></li><ul>';*/
 			
 			//echo $first_url[$_GET['IdBlog']];
@@ -80,7 +80,7 @@ function BlogAdmin()
 
 				$arr_blog=obtain_blogs_from_category();
 
-				recursive_list('blog', $arr_cat, $arr_list_father, 0, make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule']) ));
+				recursive_list('blog', $arr_cat, $arr_list_father, 0, set_admin_link( 'edit_son_blogs', array('IdModule' => $_GET['IdModule']) ));
 
 			}
 
@@ -104,11 +104,11 @@ function BlogAdmin()
 			$model['blog']->forms['blog_father']->label=$lang['blog']['blog_father'];
 			$model['blog']->forms['num_words']->label=$lang['blog']['num_words'];
 
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_cat_blog', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $_GET['IdBlog']));
+			$url_options=set_admin_link( 'admin_cat_blog', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $_GET['IdBlog']));
 
 			$arr_fields=array('title');
 			$arr_fields_edit=array();
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_blog', array('IdModule' => $_GET['IdModule']));
+			$url_options=set_admin_link( 'admin_blog', array('IdModule' => $_GET['IdModule']));
 
 			generate_admin_model_ng('blog', $arr_fields, $arr_fields_edit, $url_options, $options_func='BlogOptionsListModel', $where_sql, $arr_fields_form=array(), $type_list='Basic');
 			
@@ -123,7 +123,7 @@ function BlogAdmin()
 			$model['moderator_blog']->components['iduser']->name_field_to_field='private_nick';
 			$model['moderator_blog']->components['iduser']->fields_related_model=array('private_nick');
 		
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'admin_cat_blog', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $_GET['IdBlog'], 'op' => 1));
+			$url_options=set_admin_link( 'admin_cat_blog', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $_GET['IdBlog'], 'op' => 1));
 
 			$arr_fields=array('iduser');
 			$arr_fields_edit=array('idblog', 'iduser');
@@ -146,7 +146,7 @@ function BlogAdmin()
 
 			generate_admin_model_ng('moderator_blog', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='where moderator_blog.idblog='.$_GET['IdBlog'], $arr_fields_form=array(), $type_list='Basic');
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $blog_father)).'">'.$lang['common']['go_back'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'edit_son_blogs', array('IdModule' => $_GET['IdModule'], 'IdBlog' => $blog_father)).'">'.$lang['common']['go_back'].'</a></p>';
 			
 		
 		break;
@@ -155,7 +155,7 @@ function BlogAdmin()
 			
 			$arr_fields=array('tag');
 			$arr_fields_edit=array('tag');
-			$url_options=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2));
+			$url_options=set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 2));
 
 			$model['tag_blog']->create_form();
 
@@ -163,7 +163,7 @@ function BlogAdmin()
 			
 			generate_admin_model_ng('tag_blog', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
-			echo '<p><a href="'.make_fancy_url($base_url, 'admin', 'index', 'edit_son_blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['go_back_index_blog'].'</a></p>';
+			echo '<p><a href="'.set_admin_link( 'edit_son_blogs', array('IdModule' => $_GET['IdModule'])).'">'.$lang['blog']['go_back_index_blog'].'</a></p>';
 
 		break;
 		
@@ -173,7 +173,7 @@ function BlogAdmin()
 		
 			$admin=new GenerateAdminClass('config_blog');
 			
-			$admin->url_options=make_fancy_url($base_url, 'admin', 'index', 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3));
+			$admin->url_options=set_admin_link( 'blogs', array('IdModule' => $_GET['IdModule'], 'op' => 3));
 			
 			$admin->url_back=$admin->url_options;
 			
