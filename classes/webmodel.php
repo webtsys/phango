@@ -4282,9 +4282,18 @@ function SelectManyForm($name="", $class='', $value='', $more_options='' )
 
 function SelectManyFormSet($post, $value)
 {
-
-	$arr_value=unserialize($value);
-
+	
+	if(gettype($value)!='array')
+	{
+	
+		$arr_value=unserialize($value);
+	}
+	else
+	{
+	
+		$arr_value=$value;
+	
+	}
 	//$value = preg_replace('/<(.*?)\/(.*?)option(.*?)>/', '', $value);
 	
 	$post[0]=$arr_value;
