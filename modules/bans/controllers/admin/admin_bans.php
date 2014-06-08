@@ -4,11 +4,11 @@ function BansAdmin()
 {
 	global $base_url, $base_path, $model, $lang;
 
-	load_libraries(array('generate_admin_ng', 'forms/selectmodelform'));
+	load_libraries(array('generate_admin_ng', 'admin/generate_admin_class', 'forms/selectmodelform'));
 
 	load_model('bans');
 
-	$arr_fields=array('description', 'iduser');
+	$arr_fields=array('description', 'iduser', 'ip');
 	$arr_fields_edit=array('iduser', 'description', 'ip', 'message', 'time_ban', 'modules_ban');
 	$url_options=set_admin_link('bans', array());
 
@@ -50,7 +50,15 @@ function BansAdmin()
 	echo '<h3>'.$lang['bans']['edit_bans'].'</h3>';
 
 	generate_admin_model_ng('ban', $arr_fields, $arr_fields_edit, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
-
+	/*
+	$admin=new GenerateAdminClass('ban');
+	
+	$admin->arr_fields=$arr_fields;
+	$admin->arr_fields_edit=$arr_fields_edit;
+	$admin->url_options=$url_options;
+	
+	$admin->show();*/
+	
 }
 
 ?>

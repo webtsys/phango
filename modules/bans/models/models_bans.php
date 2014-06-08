@@ -15,6 +15,8 @@ $model['ban']=new ban();
 
 $model['ban']->components['iduser']=new ForeignKeyField('user');
 
+$model['ban']->components['iduser']->yes_zero=1;
+
 $model['ban']->components['description']=new CharField(255);
 
 $model['ban']->components['description']->required=1;

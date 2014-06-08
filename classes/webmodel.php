@@ -324,10 +324,14 @@ class Webmodel {
 				if(get_class($this->components[$key])=='ForeignKeyField' && $fields[$key]==NULL)
 				{
 				
+					
 					$quot_open='';
 					$quot_close='';
-					$fields[$key]='NULL';
-				
+					
+					if($this->components[$key]->yes_zero==0)
+					{
+						$fields[$key]='NULL';
+					}
 				}
 			
 				$arr_fields[]=$quot_open.$fields[$key].$quot_close;
@@ -3292,7 +3296,8 @@ class ForeignKeyField extends IntegerField{
 	public $null_relation=1;
 	public $params_loading_mod=array();
 	public $default_id=0;
-
+	public $yes_zero=0;
+	
 	function __construct($related_model, $size=11, $null_relation=1, $default=0)
 	{
 
@@ -3306,7 +3311,7 @@ class ForeignKeyField extends IntegerField{
 		$this->name_field_to_field='';
 		$this->null_relation=$null_relation;
 		$this->default_id=$default;
-
+		
 		//$model[$related_model]->related_models_delete[]=array('model' => $this->name_model, 'related_field' => $this->name_component);
 		
 		//echo get_parent_class();
@@ -3357,20 +3362,20 @@ class ForeignKeyField extends IntegerField{
 		if($num_rows>0)
 		{
 		
-			if($value==0)
+			if($value==0 && $this->yes_zero==0)
 			{
-			
+				
 				return NULL;
 			
 			}
-
+			
 			return $value;
 
 		}
 		else
 		{
 		
-			if($this->default_id<=0)
+			if($this->default_id<=0 && $this->yes_zero==0)
 			{
 			
 				return NULL;
@@ -4226,7 +4231,7 @@ function SelectManyForm($name="", $class='', $value='', $more_options='' )
 	$select='<select name="'.$name.'[]" id="'.$name.'_field_form" class="'.$class.'" '.$more_options.' multiple>'."\n";
 
 	list($key, $arr_values)= each($value);
-
+	
 	$arr_selected=array();
 	
 	foreach($arr_values as $default)
