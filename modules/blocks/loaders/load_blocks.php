@@ -200,8 +200,10 @@ function getblock($module, $order_mods='DESC')
 	if($user_data['privileges_user']==2)
 	{
 	
+		load_libraries(array('utilities/set_admin_link'));
+	
 		$block_content['barr'][]=$lang['common']['admin_panel'];
-		$block_urls['barr'][]=set_admin_link( 'admin_zone', $arr_data=array());;
+		$block_urls['barr'][]=set_admin_link( 'admin_zone', $arr_data=array('IdModule' => 0));
 
 	}
 	
