@@ -1189,7 +1189,10 @@ class Webmodel {
 	*
 	* This is a method for create new fields for a model. You can create a field on a table with two methods: first, directly using fields or components classes, second, with this method. This method is recommended because give to you more info about your model to your component.
 	*
-	* @param string $name 
+	* @param string $name The name of the model 
+	* @param string $type Field type, based on a phangofield class
+	* @param string $arguments Array with arguments for construct the new field
+	* @param boolean $required A boolean used for set the default required value
 	*/
 	public function set_component($name, $type, $arguments, $required=0)
 	{
@@ -1869,6 +1872,10 @@ class PrimaryField extends PhangoField {
 		return $value;
 
 	}
+	
+	/**
+	* Method for return a default value for the parameters.
+	*/
 
 	public function get_parameters_default()
 	{
