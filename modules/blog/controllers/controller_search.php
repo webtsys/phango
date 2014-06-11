@@ -117,8 +117,8 @@ function Search()
 				$tags=implode(', ', $arr_tags[$result['IdPage_blog']]);
 
 			}
-		
-			echo load_view(array($result['author'], $result['IdPage_blog'], $result['private_nick'], $result['title'], $result['entrance'], $result['num_comments'], $result['date'], $lang['blog'], $tags), 'blog/postblog');
+			// postblogview($idauthor, $idpost, $author, $title, $text, $num_comments, $date, $tags='')
+			echo load_view(array($result['author'], $result['IdPage_blog'], $result['private_nick'], $result['title'], $result['entrance'], $result['num_comments'], $result['date'], $tags), 'blog/postblog');
 		
 		}
 		
