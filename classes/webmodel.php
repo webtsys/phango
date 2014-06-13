@@ -3729,7 +3729,11 @@ else
 
 }
 
-//this function is used to clean up the text of undesirable elements
+/**
+* This function is used to clean up the text of undesirable elements
+* @param string $text Text to clean
+* @param string $br Boolean variable used for control if you want br tags or \n symbon on input text
+*/
 
 function form_text( $text ,$br=1)
 {
@@ -3789,7 +3793,12 @@ function form_text( $text ,$br=1)
     return $text;
 }
 
-//this function is used to clean up the text of undesirable html tags
+/**
+* This function is used to clean up the text of undesirable html tags
+*
+* @param string $text Input text for clean undesirable html tags
+* @param array $allowedtags An array with allow tags on the text.
+*/
 
 function form_text_html( $text , $allowedtags=array())
 {
@@ -3951,7 +3960,11 @@ function form_text_html( $text , $allowedtags=array())
 
 }
 
-//Functión for clean newlines
+/**
+* function for clean newlines
+* 
+* @param string $text Text to clean.
+*/
 
 function unform_text( $text )
 {
@@ -3962,6 +3975,12 @@ function unform_text( $text )
 	return $text;
 
 }
+
+/**
+*  Simple function for replate real quotes for quote html entities.
+* 
+* @param string $text Text to clean.
+*/
 
 function replace_quote_text( $text )
 {
