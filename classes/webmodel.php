@@ -5545,6 +5545,11 @@ function set_name_default($name)
 
 }
 
+/**
+* A function for generate a rand token used on sessions.
+*
+*/
+
 function get_token()
 {
 
