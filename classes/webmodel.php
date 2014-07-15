@@ -73,6 +73,15 @@ $yes_entities=1;
 $arr_models_loading=array();
 
 /**
+* An array used for check if the module media is in document root.
+*
+* Use the name of the module how key for an new array with the keys 'image' and 'css' that define the m
+*
+*/
+
+$arr_media_modules_set=array();
+
+/**
 *
 * Actual timestamp
 *
@@ -4574,7 +4583,7 @@ function slugify($text, $respect_upper=0, $replace='-')
 $cache_template=array();
 
 /**
-* Very importante function used for load views. Is the V in the MVC paradigm.
+* Very important function used for load views. Is the V in the MVC paradigm.
 *
 * load_view is used for load the views. Views in Phango are php files with a function that have a special name with "View" suffix. For example, if you create a view file with the name blog.php, inside you need create a php function called BlogView(). The arguments of this function can be that you want, how on any normal php function. The view files need to be saved on a "view" folders inside of a theme folder, or a "views/module_name" folder inside of a module being "module_name" the name of the module.
 *
@@ -5357,7 +5366,22 @@ function load_css_local_view()
 	
 		foreach($arr_css as $css)
 		{
-			if(!file_exists($base_path.$config_data['module_theme'].'media/css/'.$module_css.'/'.$css))
+		
+			if(isset($arr_media_modules_set[$module_css]['css']))
+			{
+			
+				$url=$base_url.'/'.$config_data['dir_theme'].'/media/css/'.$module_css.'/'.$css;
+			
+			}
+			else
+			{
+			
+				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
+				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+			
+			}
+		
+			/*if(!file_exists($base_path.$config_data['module_theme'].'media/css/'.$module_css.'/'.$css))
 			{
 			
 				//$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css, 'module' => $module_css));
@@ -5384,7 +5408,7 @@ function load_css_local_view()
 			
 				$arr_cache_css[]=$css;
 			
-			}
+			}*/
 		}
 	}
 
@@ -5392,12 +5416,27 @@ function load_css_local_view()
 
 }
 
-function get_url_local_image($img_name, $module, $respect_upper=0)
+function get_url_local_image($img_name, $module, $respect_upper=1)
 {
 
 	global $base_url, $base_path, $config_data;
 
-	if(!file_exists($base_path.$config_data['module_theme'].'media/images/'.$module.'/'.$img_name))
+	if(isset($arr_media_modules_set[$module]['image']))
+	{
+	
+		$url=$base_url.$config_data['dir_theme'].'/media/'.$module.'/images/'.$img_name;
+	
+	}
+	else
+	{
+	
+		$img_name=urlencode_redirect(slugify($img_name, $respect_upper));
+		
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module, 'images' => $img_name));
+	
+	}
+	
+	/*if(!file_exists($base_path.$config_data['module_theme'].'media/images/'.$module.'/'.$img_name))
 	{
 
 		if(file_exists($base_path.'application/media/'.$module.'/images/'.$img_name))
@@ -5421,7 +5460,7 @@ function get_url_local_image($img_name, $module, $respect_upper=0)
 	
 		return get_url_image($img_name, $set_encode=1, $directory_encode='', $respect_upper=1);
 	
-	}
+	}*/
 		
 }
 
