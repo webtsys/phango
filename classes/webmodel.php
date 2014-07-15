@@ -4008,7 +4008,14 @@ This functions are called via $model->form
 
 ************************************************************/
 
-//Create a input text
+/** 
+* Function form used for text fields on a form. Show a text html input.
+* 
+*
+* @param string $name Name of this text field for use in forms
+* @param string $class Css class used in the text field
+* @param string $value Initial value for the form
+*/
 
 function TextForm($name="", $class='', $value='')
 {
