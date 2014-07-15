@@ -5377,7 +5377,9 @@ function load_css_local_view()
 			if(isset($arr_media_modules_set[$module_css]['css']))
 			{
 			
-				$url=$base_url.'/'.$config_data['dir_theme'].'/media/css/'.$module_css.'/'.$css;
+				//$url=$base_url.'/'.$config_data['dir_theme'].'/media/css/'.$module_css.'/'.$css;
+			
+				$arr_cache_css[]=$module_css.'/'.$css;
 			
 			}
 			else
@@ -5431,7 +5433,9 @@ function get_url_local_image($img_name, $module, $respect_upper=1)
 	if(isset($arr_media_modules_set[$module]['image']))
 	{
 	
-		$url=$base_url.$config_data['dir_theme'].'/media/'.$module.'/images/'.$img_name;
+		//$url=$base_url.$config_data['dir_theme'].'/media/'.$module.'/images/'.$img_name;
+	
+		$url=get_url_image($module.'/'.$img_name);
 	
 	}
 	else
