@@ -7,6 +7,15 @@ ob_start();
 $arr_extension_model=array();
 $arr_module_list_js=array();
 
+/**
+* An array used for check if the module media is in document root.
+*
+* Use the name of the module how key for an new array with the keys 'image' and 'css' that define the m
+*
+*/
+
+$arr_media_modules_set=array();
+
 //Adding config...
 
 if(!include("config.php")) 

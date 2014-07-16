@@ -73,15 +73,6 @@ $yes_entities=1;
 $arr_models_loading=array();
 
 /**
-* An array used for check if the module media is in document root.
-*
-* Use the name of the module how key for an new array with the keys 'image' and 'css' that define the m
-*
-*/
-
-$arr_media_modules_set=array();
-
-/**
 *
 * Actual timestamp
 *
@@ -5359,7 +5350,7 @@ $arr_cache_local_css=array();
 function load_css_local_view()
 {
 
-	global $arr_cache_local_css, $arr_cache_css, $base_url, $base_path, $config_data;
+	global $arr_cache_local_css, $arr_media_modules_set, $arr_cache_css, $base_url, $base_path, $config_data;
 
 	//Delete repeat scripts...
 
@@ -5378,9 +5369,12 @@ function load_css_local_view()
 			{
 			
 				//$url=$base_url.'/'.$config_data['dir_theme'].'/media/css/'.$module_css.'/'.$css;
-			
+				
 				$arr_cache_css[]=$module_css.'/'.$css;
-			
+				
+				/*$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => urlencode_redirect($css, 1)));
+				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+				*/
 			}
 			else
 			{
@@ -5428,7 +5422,7 @@ function load_css_local_view()
 function get_url_local_image($img_name, $module, $respect_upper=1)
 {
 
-	global $base_url, $base_path, $config_data;
+	global $base_url, $base_path, $config_data, $arr_media_modules_set;
 
 	if(isset($arr_media_modules_set[$module]['image']))
 	{
