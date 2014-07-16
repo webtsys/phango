@@ -5385,7 +5385,7 @@ function load_css_local_view()
 			else
 			{
 			
-				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
+				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => urlencode_redirect($css, 1)));
 				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
 			
 			}
