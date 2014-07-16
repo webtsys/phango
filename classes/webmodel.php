@@ -5427,13 +5427,36 @@ function get_url_local_image($img_name, $module, $respect_upper=1)
 
 	global $base_url, $base_path, $config_data, $arr_media_modules_set;
 
-	if(isset($arr_media_modules_set[$module]['image']))
+	/*if(isset($arr_media_modules_set[$module]['image']))
 	{
 	
 		//$url=$base_url.$config_data['dir_theme'].'/media/'.$module.'/images/'.$img_name;
 	
 		$url=get_url_image($module.'/'.$img_name);
 	
+	}
+	else
+	{
+	
+		$img_name=urlencode_redirect(slugify($img_name, $respect_upper));
+		
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module, 'images' => $img_name));
+	
+	}*/
+	
+	if(isset($arr_media_modules_set[$module_css]['image']))
+	{
+	
+		$url=$base_url.'/media/'.$config_data['dir_theme'].'/'.$module.'/images/'.$img_name;
+		//$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+		
+		$url=get_url_image($module.'/'.$img_name);
+		
+		//$arr_cache_css[$module_css]=$css;
+		
+		/*$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => urlencode_redirect($css, 1)));
+		$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
+		*/
 	}
 	else
 	{
