@@ -5509,7 +5509,7 @@ if(defined('THEME_MODULE'))
 		foreach($arr_cache_css as $idcss => $css)
 		{
 		
-			$css=slugify(base64_encode($css), 1);
+			$css=slugify(urlencode_redirect($css, 1), 1);
 
 			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
 			
