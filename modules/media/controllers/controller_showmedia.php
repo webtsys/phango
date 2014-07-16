@@ -113,8 +113,10 @@ function ShowMedia()
 				{
 				
 					//Thirst on view of actually module.
-				
-					if(file_exists($base_path.'modules/'.$script_base_controller.'/media/images/'.$_GET['images'])) 
+					
+					$file_path=$base_path.'modules/'.$config_data['dir_theme'].'/media/images/'.$_GET['images'];
+					
+					if($file_path) 
 					{
 					
 						$check_file=1;
@@ -187,8 +189,10 @@ function ShowMedia()
 				{
 				
 					//Thirst on view of actually module.
+					
+					$file_path=$base_path.'modules/'.$config_data['dir_theme'].'/media/css/'.$_GET['css'];
 				
-					if(file_exists($base_path.'modules/'.$script_base_controller.'/media/css/'.$_GET['css'])) 
+					if(file_exists($file_path)) 
 					{
 					
 						$check_file=1;

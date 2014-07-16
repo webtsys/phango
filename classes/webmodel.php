@@ -5368,9 +5368,10 @@ function load_css_local_view()
 			if(isset($arr_media_modules_set[$module_css]['css']))
 			{
 			
-				//$url=$base_url.'/'.$config_data['dir_theme'].'/media/css/'.$module_css.'/'.$css;
+				$url=$base_url.'/media/'.$config_data['dir_theme'].'/'.$module_css.'/css/'.$css;
+				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
 				
-				$arr_cache_css[]=$module_css.'/'.$css;
+				//$arr_cache_css[$module_css]=$css;
 				
 				/*$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => urlencode_redirect($css, 1)));
 				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>';
@@ -5412,6 +5413,8 @@ function load_css_local_view()
 				$arr_cache_css[]=$css;
 			
 			}*/
+			
+			
 		}
 	}
 
@@ -5494,7 +5497,7 @@ if(defined('THEME_MODULE'))
 	{
 
 		global $arr_cache_css, $base_url, $config_data;
-
+		
 		//Delete repeat scripts...
 
 		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
@@ -5504,8 +5507,17 @@ if(defined('THEME_MODULE'))
 		{
 		
 			$css=slugify(urlencode_redirect($css, 1), 1);
+			
+			$module_css='';
+			
+			if(gettype($idcss)=='string')
+			{
+			
+				$module_css=$idcss;
+				
+			}
 
-			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
+			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
 			
 			$arr_final_jscript[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
 
