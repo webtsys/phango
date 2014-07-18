@@ -219,7 +219,7 @@ class ListModelClass {
 				$search->lang_desc=$this->search_desc;
 			
 				list($where_sql, $arr_where_sql, $location, $arr_order)=$search->search();
-			
+				
 				//list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($this->model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
 			//}
 			//Num elements in page

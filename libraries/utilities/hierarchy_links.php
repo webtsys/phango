@@ -19,7 +19,7 @@ function hierarchy_links($model_name, $parentfield_name, $field_name, $idmodel)
 	
 	while(list($id, $father, $name)=webtsys_fetch_row($query))
 	{
-	
+		
 		$arr_id_father[$id]=$father;
 		$arr_id_name[$id]=$model[$model_name]->components[$field_name]->show_formatted($name);
 	
