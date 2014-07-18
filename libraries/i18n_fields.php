@@ -227,7 +227,7 @@ function MultiLangForm($field, $class='', $arr_values=array(), $type_form='TextF
 		$arr_selected[slugify($_SESSION['default_language'])]='choose_flag';
 
 		?>
-		<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" id="<?php echo $field.'_'.$lang_item; ?>_flag" href="#" onclick="change_form_language_<?php echo $field; ?>('<?php echo $field; ?>', '<?php echo $field.'_'.$lang_item; ?>'); return false;"><img src="<?php echo get_url_image($lang_item.'.png', 1, 'languages', 1); ?>" alt="<?php echo $lang_item; ?>"/></a>&nbsp;
+		<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" id="<?php echo $field.'_'.$lang_item; ?>_flag" href="#" onclick="change_form_language_<?php echo $field; ?>('<?php echo $field; ?>', '<?php echo $field.'_'.$lang_item; ?>'); return false;"><img src="<?php echo get_url_image('languages/'.$lang_item.'.png'); ?>" alt="<?php echo $lang_item; ?>"/></a>&nbsp;
 		<?php
 
 	}
