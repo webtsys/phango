@@ -52,11 +52,11 @@ $lang['common']['press_here_redirecting']='Pulse aquí para volver';
 
 $lang['common']['options']='Opciones';
 
+$lang['common']['pages']='Páginas';
+
 $lang['common']['cannot_update_insert_in_model']='No puedo actualizar o insertar nuevo elemento';
 
 $lang['common']['go_back']='Volver atrás';
-
-$lang['common']['pages']='Páginas';
 
 $lang['common']['no_element_chosen']='Elija opción...';
 
@@ -196,18 +196,6 @@ $lang['common']['html_allowed']='Html permitido';
 
 $lang['common']['admin_panel']='Panel de administración';
 
-$lang['common']['category']='Categoría';
-
-$lang['common']['categories']='Categorías';
-
-$lang['common']['any_option']='No ha escogido ninguna opción';
-
-$lang['common']['description']='Descripción';
-
-$lang['common']['region']='Provincia';
-
-$lang['common']['zip_code']='Código postal';
-
 $lang['common']['list']='list';
 
 $lang['common']['registered_users']='Usuarios registrados';
@@ -218,9 +206,21 @@ $lang['common']['filter_by_category']='Filtrar por categoría';
 
 $lang['common']['select']='Seleccionar';
 
+$lang['common']['description']='Descripción';
+
 $lang['common']['message']='Mensaje';
 
 $lang['common']['required']='Requerido';
+
+$lang['common']['category']='Categoría';
+
+$lang['common']['categories']='Categorías';
+
+$lang['common']['any_option']='No ha escogido ninguna opción';
+
+$lang['common']['region']='Provincia';
+
+$lang['common']['zip_code']='Código postal';
 
 $lang['common']['nothing_to_show']='nothing_to_show';
 

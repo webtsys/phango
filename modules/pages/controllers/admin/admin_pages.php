@@ -23,6 +23,8 @@ function PagesAdmin()
 
 			$model['page']->create_form();
 
+			$model['page']->label=$lang['pages']['pages'];
+			
 			$model['page']->forms['name']->label=$lang['common']['title'];
 			$model['page']->forms['text']->label=$lang['common']['text'];
 		

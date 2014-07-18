@@ -1,5 +1,7 @@
 <?php
 
+$lang['pages']['pages']='Páginas';
+
 $lang['pages']['property']='Propiedad';
 
 $lang['pages']['order_page']='Orden de propiedad';

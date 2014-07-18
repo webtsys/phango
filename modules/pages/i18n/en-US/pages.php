@@ -1,5 +1,7 @@
 <?php
 
+$lang['pages']['pages']='Pages';
+
 $lang['pages']['property']='Property';
 
 $lang['pages']['order_page']='Order property';
