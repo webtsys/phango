@@ -175,6 +175,7 @@ class ListModelClass {
 		$this->search_asc=$lang['common']['ascent'];
 		$this->search_desc=$lang['common']['descent'];
 		$this->show_goback=1;
+		$this->separator_element_opt='<br />';
 	
 	}
 	
@@ -254,7 +255,7 @@ class ListModelClass {
 			
 			$url_options_edit=add_extra_fancy_url($this->url_options, array('op_edit' =>1, $model[$this->model_name]->idmodel => $_GET[$model[$this->model_name]->idmodel]) );
 			
-			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $go_back=1, $this->simple_redirect);
+			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect);
 			
 		break;
 
@@ -344,6 +345,14 @@ class SimpleList
 		{
 			
 			$this->arr_fields=array_keys($model[$this->model_name]->components);
+		
+		}
+		
+		if(!in_array($model[$this->model_name]->idmodel, $this->arr_fields))
+		{
+		
+			$this->arr_fields[]=$model[$this->model_name]->idmodel;
+			$this->arr_fields_no_showed[]=$model[$this->model_name]->idmodel;
 		
 		}
 		
