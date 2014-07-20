@@ -938,7 +938,7 @@ class SearchInFieldClass {
 		
 		if( !in_array($_GET['search_field'], $this->arr_fields_search) )
 		{
-
+			
 			$_GET['search_field']=$this->arr_fields_search[0]; //$model[$model_name]->idmodel;
 
 		}

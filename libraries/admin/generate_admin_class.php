@@ -4,7 +4,7 @@ load_libraries(array('utilities/menu_barr_hierarchy', 'generate_admin_ng'));
 
 class GenerateAdminClass {
 
-	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt, $extra_menu_create;
+	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt, $extra_menu_create, $listmodel;
 
 	public $search_asc;
 	public $search_desc;
@@ -37,6 +37,9 @@ class GenerateAdminClass {
 		$this->search_asc=$lang['common']['ascent'];
 		$this->search_desc=$lang['common']['descent'];
 		$this->show_goback=1;
+		$this->arr_fields_order=array();
+		$this->arr_fields_search=array();
+		
 	}
 	
 	function initial_order()
@@ -88,6 +91,20 @@ class GenerateAdminClass {
 				$listmodel=new ListModelClass($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 				
 				$listmodel->simple_redirect=$this->simple_redirect;
+				
+				if(count($this->arr_fields_order)>0)
+				{
+				
+					$listmodel->arr_fields_order=$this->arr_fields_order;
+				
+				}
+				
+				if(count($this->arr_fields_search)>0)
+				{
+				
+					$listmodel->arr_fields_search=$this->arr_fields_search;
+				
+				}
 				
 				$listmodel->search_asc=$this->search_asc;
 				$listmodel->search_desc=$this->search_desc;
@@ -176,6 +193,8 @@ class ListModelClass {
 		$this->search_desc=$lang['common']['descent'];
 		$this->show_goback=1;
 		$this->separator_element_opt='<br />';
+		$this->arr_fields_order=$this->arr_fields;
+		$this->arr_fields_search=$this->arr_fields;
 	
 	}
 	
@@ -213,7 +232,7 @@ class ListModelClass {
 			
 			/*if($no_search==false)
 			{*/
-				$search=new SearchInFieldClass($this->model_name, $this->arr_fields, $this->arr_fields, $this->where_sql, $this->url_options, $this->yes_id, $show_form);
+				$search=new SearchInFieldClass($this->model_name, $this->arr_fields_order, $this->arr_fields_search, $this->where_sql, $this->url_options, $this->yes_id, $show_form);
 				
 				$search->lang_asc=$this->search_asc;
 				$search->lang_desc=$this->search_desc;
