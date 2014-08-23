@@ -130,6 +130,15 @@ $user_data['key_csrf']=$prefix_key;
 
 //Add index.php if not exists...
 
+//I have to modify REQUEST_URI if defined NO_INDEX_PHP
+
+if(defined('NO_INDEX_PHP'))
+{
+
+	$_SERVER['REQUEST_URI']=str_replace($cookie_path, $cookie_path.'index.php/', $_SERVER['REQUEST_URI']);
+
+}
+
 if(strpos($_SERVER['REQUEST_URI'],'/index.php/')!==false)
 {
 

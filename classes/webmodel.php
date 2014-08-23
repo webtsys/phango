@@ -4504,7 +4504,16 @@ function make_fancy_url($url, $controller, $func_controller, $description_text, 
 	
 	$get_final=implode('/', $arr_get);
 	
-	return $url.'/index.php/'.$controller.'/show/'.$func_controller.'/'.$description_text.'/'.$get_final;
+	$index_php='/index.php';
+	
+	if(defined('NO_INDEX_PHP'))
+	{
+	
+		$index_php='';
+	
+	}
+	
+	return $url.$index_php.'/'.$controller.'/show/'.$func_controller.'/'.$description_text.'/'.$get_final;
 
 }
 
