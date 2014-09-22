@@ -4968,6 +4968,23 @@ function load_model($name_model='')
 }
 
 /**
+* Function for load config for modules.
+*
+*
+* @param $module Name of the module
+* @param $name_config Name of the config file, optional. Normally load config.php file on folder config.
+*/
+
+function load_config($module, $name_config='config')
+{
+
+	global $base_path;
+
+	load_libraries(array($name_config), $base_path.'/modules/'.$module.'/config/');
+
+}
+
+/**
 * Internal function used for load_model for load extensions to the models. You can specific your extensions using $arr_extension_model array. The name of an extension file is extension_name.php where name is the name given how $arr_extension_model item.
 *
 */
