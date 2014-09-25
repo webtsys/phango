@@ -414,7 +414,7 @@ class ListModelClass {
 			
 			//$this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect
 			
-			$this->insert_model_form();
+			$this->admin_class->insert_model_form();
 			
 		break;
 
