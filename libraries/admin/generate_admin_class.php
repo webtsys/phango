@@ -31,7 +31,8 @@ class GenerateAdminClass {
 		$this->txt_add_new_item=$lang['common']['add_new_item'].': '.$model[$this->model_name]->label;
 		$this->txt_edit_item=$lang['common']['edit'];
 		$this->simple_redirect=0;
-		$this->class_add='';
+		$this->class_add='add_class_item_link';
+		$this->goback_class='add_class_item_link';
 		$this->separator_element_opt='<br />';
 		$this->extra_menu_create='';
 		$this->search_asc=$lang['common']['ascent'];
@@ -284,7 +285,7 @@ class GenerateAdminClass {
 			{
 		
 				?>
-				<p><a href="<?php echo $url_back; ?>"><?php echo $lang['common']['go_back']; ?></a></p>
+				<p><a href="<?php echo $url_back; ?>" class="<?php echo $this->goback_class; ?>"><?php echo $lang['common']['go_back']; ?></a></p>
 				<?php
 
 			}
