@@ -1,6 +1,6 @@
 <?php
 
-function ModelFormView($model_form, $fields=array())
+function ModelFormView($model_form, $fields=array(), $html_id='')
 {
 
 global $base_url, $model;
@@ -17,7 +17,7 @@ if(count($fields)==0)
 
 ?>
 
-<div class="form">
+<div class="form" id="<?php echo $html_id; ?>">
 		<?php
 		
 		foreach($fields as $field)
