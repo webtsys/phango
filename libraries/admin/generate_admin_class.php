@@ -132,7 +132,7 @@ class GenerateAdminClass {
 
 				//InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
 
-				$thi->insert_model_form();
+				$this->insert_model_form();
 				
 			break;
 
