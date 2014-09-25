@@ -92,6 +92,8 @@ class GenerateAdminClass {
 				
 				$listmodel->simple_redirect=$this->simple_redirect;
 				
+				$listmodel->admin_class=$this;
+				
 				if(count($this->arr_fields_order)>0)
 				{
 				
@@ -127,8 +129,10 @@ class GenerateAdminClass {
 				
 				echo '<h3>'.$this->txt_add_new_item.'</h3>';
 
-				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
+				//InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
 
+				$thi->insert_model_form();
+				
 			break;
 
 		}
@@ -156,17 +160,150 @@ class GenerateAdminClass {
 		
 		//nsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 		
-		InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
+		//InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
 	
+		$this->insert_model_form();
+		
 	}
 	
 
+	function insert_model_form()
+	{
+	
+		global $model, $lang, $std_error, $arr_block, $base_url;
+		//Setting op variable to integer for use in switch
+		
+		//function InsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1, $simple_redirect=0, $where_sql='')
+		
+		$model_name=$this->model_name;
+		$url_admin=$this->url_options; 
+		$url_back=$this->url_back;
+		$arr_fields=$this->arr_fields_edit;
+		$id=0; 
+		$goback=$this->show_goback; 
+		$simple_redirect=$this->simple_redirect;
+		$where_sql=$this->where_sql;
+		
+		if(isset($model[$model_name]))
+		{
+
+			settype($_GET['op_update'], 'integer');
+			settype($_GET['success'], 'integer');
+
+			$url_post=add_extra_fancy_url($url_admin, array('op_update' =>1));
+
+			if( count($model[$model_name]->forms)==0)
+			{	
+				$model[$model_name]->create_form();
+			}
+			
+			//UpdateModelFormView($model_form, $arr_fields=array(), $url_post)
+
+			if(count($arr_fields)==0)
+			{
+
+				$arr_fields=array_keys($model[$model_name]->forms);
+
+			}
+			
+			switch($_GET['op_update'])
+			{
+
+				default:
+
+					ob_start();
+					
+					echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin_'.$model_name), 'common/forms/updatemodelform');
+
+					$cont_index=ob_get_contents();
+
+					ob_end_clean();
+
+					echo load_view(array($lang['common']['edit'], $cont_index), 'content');
+					
+				break;
+
+				case 1:
+			
+					$arr_update[$id]=$model[$model_name]->func_update.'UpdateModel';
+					$arr_update[0]=$model[$model_name]->func_update.'InsertModel';
+
+					$func_update=$arr_update[$id];
+					
+					if(!$func_update($model_name, $arr_fields, $_POST, $id, $where_sql))
+					{
+
+						ob_start();
+						
+						echo '<p class="error">'.$lang['common']['cannot_update_insert_in_model'].' '.$model_name.': '.$model[$model_name]->std_error.'</p>';
+
+						$post=filter_fields_array($arr_fields, $_POST);
+						
+						SetValuesForm($post, $model[$model_name]->forms);
+
+						echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype), 'common/forms/updatemodelform');
+
+						$cont_index=ob_get_contents();
+
+						ob_end_clean();
+
+						echo load_view(array($lang['common']['edit'], $cont_index), 'content');
+
+					}
+					else
+					{
+
+						//die(header('Location: '.$url_admin.'/success/1'));
+						
+						
+						$text_output=$lang['common']['success'];
+						
+						ob_end_clean();
+						
+						if($simple_redirect==0)
+						{
+							
+							load_libraries(array('redirect'));
+							die( redirect_webtsys( $url_back, $lang['common']['redirect'], $text_output, $lang['common']['press_here_redirecting'] , $arr_block) );
+						}
+						else
+						{
+						
+							load_libraries(array('redirect'));
+							simple_redirect( $url_back, $lang['common']['redirect'], $lang['common']['success'], $lang['common']['press_here_redirecting']);
+
+						}
+						
+					}
+
+				break;
+
+			}
+
+			if($goback==1)
+			{
+		
+				?>
+				<p><a href="<?php echo $url_back; ?>"><?php echo $lang['common']['go_back']; ?></a></p>
+				<?php
+
+			}
+
+		}
+		else
+		{
+
+			
+
+		}
+	
+	}
 	
 }
 
 class ListModelClass {
 
-	public $model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />', $simple_redirect=0;
+	public $model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />', $simple_redirect=0, $admin_class;
 	
 	public $search_asc;
 	public $search_desc;
@@ -195,6 +332,7 @@ class ListModelClass {
 		$this->separator_element_opt='<br />';
 		$this->arr_fields_order=$this->arr_fields;
 		$this->arr_fields_search=$this->arr_fields;
+		$this->admin_class=new GenerateAdminClass($this->model_name);
 	
 	}
 	
@@ -274,7 +412,9 @@ class ListModelClass {
 			
 			$url_options_edit=add_extra_fancy_url($this->url_options, array('op_edit' =>1, $model[$this->model_name]->idmodel => $_GET[$model[$this->model_name]->idmodel]) );
 			
-			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect);
+			//$this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect
+			
+			$this->insert_model_form();
 			
 		break;
 
