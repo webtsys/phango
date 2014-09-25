@@ -130,9 +130,9 @@ class GenerateAdminClass {
 				
 				echo '<h3>'.$this->txt_add_new_item.'</h3>';
 
-				//InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
+				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
 
-				$this->insert_model_form();
+				//$this->insert_model_form();
 				
 			break;
 
@@ -161,9 +161,9 @@ class GenerateAdminClass {
 		
 		//nsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 		
-		//InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
+		InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
 	
-		$this->insert_model_form();
+		//$this->insert_model_form();
 		
 	}
 	
@@ -178,6 +178,7 @@ class GenerateAdminClass {
 		
 		$model_name=$this->model_name;
 		$url_admin=$this->url_options; 
+		
 		$url_back=$this->url_back;
 		$arr_fields=$this->arr_fields_edit;
 		$id=0; 
@@ -192,7 +193,7 @@ class GenerateAdminClass {
 			settype($_GET['success'], 'integer');
 
 			$url_post=add_extra_fancy_url($url_admin, array('op_update' =>1));
-
+			
 			if( count($model[$model_name]->forms)==0)
 			{	
 				$model[$model_name]->create_form();
@@ -413,9 +414,9 @@ class ListModelClass {
 			
 			$url_options_edit=add_extra_fancy_url($this->url_options, array('op_edit' =>1, $model[$this->model_name]->idmodel => $_GET[$model[$this->model_name]->idmodel]) );
 			
-			//$this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect
+			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect);
 			
-			$this->admin_class->insert_model_form();
+			//$this->admin_class->insert_model_form();
 			
 		break;
 
