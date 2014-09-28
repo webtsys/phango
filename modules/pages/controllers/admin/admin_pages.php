@@ -8,7 +8,7 @@ function PagesAdmin()
 	settype($_GET['op'], 'integer');
 	settype($_GET['IdPage'], 'integer');
 
-	load_libraries(array('generate_admin_ng', 'forms/textareabb'));
+	load_libraries(array('generate_admin_ng', 'forms/textareabb', 'admin/generate_admin_class'));
 	load_model('pages');
 	load_lang('pages');
 	
@@ -34,8 +34,17 @@ function PagesAdmin()
 			$arr_fields_edit=array('name', 'text');
 			$url_options=set_admin_link( 'admin_pages', array('IdModule' => $_GET['IdModule']));
 
-			generate_admin_model_ng('page', $arr_fields, $arr_fields_edit, $url_options, $options_func='PagesOptions', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
+			//generate_admin_model_ng('page', $arr_fields, $arr_fields_edit, $url_options, $options_func='PagesOptions', $where_sql='', $arr_fields_form=array(), $type_list='Basic');
 
+			$admin=new GenerateAdminClass('page');
+			
+			$admin->url_options=$url_options;
+			$admin->arr_fields=$arr_fields;
+			$admin->arr_fields_edit=$arr_fields_edit;
+			$admin->options_func='PagesOptions';
+			
+			$admin->show();
+			
 		break;
 
 		case 1:

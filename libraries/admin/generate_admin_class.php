@@ -4,7 +4,7 @@ load_libraries(array('utilities/menu_barr_hierarchy', 'generate_admin_ng'));
 
 class GenerateAdminClass {
 
-	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt, $extra_menu_create, $listmodel;
+	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt, $extra_menu_create, $listmodel, $number_id;
 
 	public $search_asc;
 	public $search_desc;
@@ -40,6 +40,7 @@ class GenerateAdminClass {
 		$this->show_goback=1;
 		$this->arr_fields_order=array();
 		$this->arr_fields_search=array();
+		$this->number_id=0;
 		
 	}
 	
@@ -89,11 +90,15 @@ class GenerateAdminClass {
 				
 				//ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 				
+				$this->url_back=$this->url_options;
+				
+				//$this->url_options=add_extra_fancy_url($this->url_options, array('op_edit' => $_GET['op_edit']));
+				
 				$listmodel=new ListModelClass($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 				
 				$listmodel->simple_redirect=$this->simple_redirect;
 				
-				$listmodel->admin_class=$this;
+				$listmodel->admin_class=&$this;
 				
 				if(count($this->arr_fields_order)>0)
 				{
@@ -130,9 +135,13 @@ class GenerateAdminClass {
 				
 				echo '<h3>'.$this->txt_add_new_item.'</h3>';
 
-				InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
-
-				//$this->insert_model_form();
+				//InsertModelForm($this->model_name, $url_admin, $this->url_options, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect);
+				
+				$this->url_back=$this->url_options;
+				
+				$this->url_options=add_extra_fancy_url($this->url_options, array('op_action' => 1));
+				
+				$this->insert_model_form();
 				
 			break;
 
@@ -161,9 +170,13 @@ class GenerateAdminClass {
 		
 		//nsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 		
-		InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
+		//InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
 	
-		//$this->insert_model_form();
+		$this->url_back=$this->url_options;
+				
+		$this->url_options=add_extra_fancy_url($this->url_options, array('op_action' => 1));
+	
+		$this->insert_model_form();
 		
 	}
 	
@@ -181,7 +194,7 @@ class GenerateAdminClass {
 		
 		$url_back=$this->url_back;
 		$arr_fields=$this->arr_fields_edit;
-		$id=0; 
+		$id=$this->number_id; 
 		$goback=$this->show_goback; 
 		$simple_redirect=$this->simple_redirect;
 		$where_sql=$this->where_sql;
@@ -414,9 +427,25 @@ class ListModelClass {
 			
 			$url_options_edit=add_extra_fancy_url($this->url_options, array('op_edit' =>1, $model[$this->model_name]->idmodel => $_GET[$model[$this->model_name]->idmodel]) );
 			
-			InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect);
+			$this->admin_class->url_back=$this->url_options;
+				
+			$this->admin_class->url_options=$url_options_edit;
 			
-			//$this->admin_class->insert_model_form();
+			//InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect);
+			
+			$this->admin_class->number_id=$_GET[$model[$this->model_name]->idmodel];
+			
+			$this->admin_class->insert_model_form();
+			
+			/*ob_start();
+			
+			echo load_view(array($model[$this->model_name]->forms, $this->arr_fields_form, $this->url_options, $model[$this->model_name]->enctype, '_generate_admin_'.$this->model_name), 'common/forms/updatemodelform');
+
+			$cont_index=ob_get_contents();
+
+			ob_end_clean();
+
+			echo load_view(array($lang['common']['edit'], $cont_index), 'content');*/
 			
 		break;
 
