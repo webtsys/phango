@@ -1,6 +1,6 @@
 <?php
 
-function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $enctype='', $form_html_id='', $arr_categories=array())
+function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $enctype='', $form_html_id='', $arr_categories=array('default'))
 {
 
 	global $lang;
@@ -12,15 +12,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	<?php
 	set_csrf_key();
 	
-	/*function generate_form($arr_fields, $order_fields=array(), $view='common/forms/modelform')
-	{
-
-		return load_view(array($arr_fields, $order_fields), $view);
-
-	}*/
-	
 	echo load_view(array($model_form, $arr_fields), 'common/forms/modelform');
-	//echo generate_form($model_form, $arr_fields, 'common/forms/modelform');
 
 	?>
 	<?php //echo set_csrf_key(); ?>
