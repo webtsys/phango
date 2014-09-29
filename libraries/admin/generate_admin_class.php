@@ -8,6 +8,7 @@ class GenerateAdminClass {
 
 	public $search_asc;
 	public $search_desc;
+	public $arr_categories;
 	
 	function __construct($model_name)
 	{
@@ -41,7 +42,7 @@ class GenerateAdminClass {
 		$this->arr_fields_order=array();
 		$this->arr_fields_search=array();
 		$this->number_id=0;
-		
+		$this->arr_categories=array('default' => array());
 	}
 	
 	function initial_order()
@@ -228,7 +229,7 @@ class GenerateAdminClass {
 
 					ob_start();
 					
-					echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin_'.$model_name), 'common/forms/updatemodelform');
+					echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin_'.$model_name, $this->arr_categories), 'common/forms/updatemodelform');
 
 					$cont_index=ob_get_contents();
 
@@ -256,7 +257,7 @@ class GenerateAdminClass {
 						
 						SetValuesForm($post, $model[$model_name]->forms);
 
-						echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype), 'common/forms/updatemodelform');
+						echo load_view(array($model[$model_name]->forms, $arr_fields, $url_post, $model[$model_name]->enctype, '_generate_admin_'.$model_name, $this->arr_categories), 'common/forms/updatemodelform');
 
 						$cont_index=ob_get_contents();
 
