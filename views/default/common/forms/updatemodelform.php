@@ -42,10 +42,26 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 		{
 		
 		?>
+		
+		$('.form_tab').hide();
+		
+		$('#form<?php echo $form_html_id; ?> .form_tab:first').show();
+		
+		//Show the first tab.
 	
 		$('.form_button_tab').click( function () {
 		
+			$('.form_tab').hide();
+		
+			//$(this).show();
+		
+			id=$(this).attr('id');
 			
+			//alert(id);
+		
+			final_id=id.replace('_button_tab', '');
+			
+			$('#'+final_id+'_tab').show();
 		
 		});
 		
@@ -78,11 +94,14 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	foreach($arr_categories as $category => $arr_fields_tab)
 	{
 	
-		$arr_button_tabs[]='<a href="#" class="form_button_tab">'.$arr_fields_tab['name_fields'].'</a>';
+		$arr_button_tabs[]='<a href="#" class="form_button_tab" id="'.$category.'_button_tab">'.$arr_fields_tab['name_fields'].'</a>';
 	
 	
 		?>
-		<div id="<?php echo $category; ?>_tag" class="form_tab">
+		<div id="<?php echo $category; ?>_tab" class="form_tab">
+		
+		<h2><?php echo $arr_fields_tab['name_fields']; ?></h2>
+		
 		<?php
 		
 		echo load_view(array($model_form, $arr_fields_tab['fields']), 'common/forms/modelform');
