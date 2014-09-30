@@ -533,3 +533,34 @@ a:hover.no_choose_flag_general
 	margin: 2px;
 	
 }
+
+a.form_button_tab, a.form_button_tab_selected
+{
+	
+	border: solid #121212 1px;
+	border-radius:10px;
+	padding:10px;
+	display:inline-block;
+	text-decoration:none;
+	color:#fbfbfb;
+	background: #000;
+	
+}
+
+a.form_button_tab_selected
+{
+	
+	background:#fbfbfb;
+	color: #000;
+	
+}
+
+a.form_button_tab:hover
+{
+
+	
+	color:#000;
+	background:#fbfbfb;
+	
+}
+

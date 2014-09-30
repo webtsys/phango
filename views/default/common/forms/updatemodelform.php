@@ -47,9 +47,11 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 		
 		$('#form<?php echo $form_html_id; ?> .form_tab:first').show();
 		
+		$('.form_button_tab:first').removeClass('form_button_tab').addClass('form_button_tab_selected');
+		
 		//Show the first tab.
 	
-		$('.form_button_tab').click( function () {
+		$('.class_button_tab').click( function () {
 		
 			$('.form_tab').hide();
 		
@@ -62,6 +64,11 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 			final_id=id.replace('_button_tab', '');
 			
 			$('#'+final_id+'_tab').show();
+		
+			$('.form_button_tab_selected').removeClass('form_button_tab_selected').addClass('form_button_tab');
+		
+			$(this).removeClass('form_button_tab').addClass('form_button_tab_selected');
+		
 		
 		});
 		
@@ -94,7 +101,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	foreach($arr_categories as $category => $arr_fields_tab)
 	{
 	
-		$arr_button_tabs[]='<a href="#" class="form_button_tab" id="'.$category.'_button_tab">'.$arr_fields_tab['name_fields'].'</a>';
+		$arr_button_tabs[]='<a href="#" class="form_button_tab class_button_tab" id="'.$category.'_button_tab">'.$arr_fields_tab['name_fields'].'</a>';
 	
 	
 		?>
@@ -116,7 +123,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	
 	ob_end_clean();
 		
-	echo '<p>'.implode(" - ", $arr_button_tabs).'</p>';
+	echo '<p>'.implode("  ", $arr_button_tabs).'</p>';
 	
 	echo $html_tabs;
 	
