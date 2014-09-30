@@ -288,7 +288,7 @@ function ConfigAdmin()
 	
 	$admin->arr_fields_edit=$arr_fields;
 	
-	$admin->arr_categories=array('basic_config' => array('fields' => array('portal_name', 'portal_email', 'meta_author', 'metatags', 'meta_description', 'foot', 'meta_copyright', 'wait_message', 'cond_register'), 'name_fields' => 'Datos básicos' ), 'appaerance_data' => array('fields' => array('dir_theme'), 'name_fields' => 'Apariencia y configuraciones relacionadas') );
+	$admin->arr_categories=array('basic_config' => array('fields' => array('portal_name', 'portal_email', 'meta_author', 'metatags', 'meta_description', 'foot', 'meta_copyright', 'wait_message', 'cond_register'), 'name_fields' => 'Datos básicos' ), 'appaerance_data' => array('fields' => array('dir_theme', 'x_avatar', 'y_avatar'), 'name_fields' => 'Apariencia y configuraciones relacionadas'), 'date_format' => array('fields' => array('date_format', 'time_format', 'timezone', 'ampm') ,'name_fields' => 'Formato de fechas') );
 	
 	$admin->show_config_mode();
 	
