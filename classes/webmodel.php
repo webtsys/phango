@@ -4249,7 +4249,7 @@ function SelectFormSet($post, $value)
 {
 	
 	$value = preg_replace('/<(.*?)\/(.*?)option(.*?)>/', '', $value);
-
+	
 	$post[0]=$value;
 	
 	return $post;

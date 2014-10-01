@@ -101,6 +101,34 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 	foreach($arr_categories as $category => $arr_fields_tab)
 	{
 	
+		$sum_error=0;
+	
+		foreach($arr_fields_tab['fields'] as $field)
+		{
+		
+			if($model_form[$field]->std_error!='')
+			{
+			
+				$sum_error++;
+			
+			}
+		
+		}
+		
+		if($sum_error>0)
+		{
+		
+			$arr_cache_header[]='<script language="javascript">
+			
+			$(document).ready( function () { 
+				
+				$("#'.$category.'_button_tab").append(" <span class=\"error\">('.$sum_error.')</span>"); 
+			
+			});
+			</script>';
+		
+		}
+	
 		$arr_button_tabs[]='<a href="#" class="form_button_tab class_button_tab" id="'.$category.'_button_tab">'.$arr_fields_tab['name_fields'].'</a>';
 	
 	

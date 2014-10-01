@@ -150,7 +150,7 @@ class GenerateAdminClass {
 	
 	}
 	
-	function show_config_mode()
+	function show_config_mode($post=array())
 	{
 	
 		global $base_url, $model;
@@ -165,7 +165,12 @@ class GenerateAdminClass {
 		}
 		//Obtain data
 		
-		$post=$model[$this->model_name]->select_a_row_where($this->where_sql, $this->arr_fields_edit, 1);
+		if(count($post)==0)
+		{
+		
+			$post=$model[$this->model_name]->select_a_row_where($this->where_sql, $this->arr_fields_edit, 1);
+		
+		}
 		
 		SetValuesForm($post, $model[$this->model_name]->forms, 0);
 		
