@@ -91,12 +91,22 @@ class GenerateAdminClass {
 				
 				//ListModel($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 				
-				$this->url_back=$this->url_options;
+				//$this->url_back=$this->url_options;
 				
 				//$this->url_options=add_extra_fancy_url($this->url_options, array('op_edit' => $_GET['op_edit']));
 				
 				$listmodel=new ListModelClass($this->model_name, $this->arr_fields, $this->url_options, $this->options_func, $this->where_sql, $this->arr_fields_edit, $this->type_list, $this->no_search, $this->show_id, $this->yes_options, $this->extra_fields, $this->separator_element_opt);
 				
+				$listmodel->url_back=$this->url_back;
+				
+				if($listmodel->url_back=='')
+				{
+					
+					$listmodel->url_back=$listmodel->url_options;
+					
+				}
+				
+				//echo $listmodel->url_back; die;
 				$listmodel->simple_redirect=$this->simple_redirect;
 				
 				$listmodel->admin_class=&$this;
@@ -433,9 +443,16 @@ class ListModelClass {
 			
 			$url_options_edit=add_extra_fancy_url($this->url_options, array('op_edit' =>1, $model[$this->model_name]->idmodel => $_GET[$model[$this->model_name]->idmodel]) );
 			
-			$this->admin_class->url_back=$this->url_options;
-				
+			//$this->admin_class->url_back=$this->url_options;
+			//echo $this->admin_class->url_back; die;
 			$this->admin_class->url_options=$url_options_edit;
+			
+			if($this->url_back!='')
+			{
+			
+				$this->admin_class->url_back=$this->url_back;
+			
+			}
 			
 			//InsertModelForm($this->model_name, $url_options_edit, $this->url_options, $this->arr_fields_form, $_GET[$model[$this->model_name]->idmodel], $this->show_goback, $this->simple_redirect);
 			
