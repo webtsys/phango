@@ -13,13 +13,13 @@ class GenerateAdminClass {
 	function __construct($model_name)
 	{
 	
-		global $model, $lang;
+		global $model, $lang, $base_url;
 	
 		$this->model_name=$model_name;
 		$this->arr_fields=array(); 
 		$this->arr_fields_edit=array();
-		$this->url_options;
-		$this->url_back='';
+		$this->url_options=make_fancy_url($base_url, PHANGO_SCRIPT_BASE_CONTROLLER, PHANGO_SCRIPT_FUNC_NAME, TEXT_FUNCTION_CONTROLLER, array());
+		$this->url_back=$this->url_options;
 		$this->no_search=false;
 		$this->options_func='BasicOptionsListModel';
 		$this->where_sql='';

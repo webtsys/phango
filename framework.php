@@ -172,6 +172,8 @@ $script_file=@form_text(slugify($arr_url[0]));
 
 $arr_url[1]=@form_text($arr_url[1]);
 
+define('TEXT_FUNCTION_CONTROLLER', $arr_url[1]);
+
 $arr_variables=array_slice($arr_url, 2);
 
 if($script_controller=='') 
