@@ -57,15 +57,24 @@ function Load_Jscript()
 
 		$jscript_source=$base_path.'application/media/jscript/libraries_jscript/'.$_GET['input_script'];
 		
+		//Check on theme view.
+		
 		if(!file_exists($jscript_source))
 		{
 		
-			//Check on theme
-			
-			$jscript_source=$base_path.$module_theme_base.'media/jscript/libraries_jscript/'.$_GET['input_script'];
-			
-			//Always compressed if jscript is in theme.
-			
+			$jscript_source=$base_path.'views/'.$config_data['dir_theme'].'/media/jscript/libraries_jscript/'.$_GET['input_script'];
+		
+			if(!file_exists($jscript_source))
+			{
+		
+				//Check on theme
+				
+				$jscript_source=$base_path.$module_theme_base.'media/jscript/libraries_jscript/'.$_GET['input_script'];
+		
+			}
+				
+			//Always compressed if jscript is in module or theme.
+					
 			$_GET['no_compression']=0;
 		
 		}
