@@ -1,5 +1,13 @@
 <?php
 
+$lang['blog']['posted_by']='Posted by';
+
+$lang['blog']['read_more']='Read more';
+
+$lang['blog']['comments']='Comments';
+
+$lang['blog']['tags']='Tags';
+
 $lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
 
 $lang['blog']['comment_made']='Post by';
@@ -102,11 +110,7 @@ $lang['blog']['edit_comment']='Edit comment';
 
 $lang['blog']['delete_comment']='Delete comment';
 
-$lang['blog']['read_more']='Read more';
-
 $lang['blog']['permalink']='Permalink';
-
-$lang['blog']['comments']='Comments';
 
 $lang['blog']['edit_son_blogs']='Edit son blogs';
 
@@ -119,10 +123,6 @@ $lang['blog']['subscript_post']='Suscribe to post';
 $lang['blog']['save_data']='Save data';
 
 $lang['blog']['error_captcha']='Error in captcha';
-
-$lang['blog']['posted_by']='Posted by';
-
-$lang['blog']['tags']='Tags';
 
 $lang['blog']['edit_in_page_blog']='Edit blog property in page';
 

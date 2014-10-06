@@ -1,5 +1,13 @@
 <?php
 
+$lang['blog']['posted_by']='Enviado por';
+
+$lang['blog']['read_more']='Leer más';
+
+$lang['blog']['comments']='Comentarios';
+
+$lang['blog']['tags']='Etiquetas';
+
 $lang['blog']['inform_comment']='Se ha recibido un comentario en un post al que usted se ha suscrito';
 
 $lang['blog']['comment_made']='Comentario hecho por';
@@ -102,11 +110,7 @@ $lang['blog']['edit_comment']='Editar comentario';
 
 $lang['blog']['delete_comment']='Borrar comentario';
 
-$lang['blog']['read_more']='Leer más';
-
 $lang['blog']['permalink']='Enlace permanente';
-
-$lang['blog']['comments']='Comentarios';
 
 $lang['blog']['edit_son_blogs']='Editar blogs hijos';
 
@@ -119,10 +123,6 @@ $lang['blog']['subscript_post']='Suscribir a artículo';
 $lang['blog']['save_data']='Guardar datos';
 
 $lang['blog']['error_captcha']='Error en captcha';
-
-$lang['blog']['posted_by']='Enviado por';
-
-$lang['blog']['tags']='Etiquetas';
 
 $lang['blog']['edit_in_page_blog']='Edición de propiedad blog en pagina';
 

@@ -44,19 +44,19 @@ $lang['common']['ascent']='Up';
 
 $lang['common']['descent']='Falling';
 
-$lang['common']['redirect']='Redirect';
+$lang['common']['cannot_update_insert_in_model']='I cannot insert or update this element';
 
 $lang['common']['success']='Successful operation';
 
+$lang['common']['redirect']='Redirect';
+
 $lang['common']['press_here_redirecting']='Press here to come back...';
+
+$lang['common']['go_back']='Go Back';
 
 $lang['common']['options']='Options';
 
 $lang['common']['pages']='Pages';
-
-$lang['common']['cannot_update_insert_in_model']='I cannot insert or update this element';
-
-$lang['common']['go_back']='Go Back';
 
 $lang['common']['no_element_chosen']='Choose option...';
 
@@ -196,12 +196,6 @@ $lang['common']['html_allowed']='Allowed html';
 
 $lang['common']['admin_panel']='Admin panel';
 
-$lang['common']['list']='list';
-
-$lang['common']['registered_users']='Registered users';
-
-$lang['common']['html']='Html';
-
 $lang['common']['filter_by_category']='filter_by_category';
 
 $lang['common']['select']='Select';
@@ -211,6 +205,12 @@ $lang['common']['description']='Description';
 $lang['common']['message']='Message';
 
 $lang['common']['required']='Required';
+
+$lang['common']['list']='list';
+
+$lang['common']['registered_users']='Registered users';
+
+$lang['common']['html']='Html';
 
 $lang['common']['category']='Category';
 

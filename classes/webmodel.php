@@ -3141,6 +3141,12 @@ class ImageField extends PhangoField {
 			}
 
 		}
+		else
+		{
+		
+			$this->std_error=$lang['error_model']['check_error_enctype_for_upload_file'];
+		
+		}
 
 		$this->value='';
 		return '';
