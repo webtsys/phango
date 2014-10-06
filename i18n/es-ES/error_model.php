@@ -10,7 +10,7 @@ $lang['error_model']['check_error_field_required']='Error: campo requerido';
 
 $lang['error_model']['img_format_error']='Error en formato de imagen';
 
-$lang['error_model']['check_error_enctype_for_upload_file']='check_error_enctype_for_upload_file';
+$lang['error_model']['check_error_enctype_for_upload_file']='Error: por favor, confirme que está usando enctype para su formulario';
 
 $lang['error_model']['email_format_error']='Error en formato de email';
 
