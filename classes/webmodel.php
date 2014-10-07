@@ -2745,6 +2745,14 @@ class FileField extends PhangoField {
 			}
 
 		}
+		else
+		{
+		
+			$this->std_error=$lang['error_model']['check_error_enctype_for_upload_file'];
+		
+			return '';
+		
+		}
 
 		$this->value='';
 		
@@ -3135,10 +3143,20 @@ class ImageField extends PhangoField {
 			
 			if(file_exists($this->path.'/'.$image))
 			{
+
 				$this->value=$this->path.'/'.$image;
 				return $image;
 
 			}
+			else
+			{
+			
+				$this->std_error=$lang['error_model']['check_error_enctype_for_upload_file'];
+				return '';
+			
+			}
+			
+			
 
 		}
 		else

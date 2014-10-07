@@ -17,9 +17,9 @@ function Browser_list_field()
 	
 	$original_theme=$config_data['dir_theme'];
 
-	$config_data['dir_theme']=$original_theme.'/admin';
+	//$config_data['dir_theme']=$original_theme.'/admin';
 
-	$arr_block='admin_none';
+	$arr_block='admin/admin_none';
 	
 	$headers='';
 	
@@ -181,7 +181,7 @@ function Browser_list_field()
 		
 		$title=''; //$lang['jscript']['search_on_table'];
 			
-		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin_none');
+		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin/admin_none');
 	//}
 
 }

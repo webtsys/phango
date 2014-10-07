@@ -15,10 +15,10 @@ function Browser_image()
 	
 	$original_theme=$config_data['dir_theme'];
 
-	$config_data['dir_theme']=$original_theme.'/admin';
+	//$config_data['dir_theme']=$original_theme.'/admin';
 	
 
-	$arr_block='admin_none';
+	$arr_block='admin/admin_none';
 	
 	if(check_admin($user_data['IdUser']))
 	{
@@ -47,7 +47,7 @@ function Browser_image()
 			
 		//Columns in principal view
 	
-		$arr_block='admin_none';
+		$arr_block='admin/admin_none';
 		
 		//Obtain headers..
 		//http://localhost/phangodev/index.php/jscript/show/browser_image/browser_image/?CKEditor=text[es-ES]&CKEditorFuncNum=2&langCode=es
@@ -227,7 +227,7 @@ function Browser_image()
 		
 		$title=$lang['jscript']['search_images'];
 			
-		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin_none');
+		echo load_view(array($title, $content, $block_title=array(), $block_content=array(), $block_urls=array(), $block_type=array(), $block_id=array(), $config_data, $headers), 'admin/admin_none');
 	}
 
 }

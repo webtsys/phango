@@ -2,6 +2,7 @@ Tasks
 ----------------------------
 
 - Caching querys. With php raw or non-sql databases.
+- Upload files and images. Discriminate by categories.
 
 Testing.
 
