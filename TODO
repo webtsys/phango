@@ -1,24 +1,24 @@
 Tasks
 ----------------------------
 
-- Caching querys. With php raw or non-sql databases.
-- Upload files and images. Discriminate by categories.
-
 Testing.
 
 New features
 ----------------------------
  
-
+- Upload files and images. Discriminate by categories.
+- Ajax forms with jquery error messages.
+- New behaviour for controllers based in classes.
 
 Knowed Bugs
 ----------------------------
 
-- Need many fixes on ckeditor and multilanguage scripts.
+- Need many fixes on ckeditor and multilanguage scripts for clean the code.
 
 New Features for next versions.
 ----------------------------
 
+- Caching querys. With php raw or non-sql databases.
 - A function to make switchs easily and clean. 
 - Make a multilogin?.
 - Title in flags of languages.
