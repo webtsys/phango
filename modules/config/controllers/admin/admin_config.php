@@ -35,7 +35,7 @@ function ConfigAdmin()
 	
 	$arr_user_conf=array('fields' => array('accept_bbcode_signature', 'name_guest', 'active_users', 'user_extra', 'create_user'), 'name_fields' => 'Configuraciones de usuario');
 	
-	$arr_text_conf=array('fields' => array('textbb_type', 'captcha_type', 'mailer_type'), 'name_fields' => 'Miscelanea');
+	$arr_text_conf=array('fields' => array('textbb_type', 'captcha_type', 'mailer_type', 'index_page'), 'name_fields' => 'Miscelanea');
 	
 	$admin->arr_categories=array('basic_config' => array('fields' => array('portal_name', 'portal_email', 'meta_author', 'metatags', 'meta_description', 'foot', 'meta_copyright', 'wait_message', 'cond_register'), 'name_fields' => 'Datos básicos' ), 'appaerance_data' => array('fields' => array('dir_theme', 'x_avatar', 'y_avatar'), 'name_fields' => 'Apariencia y configuraciones relacionadas'), 'date_format' => array('fields' => array('date_format', 'time_format', 'timezone', 'ampm') ,'name_fields' => 'Formato de fechas') , 'user_config' => $arr_user_conf, 'text_config' => $arr_text_conf);
 	

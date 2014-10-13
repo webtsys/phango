@@ -1610,6 +1610,56 @@ class ModelForm {
 
 }
 
+/**
+*
+* A New class for use methods and not switchs for complex controllers. 
+*
+* 
+*
+*/
+
+class ControllerSwitchClass {
+
+	public $op_var='action';
+	public $controller=PHANGO_SCRIPT_BASE_CONTROLLER;
+	public $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $text_url;
+	
+	public function __construct()
+	{
+	
+		global $user_data, $model, $ip, $lang, $config_data, $base_path, $base_url, $cookie_path, $arr_block, $prefix_key, $block_title, $block_content, $block_urls, $block_type, $block_id, $text_url;
+	
+		$this->user_data=&$user_data;
+		$this->model=&$model;
+		$this->ip=&$ip;
+		$this->lang=&$lang;
+		$this->config_data=&$config_data;
+		$this->base_path=&$base_path;
+		$this->base_url=&$base_url;
+		$this->cookie_path=&$cookie_path;
+		$this->arr_block=&$arr_block;
+		$this->prefix_key=&$prefix_key;
+		$this->block_title=&$block_title;
+		$this->block_content=&$block_content;
+		$this->block_type=&$block_type;
+		$this->block_id=&$block_id;
+		$this->text_url=&$text_url;
+	
+	}
+	
+	public function get_method_url($method_controller, $text, $arr_parameters)
+	{
+		
+		$my_controller=str_replace('SwitchClass', '', get_class($this));
+		
+		$arr_parameters[$this->op_var]=$_GET[$this->op_var];
+	
+		return make_fancy_url($this->base_url, $this->controller, $my_controller, $text, $arr_parameters);
+	
+	}
+
+}
+
 /*****************************************
 
 Now, we define components for use in models. Components are fields on a table.
@@ -1886,7 +1936,7 @@ class PrimaryField extends PhangoField {
 
 }
 
-//Integerfield is a field for integers values.
+///Integerfield is a field for integers values.
 
 class IntegerField extends PhangoField {
 
@@ -1965,7 +2015,7 @@ class IntegerField extends PhangoField {
 
 }
 
-//Booleanfield is a field for boolean values.
+///Booleanfield is a field for boolean values.
 
 class BooleanField extends PhangoField {
 
@@ -2050,7 +2100,7 @@ class BooleanField extends PhangoField {
 
 }
 
-//Doublefield is a field for doubles values.
+///Doublefield is a field for doubles values.
 
 class DoubleField extends PhangoField {
 
@@ -4579,7 +4629,16 @@ function controller_fancy_url($func_name, $description_text, $arr_data=array(), 
 
 }
 
-//Function for normalize texts...
+/**
+*
+* Function for normalize texts for use on urls or other things...
+*
+* @param string $text String for normalize
+* @param boolean $respect_upper If true or 1 respect uppercase, if false or 0 convert to lowercase the $text
+* @param string $replace Character used for replace text spaces.
+*
+*
+*/
 
 function slugify($text, $respect_upper=0, $replace='-')
 {
@@ -5393,7 +5452,7 @@ $arr_cache_local_css=array();
 
 /**
 *
-* Functions for load css
+* Function for load css
 *
 */
 
@@ -5638,6 +5697,13 @@ else
 
 }
 
+/**
+*
+* Function for encode an url in base64 for use on normalized get parameters.
+*
+* @param string $url Url for encode in base64
+*
+*/
 
 function urlencode_redirect($url)
 {
@@ -5653,6 +5719,13 @@ function urlencode_redirect($url)
 
 }
 
+/**
+* Function for decode an url in base64 for use on normalized get parameters.
+*
+* @param string $url Url for decode in base64
+*
+*/
+
 function urldecode_redirect($url_encoded)
 {
 
@@ -5666,6 +5739,13 @@ function urldecode_redirect($url_encoded)
 	return $url;
 
 }
+
+/**
+* A internal helper function 
+*
+* @param string $name Name for process
+*
+*/
 
 function set_name_default($name)
 {

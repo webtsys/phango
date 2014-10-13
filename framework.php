@@ -402,7 +402,9 @@ if(in_array($script_base_controller, $activated_controllers))
 	{
 		
 		$script_function=ucfirst($script_function);
-
+		
+		$script_class_name=ucfirst($script_function).'SwitchClass';
+		
 		if(function_exists($script_function)) 
 		{
 
@@ -423,6 +425,51 @@ if(in_array($script_base_controller, $activated_controllers))
 			//If we tried use queries, see $set_query variable and connection.
 			
 
+		}
+		
+		//The new behaviour for controllers, with classes.
+		
+		else if(class_exists($script_class_name))
+		{
+		
+			$script_class=new $script_class_name();
+		
+			$script_method='index';
+		
+			if(isset($_GET[$script_class->op_var]))
+			{
+			
+				$script_method=$_GET[$script_class->op_var];
+			
+			}
+			else
+			{
+			
+				$_GET[$script_class->op_var]='index';
+			
+			}
+		
+			if(method_exists($script_class, $script_method))
+			{
+			
+				$script_class->$script_method();
+			
+			}
+			else
+			{
+			
+				$output=ob_get_contents();
+
+				ob_clean();
+
+				$arr_no_controller[0]='<p>Don\'t exist controller method</p>';
+				$arr_no_controller[1]='<p>Don\'t exist '.$script_method.' on <strong>'.$script_file.'.php</strong> on <strong>'.$script_controller.'</strong> controller folder</p><p>Output: '.$output.'</p>';
+
+				echo load_view(array('title' => 'Phango site is down', 'content' => $arr_no_controller[DEBUG]), 'common/common');
+			
+			}
+		
+		
 		}
 		else 
 		{
