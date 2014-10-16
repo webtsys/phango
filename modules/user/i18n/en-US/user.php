@@ -1,5 +1,23 @@
 <?php
 
+$lang['user']['text_confirm']='Now,you are a registered user';
+
+$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
+
+$lang['user']['name']='Name';
+
+$lang['user']['last_name']='Last Name';
+
+$lang['user']['enterprise_name']='Enterprise name';
+
+$lang['user']['email']='Email';
+
+$lang['user']['nif']='ID';
+
+$lang['user']['zip_code']='Zip code';
+
+$lang['user']['city']='City';
+
 $lang['user']['without_special_rank']='Without special rank';
 
 $lang['user']['login']='Login';
@@ -61,10 +79,6 @@ $lang['user']['try_login_again']='Try login again';
 $lang['user']['error_login_many_times']='Error: You have tried login many times. You are banned from the website for a few minutes';
 
 $lang['user']['error_login']='Error: you cannot login, your email or password is wrong';
-
-$lang['user']['text_confirm']='Now,you are a registered user';
-
-$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
 
 $lang['user']['new_user_is_registered']='A new user was registered';
 
@@ -224,21 +238,7 @@ $lang['user']['signature']='Signature';
 
 $lang['user']['interests']='Interests';
 
-$lang['user']['nif']='ID';
-
-$lang['user']['enterprise_name']='Enterprise name';
-
-$lang['user']['zip_code']='Zip code';
-
 $lang['user']['activated_user']='Activated user';
-
-$lang['user']['name']='Name';
-
-$lang['user']['last_name']='Last Name';
-
-$lang['user']['email']='Email';
-
-$lang['user']['city']='City';
 
 $lang['user']['text_password']='This is your password';
 

@@ -1,5 +1,23 @@
 <?php
 
+$lang['user']['text_confirm']='Usted se ha registrado como usuario';
+
+$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
+
+$lang['user']['name']='Nombre';
+
+$lang['user']['last_name']='Apellidos';
+
+$lang['user']['enterprise_name']='Nombre de empresa';
+
+$lang['user']['email']='Email';
+
+$lang['user']['nif']='Número de documento de identificación';
+
+$lang['user']['zip_code']='Codigo postal';
+
+$lang['user']['city']='Ciudad';
+
 $lang['user']['without_special_rank']='Sin rango especial';
 
 $lang['user']['login']='Identificarse';
@@ -61,10 +79,6 @@ $lang['user']['try_login_again']='Intente identificarse de nuevo';
 $lang['user']['error_login_many_times']='Error: se ha intentado identificar erroneamente demasiadas veces, se le baneará unos minutos de la cuenta';
 
 $lang['user']['error_login']='Error al intentar identificarse, probablemente sea erroneo su email o su contraseña';
-
-$lang['user']['text_confirm']='Usted se ha registrado como usuario';
-
-$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
 
 $lang['user']['new_user_is_registered']='Un nuevo usuario se ha registrado.';
 
@@ -224,21 +238,7 @@ $lang['user']['signature']='Firma';
 
 $lang['user']['interests']='Intereses';
 
-$lang['user']['nif']='Número de documento de identificación';
-
-$lang['user']['enterprise_name']='Nombre de empresa';
-
-$lang['user']['zip_code']='Codigo postal';
-
 $lang['user']['activated_user']='Usuario activo';
-
-$lang['user']['name']='Nombre';
-
-$lang['user']['last_name']='Apellidos';
-
-$lang['user']['email']='Email';
-
-$lang['user']['city']='Ciudad';
 
 $lang['user']['text_password']='Esta es su contraseña';
 

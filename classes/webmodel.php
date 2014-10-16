@@ -1657,6 +1657,17 @@ class ControllerSwitchClass {
 		return make_fancy_url($this->base_url, $this->controller, $my_controller, $text, $arr_parameters);
 	
 	}
+	
+	public function redirect($direction,$l_text,$text,$ifno)
+	{
+		global $arr_block;
+	
+		$arr_block=select_view(array('shop'));
+		
+		load_libraries(array('redirect'));
+		die( redirect_webtsys( $direction, $l_text, $text, $ifno , $arr_block) );
+	
+	}
 
 }
 
