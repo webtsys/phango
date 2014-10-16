@@ -2558,7 +2558,7 @@ class SerializeField extends PhangoField {
 
 		$real_value=@unserialize($value);
 		
-		if($real_value!=false)
+		if($real_value!==false)
 		{
 			return $real_value;
 		}
