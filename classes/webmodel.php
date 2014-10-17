@@ -2705,12 +2705,19 @@ class DateField extends PhangoField {
 	function show_formatted($value)
 	{
 
+		return $this->format_date($value);
+
+	}
+	
+	static public function format_date($value)
+	{
+	
 		global $user_data;
 
 		load_libraries(array('form_date'));
 		
 		return form_date( $value, $user_data['format_date'] , $user_data['format_time']);
-
+	
 	}
 
 	function get_parameters_default()

@@ -14,6 +14,7 @@ Knowed Bugs
 ----------------------------
 
 - Need many fixes on ckeditor and multilanguage scripts for clean the code.
+- Big bug on dates when the user timezone is not the same of timezone of php system.
 
 New Features for next versions.
 ----------------------------

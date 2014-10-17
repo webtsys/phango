@@ -11,6 +11,7 @@ class LoginClass {
 	public $session;
 	public $url_login='';
 	public $login_view;
+	public $edit_fields=array();
 	
 	public function __construct($model_login, $field_user, $field_password, $key_field, $arr_user_session=array(), $arr_user_insert=array())
 	{
@@ -168,8 +169,6 @@ class LoginClass {
 			}
 		
 		}
-	
-		
 	
 	}
 	

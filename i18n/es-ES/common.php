@@ -1,5 +1,35 @@
 <?php
 
+$lang['common']['email']='Email';
+
+$lang['common']['list']='list';
+
+$lang['common']['send']='Enviar';
+
+$lang['common']['registered_users']='Usuarios registrados';
+
+$lang['common']['name']='Nombre';
+
+$lang['common']['no']='No';
+
+$lang['common']['yes']='Sí';
+
+$lang['common']['title']='Título';
+
+$lang['common']['text']='Texto';
+
+$lang['common']['html']='Html';
+
+$lang['common']['go_back']='Volver atrás';
+
+$lang['common']['error']='Error';
+
+$lang['common']['user']='Usuario';
+
+$lang['common']['subject']='Asunto';
+
+$lang['common']['date']='Fecha';
+
 $lang['common']['category']='Categoría';
 
 $lang['common']['search']='Buscar';
@@ -14,23 +44,11 @@ $lang['common']['categories']='Categorías';
 
 $lang['common']['image']='Imagen';
 
-$lang['common']['title']='Título';
-
-$lang['common']['go_back']='Volver atrás';
-
 $lang['common']['any_option']='No ha escogido ninguna opción';
 
 $lang['common']['description']='Descripción';
 
-$lang['common']['date']='Fecha';
-
-$lang['common']['name']='Nombre';
-
-$lang['common']['user']='Usuario';
-
 $lang['common']['last_name']='Apellidos';
-
-$lang['common']['email']='Email';
 
 $lang['common']['address']='Dirección';
 
@@ -48,11 +66,7 @@ $lang['common']['fax']='Fax';
 
 $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: no puedo subir la imagen al servidor. ¿Hay permisos para ello?.';
 
-$lang['common']['send']='Enviar';
-
 $lang['common']['options']='Opciones';
-
-$lang['common']['yes']='Sí';
 
 $lang['common']['register_user']='Registro de usuario';
 
@@ -61,8 +75,6 @@ $lang['common']['pages']='Páginas';
 $lang['common']['field_required']='Campo requerido';
 
 $lang['common']['error_in_field']='Error en campo';
-
-$lang['common']['no']='No';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error, no puedo subir este fichero al servidor. ¿Hay permisos para ello?';
 
@@ -140,13 +152,7 @@ $lang['common']['captcha']='Captcha';
 
 $lang['common']['thanks']='Gracias';
 
-$lang['common']['subject']='Asunto';
-
-$lang['common']['text']='Texto';
-
 $lang['common']['preview']='Vista previa';
-
-$lang['common']['error']='Error';
 
 $lang['common']['status']='Estado';
 
@@ -215,12 +221,6 @@ $lang['common']['select']='Seleccionar';
 $lang['common']['message']='Mensaje';
 
 $lang['common']['required']='Requerido';
-
-$lang['common']['list']='list';
-
-$lang['common']['registered_users']='Usuarios registrados';
-
-$lang['common']['html']='Html';
 
 $lang['common']['nothing_to_show']='nothing_to_show';
 

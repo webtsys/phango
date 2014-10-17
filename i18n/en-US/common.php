@@ -1,5 +1,35 @@
 <?php
 
+$lang['common']['email']='Email';
+
+$lang['common']['list']='list';
+
+$lang['common']['send']='Send';
+
+$lang['common']['registered_users']='Registered users';
+
+$lang['common']['name']='Name';
+
+$lang['common']['no']='No';
+
+$lang['common']['yes']='Yes';
+
+$lang['common']['title']='Title';
+
+$lang['common']['text']='Text';
+
+$lang['common']['html']='Html';
+
+$lang['common']['go_back']='Go Back';
+
+$lang['common']['error']='Error';
+
+$lang['common']['user']='User';
+
+$lang['common']['subject']='Subject';
+
+$lang['common']['date']='Date';
+
 $lang['common']['category']='Category';
 
 $lang['common']['search']='Search';
@@ -14,23 +44,11 @@ $lang['common']['categories']='Categories';
 
 $lang['common']['image']='Image';
 
-$lang['common']['title']='Title';
-
-$lang['common']['go_back']='Go Back';
-
 $lang['common']['any_option']='All options';
 
 $lang['common']['description']='Description';
 
-$lang['common']['date']='Date';
-
-$lang['common']['name']='Name';
-
-$lang['common']['user']='User';
-
 $lang['common']['last_name']='Last name';
-
-$lang['common']['email']='Email';
 
 $lang['common']['address']='Adress';
 
@@ -48,11 +66,7 @@ $lang['common']['fax']='Fax';
 
 $lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
 
-$lang['common']['send']='Send';
-
 $lang['common']['options']='Options';
-
-$lang['common']['yes']='Yes';
 
 $lang['common']['register_user']='User registration';
 
@@ -61,8 +75,6 @@ $lang['common']['pages']='Pages';
 $lang['common']['field_required']='Field required';
 
 $lang['common']['error_in_field']='Error in field';
-
-$lang['common']['no']='No';
 
 $lang['common']['error_cannot_upload_this_file_to_the_server']='Error: cannot upload this file to the server';
 
@@ -140,13 +152,7 @@ $lang['common']['captcha']='Captcha';
 
 $lang['common']['thanks']='Thanks';
 
-$lang['common']['subject']='Subject';
-
-$lang['common']['text']='Text';
-
 $lang['common']['preview']='Preview';
-
-$lang['common']['error']='Error';
 
 $lang['common']['status']='Status';
 
@@ -215,12 +221,6 @@ $lang['common']['select']='Select';
 $lang['common']['message']='Message';
 
 $lang['common']['required']='Required';
-
-$lang['common']['list']='list';
-
-$lang['common']['registered_users']='Registered users';
-
-$lang['common']['html']='Html';
 
 $lang['common']['nothing_to_show']='nothing_to_show';
 
