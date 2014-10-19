@@ -1,0 +1,6 @@
+-Now you need change:
+
+- Don't use arr_cache_local_css, use new behaviour for arr_cache_css.
+- Deprecated get_image_local_url. Change get_image_url, indicate module on second argument if image is not in theme.
+- Deprecated $arr_cache_jscript_module, $arr_cache_jscript_gzipped. Delete libraries_jscript, move al contents to folder jscript, father of libraries_jscript.
+- Change module jscript, to images
