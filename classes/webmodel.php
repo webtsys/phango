@@ -5413,6 +5413,11 @@ function show_error($txt_error_normal, $txt_error_debug, $output_external='')
 
 }
 
+/**
+* Global Array for load jscripts on views.
+* 
+*/
+
 $arr_cache_jscript=array();
 
 /**
@@ -5430,7 +5435,7 @@ $arr_cache_jscript_gzipped=array();
 */
 
 $arr_cache_jscript_module=array();
-
+/*
 function load_jscript_view()
 {
 
@@ -5454,7 +5459,7 @@ function load_jscript_view()
 
 	return implode("\n", $arr_final_jscript)."\n";
 
-}
+}*/
 
 $arr_cache_header=array();
 
@@ -5654,7 +5659,7 @@ if(defined('THEME_MODULE'))
 		
 		//}
 		
-		$arr_image_def=array('encoded' => $set_encode, 'images' => $img_name);
+		$arr_image_def=array('images' => $img_name);
 		
 		if($module!='')
 		{
@@ -5698,20 +5703,64 @@ if(defined('THEME_MODULE'))
 			}
 			else
 			{
-			
+				
 				$css=slugify(urlencode_redirect($css, 1), 1);
-			
-				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
+				
+				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('css' => $css));
 				
 				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
 
 			}
 		}
 
-		return implode("\n", $arr_final_css);
+		return implode("\n", $arr_final_css)."\n";
 
 	}
+	
+	function load_jscript_view()
+	{
+		
+		global $arr_cache_jscript, $base_url, $config_data;
+		
+		//Delete repeat scripts...
 
+		$arr_cache_jscript=array_unique($arr_cache_jscript, SORT_STRING);
+		$arr_final_jscript=array();
+
+		foreach($arr_cache_jscript as $idjscript => $jscript)
+		{
+			
+			$module_jscript='';
+			
+			if(gettype($jscript)=='array')
+			{
+				
+				$module_jscript=$idjscript;
+				
+				foreach($jscript as $jscript_item)
+				{
+					$jscript_item=slugify(urlencode_redirect($jscript_item, 1), 1);
+				
+					$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_jscript, 'jscript' => $jscript_item));
+					
+					$arr_final_jscript[]='<script language="javascript" src="'.$url.'"></script>'."\n";
+				}
+			}
+			else
+			{
+				
+				$jscript=slugify(urlencode_redirect($jscript, 1), 1);
+				
+				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('jscript' => $jscript));
+				
+				$arr_final_jscript[]='<script language="javascript" src="'.$url.'"></script>'."\n";
+
+			}
+		}
+		
+		return implode("\n", $arr_final_jscript)."\n";
+	
+	}
 }
 else
 {
@@ -5735,7 +5784,7 @@ else
 		//Delete repeat scripts...
 
 		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
-		$arr_final_jscript=array();
+		$arr_final_css=array();
 
 		foreach($arr_cache_css as $idcss => $css)
 		{
@@ -5746,19 +5795,53 @@ else
 				foreach($css as $css_item)
 				{
 				
-					$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/'.$idcss.'/css/'.$css_item.'" rel="stylesheet" type="text/css"/>'."\n";
+					$arr_final_css[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/'.$idcss.'/css/'.$css_item.'" rel="stylesheet" type="text/css"/>'."\n";
 				
 				}
 			
 			}
 			else
 			{
-				$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+				$arr_final_css[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
 			}
 		}
 
-		return implode("\n", $arr_final_jscript);
+		return implode("\n", $arr_final_css)."\n";
 
+	}
+	
+	function load_jscript_view()
+	{
+
+		global $arr_cache_jscript, $base_url, $config_data;
+
+		//Delete repeat scripts...
+
+		$arr_cache_jscript=array_unique($arr_cache_jscript, SORT_STRING);
+		$arr_final_jscript=array();
+
+		foreach($arr_cache_jscript as $idjscript => $jscript)
+		{
+		
+			if(gettype($jscript)=='array')
+			{
+			
+				foreach($jscript as $jscript_item)
+				{
+				
+					$arr_final_jscript[]='<script language="javascript" src="'.$base_url.'/media/'.$config_data['dir_theme'].'/'.$idjscript.'/jscript/'.$jscript_item.'"></script>'."\n";
+				
+				}
+			
+			}
+			else
+			{
+				$arr_final_jscript[]='<script language="Javascript" src="'.$base_url.'/media/'.$config_data['dir_theme'].'/jscript/'.$jscript.'"></script>'."\n";
+			}
+		}
+
+		return implode("\n", $arr_final_jscript)."\n";
+	
 	}
 
 }

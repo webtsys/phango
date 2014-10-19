@@ -126,7 +126,7 @@ function ShowMedia()
 		
 			//First, theme or module theme
 		
-			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'media/css/'.$_GET['css'];
+			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'css/'.$_GET['css'];
 			
 			if(!file_exists($file_path))
 			{
@@ -189,7 +189,7 @@ function ShowMedia()
 			
 			//normal theme or module theme
 			
-			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'/media/fonts/'.$_GET['font'];
+			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'fonts/'.$_GET['font'];
 			
 			if(!file_exists($file_path))
 			{
@@ -246,7 +246,7 @@ function ShowMedia()
 			
 			//normal theme or module theme
 			
-			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'/media/jscript/'.$_GET['jscript'];
+			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'jscript/'.$_GET['jscript'];
 			
 			if(!file_exists($file_path))
 			{

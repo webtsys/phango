@@ -18,23 +18,18 @@ $token=$_COOKIE['webtsys_shop'];
 	<title><?php echo $config_data['portal_name'].' - '.$title; ?></title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="keywords" content="<?php echo $config_data['metatags']; ?>" />
-	<?php
-		$arr_cache_css[]='style.css';
-	
-		echo load_css_local_view();
-	?>
 	<?php 
 		$arr_cache_jscript[]='jquery.min.js';
-		echo load_jscript_view(); 
-		
+		echo load_jscript_view();
+		$arr_cache_css[]='style.css';
 		echo load_css_view();
-		
 		echo load_header_view();
 	?>
 	<script language="Javascript" src="<?php echo make_fancy_url($base_url, 'shop/ajax', 'functions_jscript', 'functions_jscript', array()); ?>"></script>
 	<script language="Javascript">
 		obtain_data_cart();
 	</script>
+	<!--<link rel="stylesheet" href="<?php echo $base_url; ?>/media/default/css/style.css" type="text/css">-->
 	<?php echo $headers; ?>
 	
 	</head>
@@ -42,7 +37,7 @@ $token=$_COOKIE['webtsys_shop'];
 <div id="center_body">
 
 <div id="header">
-<img id="logo_img" src="<?php echo $base_url; ?>/media/default/images/logo.png" />
+<img id="logo_img" src="<?php echo get_url_image('logo.png'); ?>" />
 <div id="your_account">
 	<?php
 	if($user_data['IdUser']==0)
@@ -76,7 +71,7 @@ foreach($arr_i18n as $lang_item)
 	$arr_selected[slugify($language)]='choose_flag';
 
 	?>
-	<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo $base_url; ?>/media/default/images/languages/<?php echo $lang_item; ?>.png" alt="<?php echo $lang_item; ?>"/></a>
+	<a class="<?php echo $arr_selected[slugify($lang_item)]; ?>" href="<?php echo make_fancy_url($base_url, 'user', 'change_lang', 'change_language', array('language' => $lang_item));?>"><img src="<?php echo get_url_image('languages/'.$lang_item.'.png'); ?>" alt="<?php echo $lang_item; ?>"/></a>
 	<?php
 
 }
