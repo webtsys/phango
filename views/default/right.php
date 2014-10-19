@@ -21,7 +21,11 @@ $token=$_COOKIE['webtsys_shop'];
 		$arr_cache_jscript[]='jquery.min.js';
 		echo load_jscript_view();
 		echo load_css_local_view();
+		
+		$arr_cache_css[]='style.css';
+		
 		echo load_css_view();
+		
 		echo load_header_view();
 	?>
 	<script language="Javascript" src="<?php echo make_fancy_url($base_url, 'shop/ajax', 'functions_jscript', 'functions_jscript', array()); ?>"></script>
@@ -30,7 +34,6 @@ $token=$_COOKIE['webtsys_shop'];
 	</script>
 	<?php echo $headers; ?>
 	<meta name="keywords" content="<?php echo $config_data['metatags']; ?>" />
-	<link href="<?php echo $base_url; ?>/media/default/style.css" rel="stylesheet" type="text/css" />
 	</head>
 <body>
 <div id="center_body">

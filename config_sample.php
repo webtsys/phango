@@ -73,6 +73,10 @@ $app_index = 'welcome';
 
 $activated_controllers = array('welcome', 'installation', 'jscript');
 
+//Constant for development, delete if you want to go to production.
+
+define('THEME_MODULE', 1);
+
 //Constant for the admin section
 
 define('ADMIN_FOLDER', 'admin');

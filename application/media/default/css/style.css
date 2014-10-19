@@ -4,7 +4,7 @@ body
 {
 
  	margin:0px; 
-	background:url('images/background.png') repeat-y center #e0e5e6;
+	background:url('../images/background.png') repeat-y center #e0e5e6;
 
 }
 
@@ -161,7 +161,7 @@ img {
 	position:absolute;
 	top:25px;
 	right:5px;
-	background-image: url('images/my-account.png');
+	background-image: url('../images/my-account.png');
 	background-repeat: no-repeat;
 	background-position:left;
 	padding-left:25px;
@@ -174,7 +174,7 @@ img {
 	position:absolute;
 	top:50px;
 	right:5px;
-	background-image: url('images/cart.gif');
+	background-image: url('../images/cart.gif');
 	background-repeat: no-repeat;
 	background-position:left;
 	padding-left:25px;
@@ -188,7 +188,7 @@ img {
 	position:absolute;
 	top:70px;
 	right:5px;
-	background-image: url('images/currency.gif');
+	background-image: url('../images/currency.gif');
 	background-repeat: no-repeat;
 	background-position:left;
 	padding-left:25px;
@@ -240,7 +240,7 @@ a:hover.no_choose_flag
 {
 	
 	height:40px;
-	background-image:url('images/background_barr.png');
+	background-image:url('../images/background_barr.png');
 	background-repeat: repeat-x;
 	border:solid #cbcbcb;
 	border-width:1px;
@@ -303,7 +303,7 @@ a:hover.no_choose_flag
 	font-family:verdana;
 	text-decoration:none;
 	color: #fff;
-	background-image:url('images/block_bg.png');
+	background-image:url('../images/block_bg.png');
 	background-repeat:repeat-x;
 	background-position:bottom;
 	background-color:#4e8df6;
@@ -340,7 +340,7 @@ a:hover.no_choose_flag
 	font-family:verdana;
 	text-decoration:none;
 	color: #676767;
-	/*background-image:url('images/block_bg_link.png');*/
+	/*background-image:url('../images/block_bg_link.png');*/
 	border:solid #cbcbcb;
 	border-width:0px 1px 0px 1px;
 	padding:4px;
@@ -353,7 +353,7 @@ a:hover.no_choose_flag
 .block_end
 {
 	
-	background-image:url('images/block_end.png');
+	background-image:url('../images/block_end.png');
 	height:15px;
 	border:solid #cbcbcb;
 	border-width:0px 1px 1px 1px;
@@ -442,7 +442,7 @@ a:hover.no_choose_flag
 	padding:10px;
 	margin-bottom:5px;
 	background-color:#1ca34f;
-	background-image:url('images/background_barr.png');
+	background-image:url('../images/background_barr.png');
 	background-repeat:repeat-x;
 	border-radius:8px;
 	text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
@@ -619,7 +619,7 @@ margin-right:auto;
 	margin-bottom:5px;
 	text-align:center;
 	/*background-color:#d75a09;
-	background-image:url('images/fondo_titulo.png');
+	background-image:url('../images/fondo_titulo.png');
 	background-repeat:repeat-x;*/
 	/*float:left;*/
 
@@ -637,7 +637,7 @@ float:left;
 padding:0px;
 /*border:solid #ffffff;
 border-width:1px;*/
-background-image:url('images/new_message.png');
+background-image:url('../images/new_message.png');
 background-repeat:no-repeat;
 background-position:center;
 
@@ -653,7 +653,7 @@ float:left;
 padding:0px;
 /*border:solid #ffffff;
 border-width:1px;*/
-background-image:url('images/message.png');
+background-image:url('../images/message.png');
 background-repeat:no-repeat;
 background-position:center;
 
@@ -681,7 +681,7 @@ background-position:center;
 	font-size:12px;
 	font-family:verdana;
 	color:#555555;
-	background-image:url('images/background_foot.png');
+	background-image:url('../images/background_foot.png');
 	background-repeat:repeat-x;
 	background-position:bottom;
 	background-color: #fff;
@@ -765,7 +765,7 @@ a.ship {
 	border: solid #cbcbcb;
 	border-width:1px;
 	border-radius:5px;
-	background-image:url('images/background_barr.png');
+	background-image:url('../images/background_barr.png');
 	background-position:bottom center;
 	background-repeat:repeat-x;
 	text-align:center;
@@ -792,7 +792,7 @@ a.see {
 	border: solid #cbcbcb;
 	border-width:1px;
 	border-radius:5px;
-	background-image:url('images/background_barr.png');
+	background-image:url('../images/background_barr.png');
 	background-position:bottom center;
 	background-repeat:repeat-x;
 	line-height:28px;
@@ -812,7 +812,7 @@ a.see {
 	border: solid #cbcbcb;
 	border-width:1px;
 	border-radius:5px;
-	background-image:url('images/background_barr.png');
+	background-image:url('../images/background_barr.png');
 	background-position:bottom center;
 	background-repeat:repeat-x;
 	line-height:28px;
@@ -869,7 +869,7 @@ a.see {
 	margin-top:20px;
 	position:relative;
 	z-index:151;
-	background-image:url('images/loading_image_black.gif');
+	background-image:url('../images/loading_image_black.gif');
 	background-position:center;
 	background-repeat: no-repeat;
 	background-color: #000;
@@ -881,7 +881,7 @@ a.see {
 {
 	
 	position:absolute;
-	background-image:url('images/close_black.png');
+	background-image:url('../images/close_black.png');
 	background-position:center;
 	background-repeat: no-repeat;
 	width:30px;

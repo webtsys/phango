@@ -5414,7 +5414,21 @@ function show_error($txt_error_normal, $txt_error_debug, $output_external='')
 }
 
 $arr_cache_jscript=array();
+
+/**
+* Array for indicate gzipped javascript.
+*
+* @deprecated
+*/
+
 $arr_cache_jscript_gzipped=array();
+
+/**
+* Array for indicate jscript module.
+*
+* @deprecated
+*/
+
 $arr_cache_jscript_module=array();
 
 function load_jscript_view()
@@ -5438,7 +5452,7 @@ function load_jscript_view()
 
 	}
 
-	return implode("\n", $arr_final_jscript);
+	return implode("\n", $arr_final_jscript)."\n";
 
 }
 
@@ -5455,7 +5469,7 @@ function load_header_view()
 	
 	ksort($arr_cache_header);
 
-	return implode("\n", $arr_cache_header);
+	return implode("\n", $arr_cache_header)."\n";
 
 }
 
@@ -5472,6 +5486,7 @@ $arr_cache_local_css=array();
 *
 * Function for load css
 *
+* @deprecated
 */
 
 function load_css_local_view()
@@ -5625,7 +5640,7 @@ function get_url_local_image($img_name, $module, $respect_upper=1)
 if(defined('THEME_MODULE'))
 {
 
-	function get_url_image($img_name, $set_encode=0)
+	function get_url_image($img_name, $module='')
 	{
 	
 		global $base_url; 
@@ -5639,7 +5654,16 @@ if(defined('THEME_MODULE'))
 		
 		//}
 		
-		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('encoded' => $set_encode, 'images' => $img_name));
+		$arr_image_def=array('encoded' => $set_encode, 'images' => $img_name);
+		
+		if($module!='')
+		{
+		
+			$arr_image_def['module']=$module;
+		
+		}
+		
+		return make_fancy_url($base_url, 'media', 'showmedia', 'directory', $arr_image_def);
 	
 	}
 	
@@ -5651,29 +5675,40 @@ if(defined('THEME_MODULE'))
 		//Delete repeat scripts...
 
 		$arr_cache_css=array_unique($arr_cache_css, SORT_STRING);
-		$arr_final_jscript=array();
+		$arr_final_css=array();
 
 		foreach($arr_cache_css as $idcss => $css)
 		{
-		
-			$css=slugify(urlencode_redirect($css, 1), 1);
 			
 			$module_css='';
 			
-			if(gettype($idcss)=='string')
+			if(gettype($css)=='array')
 			{
-			
+				
 				$module_css=$idcss;
 				
+				foreach($css as $css_item)
+				{
+					$css_item=slugify(urlencode_redirect($css_item, 1), 1);
+				
+					$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css_item));
+					
+					$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
+				}
 			}
-
-			$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
+			else
+			{
 			
-			$arr_final_jscript[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
+				$css=slugify(urlencode_redirect($css, 1), 1);
+			
+				$url=make_fancy_url($base_url, 'media', 'showmedia', 'directory', array('module' => $module_css, 'css' => $css));
+				
+				$arr_final_css[]='<link href="'.$url.'" rel="stylesheet" type="text/css"/>'."\n";
 
+			}
 		}
 
-		return implode("\n", $arr_final_jscript);
+		return implode("\n", $arr_final_css);
 
 	}
 
@@ -5681,14 +5716,14 @@ if(defined('THEME_MODULE'))
 else
 {
 
-	function get_url_image($img_name, $set_encode=0)
+	function get_url_image($img_name, $module='')
 	{
 	
 		global $config_data, $base_url;
 	
 		//Redirect to image
 		
-		return $base_url.'/media/'.$config_data['dir_theme'].'/images/'.$img_name;
+		return $base_url.'/'.$config_data['dir_theme'].'/'.$module.'/media/images/'.$img_name;
 	
 	}
 	
@@ -5704,9 +5739,22 @@ else
 
 		foreach($arr_cache_css as $idcss => $css)
 		{
+		
+			if(gettype($css)=='array')
+			{
 			
-			$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
-
+				foreach($css as $css_item)
+				{
+				
+					$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/'.$idcss.'/css/'.$css_item.'" rel="stylesheet" type="text/css"/>'."\n";
+				
+				}
+			
+			}
+			else
+			{
+				$arr_final_jscript[]='<link href="'.$base_url.'/media/'.$config_data['dir_theme'].'/css/'.$css.'" rel="stylesheet" type="text/css"/>'."\n";
+			}
 		}
 
 		return implode("\n", $arr_final_jscript);

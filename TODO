@@ -1,6 +1,5 @@
 Tasks
 ----------------------------
-
 Testing.
 
 New features
@@ -9,6 +8,7 @@ New features
 - Upload files and images. Discriminate by categories.
 - Ajax forms with jquery error messages.
 - New behaviour for controllers based in classes.
+- Need unify javascript, css and image loading on a lonely interface. Jscript need don't use -- for paths, use compression for server, don't use on the system. Css and image need new loading, for example, first see on view, after on module. 
 
 Knowed Bugs
 ----------------------------
@@ -19,6 +19,7 @@ Knowed Bugs
 New Features for next versions.
 ----------------------------
 
+- Save config on classes.
 - Caching querys. With php raw or non-sql databases.
 - A function to make switchs easily and clean. 
 - Make a multilogin?.

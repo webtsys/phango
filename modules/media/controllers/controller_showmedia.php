@@ -9,14 +9,16 @@ function ShowMedia()
 	settype($_GET['css'], 'string');
 	settype($_GET['module'], 'string');
 	
-	$module_theme_loaded=$config_data['module_theme'];
+	$module_theme_loaded=''; //$config_data['module_theme'];
+	
+	$theme=$config_data['dir_theme'];
+	
+	$container_theme=$config_data['module_theme'];
 	
 	if($_GET['module']!='')
 	{
 	
-		$_GET['module']=slugify(basename($_GET['module']), 1);
-		
-		$module_theme_loaded='modules/'.$_GET['module'].'/';
+		$module_theme_loaded=slugify(basename($_GET['module']), 1).'/';
 	
 	}
 	
@@ -25,58 +27,13 @@ function ShowMedia()
 	if($_GET['encoded']==1)
 	{*/
 	
-	$img_final=urldecode_redirect($_GET['images']);
+	format_media_type('images');
+
+	format_media_type('css');
 	
-	if(!$img_final)
-	{
+	format_media_type('font');
 	
-		$_GET['images']=slugify($_GET['images'], 1);
-		
-	}
-	else
-	{
-	
-		$_GET['images']=$img_final;
-	
-	}
-	
-	
-	$css_final=urldecode_redirect($_GET['css']);
-	
-	if(!$css_final)
-	{
-	
-		$_GET['css']=slugify($_GET['css'], 1);
-		
-	}
-	else
-	{
-	
-		$_GET['css']=$css_final;
-	
-	}
-	
-	$font_final=urldecode_redirect($_GET['font']);
-	
-	if(!$font_final)
-	{
-	
-		$_GET['font']=slugify($_GET['font'], 1);
-		
-	}
-	else
-	{
-	
-		$_GET['font']=$font_final;
-	
-	}
-	
-	
-	/*}*/
-	
-	$_GET['images']=str_replace('./', '', form_text($_GET['images']));
-	$_GET['css']=str_replace('./', '', form_text($_GET['css']));
-	$_GET['font']=str_replace('./', '', form_text($_GET['font']));
+	format_media_type('jscript');
 	
 	$cont_error=ob_get_contents();
 	
@@ -91,46 +48,35 @@ function ShowMedia()
 		
 		$ext_info=pathinfo($_GET['images']);
 		
+		settype($ext_info['extension'], 'string');
+		
 		$_GET['images']=check_path($_GET['images']);
 		
-		$file_path=$base_path.$module_theme_loaded.'/media/images/'.$_GET['images'];
+		//theme path, can be a module theme. If module_theme_loaded exists, rewrite.
+		
+		$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'images/'.$_GET['images'];
 		
 		if($ext_info['extension']=='gif' || $ext_info['extension']=='jpg' || $ext_info['extension']=='png')
 		{
 		
 			$check_file=0;
 			
-			//First on module theme.
+			//First on normal theme or module theme.
 			
 			if(!file_exists($file_path))
 			{
 			
-				//Second on normal theme.
+				//Second on module directly.
 			
-				$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/images/'.$_GET['images'];
+				$file_path=$base_path.'modules/'.$module_theme_loaded.'media/images/'.$_GET['images'];
 			
-				if(!file_exists($file_path))
-				{
-				
-					//Thirst on view of actually module.
-					
-					$file_path=$base_path.'modules/'.$config_data['dir_theme'].'/media/images/'.$_GET['images'];
-					
-					if($file_path) 
-					{
-					
-						$check_file=1;
-				
-					}
-				
-				
-				}
-				else
+				if(file_exists($file_path))
 				{
 				
 					$check_file=1;
 				
 				}
+				
 				
 			
 			}
@@ -170,38 +116,28 @@ function ShowMedia()
 		
 		$ext_info=pathinfo($_GET['css']);
 		
+		settype($ext_info['extension'], 'string');
+		
 		if($ext_info['extension']=='css')
 		{
 			$check_file=0;
 		
 			$_GET['css']=check_path($_GET['css']);
 		
-			$file_path=$base_path.$module_theme_loaded.'/media/css/'.$_GET['css'];
+			//First, theme or module theme
+		
+			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'media/css/'.$_GET['css'];
 			
 			if(!file_exists($file_path))
 			{
 			
-				//Second on normal theme.
+				//Second on module.
 			
-				$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/css/'.$_GET['css'];
+				//$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/css/'.$_GET['css'];
 			
-				if(!file_exists($file_path))
-				{
+				$file_path=$base_path.'modules/'.$module_theme_loaded.'media/css/'.$_GET['css'];
 				
-					//Thirst on view of actually module.
-					
-					$file_path=$base_path.'modules/'.$config_data['dir_theme'].'/media/css/'.$_GET['css'];
-				
-					if(file_exists($file_path)) 
-					{
-					
-						$check_file=1;
-				
-					}
-				
-				
-				}
-				else
+				if(file_exists($file_path))
 				{
 				
 					$check_file=1;
@@ -245,34 +181,26 @@ function ShowMedia()
 		
 		$ext_info=pathinfo($_GET['font']);
 		
+		settype($ext_info['extension'], 'string');
+		
 		if($ext_info['extension']=='ttf')
 		{
 			$check_file=0;
 			
-			$file_path=$base_path.$module_theme_loaded.'/media/fonts/'.$_GET['font'];
+			//normal theme or module theme
+			
+			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'/media/fonts/'.$_GET['font'];
 			
 			if(!file_exists($file_path))
 			{
 			
-				//Second on normal theme.
+				//Second on module.
 			
-				$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/fonts/'.$_GET['font'];
+				//$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/fonts/'.$_GET['font'];
 			
-				if(!file_exists($file_path))
-				{
-				
-					//Thirst on view of actually module.
-				
-					if(file_exists($base_path.'modules/'.$script_base_controller.'/media/fonts/'.$_GET['font'])) 
-					{
-					
-						$check_file=1;
-				
-					}
-				
-				
-				}
-				else
+				$file_path=$base_path.'modules/'.$module_theme_loaded.'media/fonts/'.$_GET['font'];
+			
+				if(file_exists($file_path))
 				{
 				
 					$check_file=1;
@@ -305,6 +233,62 @@ function ShowMedia()
 	
 	}
 	
+	if($_GET['jscript']!='')
+	{
+		
+		$ext_info=pathinfo($_GET['jscript']);
+		
+		settype($ext_info['extension'], 'string');
+		
+		if($ext_info['extension']=='js')
+		{
+			$check_file=0;
+			
+			//normal theme or module theme
+			
+			$file_path=$base_path.$container_theme.'views/'.$theme.'/media/'.$module_theme_loaded.'/media/jscript/'.$_GET['jscript'];
+			
+			if(!file_exists($file_path))
+			{
+			
+				//Second on module.
+			
+				//$file_path=$base_path.$config_data['module_theme'].'views/'.$config_data['dir_theme'].'/media/fonts/'.$_GET['font'];
+			
+				$file_path=$base_path.'modules/'.$module_theme_loaded.'media/jscript/'.$_GET['jscript'];
+			
+				if(file_exists($file_path))
+				{
+				
+					$check_file=1;
+				
+				}
+				
+			
+			}
+			else
+			{
+			
+				$check_file=1;
+			
+			}
+			
+			if($check_file==1)
+			{
+				
+				header('Content-Type: application/javascript');
+			
+				readfile($file_path);
+			
+			}
+			
+		}
+		
+		ob_end_flush();
+		
+		die;
+	
+	}
 
 }
 
@@ -322,6 +306,28 @@ function check_path($file)
 	}
 	
 	return implode('/', $arr_file_final);
+
+}
+
+function format_media_type($type)
+{
+	
+	$final=urldecode_redirect($_GET[$type]);
+	
+	if(!$final)
+	{
+	
+		$_GET[$type]=slugify($_GET[$type], 1);
+		
+	}
+	else
+	{
+	
+		$_GET[$type]=$final;
+	
+	}
+	
+	$_GET[$type]=str_replace('./', '', form_text($_GET[$type]));
 
 }
 
