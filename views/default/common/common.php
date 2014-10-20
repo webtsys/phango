@@ -19,6 +19,7 @@ global $base_url, $arr_cache_jscript;
 	{
 	
 		echo load_jscript_view(); 
+		echo load_header_view();
 		
 	}
 	?>

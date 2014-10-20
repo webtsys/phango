@@ -18,8 +18,8 @@ function Moderate()
 	$arr_config=$model['config_blog']->select_a_row_where('limit 1');
 	
 	$original_theme=$config_data['dir_theme'];
-	$config_data['dir_theme']=$original_theme.'/admin';
-	$arr_block='admin_none';
+	//$config_data['dir_theme']=$original_theme.'/admin';
+	$arr_block='admin/admin_none';
 	$name_modules=array();
 	$urls=array();
 

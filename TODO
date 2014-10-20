@@ -21,7 +21,6 @@ New Features for next versions.
 
 - Save config on classes.
 - Caching querys. With php raw or non-sql databases.
-- A function to make switchs easily and clean. 
 - Make a multilogin?.
 - Title in flags of languages.
 - Modules loading automatically in $activated_controllers.

@@ -5771,8 +5771,9 @@ else
 		global $config_data, $base_url;
 	
 		//Redirect to image
+		//media/default/images
 		
-		return $base_url.'/'.$config_data['dir_theme'].'/'.$module.'/media/images/'.$img_name;
+		return $base_url.'/media/'.$config_data['dir_theme'].'/'.$module.'/images/'.$img_name;
 	
 	}
 	

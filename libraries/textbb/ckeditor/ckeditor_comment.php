@@ -3,15 +3,14 @@
 function load_jscript_editor($name_editor, $value, $profiles='all')
 {
 
-	global $base_url, $arr_i18n_ckeditor, $language, $arr_cache_jscript, $arr_cache_jscript_gzipped;
+	global $base_url, $arr_i18n_ckeditor, $language, $arr_cache_jscript, $arr_cache_header;
 	
 	load_libraries(array('emoticons'));
 
 	list($smiley_text, $smiley_img)=set_emoticons();
 
-	$arr_cache_jscript_gzipped['no_gzipped_path_ckeditor']=1;
-	$arr_cache_jscript['no_gzipped_path_ckeditor']='ckeditor_path.js.php';
-	$arr_cache_jscript[]='textbb--ckeditor--ckeditor.js';
+	$arr_cache_jscript[]='jquery.min.js';
+	$arr_cache_jscript[]='textbb/ckeditor/ckeditor.js';
 
 	$edit_image='';
 
@@ -21,6 +20,8 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 		$edit_image=', \'Image\'';
 
 	}
+	
+	ob_start();
 	
 	?>
 	
@@ -33,6 +34,8 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 
 		// Replace the <textarea id="editor"> with an CKEditor
 		// instance, using default configurations.
+		
+	$(document).ready(function () {
 
 		CKEDITOR.config.entities = true;
 		
@@ -164,11 +167,15 @@ CKEDITOR.on( 'dialogDefinition', function( ev )
 
 		}
 	});
-
+	
+	});
 	</script>
 
 	<?php
 	
+	$arr_cache_header[]=ob_get_contents();
+
+	ob_end_clean();
 }
 
 ?>
