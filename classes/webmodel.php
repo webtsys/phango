@@ -3431,7 +3431,7 @@ class ForeignKeyField extends IntegerField{
 		else
 		{
 		
-			show_error('You need load class before set relantionship', 'You need load class '.$this->related_model.' before set relantionship with ForeignKeyField', $output_external='');
+			show_error('You need load class before set relantionship', 'You need load class '.$this->related_model.' before set relantionship with ForeignKeyField on model '.$this->name_model, $output_external='');
 			
 			die;
 		

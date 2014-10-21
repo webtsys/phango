@@ -33,7 +33,7 @@ function ModulesAdmin()
 		echo '<h3>'.$lang['modules']['modules_disabled'].'</h3>';
 
 		up_table_config(array($lang['modules']['module'], $lang['common']['options']));
-
+		/*
 		$path_modules=$base_path.'modules/';
 
 		if ($dh = opendir($path_modules)) 
@@ -61,8 +61,8 @@ function ModulesAdmin()
 								{
 	
 									$my_model=preg_replace( '/^models_([aA-zZ]+)\.php/' , '$1', $file_model);
-									
-									include_once($models_dir.$file_model);
+									//echo $models_dir.$file_model.'<p>';
+									//include_once($models_dir.$file_model);
 									
 								}
 
@@ -79,9 +79,9 @@ function ModulesAdmin()
 			}
 		
 			closedir($dh);
-		}
+		}*/
 		
-		$arr_mask_module=array();
+		/*$arr_mask_module=array();
 		$arr_final_module=array();
 		$arr_final_module_options=array();
 
@@ -111,8 +111,46 @@ function ModulesAdmin()
 
 			}
 
+		}*/
+		
+		$arr_module_exists=array();
+		
+		$arr_module=$model['module']->select_to_array('', array('name'));
+		
+		foreach($arr_module as $module)
+		{
+		  
+			$arr_module_exists[]=$module['name'];
+		
 		}
+		
+		$path_modules=$base_path.'modules/';
 
+		if ($dh = opendir($path_modules)) 
+		{
+			while ($module = readdir($dh))
+			{
+			
+				//echo $file.'</p>';
+				
+				if(!in_array($module, $arr_module_exists) && !preg_match('/^\./', $module) && file_exists($path_modules.$module.'/models/models_'.$module.'.php'))
+				{
+				
+					$arr_final_module=array();
+				
+					//echo $module.'</p>';
+			
+					$url_edit_mod=$url_options=set_admin_link( 'edit_modules', $arr_data=array('op' => 1, 'module' => $module));
+
+					$arr_final_module[]=$module;
+					$arr_final_module[]='<a href="'.$url_edit_mod.'">'.$lang['modules']['enable_module'].'</a>';
+
+					middle_table_config($arr_final_module, array(' width="75%"', ''));
+				}
+			}
+			
+		}
+		
 
 		down_table_config();
 
