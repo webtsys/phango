@@ -671,4 +671,44 @@ class SimpleList
 
 }
 
+class ListModelAjaxClass {
+
+
+	public $where_sql, $arr_fields, $arr_fields_showed, $extra_fields, $yes_pagination, $limit_num;
+
+	function __construct($model_name, $arr_fields=array(), $arr_fields_showed=array(), $extra_fields=array(), $where_sql='')
+	{
+	
+		$this->model_name=$model_name;
+		$this->where_sql=$where_sql;
+		$this->arr_fields=$arr_fields;
+		$this->arr_fields_showed=$arr_fields_showed;
+		$this->extra_fields=$extra_fields;
+		$this->yes_pagination=1;
+		$this->limit_num=20;
+	}
+	
+	function show()
+	{
+	
+		//The limit is defined in query...
+	
+		$total_elements=$model[$this->model_name]->select_count($this->where_sql);
+		
+		$query=$model[$this->model_name]->select($this->where_sql, $arr_fields);
+	
+		echo load_view(array($query, $this), 'utilities/list');
+		
+	
+	}
+	
+	function obtain_data_ajax($page)
+	{
+	
+		
+	
+	}
+
+}
+
 ?>
