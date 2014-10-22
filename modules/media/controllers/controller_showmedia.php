@@ -257,7 +257,24 @@ function ShowMedia()
 			
 				$file_path=$base_path.'modules/'.$module_theme_loaded.'media/jscript/'.$_GET['jscript'];
 			
-				if(file_exists($file_path))
+				if(!file_exists($file_path))
+				{
+				
+					//$check_file=1;
+					
+					//last look on application/media/jscript, jscript can be standard, images, css, or fonts, not.
+			
+					$file_path=$base_path.'application/media/jscript/'.$_GET['jscript'];
+					
+					if(!file_exists($file_path))
+					{
+					
+						$check_file=1;
+					
+					}
+				
+				}
+				else
 				{
 				
 					$check_file=1;

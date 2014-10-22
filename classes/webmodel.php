@@ -5837,7 +5837,7 @@ else
 			}
 			else
 			{
-				$arr_final_jscript[]='<script language="Javascript" src="'.$base_url.'/media/'.$config_data['dir_theme'].'/jscript/'.$jscript.'"></script>'."\n";
+				$arr_final_jscript[]='<script language="Javascript" src="'.$base_url.'/media/jscript/'.$jscript.'"></script>'."\n";
 			}
 		}
 
