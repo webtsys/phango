@@ -260,7 +260,7 @@ function BlocksAdmin()
 			
 			$admin->arr_fields_edit=&$arr_fields_edit;
 			
-			$admin->url_options=$url_options;
+			$admin->set_url_post($url_options);
 			
 			$admin->options_func='LinksAdmin';
 			
@@ -594,7 +594,7 @@ function BlocksDeleteModel($model_name, $id)
 
 	}
 
-	$query=$model[$model_name]->delete('where '.$idmodel.'='.$_GET[$idmodel]);
+	$query=$model[$model_name]->delete('where '.$model[$model_name]->idmodel.'='.$_GET[$model[$model_name]->idmodel]);
 
 	return BasicDeleteModel($model_name, $id);
 

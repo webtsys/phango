@@ -18,7 +18,8 @@ class GenerateAdminClass {
 		$this->model_name=$model_name;
 		$this->arr_fields=array(); 
 		$this->arr_fields_edit=array();
-		$this->url_options=make_fancy_url($base_url, PHANGO_SCRIPT_BASE_CONTROLLER, PHANGO_SCRIPT_FUNC_NAME, TEXT_FUNCTION_CONTROLLER, array());
+		$this->url_options=''; 
+		//make_fancy_url($base_url, PHANGO_SCRIPT_BASE_CONTROLLER, PHANGO_SCRIPT_FUNC_NAME, TEXT_FUNCTION_CONTROLLER, array());
 		$this->url_back=$this->url_options;
 		$this->no_search=false;
 		$this->options_func='BasicOptionsListModel';
@@ -354,7 +355,7 @@ class GenerateAdminClass {
 
 class ListModelClass {
 
-	public $model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />', $simple_redirect=0, $admin_class;
+	public $model_name, $arr_fields, $url_options, $options_func='BasicOptionsListModel', $where_sql='', $arr_fields_form=array(), $type_list='Basic', $no_search=false, $yes_id=1, $yes_options=1, $extra_fields=array(), $separator_element='<br />', $simple_redirect=0, $admin_class, $arr_fields_no_showed;
 	
 	public $search_asc;
 	public $search_desc;
@@ -383,7 +384,13 @@ class ListModelClass {
 		$this->separator_element_opt='<br />';
 		$this->arr_fields_order=$this->arr_fields;
 		$this->arr_fields_search=$this->arr_fields;
+		$this->arr_fields_no_showed=array();
 		$this->admin_class=new GenerateAdminClass($this->model_name);
+		
+		//For paginator
+		
+		$this->num_by_page=20;
+		$this->initial_num_pages=20;
 	
 	}
 	
@@ -426,12 +433,12 @@ class ListModelClass {
 				$search->lang_asc=$this->search_asc;
 				$search->lang_desc=$this->search_desc;
 			
-				list($where_sql, $arr_where_sql, $location, $arr_order)=$search->search();
+				list($this->where_sql, $arr_where_sql, $location, $arr_order)=$search->search();
 				
 				//list($where_sql, $arr_where_sql, $location, $arr_order)=SearchInField($this->model_name, $arr_fields, $arr_fields, $where_sql, $url_options, $yes_id, $show_form);
 			//}
 			//Num elements in page
-			
+			/*
 			if(!function_exists($model[$this->model_name]->func_update.'List'))
 			{
 				
@@ -445,7 +452,39 @@ class ListModelClass {
 
 				$func_list($this->model_name, $this->where_sql, $arr_where_sql, $location, $arr_order, $this->arr_fields, $cell_sizes, $this->options_func, $this->url_options, $this->yes_id, $this->yes_options, $this->extra_fields, $this->separator_element);
 
+			}*/
+			
+			$list=new SimpleList($this->model_name);
+			
+			$list->arr_fields=$this->arr_fields;
+			
+			if($this->yes_id)
+			{
+			
+				array_unshift($list->arr_fields, $model[$this->model_name]->idmodel);
+				
+				$model[$this->model_name]->components[$model[$this->model_name]->idmodel]->label='#Id';
+				
 			}
+			
+			$list->arr_cell_sizes=array($model[$this->model_name]->idmodel => ' width="25"');
+			
+			$list->num_by_page=$this->num_by_page;
+			
+			$list->initial_num_pages=$this->initial_num_pages;
+			
+			if(preg_match('/^where|WHERE/', $list->where_sql))
+			{
+			
+				$list->where_sql=' AND ';
+			
+			}
+			
+			$list->where_sql.=$arr_where_sql.' order by '.$location.'`'.$this->model_name.'`.`'.$_GET['order_field'].'` '.$arr_order[$_GET['order_desc']];
+			
+			$list->url_options=$this->url_options;
+			
+			$list->show();
 
 		break;
 
@@ -594,7 +633,7 @@ class SimpleList
 		foreach($arr_fields_showed as $field)
 		{
 		
-			$arr_fields_show[$field]=$model[$this->model_name]->components[$field]->label;
+			$arr_fields_show[$field]=$model[$this->model_name]->forms[$field]->label;
 		
 		}
 		
@@ -616,13 +655,15 @@ class SimpleList
 			$options_method='yes_add_options';
 		
 		}
-		
+		/*
 		if($this->limit_rows>0)
 		{
 		
 			$this->where_sql=$this->where_sql.' limit '.$this->limit_rows;
 		
-		}
+		}*/
+		
+		$this->where_sql=$this->where_sql.' limit '.$this->begin_page.', '.$this->num_by_page;
 		
 		up_table_config($arr_fields_show, $this->arr_cell_sizes);
 		
@@ -690,11 +731,11 @@ class SimpleList
 
 
 }
-
+/*
 class ListModelAjaxClass {
 
 
-	public $where_sql, $arr_fields, $arr_fields_showed, $extra_fields, $yes_pagination, $limit_num;
+	public $where_sql, $arr_fields, $arr_fields_no_showed, $extra_fields, $yes_pagination, $limit_num;
 
 	function __construct($model_name, $arr_fields=array(), $arr_fields_showed=array(), $extra_fields=array(), $where_sql='')
 	{
@@ -702,7 +743,7 @@ class ListModelAjaxClass {
 		$this->model_name=$model_name;
 		$this->where_sql=$where_sql;
 		$this->arr_fields=$arr_fields;
-		$this->arr_fields_showed=$arr_fields_showed;
+		$this->arr_fields_no_showed=$arr_fields_no_showed;
 		$this->extra_fields=$extra_fields;
 		$this->yes_pagination=1;
 		$this->limit_num=20;
@@ -729,6 +770,6 @@ class ListModelAjaxClass {
 	
 	}
 
-}
+}*/
 
 ?>
