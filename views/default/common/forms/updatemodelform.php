@@ -34,6 +34,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 		?>
 		
 		$('.form_button_tab').hide();
+		$('#name_fields').hide();
 		
 		<?php
 		
@@ -135,7 +136,7 @@ function UpdateModelFormView($model_form, $arr_fields=array(), $url_post, $encty
 		?>
 		<div id="<?php echo $category; ?>_tab" class="form_tab">
 		
-		<h2><?php echo $arr_fields_tab['name_fields']; ?></h2>
+		<h2 id="name_fields"><?php echo $arr_fields_tab['name_fields']; ?></h2>
 		
 		<?php
 		

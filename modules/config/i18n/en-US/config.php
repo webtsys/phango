@@ -14,7 +14,7 @@ $lang['config']['no_textbb']='Without html editor';
 
 $lang['config']['no_captcha']='Without captcha';
 
-$lang['config']['no_mailer']='no_mailer';
+$lang['config']['no_mailer']='No script mailer';
 
 $lang['config']['dir_theme']='Web theme';
 

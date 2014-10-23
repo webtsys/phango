@@ -1,20 +1,24 @@
 <?php
 
-$lang['blog']['posted_by']='Posted by';
+$lang['blog']['principal_category']='Main category';
 
-$lang['blog']['read_more']='Read more';
+$lang['blog']['edit_son_blogs']='Edit son blogs';
 
-$lang['blog']['comments']='Comments';
+$lang['blog']['edit_moderators']='Edit moderators';
 
-$lang['blog']['tags']='Tags';
+$lang['blog']['edit_articles']='Edit articles';
 
-$lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
+$lang['blog']['add_tags']='Add tags';
 
-$lang['blog']['comment_made']='Post by';
+$lang['blog']['subscript_post']='Suscribe to post';
 
-$lang['blog']['down_article']='Unsubscribe';
+$lang['blog']['save_data']='Save data';
 
-$lang['blog']['search_results']='Search results';
+$lang['blog']['error_captcha']='Error in captcha';
+
+$lang['blog']['author']='Author';
+
+$lang['blog']['search_tags_results']='Tag search results';
 
 $lang['blog']['no_tags']='Without tags';
 
@@ -24,7 +28,7 @@ $lang['blog']['no_contents']='Without contents';
 
 $lang['blog']['no_search']='Search results: none';
 
-$lang['blog']['search_blog']='Search in blog';
+$lang['blog']['search_tags']='Search on tags';
 
 $lang['blog']['goback_admin_blog']='Go back to admin';
 
@@ -33,8 +37,6 @@ $lang['blog']['tree_category']='Categories tree';
 $lang['blog']['choose_the_blog_and_edit']='Choose the blog and edit it';
 
 $lang['blog']['entrance']='Entrance';
-
-$lang['blog']['author']='Author';
 
 $lang['blog']['accept_comment']='Accept comment';
 
@@ -48,15 +50,13 @@ $lang['blog']['do_you_want_delete_post']='Do you want delete this post?';
 
 $lang['blog']['moderate_blogs']='Moderate blogs';
 
+$lang['blog']['wait_admin']='You should wait for an administrator to write something';
+
 $lang['blog']['blog_options']='Blog options';
 
 $lang['blog']['config']='config';
 
-$lang['blog']['add_tags']='Add tags';
-
 $lang['blog']['blog_father']='Father blog';
-
-$lang['blog']['principal_category']='Main category';
 
 $lang['blog']['num_post']='Number of posts on the home of this blog';
 
@@ -66,13 +66,19 @@ $lang['blog']['add_moderators_blog']='Edit moderators from this blog';
 
 $lang['blog']['go_back_index_blog']='Go back to blog home';
 
-$lang['blog']['wait_admin']='You should wait for an administrator to write something';
+$lang['blog']['search_results']='Search results';
 
-$lang['blog']['search_tags_results']='Tag search results';
+$lang['blog']['search_blog']='Search in blog';
 
-$lang['blog']['search_tags']='Search on tags';
+$lang['blog']['edit_comment']='Edit comment';
 
-$lang['blog']['please_wait_a_seconds_for_send_a_new_message']='Please, wait a seconds for post a new reply';
+$lang['blog']['delete_comment']='Delete comment';
+
+$lang['blog']['read_more']='Read more';
+
+$lang['blog']['permalink']='Permalink';
+
+$lang['blog']['comments']='Comments';
 
 $lang['blog']['send_post']='Post reply';
 
@@ -106,23 +112,17 @@ $lang['blog']['you_unsubscribe_from_posts_explain']='Please select from the foll
 
 $lang['blog']['down_email_in_article']='Unsubscribe in this post';
 
-$lang['blog']['edit_comment']='Edit comment';
+$lang['blog']['please_wait_a_seconds_for_send_a_new_message']='Please, wait a seconds for post a new reply';
 
-$lang['blog']['delete_comment']='Delete comment';
+$lang['blog']['inform_comment']='It has received a comment on a post to which you subscribe';
 
-$lang['blog']['permalink']='Permalink';
+$lang['blog']['comment_made']='Post by';
 
-$lang['blog']['edit_son_blogs']='Edit son blogs';
+$lang['blog']['down_article']='Unsubscribe';
 
-$lang['blog']['edit_moderators']='Edit moderators';
+$lang['blog']['posted_by']='Posted by';
 
-$lang['blog']['edit_articles']='Edit articles';
-
-$lang['blog']['subscript_post']='Suscribe to post';
-
-$lang['blog']['save_data']='Save data';
-
-$lang['blog']['error_captcha']='Error in captcha';
+$lang['blog']['tags']='Tags';
 
 $lang['blog']['edit_in_page_blog']='Edit blog property in page';
 

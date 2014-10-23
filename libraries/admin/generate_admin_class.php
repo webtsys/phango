@@ -4,7 +4,7 @@ load_libraries(array('utilities/menu_barr_hierarchy', 'generate_admin_ng'));
 
 class GenerateAdminClass {
 
-	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt, $extra_menu_create, $listmodel, $number_id;
+	public $class, $arr_fields, $arr_fields_edit, $url_options, $options_func, $where_sql, $arr_fields_form, $type_list, $url_back, $no_search, $txt_list_new, $txt_add_new_item, $txt_edit_item, $simple_redirect, $class_add, $separator_element_opt, $extra_menu_create, $listmodel, $number_id, $arr_fields_no_showed;
 
 	public $search_asc;
 	public $search_desc;
@@ -43,6 +43,8 @@ class GenerateAdminClass {
 		$this->arr_fields_search=array();
 		$this->number_id=0;
 		$this->arr_categories=array('default' => array());
+		$this->arr_fields_no_showed=array();
+	
 	}
 	
 	function initial_order()
@@ -164,7 +166,7 @@ class GenerateAdminClass {
 	{
 	
 		global $base_url, $model;
-	
+		
 		$model[$this->model_name]->func_update='Config';
 
 		if(count($model[$this->model_name]->forms)==0)
@@ -187,9 +189,12 @@ class GenerateAdminClass {
 		//nsertModelForm($model_name, $url_admin, $url_back, $arr_fields=array(), $id=0, $goback=1)
 		
 		//InsertModelForm($this->model_name, $this->url_options, $this->url_back, $this->arr_fields_edit, $id=0, $this->show_goback, $this->simple_redirect, $this->where_sql);
-	
-		$this->url_back=$this->url_options;
-				
+		
+		if($this->url_back=='')
+		{
+			$this->url_back=$this->url_options;
+		}
+		
 		$this->url_options=add_extra_fancy_url($this->url_options, array('op_action' => 1));
 	
 		$this->insert_model_form();
@@ -328,6 +333,21 @@ class GenerateAdminClass {
 
 		}
 	
+	}
+	
+	public function set_url_post($url_post)
+	{
+	
+		$this->url_options=$url_post;
+		$this->url_back=$url_post;
+	
+	}
+	
+	public function set_url_back($url_back)
+	{
+		
+		$this->url_back=$url_back;
+		
 	}
 	
 }

@@ -1,5 +1,11 @@
 <?php
 
+$lang['blocks']['edit_html_block']='Edit html block';
+
+$lang['blocks']['html_code']='Html code';
+
+$lang['blocks']['modify_config_blocks']='modify_config_blocks';
+
 $lang['blocks']['edit_blocks']='Edit blocks';
 
 $lang['blocks']['edit_blocks_module']='Edit blocks of selected module';
@@ -36,6 +42,10 @@ $lang['blocks']['change_order']='Change order';
 
 $lang['blocks']['block_module_no_editable']='Block don&#39;t editable';
 
+$lang['blocks']['only_menu_barr']='only_menu_barr';
+
+$lang['blocks']['all_menu_barr']='all_menu_barr';
+
 $lang['blocks']['begin_block']='Begin block';
 
 $lang['blocks']['end_block']='End block';
@@ -45,10 +55,6 @@ $lang['blocks']['static_blocks']='Static blocks';
 $lang['blocks']['add_children_blocks']='Add children blocks';
 
 $lang['blocks']['edit_module_if_exists']='Edit module if exists';
-
-$lang['blocks']['edit_html_block']='Edit html block';
-
-$lang['blocks']['html_code']='Html code';
 
 $lang['blocks']['choose_lang']='Choose language block';
 

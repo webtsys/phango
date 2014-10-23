@@ -17,7 +17,7 @@ $model['blocks']=new blocks();
 
 $model['blocks']->delete_func='delete_blocks';
 
-$model['blocks']->components['title_block']=new I18nField(new TextField);
+$model['blocks']->set_component('title_block', 'I18nField', array(new TextField));
 $model['blocks']->components['title_block']->required=1;
 //$model['blocks']->components['title_block']->form='TextForm';
 
@@ -74,6 +74,12 @@ $model['total_blocks']->components['num_blocks']=new IntegerField(10);
 $model['total_blocks']->components['activation']=new IntegerField(2);
 
 $model['total_blocks']->components['favourite']=new IntegerField(2);
+
+//Config blocks
+
+$model['config_blocks']=new Webmodel('config_blocks');
+
+$model['config_blocks']->set_component('columns_to_edit', 'IntegerField', array(1));
 
 $arr_module_insert['blocks']=array('name' => 'blocks', 'admin' => 1, 'admin_script' => array('blocks', 'blocks'), 'load_module' => 'load_blocks.php', 'order_module' => 2, 'required' => 1);
 
