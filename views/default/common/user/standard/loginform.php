@@ -12,6 +12,7 @@ function LoginFormView($model_user, $model_login)
 	?>
 	<form method="post" action="<?php echo $model_login->url_login; ?>">
 	<?php
+		set_csrf_key();
 		//ModelFormView($model_form, $fields=array(), $html_id='')
 		echo load_view(array($model_user->forms, $arr_fields_login), 'common/forms/modelform');
 		

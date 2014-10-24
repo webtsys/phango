@@ -1,6 +1,6 @@
 <?php
 
-function redirect_webtsys($direction,$l_text,$text,$ifno, $arr_block)
+function redirect_webtsys($direction,$l_text,$text,$ifno, $arr_block='')
 {
 
 	global $config_data, $base_path,$lang_user, $code_banner, $block_title, $block_content, $block_urls, $block_type, $block_id, $arr_block;
@@ -10,6 +10,15 @@ function redirect_webtsys($direction,$l_text,$text,$ifno, $arr_block)
 	$redirect="<meta http-equiv=\"refresh\" content=\"2;URL=$direction\">";
 
 	ob_start();
+	
+	if($arr_block=='')
+	{
+	
+		$arr_block=select_view(array());
+	
+		$arr_block='/none';
+	
+	}
 
 	echo load_view(array($config_data['portal_name'].' / '.$l_text,'<p>'.$text.'<br><a href="'. $direction.'">'.$ifno.'</a>'), 'content');
 

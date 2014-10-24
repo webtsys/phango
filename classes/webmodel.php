@@ -1607,7 +1607,14 @@ class ModelForm {
 		return 0;
 
 	}
+	
+	static public function SetValuesForm($post, $arr_form, $show_error=1)
+	{
+		
+		SetValuesForm($post, $arr_form, $show_error);
 
+	}
+		
 }
 
 /**
@@ -1662,7 +1669,7 @@ class ControllerSwitchClass {
 	{
 		global $arr_block;
 	
-		$arr_block=select_view(array('shop'));
+		$arr_block=select_view(array('none'));
 		
 		load_libraries(array('redirect'));
 		die( redirect_webtsys( $direction, $l_text, $text, $ifno , $arr_block) );
