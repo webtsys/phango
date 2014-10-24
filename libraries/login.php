@@ -11,9 +11,11 @@ class LoginClass {
 	public $session;
 	public $url_login='';
 	public $url_insert='';
+	public $url_recovery='';
 	public $login_view='common/user/standard/loginform';
 	public $edit_fields=array();
 	public $create_account_view='common/user/standard/insertuserform';
+	public $recovery_pass_view='common/user/standard/recoverypassform';
 	//public $method_crypt='sha256';
 	
 	public function __construct($model_login, $field_user, $field_password, $field_key, $arr_user_session=array(), $arr_user_insert=array())
@@ -247,7 +249,9 @@ class LoginClass {
 	public function recovery_password_form()
 	{
 	
+		global $model;
 		
+		echo load_view(array($model[$this->model_login], $this), $this->recovery_pass_view);
 	
 	}
 	

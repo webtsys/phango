@@ -19,6 +19,7 @@ Knowed Bugs
 New Features for next versions.
 ----------------------------
 
+- Cache that permit don't connect to mysql is not necessary.
 - Save config on classes.
 - Caching querys. With php raw or non-sql databases.
 - Make a multilogin?.

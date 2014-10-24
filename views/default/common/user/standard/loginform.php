@@ -15,9 +15,9 @@ function LoginFormView($model_user, $model_login)
 		set_csrf_key();
 		//ModelFormView($model_form, $fields=array(), $html_id='')
 		echo load_view(array($model_user->forms, $arr_fields_login), 'common/forms/modelform');
-		
 
 	?>
+	<p><a href="<?php echo $model_login->url_recovery; ?>"><?php echo $lang['user']['remember_password']; ?></a></p>
 	<p><input type="submit" value="<?php echo $lang['common']['login']; ?>" /></p>
 	</form>
 	<?php

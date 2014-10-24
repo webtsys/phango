@@ -1657,10 +1657,10 @@ class ControllerSwitchClass {
 	public function get_method_url($method_controller, $text, $arr_parameters)
 	{
 		
-		$my_controller=str_replace('SwitchClass', '', get_class($this));
+		$my_controller=strtolower(str_replace('SwitchClass', '', get_class($this)));
 		
-		$arr_parameters[$this->op_var]=$_GET[$this->op_var];
-	
+		$arr_parameters[$this->op_var]=$method_controller;
+		
 		return make_fancy_url($this->base_url, $this->controller, $my_controller, $text, $arr_parameters);
 	
 	}
