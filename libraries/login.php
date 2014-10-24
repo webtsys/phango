@@ -182,13 +182,37 @@ class LoginClass {
 	public function create_account()
 	{
 		
-		global $model;
+		global $model, $config_data;
 			
+		load_libraries(array('captchas/'.$config_data['captcha_type']));
+		
 		$post=filter_fields_array($this->arr_user_insert, $_POST);
 	
 		//Check captcha and double password
 		
-		if($_POST['repeat_password']==$post[$this->field_password])
+		$check_captcha=1;
+		
+		if($config_data['captcha_type']!='')
+		{
+
+			$result_captcha=CaptchaCheck($_POST);
+			
+			if($result_captcha[0]=='false')
+			{
+
+				$check_captcha=0;
+
+			}
+
+		}
+		
+		$no_user=0;
+		
+		$check_user=$model[$this->model_login]->components[$this->field_user]->check($post[$this->field_user]);
+		
+		$no_user=$model[$this->model_login]->select_count('where `'.$model[$this->model_login]->name.'`.`'.$this->field_user.'`="'.$check_user.'"');
+		
+		if($_POST['repeat_password']==$post[$this->field_password] && $check_captcha==1 && $no_user==0)
 		{
 			if(ModelForm::check_form($model[$this->model_login]->forms, $post))
 			{
