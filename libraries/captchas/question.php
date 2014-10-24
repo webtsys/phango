@@ -13,7 +13,7 @@ function CaptchaForm($name="", $class='', $value='')
 {
 	global $key_recaptcha;
 
-	echo QUESTION_CAPTCHA.': '.TextForm('answer_captcha', $class, $value);
+	echo QUESTION_CAPTCHA.'<br />'.TextForm('answer_captcha', $class, $value);
 
 }
 

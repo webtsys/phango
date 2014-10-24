@@ -246,8 +246,6 @@ $lang['user']['no_success_change_password']='Se produjo un error y no se pudo ca
 
 $lang['user']['hello']='Hola';
 
-$lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
-
 $lang['user']['iduser']='Usuario';
 
 $lang['user']['discount']='Discount';

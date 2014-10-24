@@ -6,12 +6,13 @@ class LoginClass {
 	public $field_user;
 	public $field_password;
 	public $arr_user_session;
-	public $arr_user_insert;
+	public $arr_user_insert=array();
 	public $key_field;
 	public $session;
 	public $url_login='';
-	public $login_view;
+	public $login_view='common/user/standard/loginform';
 	public $edit_fields=array();
+	public $create_account_view='common/user/standard/insertuserform';
 	
 	public function __construct($model_login, $field_user, $field_password, $key_field, $arr_user_session=array(), $arr_user_insert=array())
 	{
@@ -21,7 +22,7 @@ class LoginClass {
 		$this->field_password=$field_password;
 		$this->arr_user_session=$arr_user_session;
 		$this->key_field=$key_field;
-		$this->login_view='';
+		$this->arr_user_insert=array($field_user, $field_password);
 		
 		if(count($this->arr_user_session)>0)
 		{
@@ -33,14 +34,28 @@ class LoginClass {
 
 	}
 	
-	public function login($user, $password)
+	public function automatic_login($iduser)
+	{
+	
+		$arr_user=$model[$this->model_login]->select_a_row($iduser, array($this->field_user, $this->field_password));
+	
+		return $this->login($user, $password, 1);
+	
+	}
+	
+	public function login($user, $password, $yes_hash=0, $autologin=0)
 	{
 	
 		global $model;
 	
 		$user=form_text($user);
+		
+		if($yes_hash==1)
+		{
 	
-		$password=sha1($password);
+			$password=sha1($password);
+		
+		}
 		
 		$arr_user=$model[$this->model_login]->select_a_row('where '.$this->field_user.'="'.$user.'" and '.$this->field_password.'="'.$password.'"', $this->arr_user_session);
 	
@@ -71,6 +86,15 @@ class LoginClass {
 				$_SESSION[$this->key_field]=$new_token;
 			
 				$model[$this->model_login]->reload_require();
+				
+				if($autologin==1)
+				{
+				
+					$lifetime=31536000;
+				
+					setcookie(session_name(),session_id(),time()+$lifetime);
+				
+				}
 			
 				return true;
 				
@@ -88,6 +112,8 @@ class LoginClass {
 	
 	public function check_login()
 	{
+	
+		global $model;
 	
 		if(isset($_SESSION[$this->key_field]) && isset($_SESSION[$model[$this->model_login]->idmodel]))
 		{
@@ -124,7 +150,9 @@ class LoginClass {
 	public function login_form()
 	{
 		
-		echo load_view(array('model' => $model[$this->model_login]), $this->login_view);
+		global $model;
+		
+		echo load_view(array($model[$this->model_login], $this), $this->login_view);
 	
 	}
 	
@@ -145,7 +173,7 @@ class LoginClass {
 	public function create_account_form()
 	{
 	
-		
+		global $model;
 	
 		echo load_view(array('model' => $model[$this->model_login], 'login_model' => $this), $this->create_account_view);
 	
@@ -158,15 +186,26 @@ class LoginClass {
 			
 		$post=filter_fields_array($this->arr_user_insert, $_POST);
 	
-		if(ModelForm::check_form($model[$this->model_login], $post))
-		{
+		//Check captcha and double password
 		
-			if($model[$this->model_login]->insert($post))
+		if($_POST['repeat_password']==$post[$this->field_password])
+		{
+			if(ModelForm::check_form($model[$this->model_login]->forms, $post))
 			{
 			
-				return true;
+				if($model[$this->model_login]->insert($post))
+				{
+				
+					return true;
+				
+				}
 			
 			}
+		}
+		else
+		{
+		
+			return false;
 		
 		}
 	
