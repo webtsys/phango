@@ -4,7 +4,10 @@ class LoginClass {
 
 	public $model_login;
 	public $field_user;
+	public $field_name='name';
 	public $field_password;
+	public $field_mail='email';
+	public $field_recovery='token_recovery';
 	public $arr_user_session;
 	public $arr_user_insert=array();
 	public $field_key;
@@ -16,7 +19,7 @@ class LoginClass {
 	public $edit_fields=array();
 	public $create_account_view='common/user/standard/insertuserform';
 	public $recovery_pass_view='common/user/standard/recoverypassform';
-	//public $method_crypt='sha256';
+	public $method_crypt='sha256';
 	
 	public function __construct($model_login, $field_user, $field_password, $field_key, $arr_user_session=array(), $arr_user_insert=array())
 	{
@@ -258,7 +261,148 @@ class LoginClass {
 	public function recovery_password()
 	{
 	
+		settype($_GET['token_recovery'], 'string');
+						
+		$_GET['token_recovery']=form_text($_GET['token_recovery']);
 		
+		if($_GET['token_recovery']=='')
+		{
+		
+			$email = @form_text( $_POST['email'] );
+		
+			$query=$model[$this->model_login]->select( 'where '.$this->field_mail.'="'.$email.'"', array($model[$this->model_login]->idmodel, $this->field_name, $this->field_mail) );
+			
+			list($iduser_recovery, $nick, $email)=$model[$this->model_login]->fetch_row($query);
+			
+			settype($iduser_recovery, 'integer');
+			
+			if($iduser_recovery>0)
+			{
+			
+				$email = @form_text( $_POST['email'] );
+		
+				$query=$model[$this->model_login]->select( 'where '.$this->field_mail.'="'.$email.'"', array($model[$this->model_login]->idmodel, $this->field_name, $this->field_mail) );
+				
+				list($iduser_recovery, $nick, $email)=$model[$this->model_login]->fetch_row($query);
+				
+				settype($iduser_recovery, 'integer');
+			
+				//Create token recovery...
+				
+				$token_recovery=get_token();
+				
+				$query=$model[$this->model_login]->update(array($this->field_recovery => hash($this->method_crypt, $token_recovery)), 'where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
+				
+				//$query=$model['recovery_password']->insert(array('iduser' => $iduser_recovery, 'token_recovery' => sha1($token_recovery), 'date_token' => TODAY) );
+				
+				//Send email
+				
+				$url_check_token=$this->url_recovery;
+				
+				$topic_email = $lang['user']['lost_name'];
+				$body_email = $lang['user']['hello_lost_pass']."\n\n".$lang['user']['explain_code_pass']
+				."\n\n".$lang['user']['copy_paste_code'].': '.$url_check_token."\n\n". $lang['common']['thanks'];
+				
+				if ( send_mail($email, $topic_email, $body_email) )
+				{
+				
+					echo '<p>'.$lang['user']['explain_email_code_pass'].'</p>';
+				
+				}
+				else
+				{
+				
+					echo '<p>'.$lang['user']['cannot_email_code_pass'].'</p>';
+				
+				}
+				
+			
+			}
+			else
+			{
+
+				echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
+				
+				echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 3))."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
+
+			}
+		
+		}
+		else
+		{
+		
+			load_libraries('fields/passwordfield');
+
+			$query=$model[$this->model_login]->select('where '.$this->field_recovery.'="'.hash($this->method_crypt, $_GET['token_recovery']).'"', array('iduser'));
+			
+			list($iduser_recovery)=$model[$this->model_login]->fetch_row($query);
+			
+			settype($iduser_recovery, 'integer');
+		
+			if($iduser_recovery>0)
+			{
+			
+				$query=$model[$this->model_login]->select( 'where '.$this->field_mail.'="'.$email.'"', array($model[$this->model_login]->idmodel, $this->field_name, $this->field_mail) );
+				
+				list($iduser_recovery, $nick, $email)=$model[$this->model_login]->fetch_row($query);
+				
+				settype($iduser_recovery, 'integer');
+
+				$password=generate_random_password(); 
+
+				$topic_email = $lang['user']['success_change_password'];
+				$body_email = $lang['user']['hello_lost_pass_successful']."\n\n". $lang['user']['user_data'] . "\n\n".$lang['user']['user']." : $nick"."\n\n". $lang['common']['email']." : $email"."\n\n"  . $lang['user']['new_pass'] . " : $password" . "\n\n" . $lang['common']['thanks'];
+					
+				if ( $email != "" )
+				{
+					
+					$portal_name=html_entity_decode($config_data['portal_name']);	
+					
+					$query=$model['recovery_password']->delete('where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
+
+					if ( send_mail($email, $topic_email, $body_email) )
+					{
+						$model[$this->model_login]->reset_require();
+					
+						$query = $model[$this->model_login]->update(array($this->field_password => $password), 'where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
+						
+						echo  "<p>" . $lang['user']['success_change_password'].'</p>';
+						echo  "<p>" . $lang['user']['success_change_password_explain'].'</p>';
+
+					} 
+					else
+					{
+
+						echo  "<p>" . $lang['user']['success_change_password'].'</p>';
+						
+						echo  "<p>" . $lang['user']['error_sending_mail_change_password'].'</p>';
+						
+						echo '<pre>';
+						
+						echo $body_email;
+						
+						echo '</pre>';
+
+					} 
+				} 
+
+				else
+				{
+
+					echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
+
+				}
+				
+			}
+			else
+			{
+			
+				echo  "<p>" . $lang['user']['error_token_pass'].'</p>';
+			
+			}
+
+			echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 0))."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
+		}
 	
 	}
 	
