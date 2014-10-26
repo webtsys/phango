@@ -7,7 +7,7 @@ function RecoveryPassFormView($model_login, $login)
 
 	?>
 		<h3><?php echo $lang['user']['remember_password_explain']; ?></h3>
-		<form method="post" action="<?php echo $login->url_recovery; ?>">
+		<form method="post" action="<?php echo $login->url_recovery_send; ?>">
 			<?php set_csrf_key(); ?>
 			<label for="email"></label>
 			<?php

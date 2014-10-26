@@ -15,6 +15,7 @@ class LoginClass {
 	public $url_login='';
 	public $url_insert='';
 	public $url_recovery='';
+	public $url_recovery_send='';
 	public $login_view='common/user/standard/loginform';
 	public $edit_fields=array();
 	public $create_account_view='common/user/standard/insertuserform';
@@ -261,9 +262,13 @@ class LoginClass {
 	public function recovery_password()
 	{
 	
+		global $model, $base_url, $lang;
+	
 		settype($_GET['token_recovery'], 'string');
 						
 		$_GET['token_recovery']=form_text($_GET['token_recovery']);
+		
+		load_libraries(array('send_email'));
 		
 		if($_GET['token_recovery']=='')
 		{
@@ -297,7 +302,7 @@ class LoginClass {
 				
 				//Send email
 				
-				$url_check_token=$this->url_recovery;
+				$url_check_token=$this->url_recovery_send;
 				
 				$topic_email = $lang['user']['lost_name'];
 				$body_email = $lang['user']['hello_lost_pass']."\n\n".$lang['user']['explain_code_pass']
@@ -323,7 +328,7 @@ class LoginClass {
 
 				echo  "<p>" . $lang['user']['error_db_pass'].'</p>';
 				
-				echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 3))."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
+				echo  "<p><a href=\"".$this->url_recovery."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
 
 			}
 		
