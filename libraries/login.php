@@ -262,7 +262,7 @@ class LoginClass {
 	public function recovery_password()
 	{
 	
-		global $model, $base_url, $lang;
+		global $model, $base_url, $lang, $config_data;
 	
 		settype($_GET['token_recovery'], 'string');
 						
@@ -296,13 +296,15 @@ class LoginClass {
 				
 				$token_recovery=get_token();
 				
+				$model[$this->model_login]->reset_require();
+				
 				$query=$model[$this->model_login]->update(array($this->field_recovery => hash($this->method_crypt, $token_recovery)), 'where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
 				
 				//$query=$model['recovery_password']->insert(array('iduser' => $iduser_recovery, 'token_recovery' => sha1($token_recovery), 'date_token' => TODAY) );
 				
 				//Send email
 				
-				$url_check_token=$this->url_recovery_send;
+				$url_check_token=add_extra_fancy_url($this->url_recovery_send, array('token_recovery' => $token_recovery));
 				
 				$topic_email = $lang['user']['lost_name'];
 				$body_email = $lang['user']['hello_lost_pass']."\n\n".$lang['user']['explain_code_pass']
@@ -336,22 +338,22 @@ class LoginClass {
 		else
 		{
 		
-			load_libraries('fields/passwordfield');
+			load_libraries(array('fields/passwordfield'));
 
-			$query=$model[$this->model_login]->select('where '.$this->field_recovery.'="'.hash($this->method_crypt, $_GET['token_recovery']).'"', array('iduser'));
+			$query=$model[$this->model_login]->select('where '.$this->field_recovery.'="'.hash($this->method_crypt, $_GET['token_recovery']).'"', array($model[$this->model_login]->idmodel, $this->field_name, $this->field_mail));
 			
-			list($iduser_recovery)=$model[$this->model_login]->fetch_row($query);
+			list($iduser_recovery, $nick, $email)=$model[$this->model_login]->fetch_row($query);
 			
 			settype($iduser_recovery, 'integer');
-		
+			
 			if($iduser_recovery>0)
 			{
 			
-				$query=$model[$this->model_login]->select( 'where '.$this->field_mail.'="'.$email.'"', array($model[$this->model_login]->idmodel, $this->field_name, $this->field_mail) );
+				//$query=$model[$this->model_login]->select( 'where '.$this->field_mail.'="'.$email.'"', array($model[$this->model_login]->idmodel, $this->field_name, $this->field_mail) );
 				
-				list($iduser_recovery, $nick, $email)=$model[$this->model_login]->fetch_row($query);
+				//list($iduser_recovery, $nick, $email)=$model[$this->model_login]->fetch_row($query);
 				
-				settype($iduser_recovery, 'integer');
+				//settype($iduser_recovery, 'integer');
 
 				$password=generate_random_password(); 
 
@@ -363,13 +365,14 @@ class LoginClass {
 					
 					$portal_name=html_entity_decode($config_data['portal_name']);	
 					
-					$query=$model['recovery_password']->delete('where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
+					//$query=$model['recovery_password']->delete('where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
 
+					$model[$this->model_login]->reset_require();
+					
+					$query = $model[$this->model_login]->update(array($this->field_password => $password, $this->field_recovery => ''), 'where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
+					
 					if ( send_mail($email, $topic_email, $body_email) )
 					{
-						$model[$this->model_login]->reset_require();
-					
-						$query = $model[$this->model_login]->update(array($this->field_password => $password), 'where '.$model[$this->model_login]->idmodel.'='.$iduser_recovery);
 						
 						echo  "<p>" . $lang['user']['success_change_password'].'</p>';
 						echo  "<p>" . $lang['user']['success_change_password_explain'].'</p>';
@@ -406,7 +409,7 @@ class LoginClass {
 			
 			}
 
-			echo  "<p><a href=\"".make_fancy_url($base_url, 'user', 'index', 'login_user', $arr_data=array('op' => 0))."\"><b>" . $lang['common']['go_back'] . "</b></a></p>";
+			echo  "<p><a href=\"".$this->url_login. "</b></a></p>";
 		}
 	
 	}
