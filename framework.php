@@ -292,9 +292,9 @@ if($connection!==false  && $select_db==1)
 
 		$module_names=array();
 
-		$query=$model['module']->select('WHERE load_module!="" order by order_module ASC', array('IdModule', 'name', 'load_module') );
+		$query=$model['module']->select('WHERE load_module!="" order by order_module ASC', array('IdModule', 'name', 'load_module', 'yes_config') );
 
-		while(list($idmodule, $module, $load_module)=webtsys_fetch_row($query)) 
+		while(list($idmodule, $module, $load_module, $yes_config)=webtsys_fetch_row($query)) 
 		{
 			
 			$module_names[$idmodule]=basename($module);
@@ -306,6 +306,29 @@ if($connection!==false  && $select_db==1)
 
 		foreach($module_names as $module) 
 		{
+		
+			if($yes_config==1)
+			{
+			
+				if(!include($base_path.'modules/'.$module.'/config/config_module.php'))
+				{
+				
+					$arr_error_sql[0]='<p>Error: Cannot load config for this module.</p>';    
+					$arr_error_sql[1]='<p>Error: Cannot load '.$base_path.'modules/'.$module.'/config/config_module.php'.' config for this module.</p>';
+					
+					$output=ob_get_contents();
+
+					$arr_error_sql[1].='<p>Output: '.$output.'</p>';
+
+					ob_clean();
+				
+					echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
+
+					die();
+				
+				}
+				
+			}
 			
 			if(!include($base_path.'modules/'.$module.'/loaders/'.$general_modules[$c_modules]))
 			{
