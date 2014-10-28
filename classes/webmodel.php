@@ -1675,6 +1675,15 @@ class ControllerSwitchClass {
 		die( redirect_webtsys( $direction, $l_text, $text, $ifno , $arr_block) );
 	
 	}
+	
+	public function load_theme($module, $title, $cont_index)
+	{
+	
+		$arr_block=select_view(array($module));
+		
+		echo load_view(array($title, $cont_index, $this->block_title, $this->block_content, $this->block_urls, $this->block_type, $this->block_id, $this->config_data, ''), $arr_block);
+	
+	}
 
 }
 
