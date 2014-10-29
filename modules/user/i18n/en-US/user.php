@@ -1,5 +1,27 @@
 <?php
 
+$lang['user']['name']='Name';
+
+$lang['user']['last_name']='Last Name';
+
+$lang['user']['enterprise_name']='Enterprise name';
+
+$lang['user']['email']='Email';
+
+$lang['user']['nif']='ID';
+
+$lang['user']['zip_code']='Zip code';
+
+$lang['user']['city']='City';
+
+$lang['user']['text_confirm']='Now,you are a registered user';
+
+$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
+
+$lang['user']['login']='Login';
+
+$lang['user']['register']='Register';
+
 $lang['user']['without_special_rank']='Without special rank';
 
 $lang['user']['choose_avatar']='Choose avatar';
@@ -86,12 +108,6 @@ $lang['user']['signature']='Signature';
 
 $lang['user']['interests']='Interests';
 
-$lang['user']['nif']='ID';
-
-$lang['user']['enterprise_name']='Enterprise name';
-
-$lang['user']['zip_code']='Zip code';
-
 $lang['user']['activated_user']='Activated user';
 
 $lang['user']['no_user_profile']='Don&#39;t exists the user profile';
@@ -103,10 +119,6 @@ $lang['user']['cannot_change_language']='Cannot change the langage';
 $lang['user']['change_language']='Change language';
 
 $lang['user']['error_login_update']='Error: I cannot update your profile';
-
-$lang['user']['text_confirm']='Now,you are a registered user';
-
-$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
 
 $lang['user']['new_user_is_registered']='A new user was registered';
 
@@ -208,16 +220,6 @@ $lang['user']['send_private']='Send private message';
 
 $lang['user']['go_profiles']='Go to profiles';
 
-$lang['user']['name']='Name';
-
-$lang['user']['last_name']='Last Name';
-
-$lang['user']['email']='Email';
-
-$lang['user']['city']='City';
-
-$lang['user']['login']='Login';
-
 $lang['user']['my_account']='My account';
 
 $lang['user']['modify_user']='Change user';
@@ -236,8 +238,6 @@ $lang['user']['remember_password_explain']='Please enter the email address you r
 
 $lang['user']['remember_password']='Remember password';
 
-$lang['user']['register']='Register';
-
 $lang['user']['push_remember']='Remember password';
 
 $lang['user']['text_password']='This is your password';
@@ -245,8 +245,6 @@ $lang['user']['text_password']='This is your password';
 $lang['user']['no_success_change_password']='Error: cannot change the password, contact with website admin';
 
 $lang['user']['hello']='Hello';
-
-$lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 
 $lang['user']['iduser']='User';
 
@@ -403,6 +401,8 @@ $lang['user']['conditions_register']='Terms of register';
 $lang['user']['list_profile']='Profiles list';
 
 $lang['user']['direction']='Address';
+
+$lang['user']['<?php echo $key_component; ?>']='&lt;rphp-echo-$key_component;-r&gt;';
 
 $lang['user']['use_data']='use_data';
 

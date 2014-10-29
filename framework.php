@@ -292,16 +292,16 @@ if($connection!==false  && $select_db==1)
 
 		$module_names=array();
 
-		$query=$model['module']->select('WHERE load_module!="" OR yes_config=1 order by order_module ASC', array('IdModule', 'name', 'load_module', 'yes_config') );
+		$query=$model['module']->select('WHERE load_module!="" order by order_module ASC', array('IdModule', 'name', 'load_module') );
 		$arr_yes_config=array();
 
-		while(list($idmodule, $module, $load_module, $yes_config)=webtsys_fetch_row($query)) 
+		while(list($idmodule, $module, $load_module)=webtsys_fetch_row($query)) 
 		{
 			
 			/*if($yes_config==0)
 			{*/
 			
-				$module_names[$yes_config][$idmodule]=basename($module);
+				$module_names[0][$idmodule]=basename($module);
 				$general_modules[$idmodule]=basename($load_module);
 			
 			/*}
@@ -313,7 +313,7 @@ if($connection!==false  && $select_db==1)
 			}*/
 		}
 		
-		foreach($module_names[1] as $idmodule => $module)
+		/*foreach($module_names[1] as $idmodule => $module)
 		{
 		
 			if(!include($base_path.'modules/'.$module.'/config/config_module.php'))
@@ -335,7 +335,7 @@ if($connection!==false  && $select_db==1)
 			}
 			
 		
-		}
+		}*/
 
 		foreach($module_names[0] as $idmodule => $module) 
 		{

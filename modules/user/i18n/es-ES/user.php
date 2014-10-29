@@ -1,5 +1,27 @@
 <?php
 
+$lang['user']['name']='Nombre';
+
+$lang['user']['last_name']='Apellidos';
+
+$lang['user']['enterprise_name']='Nombre de empresa';
+
+$lang['user']['email']='Email';
+
+$lang['user']['nif']='Número de documento de identificación';
+
+$lang['user']['zip_code']='Codigo postal';
+
+$lang['user']['city']='Ciudad';
+
+$lang['user']['text_confirm']='Usted se ha registrado como usuario';
+
+$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
+
+$lang['user']['login']='Identificarse';
+
+$lang['user']['register']='Registrarse';
+
 $lang['user']['without_special_rank']='Sin rango especial';
 
 $lang['user']['choose_avatar']='Elegir avatar';
@@ -86,12 +108,6 @@ $lang['user']['signature']='Firma';
 
 $lang['user']['interests']='Intereses';
 
-$lang['user']['nif']='Número de documento de identificación';
-
-$lang['user']['enterprise_name']='Nombre de empresa';
-
-$lang['user']['zip_code']='Codigo postal';
-
 $lang['user']['activated_user']='Usuario activo';
 
 $lang['user']['no_user_profile']='No existe el perfil de usuario';
@@ -103,10 +119,6 @@ $lang['user']['cannot_change_language']='No puedo cambiar el lenguaje';
 $lang['user']['change_language']='Cambiar lenguaje';
 
 $lang['user']['error_login_update']='Error al intentar actualizar su perfil';
-
-$lang['user']['text_confirm']='Usted se ha registrado como usuario';
-
-$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
 
 $lang['user']['new_user_is_registered']='Un nuevo usuario se ha registrado.';
 
@@ -208,16 +220,6 @@ $lang['user']['send_private']='Enviar mensaje privado';
 
 $lang['user']['go_profiles']='Ir a perfiles';
 
-$lang['user']['name']='Nombre';
-
-$lang['user']['last_name']='Apellidos';
-
-$lang['user']['email']='Email';
-
-$lang['user']['city']='Ciudad';
-
-$lang['user']['login']='Identificarse';
-
 $lang['user']['my_account']='Mi cuenta';
 
 $lang['user']['modify_user']='Modificar usuario';
@@ -235,8 +237,6 @@ $lang['user']['thanks']='Gracias.';
 $lang['user']['remember_password_explain']='Por favor, introduzca el email con el que se registró en la web, que será donde reciba su nueva contraseña';
 
 $lang['user']['remember_password']='Recordar contraseña';
-
-$lang['user']['register']='Registrarse';
 
 $lang['user']['push_remember']='Recordar contraseña';
 

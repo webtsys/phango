@@ -5119,13 +5119,18 @@ function load_model($name_model='')
 * @param $name_config Name of the config file, optional. Normally load config.php file on folder config.
 */
 
-function load_config($module, $name_config='config')
+function load_config($module, $name_config='config_module')
 {
 
 	global $base_path;
 
-	load_libraries(array($name_config), $base_path.'/modules/'.$module.'/config/');
-
+	//load_libraries(array($name_config), $base_path.'/modules/'.$module.'/config/');
+	
+	if(is_file($base_path.'/modules/'.$module.'/config/'.$name_config.'.php'))
+	{
+		include($base_path.'/modules/'.$module.'/config/'.$name_config.'.php');
+	}
+	
 }
 
 /**

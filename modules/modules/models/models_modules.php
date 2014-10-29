@@ -21,7 +21,7 @@ $model['module']->components['order_module']=new CharField(255);
 $model['module']->components['app_index']=new BooleanField();
 $model['module']->components['required']=new BooleanField();
 
-$model['module']->set_component('yes_config', 'BooleanField', array());
+//$model['module']->set_component('yes_config', 'BooleanField', array());
 
 $model['moderators_module']=new Webmodel('moderators_module');
 $model['moderators_module']->components['moderator']=new ForeignKeyField('user');
