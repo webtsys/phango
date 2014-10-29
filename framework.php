@@ -292,49 +292,59 @@ if($connection!==false  && $select_db==1)
 
 		$module_names=array();
 
-		$query=$model['module']->select('WHERE load_module!="" order by order_module ASC', array('IdModule', 'name', 'load_module', 'yes_config') );
+		$query=$model['module']->select('WHERE load_module!="" OR yes_config=1 order by order_module ASC', array('IdModule', 'name', 'load_module', 'yes_config') );
+		$arr_yes_config=array();
 
 		while(list($idmodule, $module, $load_module, $yes_config)=webtsys_fetch_row($query)) 
 		{
 			
-			$module_names[$idmodule]=basename($module);
-			$general_modules[]=basename($load_module);
+			/*if($yes_config==0)
+			{*/
 			
-		}
-
-		$c_modules=0;
-
-		foreach($module_names as $module) 
-		{
-		
-			if($yes_config==1)
+				$module_names[$yes_config][$idmodule]=basename($module);
+				$general_modules[$idmodule]=basename($load_module);
+			
+			/*}
+			else
 			{
 			
-				if(!include($base_path.'modules/'.$module.'/config/config_module.php'))
-				{
+				$module_names_config[$idmodule]=basename($module);
+			
+			}*/
+		}
+		
+		foreach($module_names[1] as $idmodule => $module)
+		{
+		
+			if(!include($base_path.'modules/'.$module.'/config/config_module.php'))
+			{
+			
+				$arr_error_sql[0]='<p>Error: Cannot load config for this module.</p>';    
+				$arr_error_sql[1]='<p>Error: Cannot load '.$base_path.'modules/'.$module.'/config/config_module.php'.' config for this module.</p>';
 				
-					$arr_error_sql[0]='<p>Error: Cannot load config for this module.</p>';    
-					$arr_error_sql[1]='<p>Error: Cannot load '.$base_path.'modules/'.$module.'/config/config_module.php'.' config for this module.</p>';
-					
-					$output=ob_get_contents();
+				$output=ob_get_contents();
 
-					$arr_error_sql[1].='<p>Output: '.$output.'</p>';
+				$arr_error_sql[1].='<p>Output: '.$output.'</p>';
 
-					ob_clean();
-				
-					echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
+				ob_clean();
+			
+				echo load_view(array('Phango site is down', $arr_error_sql[DEBUG]), 'common/common');
 
-					die();
-				
-				}
-				
+				die();
+			
 			}
 			
-			if(!include($base_path.'modules/'.$module.'/loaders/'.$general_modules[$c_modules]))
+		
+		}
+
+		foreach($module_names[0] as $idmodule => $module) 
+		{
+			
+			if(!include($base_path.'modules/'.$module.'/loaders/'.$general_modules[$idmodule]))
 			{
 
 				$arr_error_sql[0]='<p>Error: Cannot load a loader.</p>';    
-				$arr_error_sql[1]='<p>Error: Cannot load '.$general_modules[$c_modules].' loader.</p>';
+				$arr_error_sql[1]='<p>Error: Cannot load '.$general_modules[$idmodule].' loader.</p>';
 				
 				$output=ob_get_contents();
 
@@ -347,8 +357,7 @@ if($connection!==false  && $select_db==1)
 				die();
 
 			}
-			
-			$c_modules++;
+
 		}
 
 	}

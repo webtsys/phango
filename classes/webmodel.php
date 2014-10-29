@@ -232,11 +232,18 @@ class Webmodel {
 	public $distinct=0;
 	
 	/**
-	*
-	*
+	* Property for save the required fields where you use reset_require method
+	* 
 	*/
 	
 	public $save_required=array();
+	
+	/**
+	* Property for select the fields for update or insert
+	* 
+	*/
+	
+	public $arr_fields_updated=array();
 
 	//Construct the model
 
@@ -303,6 +310,8 @@ class Webmodel {
 	{
 
 		global $lang;
+		
+		$post=$this->unset_no_required($post);
 		
 		//Check if minimal fields are fill and if fields exists in components.Check field's values.
 		
@@ -388,6 +397,8 @@ class Webmodel {
 		//Unset the id field from the model for security
 		
 		unset($post[$this->idmodel]);
+		
+		$post=$this->unset_no_required($post);
 		
 		//Checking and sanitizing data from $post array for use in the query
 		
@@ -995,6 +1006,13 @@ class Webmodel {
 
 		return $stack;
 
+	}
+	
+	public function unset_no_required($post)
+	{
+	
+		return filter_fields_array($this->arr_fields_updated, $post);
+	
 	}
 
 	/**
