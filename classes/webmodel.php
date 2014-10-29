@@ -1684,6 +1684,15 @@ class ControllerSwitchClass {
 		echo load_view(array($title, $cont_index, $this->block_title, $this->block_content, $this->block_urls, $this->block_type, $this->block_id, $this->config_data, ''), $arr_block);
 	
 	}
+	
+	public function simple_redirect($url)
+	{
+	
+		header('Location: '.$url);
+	
+		die;
+	
+	}
 
 }
 
