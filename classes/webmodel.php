@@ -111,6 +111,16 @@ class DateTimeNow {
 	static public $today_last=TODAY_LAST;
 	static public $today_hour=TODAY_HOUR;
 	
+	static public function update_datetime()
+	{
+	
+		DateTimeNow::$today=mktime( date('H'), date('i'), date('s') );
+		DateTimeNow::$today_first=mktime(0, 0, 0);
+		DateTimeNow::$today_last=mktime(23, 59, 59);
+		DateTimeNow::$today_hour=mktime(date('H'), 0, 0);
+	
+	}
+	
 }
 
 /**

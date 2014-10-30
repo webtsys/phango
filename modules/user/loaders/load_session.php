@@ -135,6 +135,10 @@ if(in_array($user_data['language'], $arr_i18n))
 
 date_default_timezone_set($user_data['timezone']);
 
+//Recalculate time
+
+DateTimeNow::update_datetime();
+
 $_SESSION['language']=$language;
 
 //Settings any components from model_user
