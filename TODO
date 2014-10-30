@@ -19,6 +19,7 @@ Knowed Bugs
 New Features for next versions.
 ----------------------------
 
+- Loading images and files with ftp data. Normal upload, then move the file with ftp, sftp.
 - Cache that permit don't connect to mysql is not necessary. Save how a sha1 the name of the query on cache folder.
 - Save config on classes.
 - Caching querys. With php raw or non-sql databases.

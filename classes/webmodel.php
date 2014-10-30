@@ -104,6 +104,15 @@ define("TODAY_LAST", mktime(23, 59, 59));
 
 define("TODAY_HOUR", mktime(date('H'), 0, 0));
 
+class DateTimeNow {
+
+	static public $today=TODAY;
+	static public $today_first=TODAY_FIRST;
+	static public $today_last=TODAY_LAST;
+	static public $today_hour=TODAY_HOUR;
+	
+}
+
 /**
 *This variable is used for save general errors. 
 */
