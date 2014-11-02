@@ -5432,15 +5432,24 @@ function filter_fields_array($array_strip, $array_source)
 
 	$array_final=array();
 	
-	foreach($array_strip as $field_strip)
+	if(count($array_strip)>0)
 	{
+		foreach($array_strip as $field_strip)
+		{
 
-		$array_final[$field_strip]=@$array_source[$field_strip];
+			$array_final[$field_strip]=@$array_source[$field_strip];
+
+		}
+
+		return $array_final;
 
 	}
-
-	return $array_final;
-
+	else
+	{
+	
+		return $array_source;
+	
+	}
 }
 
 function set_csrf_key()

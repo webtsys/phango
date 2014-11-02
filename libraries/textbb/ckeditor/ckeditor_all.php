@@ -35,6 +35,7 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 			//removePlugins: 'flash,div,filebrowser,flash,format,forms,horizontalrule,iframe',
 			filebrowserImageBrowseUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'browser_image', 'browser_image', array()); ?>',
 			//filebrowserImageUploadUrl : '<?php echo make_fancy_url($base_url, 'jscript', 'upload_image', 'upload_image', array()); ?>',
+			filebrowserBrowseUrl: '<?php echo make_fancy_url($base_url, 'jscript', 'browser_image', 'browser_image', array()); ?>',
 			filebrowserWindowWidth : '800',
 			filebrowserWindowHeight : '600',
 			
@@ -98,33 +99,7 @@ function load_jscript_editor($name_editor, $value, $profiles='all')
 			}*/
 
 		}
-		);
-
-// When opening a dialog, its "definition" is created for it, for
-// each editor instance. The "dialogDefinition" event is then
-// fired. We should use this event to make customizations to the
-// definition of existing dialogs.
-	//CKEDITOR.config.protectedSource.push( /<p>/g );
-CKEDITOR.on( 'dialogDefinition', function( ev )
-	{
-		// Take the dialog name and its definition from the event
-		// data.
-		var dialogName = ev.data.name;
-		var dialogDefinition = ev.data.definition;
-
-		// Check if the definition is from the dialog we're
-		// interested on (the "Link" dialog).
-		if ( dialogName == 'link' )
-		{
-			// Get a reference to the "Link Info" tab.
-			var infoTab = dialogDefinition.getContents( 'info' );
-
-			// Remove the "Link Type" combo and the "Browser
-			// Server" button from the "info" tab.
-			infoTab.remove( 'linkType' );
-			infoTab.remove( 'browse' );
-		}
-	});
+	);
 
 });
 	//]]>
