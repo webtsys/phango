@@ -1,10 +1,8 @@
 <?php
 
-$lang['common']['title']='Title';
+$lang['common']['category']='Category';
 
-$lang['common']['name']='Name';
-
-$lang['common']['image']='Image';
+$lang['common']['search']='Search';
 
 $lang['common']['redirect']='Redirect';
 
@@ -12,29 +10,43 @@ $lang['common']['success']='Successful operation';
 
 $lang['common']['press_here_redirecting']='Press here to come back...';
 
-$lang['common']['category']='Category';
+$lang['common']['categories']='Categories';
 
-$lang['common']['search']='Search';
+$lang['common']['image']='Image';
+
+$lang['common']['title']='Title';
+
+$lang['common']['go_back']='Go Back';
+
+$lang['common']['any_option']='All options';
+
+$lang['common']['description']='Description';
+
+$lang['common']['date']='Date';
+
+$lang['common']['name']='Name';
+
+$lang['common']['user']='User';
+
+$lang['common']['last_name']='Last name';
+
+$lang['common']['email']='Email';
 
 $lang['common']['address']='Adress';
+
+$lang['common']['city']='City';
 
 $lang['common']['region']='Region';
 
 $lang['common']['country']='Country';
 
+$lang['common']['zip_code']='Zip code';
+
 $lang['common']['phone']='Phone';
 
 $lang['common']['fax']='Fax';
 
-$lang['common']['zip_code']='Zip code';
-
-$lang['common']['city']='City';
-
-$lang['common']['date']='Date';
-
-$lang['common']['go_back']='Go Back';
-
-$lang['common']['any_option']='All options';
+$lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
 
 $lang['common']['send']='Send';
 
@@ -44,21 +56,9 @@ $lang['common']['yes']='Yes';
 
 $lang['common']['register_user']='User registration';
 
-$lang['common']['categories']='Categories';
-
-$lang['common']['description']='Description';
-
-$lang['common']['user']='User';
-
-$lang['common']['last_name']='Last name';
-
-$lang['common']['email']='Email';
-
-$lang['common']['error_cannot_upload_this_image_to_the_server']='Error: I can not upload the image to the server. Are there permissions for it?.';
+$lang['common']['delete']='Delete';
 
 $lang['common']['pages']='Pages';
-
-$lang['common']['delete']='Delete';
 
 $lang['common']['more']='More';
 

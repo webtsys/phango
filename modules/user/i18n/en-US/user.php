@@ -1,5 +1,13 @@
 <?php
 
+$lang['user']['text_confirm']='Now,you are a registered user';
+
+$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
+
+$lang['user']['login']='Login';
+
+$lang['user']['register']='Register';
+
 $lang['user']['name']='Name';
 
 $lang['user']['last_name']='Last Name';
@@ -13,14 +21,6 @@ $lang['user']['nif']='ID';
 $lang['user']['zip_code']='Zip code';
 
 $lang['user']['city']='City';
-
-$lang['user']['text_confirm']='Now,you are a registered user';
-
-$lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
-
-$lang['user']['login']='Login';
-
-$lang['user']['register']='Register';
 
 $lang['user']['without_special_rank']='Without special rank';
 

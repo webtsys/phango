@@ -1,10 +1,8 @@
 <?php
 
-$lang['common']['title']='Título';
+$lang['common']['category']='Categoría';
 
-$lang['common']['name']='Nombre';
-
-$lang['common']['image']='Imagen';
+$lang['common']['search']='Buscar';
 
 $lang['common']['redirect']='Redireccionar';
 
@@ -12,29 +10,43 @@ $lang['common']['success']='Éxito en la operación';
 
 $lang['common']['press_here_redirecting']='Pulse aquí para volver';
 
-$lang['common']['category']='Categoría';
+$lang['common']['categories']='Categorías';
 
-$lang['common']['search']='Buscar';
+$lang['common']['image']='Imagen';
+
+$lang['common']['title']='Título';
+
+$lang['common']['go_back']='Volver atrás';
+
+$lang['common']['any_option']='No ha escogido ninguna opción';
+
+$lang['common']['description']='Descripción';
+
+$lang['common']['date']='Fecha';
+
+$lang['common']['name']='Nombre';
+
+$lang['common']['user']='Usuario';
+
+$lang['common']['last_name']='Apellidos';
+
+$lang['common']['email']='Email';
 
 $lang['common']['address']='Dirección';
+
+$lang['common']['city']='Ciudad';
 
 $lang['common']['region']='Provincia';
 
 $lang['common']['country']='País';
 
+$lang['common']['zip_code']='Código postal';
+
 $lang['common']['phone']='Teléfono';
 
 $lang['common']['fax']='Fax';
 
-$lang['common']['zip_code']='Código postal';
-
-$lang['common']['city']='Ciudad';
-
-$lang['common']['date']='Fecha';
-
-$lang['common']['go_back']='Volver atrás';
-
-$lang['common']['any_option']='No ha escogido ninguna opción';
+$lang['common']['error_cannot_upload_this_image_to_the_server']='Error: no puedo subir la imagen al servidor. ¿Hay permisos para ello?.';
 
 $lang['common']['send']='Enviar';
 
@@ -44,21 +56,9 @@ $lang['common']['yes']='Sí';
 
 $lang['common']['register_user']='Registro de usuario';
 
-$lang['common']['categories']='Categorías';
-
-$lang['common']['description']='Descripción';
-
-$lang['common']['user']='Usuario';
-
-$lang['common']['last_name']='Apellidos';
-
-$lang['common']['email']='Email';
-
-$lang['common']['error_cannot_upload_this_image_to_the_server']='Error: no puedo subir la imagen al servidor. ¿Hay permisos para ello?.';
+$lang['common']['delete']='Borrar';
 
 $lang['common']['pages']='Páginas';
-
-$lang['common']['delete']='Borrar';
 
 $lang['common']['more']='Más';
 

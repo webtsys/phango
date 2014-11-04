@@ -1,5 +1,13 @@
 <?php
 
+$lang['user']['text_confirm']='Usted se ha registrado como usuario';
+
+$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
+
+$lang['user']['login']='Identificarse';
+
+$lang['user']['register']='Registrarse';
+
 $lang['user']['name']='Nombre';
 
 $lang['user']['last_name']='Apellidos';
@@ -13,14 +21,6 @@ $lang['user']['nif']='Número de documento de identificación';
 $lang['user']['zip_code']='Codigo postal';
 
 $lang['user']['city']='Ciudad';
-
-$lang['user']['text_confirm']='Usted se ha registrado como usuario';
-
-$lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
-
-$lang['user']['login']='Identificarse';
-
-$lang['user']['register']='Registrarse';
 
 $lang['user']['without_special_rank']='Sin rango especial';
 
