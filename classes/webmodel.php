@@ -981,6 +981,13 @@ class Webmodel {
 
 				$arr_std_error[]=$lang['error_model']['check_error_field_required'].' '.$key.' ';
 	
+				if($this->components[$key]->std_error=='')
+				{
+
+					$this->components[$key]->std_error=$lang['common']['field_required'];
+
+				}
+	
 				$set_error++;
 
 			}
