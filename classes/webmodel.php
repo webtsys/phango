@@ -842,6 +842,19 @@ class Webmodel {
 		return webtsys_fetch_array($query);
 	
 	}
+	
+	/**
+	* A helper function for obtain the last insert id.
+	*
+	* @param mixed $query The last insert id.
+	*/
+	
+	static public function insert_id()
+	{
+	
+		return webtsys_insert_id();
+	
+	}
 
 	/**
 	* A helper function for get fields names of the model from the array $components
