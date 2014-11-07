@@ -1,5 +1,7 @@
 <?php
 
+$lang['user']['admin_users']='Administración de usuarios';
+
 $lang['user']['text_confirm']='Usted se ha registrado como usuario';
 
 $lang['user']['error_email']='Error al enviar el email, por favor, consulte con el administrador de la web';
@@ -167,8 +169,6 @@ $lang['user']['error_token_pass']='Error: ha utilizado un código incorrecto par
 $lang['user']['change_data_success']='Se cambió el perfil con éxito...';
 
 $lang['user']['exit_login']='Desconexión';
-
-$lang['user']['admin_users']='Administración de usuarios';
 
 $lang['user']['create_user']='Crear usuario';
 

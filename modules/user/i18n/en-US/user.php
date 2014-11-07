@@ -1,5 +1,7 @@
 <?php
 
+$lang['user']['admin_users']='Users administration';
+
 $lang['user']['text_confirm']='Now,you are a registered user';
 
 $lang['user']['error_email']='Error when i send the email to you. Please, ask to the web admin.';
@@ -167,8 +169,6 @@ $lang['user']['error_token_pass']='Error: wrong code has been used to change a p
 $lang['user']['change_data_success']='Profile updated successfully';
 
 $lang['user']['exit_login']='Logout';
-
-$lang['user']['admin_users']='Users administration';
 
 $lang['user']['create_user']='Create user';
 
