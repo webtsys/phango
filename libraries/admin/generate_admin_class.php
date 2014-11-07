@@ -484,6 +484,8 @@ class ListModelClass {
 			
 			$list->url_options=$this->url_options;
 			
+			$list->options_func=$this->options_func;
+			
 			$list->show();
 
 		break;
