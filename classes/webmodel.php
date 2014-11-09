@@ -2285,6 +2285,18 @@ class ChoiceField extends PhangoField {
 		}
 	
 	}
+	
+	function restart_formatted()
+	{
+	
+		foreach($this->arr_values as $value)
+		{
+			
+			$this->arr_formatted[$value]=$value;
+		
+		}
+	
+	}
 
 	function check($value)
 	{
