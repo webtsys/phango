@@ -123,10 +123,24 @@ function send_mail($email, $subject, $message, $content_type='plain', $bcc='', $
 		
 		//echo $mailer->send($mail_set);
 		
-		if(!$mailer->send($mail_set))
+		$failures=array();
+		
+		if(!$mailer->send($mail_set, $failures))
 		{
 			
 			return 0;
+		
+		}
+		
+		foreach($failures as $email_fail)
+		{
+		
+			if($email_fail==$email)
+			{
+			
+				return 0;
+			
+			}
 		
 		}
 		

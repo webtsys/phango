@@ -480,7 +480,7 @@ class ListModelClass {
 			
 			}
 			
-			$list->where_sql.=$arr_where_sql.' order by '.$location.'`'.$this->model_name.'`.`'.$_GET['order_field'].'` '.$arr_order[$_GET['order_desc']];
+			$list->where_sql.=$this->where_sql.$arr_where_sql.' order by '.$location.'`'.$this->model_name.'`.`'.$_GET['order_field'].'` '.$arr_order[$_GET['order_desc']];
 			
 			$list->url_options=$this->url_options;
 			
@@ -679,7 +679,7 @@ class SimpleList
 			foreach($arr_fields_showed as $field)
 			{
 			
-				$arr_row_final[$field]=$model[$this->model_name]->components[$field]->show_formatted($arr_row[$field]);
+				$arr_row_final[$field]=$model[$this->model_name]->components[$field]->show_formatted($arr_row[$field],  $arr_row[$model[$this->model_name]->idmodel]);
 			
 			}
 			
